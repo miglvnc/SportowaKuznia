@@ -6,16 +6,126 @@
 body
     background-color: grey
     font-family: 'Montserrat', sans-serif;
-    height: 1000px
-
-main
     display: flex
-    justify-content: center
-    align-items: center
+    flex-direction: column
+    position: relative
+    height: 1000px
+    // overflow: hidden
+    
+    .nav
+        display: flex
+        position: sticky
+        top: 0
+        z-index: 1
+        // width: 100%
 
-.navSmall
-    display: grid
-    position: sticky
-    grid-template-columns: 10fr 2fr
-    padding: 10px
-    background-color: black
+        .menuLabel
+            display: grid
+            grid-template-columns: 1fr 1fr
+            width: 100%
+            padding: 15px 20px
+            background-color: black
+            z-index: 1
+            position: sticky
+            top: 0
+
+            .menuBars, .logo
+                display: grid
+                justify-self: start
+                background: none
+                border: none
+
+            .logo
+                justify-self: end
+
+            .logo, i
+                align-self: center
+                color: white
+                font-size: 18px
+
+    .collapseMenu
+        position: absolute
+        top: 55px
+        left: -100%// transition to 0 for collapse
+        background-color: rgba(0, 0, 0, 0.8)
+        color: white
+        padding: 15px 10px
+        text-align: left
+        border-bottom-right-radius: 50px
+        transition: left 1.2s
+        z-index: 30
+
+        ul
+            padding: 0
+            margin: 0
+            list-style-type: none
+            list-style-position: outside
+        li
+            padding: 15px
+            letter-spacing: 1px
+            text-transform: uppercase
+
+
+// .collapseMenu .nav:hover
+// .nav:hover + .collapseMenu
+//     left: 0
+//     align-self: flex-end
+
+.nav:hover > .collapseMenu
+    left: 0
+
+// hover to test
+
+.header
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    position: relative
+    width: 100%
+    height: 400px
+    background-image: url(/imgs/header1.jpg)
+    background-color: red
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+    z-index: 1
+
+
+    .hero-shadow
+        position: absolute
+        background-color: rgba(0,0,0,0.7)
+        height: 100%
+        width: 100%
+        z-index: -1
+
+    h1
+        color: white 
+        text-align: center
+        text-transform: uppercase
+        letter-spacing: 2px
+        font-size: 24px
+
+
+// .main
+//     display: flex
+//     justify-content: center
+//     height: 1000px
+
+// .nav
+//     width: 100%
+//     display: flex
+//     justify-content: center
+
+// .menuLabel
+//     display: grid
+//     grid-template-columns: 10fr 2fr
+//     padding: 10px
+//     height: 60px
+//     background-color: black
+
+//     // .menuBars
+//     //     display: grid
+//     //     justify-self: end 
+//     //     width: 40px
+//     //     height: 40px
