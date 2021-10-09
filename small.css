@@ -10,19 +10,19 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 1000px;
+  color: white;
 }
 
 body .nav {
   display: flex;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 body .nav .menuLabel {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
   width: 100%;
   padding: 15px 20px;
   background-color: black;
@@ -45,14 +45,20 @@ body .nav .menuLabel .logo {
 body .nav .menuLabel .logo, body .nav .menuLabel i {
   align-self: center;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+body .nav .menuLabel i {
+  font-size: 20px;
 }
 
 body .collapseMenu {
   position: absolute;
-  top: 55px;
-  left: -100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  top: 52px;
+  left: -75%;
+  background: black;
+  background: linear-gradient(180deg, black 30%, rgba(0, 0, 0, 0.7) 100%);
   color: white;
   padding: 15px 10px;
   text-align: left;
@@ -74,8 +80,20 @@ body .collapseMenu li {
   text-transform: uppercase;
 }
 
+body .collapseMenu li i {
+  padding: 0px 15px;
+}
+
 .nav:hover > .collapseMenu {
   left: 0;
+}
+
+.hero-shadow {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  width: 100%;
+  z-index: -1;
 }
 
 .header {
@@ -86,27 +104,115 @@ body .collapseMenu li {
   position: relative;
   width: 100%;
   height: 400px;
-  background-image: url(/imgs/header1.jpg);
-  background-color: red;
+  background-image: url(/imgs/headerSmall2.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: 1;
+  background-attachment: fixed;
+  z-index: 0;
 }
 
-.header .hero-shadow {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.7);
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
-
-.header h1 {
+.header h1, .header h3 {
   color: white;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 24px;
+}
+
+.header h3 {
+  letter-spacing: 1px;
+  font-size: 16px;
+  padding: 0px 20px;
+}
+
+.header span {
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  padding: 25px;
+  font-family: "Montserrat", cursive;
+}
+
+.articlesListSection {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.articlesListSection h3 {
+  padding: 30px 0px 20px 0px;
+  margin: 0px 30px;
+  font-size: 18px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.articlesListSection h3 i {
+  color: grey;
+}
+
+.articlesListSection .underline {
+  margin: 0px 30px 30px 30px;
+  height: 1px;
+  background-color: white;
+}
+
+.articlesListSection .artCard {
+  align-self: center;
+  height: 250px;
+  width: 80%;
+  margin: 20px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(/imgs/training1.jpg);
+  box-shadow: 0px 0px 20px #0c0c0c;
+  z-index: 1;
+}
+
+.articlesListSection .artCard .textCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: black;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.9) 70%);
+  z-index: -1;
+}
+
+.articlesListSection .artCard .textCard h3, .articlesListSection .artCard .textCard span {
+  margin: 0 10px;
+  padding: 10px;
+  text-align: left;
+}
+
+.articlesListSection .artCard .textCard h3 {
+  font-size: 20px;
+  border-bottom: 1px solid grey;
+}
+
+.articlesListSection .artCard .textCard span {
+  font-size: 14px;
+}
+
+.articlesListSection .firstArticle {
+  background-image: url(/imgs/article_zmeczenie.jpg);
+}
+
+.articlesListSection .secondArticle {
+  background-image: url(/imgs/article_zdrowiepsych.jpg);
+}
+
+.articlesListSection .thirdArticle {
+  background-image: url(/imgs/article_sauna.jpg);
+}
+
+.articlesListSection .fourthArticle {
+  background-image: url(/imgs/article_zakwasy.jpg);
 }
 /*# sourceMappingURL=small.css.map */
