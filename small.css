@@ -134,15 +134,17 @@ body .collapseMenu li i {
   font-family: "Montserrat", cursive;
 }
 
-.articlesListSection {
+.articlesListSection, .currentArticleSection {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
   background-color: black;
+  background-position: center;
+  background-size: cover;
 }
 
-.articlesListSection h3 {
+.articlesListSection h3, .currentArticleSection h3 {
   padding: 30px 0px 20px 0px;
   margin: 0px 30px;
   font-size: 18px;
@@ -151,29 +153,28 @@ body .collapseMenu li i {
   letter-spacing: 2px;
 }
 
-.articlesListSection h3 i {
+.articlesListSection h3 i, .currentArticleSection h3 i {
   color: grey;
 }
 
-.articlesListSection .underline {
+.articlesListSection .underline, .currentArticleSection .underline {
   margin: 0px 30px 30px 30px;
   height: 1px;
   background-color: white;
 }
 
-.articlesListSection .artCard {
+.articlesListSection .artCard, .currentArticleSection .artCard {
   align-self: center;
   height: 250px;
   width: 80%;
   margin: 20px;
   background-size: cover;
   background-position: center;
-  background-image: url(/imgs/training1.jpg);
   box-shadow: 0px 0px 20px #0c0c0c;
   z-index: 1;
 }
 
-.articlesListSection .artCard .textCard {
+.articlesListSection .artCard .textCard, .currentArticleSection .artCard .textCard {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -185,34 +186,110 @@ body .collapseMenu li i {
   z-index: -1;
 }
 
-.articlesListSection .artCard .textCard h3, .articlesListSection .artCard .textCard span {
+.articlesListSection .artCard .textCard h3, .articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard h3, .currentArticleSection .artCard .textCard span {
   margin: 0 10px;
   padding: 10px;
   text-align: left;
 }
 
-.articlesListSection .artCard .textCard h3 {
+.articlesListSection .artCard .textCard h3, .currentArticleSection .artCard .textCard h3 {
   font-size: 20px;
   border-bottom: 1px solid grey;
 }
 
-.articlesListSection .artCard .textCard span {
+.articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard span {
   font-size: 14px;
 }
 
-.articlesListSection .firstArticle {
+.firstArticle {
   background-image: url(/imgs/article_zmeczenie.jpg);
 }
 
-.articlesListSection .secondArticle {
+.secondArticle {
   background-image: url(/imgs/article_zdrowiepsych.jpg);
 }
 
-.articlesListSection .thirdArticle {
+.thirdArticle {
   background-image: url(/imgs/article_sauna.jpg);
 }
 
-.articlesListSection .fourthArticle {
-  background-image: url(/imgs/article_zakwasy.jpg);
+.fourthArticle {
+  background-image: url(/imgs/article_podstawy.jpg);
+}
+
+.currentArticleSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 30px 0;
+  z-index: -1;
+}
+
+.currentArticleSection .activeArticle, .currentArticleSection .articleInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.currentArticleSection .activeArticle img, .currentArticleSection .articleInfo img {
+  align-self: center;
+  width: 100%;
+  margin: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.currentArticleSection .activeArticle h5, .currentArticleSection .activeArticle .articleDate, .currentArticleSection .activeArticle .source, .currentArticleSection .articleInfo h5, .currentArticleSection .articleInfo .articleDate, .currentArticleSection .articleInfo .source {
+  font-size: 12px;
+  text-align: center;
+}
+
+.currentArticleSection .activeArticle {
+  margin: 0px 30px;
+  overflow: hidden;
+}
+
+.currentArticleSection .activeArticle .zmeczenieArticle, .currentArticleSection .activeArticle .cwiczeniaArticle, .currentArticleSection .activeArticle .saunaArticle, .currentArticleSection .activeArticle .podstawyArticle {
+  display: none;
+}
+
+.currentArticleSection .activeArticle .podstawyArticle {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.currentArticleSection .activeArticle .podstawyArticle h3, .currentArticleSection .activeArticle .podstawyArticle .underline {
+  margin: 0;
+}
+
+.currentArticleSection .activeArticle .podstawyArticle .mainArticle {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 14px;
+  color: #d6d6d6;
+}
+
+.currentArticleSection .activeArticle .podstawyArticle .mainArticle .Section {
+  padding-top: 10px;
+  line-height: 24px;
+}
+
+.currentArticleSection .activeArticle .podstawyArticle .mainArticle .firstSection {
+  font-weight: bold;
+}
+
+.currentArticleSection .activeArticle .podstawyArticle .mainArticle .bibliography {
+  font-size: 12px;
+}
+
+.currentArticleSection .activeArticle .podstawyArticle .mainArticle h5 {
+  color: white;
+  padding-bottom: 5px;
+  font-size: 18px;
+  text-align: left;
+  letter-spacing: 1px;
 }
 /*# sourceMappingURL=small.css.map */

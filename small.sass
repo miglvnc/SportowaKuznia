@@ -127,12 +127,14 @@ body
         padding: 25px
         font-family: "Montserrat", cursive
 
-.articlesListSection
+.articlesListSection, .currentArticleSection
     display: flex
     flex-direction: column
     height: 100%
     width: 100%
     background-color: black
+    background-position: center
+    background-size: cover
 
     h3
         padding: 30px 0px 20px 0px
@@ -160,7 +162,6 @@ body
         margin: 20px
         background-size: cover
         background-position: center
-        background-image: url(/imgs/training1.jpg)
         box-shadow: 0px 0px 20px #0c0c0c
         z-index: 1
 
@@ -186,14 +187,86 @@ body
             span
                 font-size: 14px
 
-    .firstArticle
-        background-image: url(/imgs/article_zmeczenie.jpg)
-    .secondArticle
-        background-image: url(/imgs/article_zdrowiepsych.jpg)
-    .thirdArticle
-        background-image: url(/imgs/article_sauna.jpg)
-    .fourthArticle
-        background-image: url(/imgs/article_zakwasy.jpg)
+.firstArticle
+    background-image: url(/imgs/article_zmeczenie.jpg)
+.secondArticle
+    background-image: url(/imgs/article_zdrowiepsych.jpg)
+.thirdArticle
+    background-image: url(/imgs/article_sauna.jpg)
+.fourthArticle
+    background-image: url(/imgs/article_podstawy.jpg)
+
+.currentArticleSection
+    display: flex
+    flex-direction: column
+    justify-content: center
+    height: 100%
+    width: 100%
+    padding: 30px 0
+    z-index: -1
+
+    .activeArticle, .articleInfo
+        display: flex
+        flex-direction: column
+        justify-content: center
+
+
+        img
+            align-self: center
+            // height: 250px
+            width: 100%
+            margin: 20px
+            background-size: cover
+            background-position: center
+
+        h5, .articleDate, .source
+            font-size: 12px
+            text-align: center
+
+    .activeArticle
+        margin: 0px 30px
+        overflow: hidden
+        // height: 100px
+
+        .zmeczenieArticle, .cwiczeniaArticle, .saunaArticle, .podstawyArticle
+            display: none
+
+        .podstawyArticle
+            // .cwiczeniaArticle, .saunaArticle, .podstawyArticle
+            display: flex
+            // display: none
+            flex-direction: column
+            height: 500px
+
+            h3, .underline
+                margin: 0
+
+
+            .mainArticle
+                margin-top: 20px
+                text-align: left
+                font-size: 14px
+                color: #d6d6d6 
+
+                .Section
+                    padding-top: 10px
+                    line-height: 24px
+
+                .firstSection
+                    font-weight: bold
+
+                .bibliography
+                    font-size: 12px
+
+                h5
+                    color: white
+                    padding-bottom: 5px
+                    font-size: 18px
+                    text-align: left
+                    letter-spacing: 1px
+
+
+
 
 
 
