@@ -12,7 +12,7 @@ body
     // height: 1000px
     color: white
     // overflow: hidden
-    
+
     .nav
         display: flex
         position: sticky
@@ -127,7 +127,7 @@ body
         padding: 25px
         font-family: "Montserrat", cursive
 
-.articlesListSection, .currentArticleSection
+.articlesListSection, .currentArticleSection, .trainingsSection
     display: flex
     flex-direction: column
     height: 100%
@@ -205,11 +205,20 @@ body
     padding: 30px 0
     z-index: -1
 
-    .activeArticle, .articleInfo
+    .allArticles
+        display: none
+
+    .activeArticle
         display: flex
         flex-direction: column
-        justify-content: center
+        margin: 0px 30px
+        overflow: hidden
+        height: 500px
+        // justify-content: center
 
+        .articleInfo
+            display: flex
+            flex-direction: column
 
         img
             align-self: center
@@ -223,20 +232,13 @@ body
             font-size: 12px
             text-align: center
 
-    .activeArticle
-        margin: 0px 30px
-        overflow: hidden
-        // height: 100px
-
         .zmeczenieArticle, .cwiczeniaArticle, .saunaArticle, .podstawyArticle
-            display: none
-
-        .podstawyArticle
             // .cwiczeniaArticle, .saunaArticle, .podstawyArticle
             display: flex
             // display: none
             flex-direction: column
-            height: 500px
+            // height: 500px
+
 
             h3, .underline
                 margin: 0
@@ -264,6 +266,68 @@ body
                     font-size: 18px
                     text-align: left
                     letter-spacing: 1px
+
+.trainingsSection
+    .desrciption
+        margin: 10px 30px
+
+    .trainingsCards
+        display: flex
+        flex-direction: column
+
+        .training
+            margin: 20px 30px
+            height: 80px
+            background-color: tomato
+            border-radius: 10px
+            overflow: hidden
+            transition: height 0.5s
+
+        .backgroundTraining
+            position: relative
+            top: -50px
+            height: 200px
+            width: 100%
+            background-size: cover
+            background-position: center
+            background-repeat: no-repeat
+            transition: top 0.5s
+            z-index: 1
+
+            h3
+                padding: 50px 0px
+                z-index: 1
+
+            .backgroundTrainingShadow
+                position: absolute
+                height: 100%
+                width: 100%
+                background-color: rgba(0,0,0,0.7)
+                transition: background-color 0.5s
+                z-index: -1
+
+        .backgroundCardio
+            background-image: url(/imgs/training_cardio1.jpg)
+
+        .backgroundFitness
+            background-image: url(/imgs/trainign_fitness.jpg)
+
+        .backgroundStrength
+            background-image: url(/imgs/training_StrengthSMALL.jpg)
+
+        .backgroundFunctional
+            background-image: url(/imgs/training_functional.jpg)
+
+        .training:hover
+            height: 400px
+
+        .training:hover .backgroundTraining
+            top: 0
+
+        .training:hover .backgroundTrainingShadow
+            background-color: rgba(0,0,0,0.3)
+    
+    
 
 
 

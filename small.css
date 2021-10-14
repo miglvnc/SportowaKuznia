@@ -134,7 +134,7 @@ body .collapseMenu li i {
   font-family: "Montserrat", cursive;
 }
 
-.articlesListSection, .currentArticleSection {
+.articlesListSection, .currentArticleSection, .trainingsSection {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -144,7 +144,7 @@ body .collapseMenu li i {
   background-size: cover;
 }
 
-.articlesListSection h3, .currentArticleSection h3 {
+.articlesListSection h3, .currentArticleSection h3, .trainingsSection h3 {
   padding: 30px 0px 20px 0px;
   margin: 0px 30px;
   font-size: 18px;
@@ -153,17 +153,17 @@ body .collapseMenu li i {
   letter-spacing: 2px;
 }
 
-.articlesListSection h3 i, .currentArticleSection h3 i {
+.articlesListSection h3 i, .currentArticleSection h3 i, .trainingsSection h3 i {
   color: grey;
 }
 
-.articlesListSection .underline, .currentArticleSection .underline {
+.articlesListSection .underline, .currentArticleSection .underline, .trainingsSection .underline {
   margin: 0px 30px 30px 30px;
   height: 1px;
   background-color: white;
 }
 
-.articlesListSection .artCard, .currentArticleSection .artCard {
+.articlesListSection .artCard, .currentArticleSection .artCard, .trainingsSection .artCard {
   align-self: center;
   height: 250px;
   width: 80%;
@@ -174,7 +174,7 @@ body .collapseMenu li i {
   z-index: 1;
 }
 
-.articlesListSection .artCard .textCard, .currentArticleSection .artCard .textCard {
+.articlesListSection .artCard .textCard, .currentArticleSection .artCard .textCard, .trainingsSection .artCard .textCard {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -186,18 +186,18 @@ body .collapseMenu li i {
   z-index: -1;
 }
 
-.articlesListSection .artCard .textCard h3, .articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard h3, .currentArticleSection .artCard .textCard span {
+.articlesListSection .artCard .textCard h3, .articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard h3, .currentArticleSection .artCard .textCard span, .trainingsSection .artCard .textCard h3, .trainingsSection .artCard .textCard span {
   margin: 0 10px;
   padding: 10px;
   text-align: left;
 }
 
-.articlesListSection .artCard .textCard h3, .currentArticleSection .artCard .textCard h3 {
+.articlesListSection .artCard .textCard h3, .currentArticleSection .artCard .textCard h3, .trainingsSection .artCard .textCard h3 {
   font-size: 20px;
   border-bottom: 1px solid grey;
 }
 
-.articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard span {
+.articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard span, .trainingsSection .artCard .textCard span {
   font-size: 14px;
 }
 
@@ -227,13 +227,24 @@ body .collapseMenu li i {
   z-index: -1;
 }
 
-.currentArticleSection .activeArticle, .currentArticleSection .articleInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.currentArticleSection .allArticles {
+  display: none;
 }
 
-.currentArticleSection .activeArticle img, .currentArticleSection .articleInfo img {
+.currentArticleSection .activeArticle {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 30px;
+  overflow: hidden;
+  height: 500px;
+}
+
+.currentArticleSection .activeArticle .articleInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.currentArticleSection .activeArticle img {
   align-self: center;
   width: 100%;
   margin: 20px;
@@ -241,55 +252,117 @@ body .collapseMenu li i {
   background-position: center;
 }
 
-.currentArticleSection .activeArticle h5, .currentArticleSection .activeArticle .articleDate, .currentArticleSection .activeArticle .source, .currentArticleSection .articleInfo h5, .currentArticleSection .articleInfo .articleDate, .currentArticleSection .articleInfo .source {
+.currentArticleSection .activeArticle h5, .currentArticleSection .activeArticle .articleDate, .currentArticleSection .activeArticle .source {
   font-size: 12px;
   text-align: center;
 }
 
-.currentArticleSection .activeArticle {
-  margin: 0px 30px;
-  overflow: hidden;
-}
-
 .currentArticleSection .activeArticle .zmeczenieArticle, .currentArticleSection .activeArticle .cwiczeniaArticle, .currentArticleSection .activeArticle .saunaArticle, .currentArticleSection .activeArticle .podstawyArticle {
-  display: none;
-}
-
-.currentArticleSection .activeArticle .podstawyArticle {
   display: flex;
   flex-direction: column;
-  height: 500px;
 }
 
-.currentArticleSection .activeArticle .podstawyArticle h3, .currentArticleSection .activeArticle .podstawyArticle .underline {
+.currentArticleSection .activeArticle .zmeczenieArticle h3, .currentArticleSection .activeArticle .zmeczenieArticle .underline, .currentArticleSection .activeArticle .cwiczeniaArticle h3, .currentArticleSection .activeArticle .cwiczeniaArticle .underline, .currentArticleSection .activeArticle .saunaArticle h3, .currentArticleSection .activeArticle .saunaArticle .underline, .currentArticleSection .activeArticle .podstawyArticle h3, .currentArticleSection .activeArticle .podstawyArticle .underline {
   margin: 0;
 }
 
-.currentArticleSection .activeArticle .podstawyArticle .mainArticle {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle, .currentArticleSection .activeArticle .saunaArticle .mainArticle, .currentArticleSection .activeArticle .podstawyArticle .mainArticle {
   margin-top: 20px;
   text-align: left;
   font-size: 14px;
   color: #d6d6d6;
 }
 
-.currentArticleSection .activeArticle .podstawyArticle .mainArticle .Section {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .Section, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .Section, .currentArticleSection .activeArticle .saunaArticle .mainArticle .Section, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .Section {
   padding-top: 10px;
   line-height: 24px;
 }
 
-.currentArticleSection .activeArticle .podstawyArticle .mainArticle .firstSection {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .saunaArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .firstSection {
   font-weight: bold;
 }
 
-.currentArticleSection .activeArticle .podstawyArticle .mainArticle .bibliography {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .saunaArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .bibliography {
   font-size: 12px;
 }
 
-.currentArticleSection .activeArticle .podstawyArticle .mainArticle h5 {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle h5, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle h5, .currentArticleSection .activeArticle .saunaArticle .mainArticle h5, .currentArticleSection .activeArticle .podstawyArticle .mainArticle h5 {
   color: white;
   padding-bottom: 5px;
   font-size: 18px;
   text-align: left;
   letter-spacing: 1px;
+}
+
+.trainingsSection .desrciption {
+  margin: 10px 30px;
+}
+
+.trainingsSection .trainingsCards {
+  display: flex;
+  flex-direction: column;
+}
+
+.trainingsSection .trainingsCards .training {
+  margin: 20px 30px;
+  height: 80px;
+  background-color: tomato;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+.trainingsSection .trainingsCards .backgroundTraining {
+  position: relative;
+  top: -50px;
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: top 0.5s;
+  z-index: 1;
+}
+
+.trainingsSection .trainingsCards .backgroundTraining h3 {
+  padding: 50px 0px;
+  z-index: 1;
+}
+
+.trainingsSection .trainingsCards .backgroundTraining .backgroundTrainingShadow {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: background-color 0.5s;
+  z-index: -1;
+}
+
+.trainingsSection .trainingsCards .backgroundCardio {
+  background-image: url(/imgs/training_cardio1.jpg);
+}
+
+.trainingsSection .trainingsCards .backgroundFitness {
+  background-image: url(/imgs/trainign_fitness.jpg);
+}
+
+.trainingsSection .trainingsCards .backgroundStrength {
+  background-image: url(/imgs/training_StrengthSMALL.jpg);
+}
+
+.trainingsSection .trainingsCards .backgroundFunctional {
+  background-image: url(/imgs/training_functional.jpg);
+}
+
+.trainingsSection .trainingsCards .training:hover {
+  height: 400px;
+}
+
+.trainingsSection .trainingsCards .training:hover .backgroundTraining {
+  top: 0;
+}
+
+.trainingsSection .trainingsCards .training:hover .backgroundTrainingShadow {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 /*# sourceMappingURL=small.css.map */
