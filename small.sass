@@ -6,12 +6,16 @@
 body
     background-color: grey
     font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth
+
+.wrapper
     display: flex
     flex-direction: column
     position: relative
     // height: 1000px
     color: white
     // overflow: hidden
+
 
     .nav
         display: flex
@@ -32,12 +36,17 @@ body
 
             .menuBars, .logo
                 display: grid
+                grid-template-columns: 1fr 1fr
                 justify-self: start
                 background: none
                 border: none
 
             .logo
                 justify-self: end
+
+                img
+                    padding-left: 10px
+                    height: 25px
 
             .logo, i
                 align-self: center
@@ -127,7 +136,7 @@ body
         padding: 25px
         font-family: "Montserrat", cursive
 
-.articlesListSection, .currentArticleSection, .trainingsSection
+.articlesListSection, .currentArticleSection, .trainingsSection, .calculatorSection
     display: flex
     flex-direction: column
     height: 100%
@@ -267,7 +276,7 @@ body
                     text-align: left
                     letter-spacing: 1px
 
-.trainingsSection
+.trainingsSection, .calculatorSection
     .desrciption
         margin: 10px 30px
 
@@ -278,12 +287,16 @@ body
         .training
             margin: 20px 30px
             height: 80px
-            background-color: tomato
+            // background-color: tomato
             border-radius: 10px
             overflow: hidden
+            border: 1px solid #353434
             transition: height 0.5s
 
         .backgroundTraining
+            // display: flex
+            // flex-direction: column
+            // justify-content: center
             position: relative
             top: -50px
             height: 200px
@@ -295,7 +308,10 @@ body
             z-index: 1
 
             h3
-                padding: 50px 0px
+                text-align: center
+                padding: 70px 0px
+                letter-spacing: 4px
+                transition: 0.5s
                 z-index: 1
 
             .backgroundTrainingShadow
@@ -326,6 +342,95 @@ body
 
         .training:hover .backgroundTrainingShadow
             background-color: rgba(0,0,0,0.3)
+
+        .training:hover h3
+            padding: 10px
+            text-shadow: 2px 2px 10px black
+            // text-align: left
+
+.calculatorSection
+    .calculator
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+
+        .dropdown
+            max-height: 25px
+            overflow: hidden
+            border: 1px solid white
+            transition: max-height 0.6s
+
+            h5
+                border-bottom: 1px solid white
+
+        .dropdown:hover
+            max-height: 110px
+
+        .activeCalc
+
+            .kcalCalc
+                .kcalInputs
+                    display: flex
+                    flex-direction: column
+                    justify-content: center
+                    align-items: center
+                    margin: 20px
+
+                    .kcalInputContainer
+                        display: grid
+                        grid-template-columns: 6fr 1fr
+                        padding: 10px
+
+
+.footer
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    padding: 10px
+    border-top: 1px solid whitesmoke
+    background-color: black
+
+    .copyright
+        margin: 0 10px
+
+    .footerIcons
+        margin: 0 10px
+        .icon
+            padding: 0 5px
+            font-size: 24px
+            text-decoration: none
+            color: whitesmoke
+
+
+// .dropdown-menu
+//     left: 50% !important
+//     transform: translateX(-50%) !important
+//     top: 100% !important
+
+// .animate
+//     animation-duration: 0.4s
+//     -webkit-animation-duration: 0.4s
+//     // animation-fill-mode: both
+//     // -webkit-animation-fill-mode: both
+
+// @keyframes slideIn
+//     0%
+//         // transform: translateX(1rem)
+//         opacity: 0
+  
+
+//     100% 
+//         // transform: translateX(0rem)
+//         opacity: 1
+
+// .slideIn
+//     animation-name: slideIn
+
+    //odnosnie propozycji 1 z bootstrapowym buttonem
+  
+
     
     
 

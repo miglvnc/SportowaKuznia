@@ -7,20 +7,24 @@
 body {
   background-color: grey;
   font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
   position: relative;
   color: white;
 }
 
-body .nav {
+.wrapper .nav {
   display: flex;
   position: sticky;
   top: 0;
   z-index: 2;
 }
 
-body .nav .menuLabel {
+.wrapper .nav .menuLabel {
   display: grid;
   grid-template-columns: 1fr 3fr;
   width: 100%;
@@ -31,29 +35,35 @@ body .nav .menuLabel {
   top: 0;
 }
 
-body .nav .menuLabel .menuBars, body .nav .menuLabel .logo {
+.wrapper .nav .menuLabel .menuBars, .wrapper .nav .menuLabel .logo {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-self: start;
   background: none;
   border: none;
 }
 
-body .nav .menuLabel .logo {
+.wrapper .nav .menuLabel .logo {
   justify-self: end;
 }
 
-body .nav .menuLabel .logo, body .nav .menuLabel i {
+.wrapper .nav .menuLabel .logo img {
+  padding-left: 10px;
+  height: 25px;
+}
+
+.wrapper .nav .menuLabel .logo, .wrapper .nav .menuLabel i {
   align-self: center;
   color: white;
   font-size: 16px;
   text-transform: uppercase;
 }
 
-body .nav .menuLabel i {
+.wrapper .nav .menuLabel i {
   font-size: 20px;
 }
 
-body .collapseMenu {
+.wrapper .collapseMenu {
   position: absolute;
   top: 52px;
   left: -75%;
@@ -67,20 +77,20 @@ body .collapseMenu {
   z-index: 30;
 }
 
-body .collapseMenu ul {
+.wrapper .collapseMenu ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
   list-style-position: outside;
 }
 
-body .collapseMenu li {
+.wrapper .collapseMenu li {
   padding: 15px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-body .collapseMenu li i {
+.wrapper .collapseMenu li i {
   padding: 0px 15px;
 }
 
@@ -134,7 +144,7 @@ body .collapseMenu li i {
   font-family: "Montserrat", cursive;
 }
 
-.articlesListSection, .currentArticleSection, .trainingsSection {
+.articlesListSection, .currentArticleSection, .trainingsSection, .calculatorSection {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -144,7 +154,7 @@ body .collapseMenu li i {
   background-size: cover;
 }
 
-.articlesListSection h3, .currentArticleSection h3, .trainingsSection h3 {
+.articlesListSection h3, .currentArticleSection h3, .trainingsSection h3, .calculatorSection h3 {
   padding: 30px 0px 20px 0px;
   margin: 0px 30px;
   font-size: 18px;
@@ -153,17 +163,17 @@ body .collapseMenu li i {
   letter-spacing: 2px;
 }
 
-.articlesListSection h3 i, .currentArticleSection h3 i, .trainingsSection h3 i {
+.articlesListSection h3 i, .currentArticleSection h3 i, .trainingsSection h3 i, .calculatorSection h3 i {
   color: grey;
 }
 
-.articlesListSection .underline, .currentArticleSection .underline, .trainingsSection .underline {
+.articlesListSection .underline, .currentArticleSection .underline, .trainingsSection .underline, .calculatorSection .underline {
   margin: 0px 30px 30px 30px;
   height: 1px;
   background-color: white;
 }
 
-.articlesListSection .artCard, .currentArticleSection .artCard, .trainingsSection .artCard {
+.articlesListSection .artCard, .currentArticleSection .artCard, .trainingsSection .artCard, .calculatorSection .artCard {
   align-self: center;
   height: 250px;
   width: 80%;
@@ -174,7 +184,7 @@ body .collapseMenu li i {
   z-index: 1;
 }
 
-.articlesListSection .artCard .textCard, .currentArticleSection .artCard .textCard, .trainingsSection .artCard .textCard {
+.articlesListSection .artCard .textCard, .currentArticleSection .artCard .textCard, .trainingsSection .artCard .textCard, .calculatorSection .artCard .textCard {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -186,18 +196,18 @@ body .collapseMenu li i {
   z-index: -1;
 }
 
-.articlesListSection .artCard .textCard h3, .articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard h3, .currentArticleSection .artCard .textCard span, .trainingsSection .artCard .textCard h3, .trainingsSection .artCard .textCard span {
+.articlesListSection .artCard .textCard h3, .articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard h3, .currentArticleSection .artCard .textCard span, .trainingsSection .artCard .textCard h3, .trainingsSection .artCard .textCard span, .calculatorSection .artCard .textCard h3, .calculatorSection .artCard .textCard span {
   margin: 0 10px;
   padding: 10px;
   text-align: left;
 }
 
-.articlesListSection .artCard .textCard h3, .currentArticleSection .artCard .textCard h3, .trainingsSection .artCard .textCard h3 {
+.articlesListSection .artCard .textCard h3, .currentArticleSection .artCard .textCard h3, .trainingsSection .artCard .textCard h3, .calculatorSection .artCard .textCard h3 {
   font-size: 20px;
   border-bottom: 1px solid grey;
 }
 
-.articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard span, .trainingsSection .artCard .textCard span {
+.articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard span, .trainingsSection .artCard .textCard span, .calculatorSection .artCard .textCard span {
   font-size: 14px;
 }
 
@@ -294,25 +304,25 @@ body .collapseMenu li i {
   letter-spacing: 1px;
 }
 
-.trainingsSection .desrciption {
+.trainingsSection .desrciption, .calculatorSection .desrciption {
   margin: 10px 30px;
 }
 
-.trainingsSection .trainingsCards {
+.trainingsSection .trainingsCards, .calculatorSection .trainingsCards {
   display: flex;
   flex-direction: column;
 }
 
-.trainingsSection .trainingsCards .training {
+.trainingsSection .trainingsCards .training, .calculatorSection .trainingsCards .training {
   margin: 20px 30px;
   height: 80px;
-  background-color: tomato;
   border-radius: 10px;
   overflow: hidden;
+  border: 1px solid #353434;
   transition: height 0.5s;
 }
 
-.trainingsSection .trainingsCards .backgroundTraining {
+.trainingsSection .trainingsCards .backgroundTraining, .calculatorSection .trainingsCards .backgroundTraining {
   position: relative;
   top: -50px;
   height: 200px;
@@ -324,12 +334,15 @@ body .collapseMenu li i {
   z-index: 1;
 }
 
-.trainingsSection .trainingsCards .backgroundTraining h3 {
-  padding: 50px 0px;
+.trainingsSection .trainingsCards .backgroundTraining h3, .calculatorSection .trainingsCards .backgroundTraining h3 {
+  text-align: center;
+  padding: 70px 0px;
+  letter-spacing: 4px;
+  transition: 0.5s;
   z-index: 1;
 }
 
-.trainingsSection .trainingsCards .backgroundTraining .backgroundTrainingShadow {
+.trainingsSection .trainingsCards .backgroundTraining .backgroundTrainingShadow, .calculatorSection .trainingsCards .backgroundTraining .backgroundTrainingShadow {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -338,31 +351,97 @@ body .collapseMenu li i {
   z-index: -1;
 }
 
-.trainingsSection .trainingsCards .backgroundCardio {
+.trainingsSection .trainingsCards .backgroundCardio, .calculatorSection .trainingsCards .backgroundCardio {
   background-image: url(/imgs/training_cardio1.jpg);
 }
 
-.trainingsSection .trainingsCards .backgroundFitness {
+.trainingsSection .trainingsCards .backgroundFitness, .calculatorSection .trainingsCards .backgroundFitness {
   background-image: url(/imgs/trainign_fitness.jpg);
 }
 
-.trainingsSection .trainingsCards .backgroundStrength {
+.trainingsSection .trainingsCards .backgroundStrength, .calculatorSection .trainingsCards .backgroundStrength {
   background-image: url(/imgs/training_StrengthSMALL.jpg);
 }
 
-.trainingsSection .trainingsCards .backgroundFunctional {
+.trainingsSection .trainingsCards .backgroundFunctional, .calculatorSection .trainingsCards .backgroundFunctional {
   background-image: url(/imgs/training_functional.jpg);
 }
 
-.trainingsSection .trainingsCards .training:hover {
+.trainingsSection .trainingsCards .training:hover, .calculatorSection .trainingsCards .training:hover {
   height: 400px;
 }
 
-.trainingsSection .trainingsCards .training:hover .backgroundTraining {
+.trainingsSection .trainingsCards .training:hover .backgroundTraining, .calculatorSection .trainingsCards .training:hover .backgroundTraining {
   top: 0;
 }
 
-.trainingsSection .trainingsCards .training:hover .backgroundTrainingShadow {
+.trainingsSection .trainingsCards .training:hover .backgroundTrainingShadow, .calculatorSection .trainingsCards .training:hover .backgroundTrainingShadow {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.trainingsSection .trainingsCards .training:hover h3, .calculatorSection .trainingsCards .training:hover h3 {
+  padding: 10px;
+  text-shadow: 2px 2px 10px black;
+}
+
+.calculatorSection .calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculatorSection .calculator .dropdown {
+  max-height: 25px;
+  overflow: hidden;
+  border: 1px solid white;
+  transition: max-height 0.6s;
+}
+
+.calculatorSection .calculator .dropdown h5 {
+  border-bottom: 1px solid white;
+}
+
+.calculatorSection .calculator .dropdown:hover {
+  max-height: 110px;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer {
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  padding: 10px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid whitesmoke;
+  background-color: black;
+}
+
+.footer .copyright {
+  margin: 0 10px;
+}
+
+.footer .footerIcons {
+  margin: 0 10px;
+}
+
+.footer .footerIcons .icon {
+  padding: 0 5px;
+  font-size: 24px;
+  text-decoration: none;
+  color: whitesmoke;
 }
 /*# sourceMappingURL=small.css.map */
