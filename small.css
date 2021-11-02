@@ -94,7 +94,7 @@ body {
   padding: 0px 15px;
 }
 
-.nav:hover > .collapseMenu {
+.menuLabel:hover + .collapseMenu {
   left: 0;
 }
 
@@ -113,7 +113,7 @@ body {
   justify-content: center;
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 100vh;
   background-image: url(/imgs/headerSmall2.jpg);
   background-position: center;
   background-size: cover;
@@ -122,7 +122,7 @@ body {
   z-index: 0;
 }
 
-.header h1, .header h3 {
+.header h1 {
   color: white;
   text-align: center;
   text-transform: uppercase;
@@ -130,21 +130,15 @@ body {
   font-size: 24px;
 }
 
-.header h3 {
-  letter-spacing: 1px;
-  font-size: 16px;
-  padding: 0px 20px;
-}
-
 .header span {
   color: white;
   text-align: center;
-  font-size: 14px;
-  padding: 25px;
+  font-size: 16px;
+  margin-bottom: 50px;
   font-family: "Montserrat", cursive;
 }
 
-.articlesListSection, .currentArticleSection, .trainingsSection, .calculatorSection {
+section {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -154,7 +148,34 @@ body {
   background-size: cover;
 }
 
-.articlesListSection h3, .currentArticleSection h3, .trainingsSection h3, .calculatorSection h3 {
+section .desrciption, section .activeQuote {
+  margin: 10px 30px;
+}
+
+section .allQuotes {
+  display: none;
+}
+
+section .activeQuote {
+  text-align: center;
+}
+
+section .activeQuote a {
+  font-size: 14px;
+}
+
+section .activeQuote .quoteContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+section .activeQuote .quoteContainer .quoteAuthor {
+  padding: 15px 0px 5px 0px;
+  font-size: 14px;
+}
+
+section h3 {
   padding: 30px 0px 20px 0px;
   margin: 0px 30px;
   font-size: 18px;
@@ -163,17 +184,17 @@ body {
   letter-spacing: 2px;
 }
 
-.articlesListSection h3 i, .currentArticleSection h3 i, .trainingsSection h3 i, .calculatorSection h3 i {
+section h3 i {
   color: grey;
 }
 
-.articlesListSection .underline, .currentArticleSection .underline, .trainingsSection .underline, .calculatorSection .underline {
+section .underline {
   margin: 0px 30px 30px 30px;
   height: 1px;
   background-color: white;
 }
 
-.articlesListSection .artCard, .currentArticleSection .artCard, .trainingsSection .artCard, .calculatorSection .artCard {
+section .artCard {
   align-self: center;
   height: 250px;
   width: 80%;
@@ -184,7 +205,7 @@ body {
   z-index: 1;
 }
 
-.articlesListSection .artCard .textCard, .currentArticleSection .artCard .textCard, .trainingsSection .artCard .textCard, .calculatorSection .artCard .textCard {
+section .artCard .textCard {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -196,19 +217,30 @@ body {
   z-index: -1;
 }
 
-.articlesListSection .artCard .textCard h3, .articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard h3, .currentArticleSection .artCard .textCard span, .trainingsSection .artCard .textCard h3, .trainingsSection .artCard .textCard span, .calculatorSection .artCard .textCard h3, .calculatorSection .artCard .textCard span {
+section .artCard .textCard h3, section .artCard .textCard span {
   margin: 0 10px;
   padding: 10px;
   text-align: left;
 }
 
-.articlesListSection .artCard .textCard h3, .currentArticleSection .artCard .textCard h3, .trainingsSection .artCard .textCard h3, .calculatorSection .artCard .textCard h3 {
+section .artCard .textCard h3 {
   font-size: 20px;
   border-bottom: 1px solid grey;
 }
 
-.articlesListSection .artCard .textCard span, .currentArticleSection .artCard .textCard span, .trainingsSection .artCard .textCard span, .calculatorSection .artCard .textCard span {
+section .artCard .textCard span {
   font-size: 14px;
+}
+
+.about .footerIcons {
+  margin: 10px auto 20px auto;
+}
+
+.about .icon {
+  padding: 0 15px;
+  font-size: 30px;
+  text-decoration: none;
+  color: whitesmoke;
 }
 
 .firstArticle {
@@ -302,10 +334,6 @@ body {
   font-size: 18px;
   text-align: left;
   letter-spacing: 1px;
-}
-
-.trainingsSection .desrciption, .calculatorSection .desrciption {
-  margin: 10px 30px;
 }
 
 .trainingsSection .trainingsCards, .calculatorSection .trainingsCards {
@@ -416,8 +444,53 @@ body {
 
 .calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer {
   display: grid;
-  grid-template-columns: 6fr 1fr;
-  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  justify-items: center;
+  padding: 20px;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .kcalQuestion {
+  align-self: center;
+  justify-self: center;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .kcalInput {
+  width: 50px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid grey;
+  color: white;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .activityContainer .activity-form {
+  background: black;
+  border: none;
+  text-align: center;
+  color: white;
+  width: 110%;
+  font-size: 14px;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .kcalInput:focus {
+  outline: none;
+  border-bottom: 2px solid white;
+  transition: 0.2s;
+  z-index: 1;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer input::-webkit-outer-spin-button,
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.calculatorSection .calculator .allCalcs {
+  display: none;
 }
 
 .footer {
@@ -432,16 +505,5 @@ body {
 
 .footer .copyright {
   margin: 0 10px;
-}
-
-.footer .footerIcons {
-  margin: 0 10px;
-}
-
-.footer .footerIcons .icon {
-  padding: 0 5px;
-  font-size: 24px;
-  text-decoration: none;
-  color: whitesmoke;
 }
 /*# sourceMappingURL=small.css.map */
