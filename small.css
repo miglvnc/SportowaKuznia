@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: grey;
+  background-color: black;
   font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
 }
@@ -15,13 +15,19 @@ body {
   flex-direction: column;
   position: relative;
   color: white;
+  background-image: url(/imgs/bg_small.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 0;
 }
 
 .wrapper .nav {
   display: flex;
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 100;
 }
 
 .wrapper .nav .menuLabel {
@@ -29,22 +35,44 @@ body {
   grid-template-columns: 1fr 3fr;
   width: 100%;
   padding: 15px 20px;
-  background-color: black;
-  z-index: 1;
+  background-color: #000000;
+  border-bottom: 1px solid #131313;
+  z-index: 10;
   position: sticky;
   top: 0;
 }
 
-.wrapper .nav .menuLabel .menuBars, .wrapper .nav .menuLabel .logo {
+.wrapper .nav .menuLabel .menuBars {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   justify-self: start;
   background: none;
   border: none;
 }
 
+.wrapper .nav .menuLabel .menuBars i {
+  font-size: 20px;
+  color: whitesmoke;
+  align-self: center;
+  transition: transform 0.8s, color 0.8s;
+}
+
+.wrapper .nav .menuLabel .menuBars .animationBars {
+  transform: rotateZ(180deg);
+  color: #d5d838;
+}
+
 .wrapper .nav .menuLabel .logo {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
   justify-self: end;
+}
+
+.wrapper .nav .menuLabel .logo h3 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: whitesmoke;
+  align-self: center;
 }
 
 .wrapper .nav .menuLabel .logo img {
@@ -52,15 +80,11 @@ body {
   height: 25px;
 }
 
-.wrapper .nav .menuLabel .logo, .wrapper .nav .menuLabel i {
-  align-self: center;
-  color: white;
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
-.wrapper .nav .menuLabel i {
-  font-size: 20px;
+.wrapper .scroll-fix::before {
+  content: '';
+  display: block;
+  height: 100px;
+  margin-top: -50px;
 }
 
 .wrapper .collapseMenu {
@@ -68,13 +92,13 @@ body {
   top: 52px;
   left: -75%;
   background: black;
-  background: linear-gradient(180deg, black 30%, rgba(0, 0, 0, 0.7) 100%);
+  background: linear-gradient(180deg, black 20%, rgba(0, 0, 0, 0.85) 100%);
   color: white;
   padding: 15px 10px;
   text-align: left;
   border-bottom-right-radius: 50px;
   transition: left 1.2s;
-  z-index: 30;
+  z-index: 9;
 }
 
 .wrapper .collapseMenu ul {
@@ -85,25 +109,54 @@ body {
 }
 
 .wrapper .collapseMenu li {
-  padding: 15px;
-  letter-spacing: 1px;
+  padding: 15px 15px 15px 0;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-.wrapper .collapseMenu li i {
-  padding: 0px 15px;
+.wrapper .collapseMenu li a {
+  text-decoration: none;
+  color: whitesmoke;
 }
 
-.menuLabel:hover + .collapseMenu {
+.wrapper .collapseMenu li .fas {
+  padding: 0px 15px;
+  color: #d5d838;
+  color: grey;
+  transition: color 0.5s;
+}
+
+.wrapper .collapseMenu li .activeSection {
+  color: #d5d838;
+  font-weight: bolder;
+}
+
+.wrapper .activateCollapse {
   left: 0;
 }
 
-.hero-shadow {
+.fa-calculator, .fa-fire-alt, .fa-book-reader, .fa-home {
+  color: #d5d838;
+}
+
+.hero-shadow, .hero-shadow-reverse, .hero-shadow-bothsides, .hero-shadow-quote {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: black;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, black 100%);
   height: 100%;
   width: 100%;
   z-index: -1;
+}
+
+.hero-shadow-quote {
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  border-radius: 25px;
+}
+
+.hero-shadow-bothsides {
+  background: linear-gradient(180deg, black 5%, rgba(0, 0, 0, 0.8), black 95%);
 }
 
 .header {
@@ -120,6 +173,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   z-index: 0;
+  margin-top: -55px;
+  text-shadow: 2px 2px 2px black;
 }
 
 .header h1 {
@@ -128,28 +183,38 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 24px;
+  padding: 5px;
 }
 
 .header span {
-  color: white;
+  color: #d5d838;
   text-align: center;
   font-size: 16px;
+  padding: 5px;
   margin-bottom: 50px;
-  font-family: "Montserrat", cursive;
+}
+
+.articlesListSection {
+  z-index: 1;
 }
 
 section {
   display: flex;
+  position: relative;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-color: black;
   background-position: center;
   background-size: cover;
 }
 
+section .highlighted {
+  color: #d5d838;
+  font-weight: bold;
+}
+
 section .desrciption, section .activeQuote {
-  margin: 10px 30px;
+  margin: 20px 30px 0px 30px;
 }
 
 section .allQuotes {
@@ -157,22 +222,62 @@ section .allQuotes {
 }
 
 section .activeQuote {
+  position: relative;
   text-align: center;
-}
-
-section .activeQuote a {
-  font-size: 14px;
+  min-height: 130px;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
 }
 
 section .activeQuote .quoteContainer {
   display: flex;
   flex-direction: column;
   margin: 10px 0;
+  color: #e6e6e6;
 }
 
 section .activeQuote .quoteContainer .quoteAuthor {
-  padding: 15px 0px 5px 0px;
+  padding-top: 15px;
   font-size: 14px;
+}
+
+section .quoteChange {
+  font-size: 14px;
+  text-align: center;
+  margin: 20px auto;
+  width: 70px;
+  background-color: #d5d838;
+  border-radius: 20px;
+}
+
+section .quoteChange i {
+  padding: 10px;
+  color: black;
+}
+
+section .quoteChange .transformIcons {
+  animation: transformIcon 0.8s ease 0s 1 normal forwards;
+}
+
+section .quoteChange .nextTransformIcons {
+  animation: nextTransformIcon 0.8s ease 0s 1 normal forwards;
+}
+
+section .footerIcons {
+  width: 100vw;
+  background-color: rgba(15, 15, 15, 0.4);
+  margin: 0px auto 20px auto;
+  padding: 10px;
+  text-align: center;
+}
+
+section .icon {
+  text-align: center;
+  padding: 0px 20px;
+  font-size: 30px;
+  text-decoration: none;
+  color: #d5d838;
 }
 
 section h3 {
@@ -184,14 +289,11 @@ section h3 {
   letter-spacing: 2px;
 }
 
-section h3 i {
-  color: grey;
-}
-
 section .underline {
   margin: 0px 30px 30px 30px;
   height: 1px;
-  background-color: white;
+  background-color: whitesmoke;
+  background-color: #cecece;
 }
 
 section .artCard {
@@ -232,17 +334,6 @@ section .artCard .textCard span {
   font-size: 14px;
 }
 
-.about .footerIcons {
-  margin: 10px auto 20px auto;
-}
-
-.about .icon {
-  padding: 0 15px;
-  font-size: 30px;
-  text-decoration: none;
-  color: whitesmoke;
-}
-
 .firstArticle {
   background-image: url(/imgs/article_zmeczenie.jpg);
 }
@@ -259,14 +350,17 @@ section .artCard .textCard span {
   background-image: url(/imgs/article_podstawy.jpg);
 }
 
+.articlesListSection {
+  background-color: #000000;
+}
+
 .currentArticleSection {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
   width: 100%;
-  padding: 30px 0;
-  z-index: -1;
+  overflow: hidden;
 }
 
 .currentArticleSection .allArticles {
@@ -277,8 +371,8 @@ section .artCard .textCard span {
   display: flex;
   flex-direction: column;
   margin: 0px 30px;
-  overflow: hidden;
-  height: 500px;
+  max-height: 450px;
+  transition: max-height 4s;
 }
 
 .currentArticleSection .activeArticle .articleInfo {
@@ -286,8 +380,13 @@ section .artCard .textCard span {
   flex-direction: column;
 }
 
+.currentArticleSection .activeArticle .articleInfo .articleDate, .currentArticleSection .activeArticle .articleInfo h5 {
+  display: inline-block;
+}
+
 .currentArticleSection .activeArticle img {
   align-self: center;
+  max-width: 500px;
   width: 100%;
   margin: 20px;
   background-size: cover;
@@ -295,8 +394,14 @@ section .artCard .textCard span {
 }
 
 .currentArticleSection .activeArticle h5, .currentArticleSection .activeArticle .articleDate, .currentArticleSection .activeArticle .source {
+  margin: 2px;
   font-size: 12px;
-  text-align: center;
+  text-align: left;
+  color: #bebebe;
+}
+
+.currentArticleSection .activeArticle h5 .fas, .currentArticleSection .activeArticle h5 .far, .currentArticleSection .activeArticle .articleDate .fas, .currentArticleSection .activeArticle .articleDate .far, .currentArticleSection .activeArticle .source .fas, .currentArticleSection .activeArticle .source .far {
+  padding-right: 5px;
 }
 
 .currentArticleSection .activeArticle .zmeczenieArticle, .currentArticleSection .activeArticle .cwiczeniaArticle, .currentArticleSection .activeArticle .saunaArticle, .currentArticleSection .activeArticle .podstawyArticle {
@@ -336,6 +441,69 @@ section .artCard .textCard span {
   letter-spacing: 1px;
 }
 
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .source, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .source, .currentArticleSection .activeArticle .saunaArticle .mainArticle .source, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .source {
+  display: block;
+}
+
+.currentArticleSection .dropdownArticles {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(180deg, #ffffff00 0%, #000000 85%);
+  align-items: center;
+  height: 450px;
+  text-align: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: height 1s 1s, padding 1s 1s, margin 1s 1s;
+}
+
+.currentArticleSection .dropdownArticles span {
+  color: whitesmoke;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 25px 10px;
+}
+
+.currentArticleSection .dropdownArticles .clickToExtend {
+  opacity: 1;
+  position: relative;
+  transition: opacity 0.8s 4.3s;
+}
+
+.currentArticleSection .dropdownArticles .dropdownSpanChange {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+
+.currentArticleSection .dropdownArticles .clickToRoll {
+  opacity: 0;
+  position: absolute;
+  padding: 0;
+  color: grey;
+  font-size: 12px;
+  z-index: 15;
+  transition: opacity 0.8s;
+}
+
+.currentArticleSection .dropdownArticles .clickToRollShow {
+  opacity: 1;
+  position: relative;
+  transition: opacity 0.8s 3.3s;
+}
+
+.currentArticleSection .heightReset {
+  max-height: 5000px;
+}
+
+.currentArticleSection .dropdownHeight {
+  height: 50px;
+  padding: 0;
+  margin: 0;
+}
+
 .trainingsSection .trainingsCards, .calculatorSection .trainingsCards {
   display: flex;
   flex-direction: column;
@@ -343,11 +511,38 @@ section .artCard .textCard span {
 
 .trainingsSection .trainingsCards .training, .calculatorSection .trainingsCards .training {
   margin: 20px 30px;
-  height: 80px;
+  max-height: 80px;
+  background: linear-gradient(180deg, black 30%, black 90%);
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #353434;
-  transition: height 0.5s;
+  border: 1px solid #141414;
+  transition: 1s;
+}
+
+.trainingsSection .trainingsCards .training p, .calculatorSection .trainingsCards .training p {
+  padding: 0px 15px 0px 15px;
+  text-align: left;
+}
+
+.trainingsSection .trainingsCards .training .trainingMovies, .calculatorSection .trainingsCards .training .trainingMovies {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.trainingsSection .trainingsCards .training .trainingMovies a, .trainingsSection .trainingsCards .training .trainingMovies i, .calculatorSection .trainingsCards .training .trainingMovies a, .calculatorSection .trainingsCards .training .trainingMovies i {
+  font-size: 16px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.trainingsSection .trainingsCards .training .trainingMovies a, .calculatorSection .trainingsCards .training .trainingMovies a {
+  color: #e0e0e0;
+}
+
+.trainingsSection .trainingsCards .training .trainingMovies i, .calculatorSection .trainingsCards .training .trainingMovies i {
+  color: #b31818;
 }
 
 .trainingsSection .trainingsCards .backgroundTraining, .calculatorSection .trainingsCards .backgroundTraining {
@@ -374,13 +569,13 @@ section .artCard .textCard span {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, black 95%);
   transition: background-color 0.5s;
   z-index: -1;
 }
 
 .trainingsSection .trainingsCards .backgroundCardio, .calculatorSection .trainingsCards .backgroundCardio {
-  background-image: url(/imgs/training_cardio1.jpg);
+  background-image: url(/imgs/training_cardio3.jpg);
 }
 
 .trainingsSection .trainingsCards .backgroundFitness, .calculatorSection .trainingsCards .backgroundFitness {
@@ -396,20 +591,17 @@ section .artCard .textCard span {
 }
 
 .trainingsSection .trainingsCards .training:hover, .calculatorSection .trainingsCards .training:hover {
-  height: 400px;
+  max-height: 1000px;
+  border: 1px solid #d5d838;
 }
 
 .trainingsSection .trainingsCards .training:hover .backgroundTraining, .calculatorSection .trainingsCards .training:hover .backgroundTraining {
   top: 0;
 }
 
-.trainingsSection .trainingsCards .training:hover .backgroundTrainingShadow, .calculatorSection .trainingsCards .training:hover .backgroundTrainingShadow {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
 .trainingsSection .trainingsCards .training:hover h3, .calculatorSection .trainingsCards .training:hover h3 {
-  padding: 10px;
-  text-shadow: 2px 2px 10px black;
+  padding: 20px 0px;
+  text-shadow: 2px 2px 2px black;
 }
 
 .calculatorSection .calculator {
@@ -420,62 +612,222 @@ section .artCard .textCard span {
 }
 
 .calculatorSection .calculator .dropdown {
-  max-height: 25px;
+  max-height: 50px;
+  margin-bottom: 20px;
+  font-size: 14px;
   overflow: hidden;
-  border: 1px solid white;
-  transition: max-height 0.6s;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  transition: 0.5s;
 }
 
 .calculatorSection .calculator .dropdown h5 {
-  border-bottom: 1px solid white;
+  font-size: 16px;
+  padding: 15px 20px;
+  text-align: center;
+  font-weight: bolder;
+  color: black;
+  letter-spacing: 2px;
+  background-color: #d5d838;
+}
+
+.calculatorSection .calculator .dropdown h5 i {
+  padding: 0px 0px 0px 10px;
+  transition: transform 0.5s;
+}
+
+.calculatorSection .calculator .dropdown ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.calculatorSection .calculator .dropdown ul li {
+  position: relative;
+  text-align: center;
+  margin: 15px 0px;
+  padding: 5px 20px;
+  width: 100%;
+  transition: 0.6s;
+}
+
+.calculatorSection .calculator .dropdown ul li .underlineCalc {
+  position: relative;
+  left: calc(50% - 10px);
+  height: 1px;
+  width: 20px;
+  background-color: #d5d838;
+  margin-top: 5px;
+  transition: 0.5s;
+}
+
+.calculatorSection .calculator .dropdown ul li:hover .underlineCalc {
+  width: 120px;
+  left: calc(50% - 60px);
+}
+
+.calculatorSection .calculator .dropdown ul li:hover {
+  color: #d5d838;
 }
 
 .calculatorSection .calculator .dropdown:hover {
-  max-height: 110px;
+  max-height: 215px;
+}
+
+.calculatorSection .calculator .dropdown:hover i {
+  transform: rotateX(-180deg);
+}
+
+.calculatorSection .calculator .accordion {
+  margin: auto;
+  width: 80%;
+}
+
+.calculatorSection .calculator .accordion .card {
+  border-radius: 0;
+  font-size: 10px;
+}
+
+.calculatorSection .calculator .accordion .card .card-header {
+  background-color: #d5d838;
+  padding: 0;
+}
+
+.calculatorSection .calculator .accordion .card .card-header h2 button {
+  width: 100%;
+  margin: 0;
+  padding: 8px 16px;
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-weight: bolder;
+  color: black;
+  font-size: 16px;
+  text-align: left;
+  outline: none;
+}
+
+.calculatorSection .calculator .accordion .card .card-header h2 i {
+  align-self: center;
+  justify-self: end;
+}
+
+.calculatorSection .calculator .accordion .card .card-header h2 button {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.calculatorSection .calculator .accordion .card .card-header h2 .btn-link .fa-plus {
+  display: none;
+}
+
+.calculatorSection .calculator .accordion .card .card-header h2 .collapsed .fa-minus {
+  display: none;
+}
+
+.calculatorSection .calculator .accordion .card .card-header h2 .collapsed .fa-plus {
+  display: block;
+}
+
+.calculatorSection .calculator .accordion .collapse {
+  transition: 0.5s;
+}
+
+.calculatorSection .calculator .accordion .collapse .card-body {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  color: whitesmoke;
+}
+
+.calculatorSection .calculator .accordion .show {
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.calculatorSection .calculator .accordion .collapsing {
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.calculatorSection .calculator .activeCalc {
+  margin-bottom: 20px;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .startCalc {
+  border-radius: 25px 25px 0px 0px;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Montserrat', serif;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .startCalc .underline {
+  margin: 20px 20px 0px 20px;
+  background-color: #d5d838;
 }
 
 .calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs {
+  font-family: 'Montserrat', serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20px;
+  border: 1px solid #d5d838;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
 }
 
 .calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   width: 100%;
-  justify-items: center;
+  justify-items: end;
+  align-items: center;
   padding: 20px;
 }
 
 .calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .kcalQuestion {
-  align-self: center;
-  justify-self: center;
+  align-items: center;
+  justify-self: start;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 .calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .kcalInput {
-  width: 50px;
+  width: 80px;
   background: none;
-  border: none;
-  border-bottom: 2px solid grey;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 3px 6px;
   color: white;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .activityContainer .activity-form {
-  background: black;
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .activityContainer .activity-form, .calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .genderContainer .activity-form {
   border: none;
-  text-align: center;
+  justify-self: end;
+  justify-items: end;
+  align-self: center;
+  text-align: right;
   color: white;
-  width: 110%;
+  width: 100%;
+  margin: auto;
   font-size: 14px;
+  background-color: black;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .kcalInput:focus {
   outline: none;
-  border-bottom: 2px solid white;
-  transition: 0.2s;
+  border: 1px solid #d5d838;
+  transition: border 0.3s;
   z-index: 1;
 }
 
@@ -487,6 +839,31 @@ section .artCard .textCard span {
 
 .calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer input[type=number] {
   -moz-appearance: textfield;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalResultBtn {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 150px;
+  margin: 20px;
+  padding: 8px 16px;
+  grid-template-columns: 8fr 2fr;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-weight: bolder;
+  color: black;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: #d5d838;
+}
+
+.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .result {
+  margin: 20px;
+  text-align: center;
 }
 
 .calculatorSection .calculator .allCalcs {
@@ -505,5 +882,60 @@ section .artCard .textCard span {
 
 .footer .copyright {
   margin: 0 10px;
+}
+
+@keyframes refresher {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateBars {
+  0% {
+    transform: rotateZ(0);
+    color: whitesmoke;
+  }
+  100% {
+    transform: rotateZ(180deg);
+    color: #d5d838;
+  }
+}
+
+@keyframes reverseRotateBars {
+  0% {
+    transform: rotateZ(0);
+    color: #d5d838;
+  }
+  100% {
+    transform: rotateZ(-180deg);
+    color: whitesmoke;
+  }
+}
+
+@keyframes transformIcon {
+  0% {
+    transform: rotateZ(0);
+  }
+  30% {
+    color: #686868;
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes nextTransformIcon {
+  0% {
+    transform: rotateZ(0);
+  }
+  30% {
+    color: #686868;
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
 /*# sourceMappingURL=small.css.map */

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pl">
 
+<!-- do zrobienia:
+artykuly js, active article zmiana,
+form kalkulatorow,
+hovery treningu + stylizacja ich, bo taka se
+posprzatac
+ddl 31.01. ostateczny 
+-->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +19,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -30,29 +41,33 @@
         <!-- navigation -->
         <div class="nav">
             <div class="menuLabel">
-                <button href="" class="menuBars"><i class="fas fa-bars"></i></button>
-                <span class="logo">
-                    <h3>SK |</h3><img src="/imgs/logo1.png" alt="">
-                </span>
+                <button class="menuBars" id="menuBarz"><i class="fas fa-bars"></i></button>
+                <div class="logo">
+                    <h3>SK.org</h3><img src="/imgs/logo2.png" alt="">
+                </div>
             </div>
-            <div class="collapseMenu">
+            <div class="collapseMenu" id="collapseMenuu">
                 <ul>
-                    <li><i class="fas fa-home"></i>Glówna</li>
+                    <li class="collapseMenuItems">
+                        <a href="#about" class="menuSectionsLinks">
+                            <i class="fas fa-home menuIcon activeSection"></i>Glówna</a>
+                    </li>
                     <!-- <li><i class="fas fa-dumbbell"></i>O Nas</li> -->
-                    <li><i class="fas fa-book-reader"></i>Artykuły</li>
-                    <li><i class="fas fa-fire-alt"></i>Trening</li>
-                    <li><i class="fas fa-calculator"></i>Kalkulatory</li>
+                    <li><a href="#articlesListSection"><i class="fas fa-book-reader menuIcon"></i>Artykuły</a></li>
+                    <li><a href="#trainingsSection"><i class="fas fa-fire-alt menuIcon"></i>Trening</a></li>
+                    <li><a href="#calculatorSection"><i class="fas fa-calculator menuIcon"></i>Kalkulatory</a></li>
                 </ul>
             </div>
         </div>
 
-        <section class="header">
+        <section class="header" id="header">
             <div class="hero-shadow"></div>
             <h1>Sportowa Kuźnia</h1>
             <!-- <h3>wytop tluszcz, wykuj miesnie xD</h3> -->
             <span>Wykuj swoją formę na lata!</span>
         </section>
-        <section class="about">
+        <section class="about scroll-fix" id="about">
+            <div class="hero-shadow-bothsides"></div>
             <h3><i class="fas fa-home"></i> Witaj sportowcu</h3>
             <div class="underline"></div>
             <div class="allQuotes">
@@ -83,27 +98,27 @@
                     <span class="quote">"Moment, w którym się poddajesz to moment, w którym ktoś inny wygrywa."</span>
                     <span class="quoteAuthor">~ Kobe Bryant</span>
                 </div>
-            </div>
-            <div class="activeQuote">
                 <div class="quoteContainer MJ">
                     <span class="quote">"Zanim coś osiągniesz, musisz czegoś od siebie
                         oczekiwać”
                     </span>
                     <span class="quoteAuthor">~ Michael Jordan</span>
                 </div>
-                <a><i class="fas fa-redo"></i></a>
             </div>
+            <div class="activeQuote">
+            </div>
+            <a class="quoteChange"><i class="fas fa-redo"></i></a>
             <div class="desrciption">
-                <p>Jeżeli tu trafiles to znaczy, że interesuje Cię zbudowanie formy nie tylko na jeden sezon, ale na
+                <p>Jeżeli tu trafiles to znaczy, że interesuje Cię <span class="highlighted">zbudowanie formy</span> nie
+                    tylko na jeden sezon, ale na
                     lata!</p>
-                <p>Sportowa Kuźnia to projekt, który ma na celu pomóc Ci w zbudowaniu oraz utrzymaniu zdrowej formy
-                    przez
-                    dlugi czas. Na naszym portalu znajdziesz wyselekcjonowane i najciekawsze artykuly ze świata fitness
-                    oraz świata sportu. Ponaddto z nami przygotujesz i rozplanujesz swój wlasny, indywidualny trening -
-                    bez placenia tysięcy zl na niesprawdzonych trenerów. Pomożemy Ci również w wyliczeniu podstawowych
-                    mierników określających zdrowe i sprawne cialo!</p>
-                <p>Jeżeli będziesz mial jakiekolwiek pytania to śmialo skorzystaj z poniższych platform, aby uzyskać
-                    odpowiedź wprost od twórców portalu!</p>
+                <p>Na naszym portalu znajdziesz wyselekcjonowane artykuly ze świata fitness
+                    i świata sportu. Z nami <span class="highlighted">przygotujesz i rozplanujesz swój wlasny,
+                        indywidualny trening</span>. Pomożemy Ci
+                    również w wyliczeniu podstawowych
+                    mierników określających zdrowe i sprawne cialo.</p>
+                <p>Jeżeli będziesz mial jakiekolwiek pytania - skorzystaj z poniższych platform, aby uzyskać
+                    odpowiedź wprost od twórców!</p>
             </div>
             <div class="footerIcons">
                 <a href="" class="icon link"><i class="fab fa-linkedin-in"></i></a>
@@ -111,7 +126,8 @@
                 <a href="" class="icon ig"><i class="fab fa-instagram"></i></a>
             </div>
         </section>
-        <section class="articlesListSection">
+        <section class="articlesListSection scroll-fix" id="articlesListSection">
+            <div class="hero-shadow-bothsides"></div>
             <h3><i class="fas fa-book-reader"></i> Artykuły</h3>
             <div class="underline"></div>
 
@@ -141,17 +157,18 @@
             </div>
         </section>
         <section class="currentArticleSection">
+            <div class="hero-shadow-bothsides"></div>
+
             <div class="allArticles">
                 <div class="cwiczeniaArticle">
                     <h3>Ćwiczenia a zdrowie psychiczne</h3>
                     <div class="underline"></div>
                     <div class="articleInfo">
                         <img src="/imgs/article_zdrowiepsych.jpg" alt="">
-                        <h5 class="articleAuthor">Mateusz Sprengel</h5>
-                        <span class="articleDate">01.10.2021</span>
-                        <span class="source">
-                            <a href="https://testosterone.pl/wiedza/cwiczenia-a-zdrowie-psychiczne">testosterone.pl</a>
-                        </span>
+                        <div class="articleAuthorDate">
+                            <h5 class="articleAuthor"><i class="fas fa-user-edit"></i>Mateusz Sprengel</h5>
+                            <span class="articleDate"><i class="far fa-calendar"></i>01.10.2021</span>
+                        </div>
                     </div>
                     <span class="mainArticle">
                         <div class="firstSection Section">
@@ -317,6 +334,11 @@
                                 różnorodnych
                                 form aktywności fizycznej, jak łatwe jest ich wprowadzenie – każdy chyba wie co robić 🙂
                             </p>
+                            <span class="source">
+                                <i class="far fa-newspaper"></i>
+                                <a
+                                    href="https://testosterone.pl/wiedza/cwiczenia-a-zdrowie-psychiczne">testosterone.pl</a>
+                            </span>
 
                         </div>
                         <div class="Section bibliography">
@@ -335,12 +357,10 @@
                     <div class="underline"></div>
                     <div class="articleInfo">
                         <img src="/imgs/article_sauna.jpg" alt="">
-                        <h5 class="articleAuthor">Leszek Buczak</h5>
-                        <span class="articleDate">01.10.2021</span>
-                        <span class="source">
-                            <a
-                                href="https://www.budujmase.pl/trening/artykuly/sauna-po-treningu-na-regeneracje.html">budujmase.pl</a>
-                        </span>
+                        <div class="articleAuthorDate">
+                            <h5 class="articleAuthor"><i class="fas fa-user-edit"></i>Leszek Buczak</h5>
+                            <span class="articleDate"><i class="far fa-calendar"></i>01.10.2021</span>
+                        </div>
                     </div>
                     <span class="mainArticle">
                         <div class="firstSection Section">
@@ -461,6 +481,10 @@
                                 gdy
                                 powinno ono stopniowo wracać do normy po zakończeniu treningu.
                             </p>
+                            <span class="source"><i class="far fa-newspaper"></i>
+                                <a
+                                    href="https://www.budujmase.pl/trening/artykuly/sauna-po-treningu-na-regeneracje.html">budujmase.pl</a>
+                            </span>
 
                         </div>
                         <div class="Section bibliography">
@@ -485,12 +509,10 @@
                     <div class="underline"></div>
                     <div class="articleInfo">
                         <img src="/imgs/article_podstawy.jpg" alt="">
-                        <h5 class="articleAuthor">Tomasz Piotrowski</h5>
-                        <span class="articleDate">24.09.2021</span>
-                        <span class="source">
-                            <a
-                                href="https://www.budujmase.pl/trening/podstawy-treningu-ile-serii-robic.html">budujmase.pl</a>
-                        </span>
+                        <div class="articleAuthorDate">
+                            <h5 class="articleAuthor"><i class="fas fa-user-edit"></i>Tomasz Piotrowski</h5>
+                            <span class="articleDate"><i class="far fa-calendar"></i>24.09.2021</span>
+                        </div>
                     </div>
                     <span class="mainArticle">
                         <div class="firstSection Section">
@@ -682,7 +704,10 @@
                                 Warto eksperymentować, wykorzystać istniejące systemy i modyfikować je do własnych
                                 potrzeb.
                             </p>
-
+                            <span class="source"><i class="far fa-newspaper"></i>
+                                <a
+                                    href="https://www.budujmase.pl/trening/podstawy-treningu-ile-serii-robic.html">budujmase.pl</a>
+                            </span>
                         </div>
 
                     </span>
@@ -694,12 +719,10 @@
                     <div class="underline"></div>
                     <div class="articleInfo">
                         <img src="/imgs/article_zmeczenie.jpg" alt="">
-                        <h5 class="articleAuthor">Agata Bugorska</h5>
-                        <span class="articleDate">06.10.2021</span>
-                        <span class="source">
-                            <a
-                                href="https://potreningu.pl/artykuly/zdrowie/zmeczenie-w-ciagu-dnia-skad-sie-bierze-i-jakie-popelniamy-bledy-7193">potreningu.pl</a>
-                        </span>
+                        <div class="articleAuthorDate">
+                            <h5 class="articleAuthor"><i class="fas fa-user-edit"></i>Agata Bugorska</h5>
+                            <span class="articleDate"><i class="far fa-calendar"></i>06.10.2021</span>
+                        </div>
                     </div>
                     <span class="mainArticle">
                         <div class="firstSection Section">
@@ -886,6 +909,11 @@
                                 zdobądź
                                 więcej
                                 energii na kolejne dni.
+
+                                <span class="source"><i class="far fa-newspaper"></i>
+                                    <a
+                                        href="https://potreningu.pl/artykuly/zdrowie/zmeczenie-w-ciagu-dnia-skad-sie-bierze-i-jakie-popelniamy-bledy-7193">potreningu.pl</a>
+                                </span>
                             </p>
 
                         </div>
@@ -893,19 +921,35 @@
                     </span>
                 </div>
             </div>
-            <div class="dropdownArticles" style="background-color: tomato;">tu bydzie szczalka do rozwijania</div>
+            <div class="dropdownArticles">
+                <span class="clickToExtend">Kliknij, aby czytać dalej</span>
+                <span class="clickToRoll">Kliknij, aby zwinąć tekst</span>
+                <!-- <i class="fas fa-chevron-down animate__animated animate__bounce"></i> -->
+                <!-- <a class="animate__animated animate__bounce">
+                </a> -->
+            </div>
         </section>
-        <section class="trainingsSection">
+        <section class="trainingsSection scroll-fix" id="trainingsSection">
+            <div class=" hero-shadow-bothsides">
+            </div>
             <h3><i class="fas fa-fire-alt"></i> Trening</h3>
             <div class="underline"></div>
             <div class="desrciption">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam error nihil officiis dolorum sint?
-                    Dolores, recusandae. Blanditiis totam saepe, porro unde asperiores accusantium placeat temporibus
-                    optio.
-                    Eaque aperiam accusantium esse? Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore,
-                    hic.
+                <p>Przy wyborze odpowiedniego treningu powinniśmy zastanowić się na jakich
+                    efektach
+                    nam zależy oraz
+                    w jakim czasie
+                    chcielibyśmy je osiągnąć. <span class="highlighted">Motywacja jest podstawą wykonywanych
+                        ćwiczeń</span>, jednak bez
+                    widocznych efektów wiele osób poddaje się przedwcześnie i powraca do dawnych nawyków, czyli braku
+                    aktywności fizycznej i niezdrowej diety. Dlatego osoby, którym zależy na szybkich efektach, powinny
+                    zdecydować się na taką formę aktywności, która im to umożliwi.
                 </p>
+                <p>Poniżej znajdziesz <span class="highlighted">cztery podstawowe rodzaje treningów</span>, którym warto
+                    się przyjrzeć. Wybierz trening
+                    dla siebie w zależności od efektów, jakie chcesz zobaczyć!</p>
             </div>
+
             <div class="trainingsCards">
                 <h3>Rodzaje treningów</h3>
                 <div class="underline"></div>
@@ -915,11 +959,25 @@
                             <div class="backgroundTrainingShadow"></div>
                             <h3>Trening silowy</h3>
                         </div>
+                        <!-- <div class="underline"></div> -->
                         <!-- <img src="/imgs/trainign_fitness.jpg" alt="" class="trainingImg"> -->
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est incidunt maiores quam in adipisci
-                        obcaecati, tempora reprehenderit dolorem molestiae ratione numquam aspernatur consequuntur
-                        dolores
-                        animi iusto culpa sunt. Eligendi, similique?
+                        <p><span class="highlighted">Trening siłowy</span>, wbrew powszechnej opinii, to nie tylko
+                            ćwiczenia skoncentrowane na rozbudowie
+                            masy mięśniowej – jest to także doskonałe rozwiązanie w zakresie <span
+                                class="highlighted">redukcji
+                                tkanki tłuszczowej</span>
+                            oraz <span class="highlighted">modelowania sylwetki</span>.</p>
+                        <p>Sprawdż poniżej jak wygladają treningi silowe:
+                        </p>
+                        <div class="trainingMovies">
+
+                            <a href="https://youtu.be/5sLYGvCGSHY" target="_blank"><i class="fab fa-youtube"></i>Trening
+                                silowy FBW</a>
+
+                            <a href="https://youtu.be/afXGD0ddvPg" target="_blank"><i class="fab fa-youtube"></i>Trening
+                                FBW vs SPLIT</a>
+                        </div>
+
                     </div>
                 </div>
                 <div class="training cardio">
@@ -930,10 +988,22 @@
                             <h3>Trening cardio</h3>
                         </div>
                         <!-- <img src="/imgs/training_cardio1.jpg" alt="" class="trainingImg"> -->
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est incidunt maiores quam in adipisci
-                        obcaecati, tempora reprehenderit dolorem molestiae ratione numquam aspernatur consequuntur
-                        dolores
-                        animi iusto culpa sunt. Eligendi, similique?
+                        <p><span class="highlighted">Trening cardio</span> to ćwiczenia wytrzymałościowe dotleniające
+                            organizm, poprawiające pracę układu
+                            krążenia oraz kondycję organizmu. Trening cardio nazywany jest też treningiem tlenowym.
+                            <span class="highlighted">Zwiększa ilość oddechów na minutę</span> oraz <span
+                                class="highlighted">przyspiesza tętno</span>, co sprawia, że komórki i tkanki
+                            mięśniowe są lepiej dotlenione. Pozwala również dość szybko <span class="highlighted">pozbyć
+                                się zbędnych kilogramów</span>.
+                        </p>
+                        <p>Sprawdż poniżej jak wygladają treningi cardio:
+                        </p>
+                        <div class="trainingMovies">
+                            <a href="https://youtu.be/fwTffUDL1lQ" target="_blank"><i class="fab fa-youtube"></i>Trening
+                                odchudzający</a>
+                            <a href="https://youtu.be/ex5H5i9DjTE" target="_blank"><i class="fab fa-youtube"></i>Trening
+                                ujędrniający</a>
+                        </div>
                     </div>
                 </div>
                 <div class="training functional">
@@ -942,11 +1012,20 @@
                             <div class="backgroundTrainingShadow"></div>
                             <h3>Trening funkcjonalny</h3>
                         </div>
-                        <!-- <img src="/imgs/training_functional.jpg" alt="" class="trainingImg"> -->
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est incidunt maiores quam in adipisci
-                        obcaecati, tempora reprehenderit dolorem molestiae ratione numquam aspernatur consequuntur
-                        dolores
-                        animi iusto culpa sunt. Eligendi, similique?
+                        <p><span class="highlighted">Trening funkcjonalny</span> to rodzaj intensywnych ćwiczeń, których
+                            celem jest <span class="highlighted">wszechstronne
+                                wzmocnienie mięśni</span> bez rozbudowywania masy mięśniowej. Polega na imitowaniu
+                            ruchów, które
+                            wykonujemy na co dzień przy zwykłych czynnościach, ale w szybszym tempie i z wieloma
+                            powtórzeniami.</p>
+                    </div>
+                    <p>Sprawdż poniżej jak wygladają treningi funkcjonalne:
+                    </p>
+                    <div class="trainingMovies">
+                        <a href="https://youtu.be/Vmuv2ZL_u1c" target="_blank"><i class="fab fa-youtube"></i>Trening w
+                            domu</a>
+                        <a href="https://youtu.be/oI826ucjeNM" target="_blank"><i class="fab fa-youtube"></i>Dla
+                            zaawansowanych</a>
                     </div>
                 </div>
                 <div class="training fitness">
@@ -956,23 +1035,36 @@
                             <h3>Trening fitness</h3>
                         </div>
                         <!-- <img src="/imgs/training_strengthSMALL.jpg" alt="" class="trainingImg"> -->
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est incidunt maiores quam in adipisci
-                        obcaecati, tempora reprehenderit dolorem molestiae ratione numquam aspernatur consequuntur
-                        dolores
-                        animi iusto culpa sunt. Eligendi, similique?
+                        <p><span class="highlighted">Trening fitness</span> może być bardzo różnorodny, a jego
+                            popularność wynika przede wszystkim z
+                            prostoty ćwiczeń, a także efektów, jakie daje. Aby go przeprowadzić <span
+                                class="highlighted">nie
+                                potrzeba dużej
+                                kondycji i umiejętności</span> – dlatego też zalecany jest osobom początkującym, które
+                            dopiero
+                            wkraczają w świat aktywności i sportu.</p>
+                    </div>
+                    <p>Sprawdż poniżej jak wygladają treningi fitness:
+                    </p>
+                    <div class="trainingMovies">
+                        <a href="https://youtu.be/LFOFD0G8zjU" target="_blank"><i class="fab fa-youtube"></i>Trening dla
+                            otylych</a>
+                        <a href="https://youtu.be/x_9_tmZWCuw" target="_blank"><i class="fab fa-youtube"></i>Trening
+                            pilates</a>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="calculatorSection">
+        <section class="calculatorSection scroll-fix" id="calculatorSection">
+            <div class="hero-shadow-bothsides"></div>
             <h3><i class="fas fa-calculator"></i> Kalkulatory</h3>
             <div class="underline"></div>
             <div class="desrciption">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid rerum ex numquam a, corrupti
-                    corporis
-                    dolore impedit dicta. Fuga facilis perferendis doloribus minus possimus ipsa incidunt, quo esse
-                    beatae
-                    a.</p>
+                <p>W Internecie można znaleźć wiele różnych, pomocnych kalkulatorów, które pomogą nam wyliczyć mnóstwo
+                    wskaźników. Do najpopularniejszych zaliczamy kalkulator zapotrzebowania kalorycznego czy kalkulator
+                    BMI. Dzięki nim jesteśmy w stanie sprawdzić <span class="highlighted">ile powinniśmy jeść</span>
+                    oraz jaki jest nasz <span class="highlighted">aktualny poziom
+                        sylwetki</span>. Wybierz kalkulator, który Cię interesuje i sprawdź swoje parametry.</p>
             </div>
             <div class="calculator">
                 <div class="dropdown">
@@ -986,12 +1078,159 @@
                         <li><a class="dropdown-item" href="#">BMI</a></li>
                     </ul> -->
                     <!-- propozycja 1 z zwyklym buttonem z bootstrapa -->
-                    <h5>wybierz kalkulkator V</h5>
+                    <h5>kalkulkator<i class="fas fa-chevron-down"></i></h5>
                     <ul>
-                        <li>KALK X</li>
-                        <li>KALK Y</li>
-                        <li>KALK Z</li>
+                        <li>Zapotrzebowania kcal
+                            <div class="underlineCalc"></div>
+                        </li>
+                        <li>body mass index (BMI)
+                            <div class="underlineCalc"></div>
+                        </li>
+                        <li>body fat (YMCA)
+                            <div class="underlineCalc"></div>
+                        </li>
                     </ul>
+                </div>
+                <div class="calcsFAQ">
+                    <div class="desrciption">
+                        <p>Poniżej znajdziesz <span class="highlighted">FAQ</span>, czyli najczęściej zadawane pytania:
+                        </p>
+                    </div>
+                    <!-- <div class="dropdown faqQuestion">
+                        <h5>Jak skorzystać z kalkulatora</h5>
+                        <p>Kliknij w napis KALKULATOR a następnie wybierz interesujący Cię kalkulator. Poniżej ukaże się
+                            formularz. Uzupelnij dane a następnie kliknij "oblicz", aby otrzymać wyniki.</p>
+                    </div>
+                    <div class="dropdown faqQuestion"></div>
+                    <div class="dropdown faqQuestion"></div>
+                    <div class="dropdown faqQuestion"></div>
+                    <div class="dropdown faqQuestion"></div>
+                    <div class="dropdown faqQuestion"></div> -->
+                    <div class="accordion" id="FAQWrapper">
+                        <div class="FAQQuestion card bg-transparent">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Jak użyć kalkulatora?
+                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseOne" class="collapse bg-transparent" aria-labelledby="headingOne"
+                                data-bs-parent="#FAQWrapper">
+                                <div class="card-body">
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nemo animi
+                                        laboriosam at accusantium odio cupiditate maiores vero repudiandae veritatis?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FAQQuestion card bg-transparent">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Czym jest kalkulator zapotrzebowania kcal?
+                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#FAQWrapper">
+                                <div class="card-body">
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nemo animi
+                                        laboriosam at accusantium odio cupiditate maiores vero repudiandae veritatis?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FAQQuestion card bg-transparent">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        Co to jest BMI?
+                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#FAQWrapper">
+                                <div class="card-body">
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nemo animi
+                                        laboriosam at accusantium odio cupiditate maiores vero repudiandae veritatis?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FAQQuestion card bg-transparent">
+                            <div class="card-header" id="headingFour">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                        Jak dziala kalkulator YMCA?
+                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#FAQWrapper">
+                                <div class="card-body">
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nemo animi
+                                        laboriosam at accusantium odio cupiditate maiores vero repudiandae veritatis?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FAQQuestion card bg-transparent">
+                            <div class="card-header" id="headingFive">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFive">
+                                        Jak schudnąć?
+                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                                data-bs-parent="#FAQWrapper">
+                                <div class="card-body">
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nemo animi
+                                        laboriosam at accusantium odio cupiditate maiores vero repudiandae veritatis?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FAQQuestion card bg-transparent">
+                            <div class="card-header" id="headingSix">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                        Jak przytyć?
+                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                                data-bs-parent="#FAQWrapper">
+                                <div class="card-body">
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nemo animi
+                                        laboriosam at accusantium odio cupiditate maiores vero repudiandae veritatis?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="allCalcs">
                     <div class="ymcaCalc">
@@ -1054,30 +1293,19 @@
                         <div class="desrciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
                             nulla, beatae tenetur aspernatur eum non numquam ad dolores praesentium fuga molestiae
                             maxime modi debitis aut, repellendus ratione obcaecati enim quidem.
-
-                            <a href="#">FAQ</a>
                         </div>
                         <div class="kcalInputs">
+                            <div class="startCalc">
+                                <span class="openingCalc">Uzupelnij poniższe pola i kliknij <span
+                                        class="highlighted">oblicz</span>.</span>
+                                <div class="underline"></div>
+                            </div>
                             <div class="kcalInputContainer">
                                 <span class="kcalQuestion gender">Pleć</span>
-                                <div class="GenderFormContainer">
-                                    <!-- <div class="gender-check">
-                                        <input class="gender-check-input" type="radio" name="genderRadio"
-                                            id="femaleRadio">
-                                        <label class="gender-check-label" for="femaleRadio">
-                                            Kobieta
-                                        </label>
-                                    </div>
-                                    <div class="gender-check">
-                                        <input class="gender-check-input" type="radio" name="genderRadio" id="maleRadio"
-                                            checked>
-                                        <label class="gender-check-label" for="maleRadio">
-                                            Mężczyzna
-                                        </label>
-                                    </div> -->
-                                    <select class="form-select" multiple aria-label="multiple select example"
-                                        style="background-color: black; border: none; height: 50px; color: white;">
-                                        <option value="female" style="text-align: center;">Kobieta</option>
+                                <div class="genderContainer">
+                                    <select class="activity-form" aria-label="activity-select">
+                                        <option value="chooseOption">Wybierz</option>
+                                        <option value="female">Kobieta</option>
                                         <option value="male">Mężczyzna</option>
                                     </select>
                                 </div>
@@ -1095,14 +1323,15 @@
                                 <input type="text" class="kcalInput inputAge" pattern="\d*" maxlength="2">
                             </div>
                             <div class="kcalInputContainer">
-                                <span class="kcalQuestion activity">Aktywnosc</span>
+                                <span class="kcalQuestion activity">Aktywność</span>
                                 <div class="activityContainer">
                                     <select class="activity-form" aria-label="activity-select">
-                                        <option value="1">Niewielka</option>
-                                        <option value="2">Niska</option>
-                                        <option value="3">Średnia</option>
-                                        <option value="4">Wysoka</option>
-                                        <option value="5">Bardzo wysoka</option>
+                                        <option value="chooseOption">Wybierz</option>
+                                        <option value="vlow">Niewielka</option>
+                                        <option value="low">Niska</option>
+                                        <option value="medium">Średnia</option>
+                                        <option value="high">Wysoka</option>
+                                        <option value="vhigh">B. wysoka</option>
                                     </select>
                                 </div>
                             </div>
@@ -1110,17 +1339,21 @@
                                 <span class="kcalQuestion target">Cel</span>
                                 <div class="activityContainer">
                                     <select class="activity-form" aria-label="activity-select">
+                                        <option value="chooseOption">Wybierz</option>
                                         <option value="weightLoss">Redukcja wagi</option>
                                         <option value="weightGain">Przybranie wagi</option>
                                         <option value="weightStay">Utrzymanie wagi</option>
                                     </select>
+                                </div>
+                            </div>
+                            <button class="kcalResultBtn">Oblicz</button>
+                            <div class="result">
+                                <span>Aby <span class="resultWeight highlighted">utrzymać wagę</span> musisz spożywać
+                                    każdego
+                                    dnia <span class="resultKcal highlighted">9999</span> kcal.</span>
                             </div>
                         </div>
-                        <div class="result">
-                            <span>Aby <span class="resultWeight">x</span> musisz spożywać każdego dnia <span class="resultKcal">y</span>.</span>
-                        </div>
                     </div>
-                </div>
         </section>
         <section class="footer">
             <div class="copyright"><span>@ Marcin Bogucki 2021</span></div>
@@ -1130,7 +1363,12 @@
 
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/03ad30190e.js" crossorigin="anonymous"></script>
-    <script src="/main.js"></script>
+    <script src="/main.js" defer></script>
+    <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="/jquery.waypoints.min"></script>
 </body>
 
 </html>
