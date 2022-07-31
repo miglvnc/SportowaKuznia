@@ -5,10 +5,832 @@
   margin: 0;
 }
 
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #393a0f;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #d5d838;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
 body {
   background-color: black;
   font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
+}
+
+body .modalDietContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  overflow: auto;
+  top: 30px;
+  left: 50%;
+  height: 90%;
+  width: 95%;
+  max-width: 900px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: rgba(19, 19, 19, 0.96);
+  background-image: url(/imgs/modal_backgroundDark.jpg);
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-box-shadow: 0px 0px 30px #141414;
+          box-shadow: 0px 0px 30px #141414;
+  border-radius: 5px;
+  -webkit-transition: visibility 0.1s, opacity 1s;
+  transition: visibility 0.1s, opacity 1s;
+  padding: 20px 5px;
+}
+
+body .hideDisplayModal {
+  opacity: 0;
+  z-index: -102;
+  visibility: hidden;
+}
+
+body .showDisplayModal {
+  opacity: 1;
+  z-index: 102;
+  visibility: visible;
+}
+
+body .showDisplayModal .underline {
+  margin: 10px auto;
+  padding-top: 1px;
+  background-color: #6e6e6e;
+  width: 85%;
+}
+
+body .showDisplayModal .highlighted {
+  color: #d5d838;
+  font-weight: bold;
+}
+
+body .showDisplayModal .btnModalExit {
+  position: absolute;
+  top: 0px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding: 10px 20px;
+  font-size: 25px;
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+
+body .showDisplayModal .btnModalExit .exitModalIcon {
+  color: #d5d838e8;
+}
+
+body .showDisplayModal h2, body .showDisplayModal p, body .showDisplayModal #dietInput {
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  color: whitesmoke;
+}
+
+body .showDisplayModal h2 {
+  padding: 30px 60px 10px 60px;
+}
+
+body .showDisplayModal p {
+  padding: 20px 10%;
+  margin: 0;
+}
+
+body .showDisplayModal .informationWeightOnClick {
+  color: grey;
+}
+
+body .showDisplayModal #dietInput {
+  margin: 20px;
+  padding: 10px;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  letter-spacing: 3px;
+  border: 1px solid grey;
+  border-radius: 25px;
+  color: whitesmoke;
+  font-size: 18px;
+}
+
+body .showDisplayModal #dietInput:focus {
+  z-index: 1;
+  outline: none;
+  border: 1px solid #d5d838;
+  -webkit-transition: border 0.3s;
+  transition: border 0.3s;
+}
+
+body .showDisplayModal #dietInput::-webkit-input-placeholder {
+  color: #b1b1b1;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+body .showDisplayModal #dietInput:-ms-input-placeholder {
+  color: #b1b1b1;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+body .showDisplayModal #dietInput::-ms-input-placeholder {
+  color: #b1b1b1;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+body .showDisplayModal #dietInput::placeholder {
+  color: #b1b1b1;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+body .showDisplayModal #dietInput:focus::-webkit-input-placeholder {
+  color: #00000000;
+}
+
+body .showDisplayModal #dietInput:focus:-ms-input-placeholder {
+  color: #00000000;
+}
+
+body .showDisplayModal #dietInput:focus::-ms-input-placeholder {
+  color: #00000000;
+}
+
+body .showDisplayModal #dietInput:focus::placeholder {
+  color: #00000000;
+}
+
+body .showDisplayModal input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body .showDisplayModal input[type=number] {
+  -moz-appearance: textfield;
+}
+
+body .showDisplayModal .descriptionModal {
+  padding: 20px 10% 0px 10%;
+}
+
+body .showDisplayModal .shortcutsModal {
+  list-style-type: none;
+  text-align: left;
+  font-size: 14px;
+  color: grey;
+  margin: 10px auto;
+  padding: 0;
+}
+
+body .showDisplayModal .shortcutsModal span {
+  font-weight: bold;
+  color: #a5a5a5;
+}
+
+body .showDisplayModal .tableContainer {
+  margin: 10px;
+  max-width: 600px;
+}
+
+body .showDisplayModal .tableContainer .tableShadow {
+  position: absolute;
+  left: 2.5%;
+  width: 95%;
+  max-width: 600px;
+  height: 0px;
+  background-color: #00000070;
+  -webkit-filter: blur(15px);
+          filter: blur(15px);
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, height 0.0s 0.5s;
+  transition: opacity 0.5s, height 0.0s 0.5s;
+}
+
+body .showDisplayModal .tableContainer .tableShadowHide {
+  height: 0px;
+  opacity: 0;
+}
+
+body .showDisplayModal .tableContainer .tableShadowShow {
+  height: 260px;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s, height 0.0s 0.0s;
+  transition: opacity 0.5s, height 0.0s 0.0s;
+}
+
+body .showDisplayModal .tableContainer table, body .showDisplayModal .tableContainer th, body .showDisplayModal .tableContainer td {
+  border-collapse: collapse;
+  color: whitesmoke;
+  background-color: #242424;
+  font-size: 16px;
+}
+
+body .showDisplayModal .tableContainer table {
+  overflow: auto;
+  width: 100%;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 10px #202020;
+          box-shadow: 0px 0px 10px #202020;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+body .showDisplayModal .tableContainer table thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  text-align: center;
+}
+
+body .showDisplayModal .tableContainer table thead th {
+  background-color: #d5d838;
+  text-align: left;
+  padding: 15px 10px;
+  color: black;
+}
+
+body .showDisplayModal .tableContainer table thead th .theadSpanIconContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+}
+
+body .showDisplayModal .tableContainer table thead th .theadSpanIconContainer span {
+  text-align: left;
+  color: black;
+}
+
+body .showDisplayModal .tableContainer table thead th .theadSpanIconContainer .arrowSort {
+  padding-left: 2px;
+  color: #707070;
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+}
+
+body .showDisplayModal .tableContainer table thead th .theadSpanIconContainer .arrowSortShow {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+  -webkit-transition: visibility 0.1s, opacity 0.3s, -webkit-transform 0.3s;
+  transition: visibility 0.1s, opacity 0.3s, -webkit-transform 0.3s;
+  transition: visibility 0.1s, opacity 0.3s, transform 0.3s;
+  transition: visibility 0.1s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+}
+
+body .showDisplayModal .tableContainer table thead th .theadSpanIconContainer .arrowSortHide {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0.1s, opacity 0.3s, -webkit-transform 0.3s;
+  transition: visibility 0.1s, opacity 0.3s, -webkit-transform 0.3s;
+  transition: visibility 0.1s, opacity 0.3s, transform 0.3s;
+  transition: visibility 0.1s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+}
+
+body .showDisplayModal .tableContainer table thead th .theadSpanIconContainer .arrowSortAsc {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+body .showDisplayModal .tableContainer table thead th .theadSpanIconContainer .arrowSortDesc {
+  -webkit-transform: rotateX(360deg);
+          transform: rotateX(360deg);
+}
+
+body .showDisplayModal .tableContainer table thead th:first-child {
+  border-top-left-radius: 20px;
+}
+
+body .showDisplayModal .tableContainer table thead th:last-child {
+  border-top-right-radius: 20px;
+}
+
+body .showDisplayModal .tableContainer table thead .productNameHead {
+  width: 34%;
+  overflow: hidden;
+  background-color: #ffee53e1;
+}
+
+body .showDisplayModal .tableContainer table thead .highlightThead {
+  -webkit-animation: highlightThead 0.6s;
+          animation: highlightThead 0.6s;
+}
+
+body .showDisplayModal .tableContainer table thead .highlightTheadSwitch {
+  -webkit-animation: highlightTheadSwitch 0.6s;
+          animation: highlightTheadSwitch 0.6s;
+}
+
+body .showDisplayModal .tableContainer table tbody {
+  display: block;
+  height: 100%;
+  max-height: 200px;
+  overflow: auto;
+  overflow-y: overlay;
+  text-align: left;
+}
+
+body .showDisplayModal .tableContainer table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  text-align: center;
+  overflow: hidden;
+}
+
+body .showDisplayModal .tableContainer table tbody tr td {
+  text-align: left;
+  overflow: hidden;
+  padding: 15px 10px;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+}
+
+body .showDisplayModal .tableContainer table tbody tr .productName {
+  width: 34%;
+  overflow: hidden;
+  color: #ffee53e1;
+}
+
+body .showDisplayModal .tableContainer table tbody .addProduct td {
+  background-color: #4d4c2c;
+}
+
+body .showDisplayModal .tableContainer #dietTable .weightValue {
+  display: none;
+}
+
+body .showDisplayModal .tableContainer .ownTable {
+  display: none;
+  visibility: hidden;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 10px #202020;
+          box-shadow: 0px 0px 10px #202020;
+}
+
+body .showDisplayModal .tableContainer .ownTable td {
+  -webkit-transition: width 1s;
+  transition: width 1s;
+}
+
+body .showDisplayModal .tableContainer .ownTable .originalTableTheadContainer {
+  text-align: left;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+body .showDisplayModal .tableContainer .ownTable .ownTableProductNameHead {
+  width: 34%;
+  overflow: hidden;
+  -webkit-transition: width 1s, border 1s;
+  transition: width 1s, border 1s;
+}
+
+body .showDisplayModal .tableContainer .ownTable .productNameHide {
+  width: 10%;
+  border-right: 2px solid #ffee530a;
+}
+
+body .showDisplayModal .tableContainer .ownTable th {
+  background-color: #d5d838;
+}
+
+body .showDisplayModal .tableContainer .ownTable .ownTableWeight {
+  width: 0%;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+}
+
+body .showDisplayModal .tableContainer .ownTable .ownTableWeightShow {
+  display: table-cell;
+  width: 20%;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+}
+
+body .showDisplayModal .tableContainer .ownTable .sum th {
+  border-radius: 0;
+}
+
+body .showDisplayModal .tableContainer .ownTable #ownDietTable .addProduct td {
+  background: none;
+}
+
+body .showDisplayModal .tableContainer .ownTable #ownDietTable .addProduct td span {
+  background: none;
+}
+
+body .showDisplayModal .tableContainer .ownTable #ownDietTable .addProduct td .productValueInput {
+  border: 1px solid grey;
+  border-radius: 10px;
+  background: none;
+  width: 100%;
+  padding: 1px 3px;
+  color: white;
+  text-align: center;
+  -webkit-transition: border 0.2s;
+  transition: border 0.2s;
+}
+
+body .showDisplayModal .tableContainer .ownTable #ownDietTable .addProduct td .productValueInput:focus {
+  outline: none;
+  border: 1px solid #d5d838;
+}
+
+body .showDisplayModal .tableContainer .ownTable #ownDietTable .emptyOwnTable {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100px;
+  border-radius: 20px;
+}
+
+body .showDisplayModal .tableContainer .ownTable #ownDietTable .hideEmptyOwnTable {
+  display: none;
+}
+
+body .showDisplayModal .tableContainer .showOwnTable {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  overflow: hidden;
+}
+
+body .showDisplayModal .ownTableHeader {
+  display: block;
+  padding: 20px 50px 20px 50px;
+  font-size: 20px;
+  background-color: #242424;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 15px;
+  color: grey;
+  -webkit-box-shadow: 0px 0px 10px #202020;
+          box-shadow: 0px 0px 10px #202020;
+}
+
+body .showDisplayModal .form-switch {
+  margin-bottom: 30px;
+}
+
+body .showDisplayModal .form-switch.form-switch-lg {
+  margin-bottom: 1.5rem;
+}
+
+body .showDisplayModal .form-switch.form-switch-lg .form-check-input {
+  height: 2rem;
+  width: calc(3rem + 0.75rem);
+  border-radius: 4rem;
+}
+
+body .showDisplayModal .hideOwnTableHeader {
+  display: none;
+}
+
+body .showDisplayModal .generatePDFBtn {
+  border: none;
+  background: none;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 25px;
+  font-size: 18px;
+  background: none;
+  border: none;
+  border: 1px solid #d4d664;
+  color: #d4d664;
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  -webkit-box-shadow: 0px 5px 3px #292929;
+          box-shadow: 0px 5px 3px #292929;
+}
+
+body .showDisplayModal .generatePDFBtn:active {
+  -webkit-box-shadow: 0px 2px 3px #292929;
+          box-shadow: 0px 2px 3px #292929;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+body .showDisplayModal .inactiveBtn {
+  border: 1px solid #797979;
+  color: #797979;
+}
+
+body .errorShadow {
+  position: fixed;
+  top: auto;
+  background: rgba(0, 0, 0, 0.5);
+  min-height: 100%;
+  width: 100%;
+  z-index: 101;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s, opacity 0.9s 0.1s;
+  transition: visibility 0s, opacity 0.9s 0.1s;
+}
+
+body .errorShadowShow {
+  visibility: visible;
+  opacity: 1;
+}
+
+body .errorShadowClose {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 1.1s, opacity 0.9s 0.1s;
+  transition: visibility 1.1s, opacity 0.9s 0.1s;
+}
+
+body .errorPopUp {
+  position: fixed;
+  height: 180px;
+  width: 90%;
+  max-width: 400px;
+  background: #1b1b1b;
+  background-color: #d5d838e8;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-radius: 5px;
+  bottom: -100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 102;
+  bottom: -200px;
+  color: black;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0s, bottom 1s, opacity 0.8s 0.4s;
+  transition: visibility 0s, bottom 1s, opacity 0.8s 0.4s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body .errorPopUp .errorMsg, body .errorPopUp .errorConfirm {
+  color: #111111;
+}
+
+body .errorPopUp .errorMsg {
+  position: relative;
+  font-size: 20px;
+  top: -15px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  padding: 10px;
+  text-align: center;
+}
+
+body .errorPopUp .errorConfirm {
+  top: 130px;
+  height: 40px;
+  width: 100px;
+  border-radius: 25px;
+  font-size: 18px;
+  background-color: #d4d664;
+  border: none;
+  border: 1px solid black;
+  color: black;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  -webkit-box-shadow: 0px 5px 5px #1a1a1a;
+          box-shadow: 0px 5px 5px #1a1a1a;
+}
+
+body .errorPopUp .errorConfirm:active {
+  -webkit-box-shadow: 0 3px 5px black;
+          box-shadow: 0 3px 5px black;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+body .errorPopUpClose {
+  opacity: 0;
+  bottom: -100%;
+  visibility: hidden;
+  -webkit-transition: visibility 2s, bottom 1s, opacity 1s 0.4s;
+  transition: visibility 2s, bottom 1s, opacity 1s 0.4s;
+}
+
+body .errorPopUpShow {
+  opacity: 1;
+  bottom: 20px;
+  visibility: visible;
+}
+
+body h1, body h3, body p {
+  color: whitesmoke;
+}
+
+body .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Russo One', sans-serif;
+  border-bottom: 1px solid #0f0f0f;
+}
+
+body .nav .menuLabel {
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 3fr;
+      grid-template-columns: 1fr 3fr;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 15px 20px;
+  width: 100%;
+  background-color: #000;
+}
+
+body .nav .menuLabel .menuLabelBig {
+  display: none;
+}
+
+body .nav .menuLabel .menuBars {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-column-align: start;
+      justify-self: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 0 5px;
+  background: none;
+  border: none;
+}
+
+body .nav .menuLabel .menuBars i {
+  font-size: 20px;
+  color: whitesmoke;
+  -webkit-transition: color 0.8s, -webkit-transform 0.8s;
+  transition: color 0.8s, -webkit-transform 0.8s;
+  transition: transform 0.8s, color 0.8s;
+  transition: transform 0.8s, color 0.8s, -webkit-transform 0.8s;
+}
+
+body .nav .menuLabel .menuBars .animationBars {
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+  color: #d5d838;
+}
+
+body .nav .menuLabel .logo {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  margin: 0 5px 0 0;
+}
+
+body .nav .menuLabel .logo a {
+  font-family: 'Montserrat', sans-serif;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: whitesmoke;
+}
+
+body .nav .menuLabel .logo img {
+  padding-left: 10px;
+  height: 25px;
+}
+
+body .collapseMenu {
+  position: absolute;
+  top: 52px;
+  left: -100%;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, black), to(rgba(0, 0, 0, 0.85)));
+  background: linear-gradient(180deg, black 20%, rgba(0, 0, 0, 0.85) 100%);
+  color: white;
+  padding: 15px 10px;
+  z-index: 9;
+  width: 100vw;
+  text-align: left;
+  border-bottom-right-radius: 50px;
+  -webkit-transition: left 1.2s;
+  transition: left 1.2s;
+}
+
+body .collapseMenu ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  list-style-position: outside;
+}
+
+body .collapseMenu li {
+  padding: 15px 15px 15px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+body .collapseMenu li a {
+  text-decoration: none;
+  color: whitesmoke;
+  text-align: center;
+}
+
+body .collapseMenu li .menuIcon {
+  width: 50px;
+  padding: 0px 15px;
+  font-size: 20px;
+  color: grey;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+
+body .collapseMenu li .activeSection {
+  color: #d5d838;
+  font-weight: bolder;
+}
+
+body .activateCollapse {
+  left: 0;
+}
+
+.hero-shadow {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.35);
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.hero-shadow-bothsides {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(2%, black), color-stop(rgba(0, 0, 0, 0.45)), color-stop(98%, black));
+  background: linear-gradient(180deg, black 2%, rgba(0, 0, 0, 0.45), black 98%);
+}
+
+.first-hero-shadow {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(20%, rgba(0, 0, 0, 0.8)), color-stop(70%, black));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 20%, black 70%);
 }
 
 .wrapper {
@@ -20,89 +842,17 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
-  color: white;
-  background-image: url(/imgs/bg_small.jpg);
-  background-position: center;
+  z-index: 1;
+  overflow: hidden;
+  background-image: url(/imgs/bg2_big.jpg);
+  background-position: 5%;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  z-index: 0;
-}
-
-.wrapper .nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.wrapper .nav .menuLabel {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 3fr;
-      grid-template-columns: 1fr 3fr;
-  width: 100%;
-  padding: 15px 20px;
-  background-color: #000000;
-  border-bottom: 1px solid #131313;
-  z-index: 10;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}
-
-.wrapper .nav .menuLabel .menuBars {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-column-align: start;
-      justify-self: start;
-  background: none;
-  border: none;
-}
-
-.wrapper .nav .menuLabel .menuBars i {
-  font-size: 20px;
-  color: whitesmoke;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  -webkit-transition: color 0.8s, -webkit-transform 0.8s;
-  transition: color 0.8s, -webkit-transform 0.8s;
-  transition: transform 0.8s, color 0.8s;
-  transition: transform 0.8s, color 0.8s, -webkit-transform 0.8s;
-}
-
-.wrapper .nav .menuLabel .menuBars .animationBars {
-  -webkit-transform: rotateZ(180deg);
-          transform: rotateZ(180deg);
-  color: #d5d838;
-}
-
-.wrapper .nav .menuLabel .logo {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 3fr 1fr;
-      grid-template-columns: 3fr 1fr;
-  -ms-grid-column-align: end;
-      justify-self: end;
-}
-
-.wrapper .nav .menuLabel .logo h3 {
-  margin: 0;
-  font-size: 20px;
-  letter-spacing: 3px;
-  color: whitesmoke;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-}
-
-.wrapper .nav .menuLabel .logo img {
-  padding-left: 10px;
-  height: 25px;
+  -webkit-transition: -webkit-filter 1s;
+  transition: -webkit-filter 1s;
+  transition: filter 1s;
+  transition: filter 1s, -webkit-filter 1s;
 }
 
 .wrapper .scroll-fix::before {
@@ -112,84 +862,7 @@ body {
   margin-top: -50px;
 }
 
-.wrapper .collapseMenu {
-  position: absolute;
-  top: 52px;
-  left: -75%;
-  background: black;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, black), to(rgba(0, 0, 0, 0.85)));
-  background: linear-gradient(180deg, black 20%, rgba(0, 0, 0, 0.85) 100%);
-  color: white;
-  padding: 15px 10px;
-  text-align: left;
-  border-bottom-right-radius: 50px;
-  -webkit-transition: left 1.2s;
-  transition: left 1.2s;
-  z-index: 9;
-}
-
-.wrapper .collapseMenu ul {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  list-style-position: outside;
-}
-
-.wrapper .collapseMenu li {
-  padding: 15px 15px 15px 0;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.wrapper .collapseMenu li a {
-  text-decoration: none;
-  color: whitesmoke;
-}
-
-.wrapper .collapseMenu li .fas {
-  padding: 0px 15px;
-  color: #d5d838;
-  color: grey;
-  -webkit-transition: color 0.5s;
-  transition: color 0.5s;
-}
-
-.wrapper .collapseMenu li .activeSection {
-  color: #d5d838;
-  font-weight: bolder;
-}
-
-.wrapper .activateCollapse {
-  left: 0;
-}
-
-.fa-calculator, .fa-fire-alt, .fa-book-reader, .fa-home {
-  color: #d5d838;
-}
-
-.hero-shadow, .hero-shadow-reverse, .hero-shadow-bothsides, .hero-shadow-quote {
-  position: absolute;
-  background: black;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, rgba(0, 0, 0, 0.6)), to(black));
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, black 100%);
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
-
-.hero-shadow-quote {
-  background-color: rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
-  border-radius: 25px;
-}
-
-.hero-shadow-bothsides {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, black), color-stop(rgba(0, 0, 0, 0.8)), color-stop(95%, black));
-  background: linear-gradient(180deg, black 5%, rgba(0, 0, 0, 0.8), black 95%);
-}
-
-.header {
+.wrapper .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -204,38 +877,48 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  width: 100%;
-  height: 100vh;
-  background-image: url(/imgs/headerSmall2.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  margin-top: -60px;
   z-index: 0;
-  margin-top: -55px;
-  text-shadow: 2px 2px 2px black;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background: none;
 }
 
-.header h1 {
-  color: white;
+.wrapper .header h1 {
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 24px;
-  padding: 5px;
+  margin-bottom: 0;
+  padding: 0px 15px;
+  font-family: 'Russo One', sans-serif;
+  font-weight: bolder;
+  font-size: 45px;
+  color: #d1d1d1;
+  text-shadow: 8px 8px 5px black;
 }
 
-.header span {
+.wrapper .header span {
+  font-family: 'Pacifico', sans-serif;
   color: #d5d838;
   text-align: center;
   font-size: 16px;
-  padding: 5px;
+  text-shadow: 3px 3px 6px black;
+  padding: 0px 0px;
+  margin-top: 0;
   margin-bottom: 50px;
 }
 
-.articlesListSection {
-  overflow: hidden;
-  z-index: 1;
+.errorBlurClose {
+  -webkit-filter: blur(0);
+          filter: blur(0);
+  -webkit-transition: -webkit-filter 1s;
+  transition: -webkit-filter 1s;
+  transition: filter 1s;
+  transition: filter 1s, -webkit-filter 1s;
+}
+
+.errorBlurShow {
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
 }
 
 section {
@@ -247,10 +930,40 @@ section {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  overflow: hidden;
   height: 100%;
   width: 100%;
-  background-position: center;
-  background-size: cover;
+}
+
+section .description {
+  margin: 20px 30px 0px 30px;
+}
+
+section .headerTitle {
+  margin: 0px 30px;
+  padding: 30px 0px 20px 0px;
+  text-align: left;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+section .headerTitle .headerIcons {
+  padding: 0 10px 0 0;
+  color: #d5d838;
+}
+
+section .underline {
+  margin: 0px 30px;
+  height: 1px;
+  background-color: #cecece;
+}
+
+section .headerSubtitle {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 20px;
+  margin: 20px 30px;
 }
 
 section .highlighted {
@@ -258,24 +971,12 @@ section .highlighted {
   font-weight: bold;
 }
 
-section .description, section .activeQuote {
-  margin: 0px 30px 0px 30px;
-}
-
-section .allQuotes {
+.motivationSection .allQuotes {
   display: none;
 }
 
-section .activeQuote {
+.motivationSection .activeQuote {
   position: relative;
-  text-align: center;
-  min-height: 130px;
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-}
-
-section .activeQuote .quoteContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -283,103 +984,158 @@ section .activeQuote .quoteContainer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 10px 0;
-  color: #e6e6e6;
-}
-
-section .activeQuote .quoteContainer .quoteAuthor {
-  padding-top: 15px;
-  font-size: 14px;
-}
-
-section .quoteChange {
-  font-size: 14px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 30px 0px 30px;
+  z-index: 0;
+  min-height: 330px;
+  font-family: 'Just Me Again Down Here';
+  font-size: 36px;
+  color: #e0e0e0;
   text-align: center;
-  margin: 20px auto;
-  width: 70px;
-  background-color: #d5d838;
-  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
 }
 
-section .quoteChange i {
+.motivationSection .activeQuote .quoteContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.motivationSection .activeQuote .quoteContainer .quoteAuthor {
+  padding-top: 10px;
+  font-size: 26px;
+  color: #b3b3b3;
+}
+
+.motivationSection .quoteChangeBtn {
+  margin: 10px auto;
+  margin-bottom: 30px;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  background-color: #d5d838;
+  -webkit-box-shadow: 0px 5px 10px black;
+          box-shadow: 0px 5px 10px black;
+  border: none;
+  border-radius: 20px;
+  -webkit-transition: -webkit-box-shadow 0.05s, -webkit-transform 0.05s;
+  transition: -webkit-box-shadow 0.05s, -webkit-transform 0.05s;
+  transition: box-shadow 0.05s, transform 0.05s;
+  transition: box-shadow 0.05s, transform 0.05s, -webkit-box-shadow 0.05s, -webkit-transform 0.05s;
+}
+
+.motivationSection .quoteChangeBtn i {
+  font-size: 20px;
   padding: 10px;
   color: black;
 }
 
-section .quoteChange .transformIcons {
+.motivationSection .quoteChangeBtn .transformIcons {
   -webkit-animation: transformIcon 0.8s ease 0s 1 normal forwards;
           animation: transformIcon 0.8s ease 0s 1 normal forwards;
 }
 
-section .quoteChange .nextTransformIcons {
+.motivationSection .quoteChangeBtn .nextTransformIcons {
   -webkit-animation: nextTransformIcon 0.8s ease 0s 1 normal forwards;
           animation: nextTransformIcon 0.8s ease 0s 1 normal forwards;
 }
 
-section h3 {
-  padding: 30px 0px 20px 0px;
-  margin: 0px 30px;
-  font-size: 18px;
-  text-align: left;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.motivationSection .quoteChangeBtn:active {
+  -webkit-box-shadow: 0 1px 3px black inset;
+          box-shadow: 0 1px 3px black inset;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
 }
 
-section .underline {
-  margin: 0px 30px 30px 30px;
-  height: 1px;
-  background-color: whitesmoke;
-  background-color: #cecece;
+.articlesListSection {
+  background-color: #000000;
 }
 
-section .articlesPages {
+.articlesListSection .articlesPagesContainer {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100vw;
-  margin-top: -30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
 }
 
-section .articlesPages .pageArticle {
-  width: 100vw;
-}
-
-section .articlesPages .articlesFirstPage {
+.articlesListSection .articlesPagesContainer .pageArticle {
   position: absolute;
   opacity: 0;
   padding: 0px 30px;
+  width: 100%;
   -webkit-transition: opacity 0.5s ease-out;
   transition: opacity 0.5s ease-out;
 }
 
-section .articlesPages .articlesSecondPage {
-  position: absolute;
-  opacity: 0;
-  padding: 0px 30px;
-  -webkit-transition: opacity 0.5s ease-out;
-  transition: opacity 0.5s ease-out;
+.articlesListSection .articlesPagesContainer .pageArticle a {
+  text-decoration: none;
+  border: none;
+  color: whitesmoke;
 }
 
-section .articlesPages .activePage {
-  position: relative;
-  opacity: 1;
-  z-index: 10;
+.articlesListSection .articlesPagesContainer .pageArticle a .firstArticle {
+  background-image: url(/imgs/article_podstawy.jpg);
 }
 
-section .artCard {
+.articlesListSection .articlesPagesContainer .pageArticle a .secondArticle {
+  background-image: url(/imgs/article_zdrowiepsych.jpg);
+}
+
+.articlesListSection .articlesPagesContainer .pageArticle a .thirdArticle {
+  background-image: url(/imgs/article_zmeczenie.jpg);
+}
+
+.articlesListSection .articlesPagesContainer .pageArticle a .fourthArticle {
+  background-image: url(/imgs/article_sauna.jpg);
+}
+
+.articlesListSection .articlesPagesContainer .pageArticle a .fifthArticle {
+  background-image: url(/imgs/bledySmall.jpg);
+}
+
+.articlesListSection .articlesPagesContainer .pageArticle a .sixthArticle {
+  background-image: url(/imgs/burgerSmall.jpg);
+}
+
+.articlesListSection .articlesPagesContainer .pageArticle a .artCard {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  margin: 30px auto;
   height: 250px;
   width: 100%;
-  margin: 30px 0px;
+  z-index: 1;
+  max-width: 500px;
   background-size: cover;
   background-position: center;
-  z-index: 1;
 }
 
-section .artCard .textCard {
+.articlesListSection .articlesPagesContainer .pageArticle a .artCard .textCard {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -390,64 +1146,42 @@ section .artCard .textCard {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  z-index: -1;
   height: 100%;
   width: 100%;
-  background: black;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), color-stop(70%, rgba(0, 0, 0, 0.9)));
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.9) 70%);
-  z-index: -1;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
 }
 
-section .artCard .textCard h3, section .artCard .textCard span {
+.articlesListSection .articlesPagesContainer .pageArticle a .artCard .textCard h3, .articlesListSection .articlesPagesContainer .pageArticle a .artCard .textCard span {
   margin: 0 10px;
-  padding: 10px;
+  padding: 10px 0;
   text-align: left;
 }
 
-section .artCard .textCard h3 {
+.articlesListSection .articlesPagesContainer .pageArticle a .artCard .textCard h3 {
   font-size: 20px;
-  border-bottom: 1px solid grey;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-section .artCard .textCard span {
+.articlesListSection .articlesPagesContainer .pageArticle a .artCard .textCard span {
   font-size: 14px;
 }
 
-.firstArticle {
-  background-image: url(/imgs/article_zmeczenie.jpg);
+.articlesListSection .articlesPagesContainer .pageArticle a .artCard .textCard .articleUnderline {
+  margin: 0 10px;
+  padding: 0 0;
+  height: 1px;
+  background-color: grey;
 }
 
-.secondArticle {
-  background-image: url(/imgs/article_zdrowiepsych.jpg);
-}
-
-.thirdArticle {
-  background-image: url(/imgs/article_sauna.jpg);
-}
-
-.fourthArticle {
-  background-image: url(/imgs/article_podstawy.jpg);
-}
-
-.fifthArticle {
-  background-image: url(/imgs/bledySmall.jpg);
-}
-
-.sixthArticle {
-  background-image: url(/imgs/burgerSmall.jpg);
-}
-
-.articlesListSection {
-  background-color: #000000;
-}
-
-.articlesListSection a {
-  text-decoration: none;
-  border: none;
-  color: whitesmoke;
+.articlesListSection .articlesPagesContainer .activePage {
+  position: relative;
+  z-index: 10;
+  opacity: 1;
 }
 
 .articlesListSection .paginationArticles {
@@ -457,47 +1191,86 @@ section .artCard .textCard span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 20px;
+  height: 60px;
+  font-size: 20px;
 }
 
-.articlesListSection .paginationArticles ul {
-  color: black;
+.articlesListSection .paginationArticles .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 0;
+  color: black;
 }
 
-.articlesListSection .paginationArticles ul li {
+.articlesListSection .paginationArticles .pagination .page-item {
   color: black;
   background-color: black;
+  cursor: pointer;
 }
 
-.articlesListSection .paginationArticles ul li a {
-  background-color: black;
+.articlesListSection .paginationArticles .pagination .page-item .page-link {
+  text-decoration: none;
+  -ms-flex-item-align: self-start;
+      -ms-grid-row-align: self-start;
+      align-self: self-start;
+  margin: 0 1.5px;
+  padding: 10px 20px;
+  background-color: #111111;
   color: whitesmoke;
-  border: 1px solid #d5d838;
+  border: none;
+  -webkit-transition: background-color 0.3s, padding 0.3s;
+  transition: background-color 0.3s, padding 0.3s;
 }
 
-.articlesListSection .paginationArticles ul li a:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.articlesListSection .paginationArticles .pagination .page-item .pageNext {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
-.articlesListSection .paginationArticles ul li a:hover {
-  background-color: #d5d838;
-  color: black;
-  border: 1px solid black;
+.articlesListSection .paginationArticles .pagination .page-item .pagePrevious {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
-.articlesListSection .paginationArticles ul li .pageNext:hover, .articlesListSection .paginationArticles ul li .pagePrevious:hover {
-  background: none;
-  color: whitesmoke;
-  border: 1px solid #d5d838;
+.articlesListSection .paginationArticles .pagination .page-item .pagePrevious .nextArrow, .articlesListSection .paginationArticles .pagination .page-item .pagePrevious .previousArrow {
+  position: relative;
 }
 
-.articlesListSection .paginationArticles .active {
-  background-color: #d5d838;
-  color: black;
-  font-weight: bolder;
-  border: 1px solid black;
+.articlesListSection .paginationArticles .pagination .page-item .pagePrevious .paginationLeft {
+  -webkit-animation: paginationLeft 0.5s;
+          animation: paginationLeft 0.5s;
+}
+
+.articlesListSection .paginationArticles .pagination .page-item .pagePrevious .repeatPaginationLeft {
+  -webkit-animation: repeatPaginationLeft 0.5s;
+          animation: repeatPaginationLeft 0.5s;
+}
+
+.articlesListSection .paginationArticles .pagination .page-item .pagePrevious .paginationRight {
+  -webkit-animation: paginationRight 0.5s;
+          animation: paginationRight 0.5s;
+}
+
+.articlesListSection .paginationArticles .pagination .page-item .pagePrevious .repeatPaginationRight {
+  -webkit-animation: repeatPaginationRight 0.5s;
+          animation: repeatPaginationRight 0.5s;
+}
+
+.articlesListSection .paginationArticles .pagination .page-item .active {
+  background-color: #1a1a1a;
+  padding: 14px 20px;
+  border-radius: 5px;
 }
 
 .currentArticleSection {
@@ -511,9 +1284,14 @@ section .artCard .textCard span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow: hidden;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+}
+
+.currentArticleSection .hero-shadow-bothsides {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(2%, black), color-stop(rgba(0, 0, 0, 0.55)), color-stop(98%, black));
+  background: linear-gradient(180deg, black 2%, rgba(0, 0, 0, 0.55), black 98%);
 }
 
 .currentArticleSection .allArticles {
@@ -534,7 +1312,7 @@ section .artCard .textCard span {
   transition: max-height 2s;
 }
 
-.currentArticleSection .activeArticle .articleInfo {
+.currentArticleSection .activeArticle .articleText {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -544,76 +1322,119 @@ section .artCard .textCard span {
           flex-direction: column;
 }
 
-.currentArticleSection .activeArticle .articleInfo .articleDate, .currentArticleSection .activeArticle .articleInfo h5 {
+.currentArticleSection .activeArticle .articleText .headerSubtitle {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 20px;
+  margin: 0;
+}
+
+.currentArticleSection .activeArticle .articleText .underline {
+  margin: 10px 0 10px 0;
+}
+
+.currentArticleSection .activeArticle .articleText .articleInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.currentArticleSection .activeArticle .articleText .articleInfo .articleDate, .currentArticleSection .activeArticle .articleText .articleInfo h5 {
   display: inline-block;
 }
 
-.currentArticleSection .activeArticle img {
+.currentArticleSection .activeArticle .articleText .articleInfo .imgArticleMain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 30px 0 0 0;
+  overflow: hidden;
+  width: 100%;
+  max-height: 350px;
+  border: 1px 1px solid;
+}
+
+.currentArticleSection .activeArticle .articleText .articleInfo .imgArticleMain img {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  max-width: 500px;
   width: 100%;
-  margin: 20px;
   background-size: cover;
   background-position: center;
 }
 
-.currentArticleSection .activeArticle h5, .currentArticleSection .activeArticle .articleDate, .currentArticleSection .activeArticle .source {
-  margin: 2px;
+.currentArticleSection .activeArticle .articleText .articleInfo .articleDetailsContainer .articleAuthor, .currentArticleSection .activeArticle .articleText .articleInfo .articleDetailsContainer .articleDate, .currentArticleSection .activeArticle .articleText .articleInfo .articleDetailsContainer .source {
+  margin: 10px 2px 0 2px;
   font-size: 12px;
   text-align: left;
   color: #bebebe;
 }
 
-.currentArticleSection .activeArticle h5 .fas, .currentArticleSection .activeArticle h5 .far, .currentArticleSection .activeArticle .articleDate .fas, .currentArticleSection .activeArticle .articleDate .far, .currentArticleSection .activeArticle .source .fas, .currentArticleSection .activeArticle .source .far {
+.currentArticleSection .activeArticle .articleText .articleInfo .articleDetailsContainer .articleAuthor .fas, .currentArticleSection .activeArticle .articleText .articleInfo .articleDetailsContainer .articleAuthor .far, .currentArticleSection .activeArticle .articleText .articleInfo .articleDetailsContainer .articleDate .fas, .currentArticleSection .activeArticle .articleText .articleInfo .articleDetailsContainer .articleDate .far, .currentArticleSection .activeArticle .articleText .articleInfo .articleDetailsContainer .source .fas, .currentArticleSection .activeArticle .articleText .articleInfo .articleDetailsContainer .source .far {
   padding-right: 5px;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle, .currentArticleSection .activeArticle .cwiczeniaArticle, .currentArticleSection .activeArticle .saunaArticle, .currentArticleSection .activeArticle .podstawyArticle, .currentArticleSection .activeArticle .bledyArticle, .currentArticleSection .activeArticle .postanowieniaArticle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.currentArticleSection .activeArticle .zmeczenieArticle h3, .currentArticleSection .activeArticle .zmeczenieArticle .underline, .currentArticleSection .activeArticle .cwiczeniaArticle h3, .currentArticleSection .activeArticle .cwiczeniaArticle .underline, .currentArticleSection .activeArticle .saunaArticle h3, .currentArticleSection .activeArticle .saunaArticle .underline, .currentArticleSection .activeArticle .podstawyArticle h3, .currentArticleSection .activeArticle .podstawyArticle .underline, .currentArticleSection .activeArticle .bledyArticle h3, .currentArticleSection .activeArticle .bledyArticle .underline, .currentArticleSection .activeArticle .postanowieniaArticle h3, .currentArticleSection .activeArticle .postanowieniaArticle .underline {
-  margin: 0;
-}
-
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle, .currentArticleSection .activeArticle .saunaArticle .mainArticle, .currentArticleSection .activeArticle .podstawyArticle .mainArticle, .currentArticleSection .activeArticle .bledyArticle .mainArticle, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle {
+.currentArticleSection .activeArticle .articleText .mainArticle {
   margin-top: 20px;
   text-align: left;
   font-size: 14px;
-  color: #d6d6d6;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .Section, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .Section, .currentArticleSection .activeArticle .saunaArticle .mainArticle .Section, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .Section, .currentArticleSection .activeArticle .bledyArticle .mainArticle .Section, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle .Section {
-  padding-top: 10px;
-  line-height: 24px;
+.currentArticleSection .activeArticle .articleText .mainArticle .Section {
+  padding-top: 20px;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .saunaArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .bledyArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle .firstSection {
-  font-weight: bold;
+.currentArticleSection .activeArticle .articleText .mainArticle .Section p {
+  font-size: 18px;
+  line-height: 34px;
+  color: #c9c9c9;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .saunaArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .bledyArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle .bibliography {
-  font-size: 12px;
-}
-
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle h5, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle h5, .currentArticleSection .activeArticle .saunaArticle .mainArticle h5, .currentArticleSection .activeArticle .podstawyArticle .mainArticle h5, .currentArticleSection .activeArticle .bledyArticle .mainArticle h5, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle h5 {
-  color: white;
+.currentArticleSection .activeArticle .articleText .mainArticle .Section h5 {
+  color: #e0e0e0;
   padding-bottom: 5px;
   font-size: 18px;
   text-align: left;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-weight: bolder;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .source, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .source, .currentArticleSection .activeArticle .saunaArticle .mainArticle .source, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .source, .currentArticleSection .activeArticle .bledyArticle .mainArticle .source, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle .source {
+.currentArticleSection .activeArticle .articleText .mainArticle .Section ul li {
+  color: #c9c9c9;
+  font-size: 18px;
+  line-height: 34px;
+}
+
+.currentArticleSection .activeArticle .articleText .mainArticle .Section .bibliography {
+  font-size: 12px;
+}
+
+.currentArticleSection .activeArticle .articleText .mainArticle .Section .source {
+  font-size: 14px;
   display: block;
+}
+
+.currentArticleSection .activeArticle .articleText .mainArticle .Section .source .sourceLink {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.currentArticleSection .activeArticle .articleText .mainArticle .firstSection {
+  font-weight: bold;
 }
 
 .currentArticleSection .dropdownArticles {
@@ -628,20 +1449,20 @@ section .artCard .textCard span {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff00), color-stop(85%, #000000));
-  background: linear-gradient(180deg, #ffffff00 0%, #000000 85%);
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 450px;
-  text-align: center;
   z-index: 10;
-  cursor: pointer;
+  text-align: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff00), color-stop(85%, #000000));
+  background: linear-gradient(180deg, #ffffff00 0%, #000000 85%);
+  height: 450px;
   -webkit-transition: height 1s 1s, padding 1s 1s, margin 1s 1s;
   transition: height 1s 1s, padding 1s 1s, margin 1s 1s;
 }
 
 .currentArticleSection .dropdownArticles .aRollUp {
+  cursor: pointer;
   position: absolute;
   text-decoration: none;
   border: none;
@@ -661,10 +1482,15 @@ section .artCard .textCard span {
 }
 
 .currentArticleSection .dropdownArticles .clickToExtend {
+  cursor: pointer;
   opacity: 1;
   position: relative;
-  -webkit-transition: opacity 0.3s 2.2s;
-  transition: opacity 0.3s 2.2s;
+  -webkit-transition: opacity 0.3s 2.2s, color 0.3s;
+  transition: opacity 0.3s 2.2s, color 0.3s;
+}
+
+.currentArticleSection .dropdownArticles .clickToExtend:hover {
+  color: #d5d838;
 }
 
 .currentArticleSection .dropdownArticles .dropdownSpanChange {
@@ -691,12 +1517,12 @@ section .artCard .textCard span {
 }
 
 .currentArticleSection .heightReset {
-  max-height: 7000px;
+  max-height: 12000px;
 }
 
 .currentArticleSection .dropdownHeight {
   height: 50px;
-  padding: 0;
+  padding-top: 20px;
   margin: 0;
 }
 
@@ -708,18 +1534,24 @@ section .artCard .textCard span {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin: auto;
 }
 
 .trainingsSection .trainingsCards .training, .calculatorSection .trainingsCards .training {
   margin: 20px 30px;
   max-height: 80px;
+  max-width: 750px;
+  overflow: hidden;
+  z-index: 5;
+  cursor: pointer;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, black), color-stop(90%, black));
   background: linear-gradient(180deg, black 30%, black 90%);
   border-radius: 10px;
-  overflow: hidden;
   border: 1px solid #141414;
-  -webkit-transition: 1s;
-  transition: 1s;
+  -webkit-transition: max-height 0.8s 0.15s, border 0.8s 0.15s;
+  transition: max-height 0.8s 0.15s, border 0.8s 0.15s;
 }
 
 .trainingsSection .trainingsCards .training p, .calculatorSection .trainingsCards .training p {
@@ -735,18 +1567,14 @@ section .artCard .textCard span {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   margin: 0 0 20px 0;
 }
 
 .trainingsSection .trainingsCards .training .trainingMovies a, .calculatorSection .trainingsCards .training .trainingMovies a {
+  text-decoration: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -754,28 +1582,23 @@ section .artCard .textCard span {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #e0e0e0;
-  text-decoration: none;
+  margin: auto;
   padding: 10px;
+  color: #e0e0e0;
 }
 
 .trainingsSection .trainingsCards .training .trainingMovies a i, .calculatorSection .trainingsCards .training .trainingMovies a i {
-  color: #b31818;
   font-size: 40px;
-  text-decoration: none;
-  border-radius: 5px;
+  color: #b31818;
 }
 
-.trainingsSection .trainingsCards .training .trainingMovies a p, .calculatorSection .trainingsCards .training .trainingMovies a p {
+.trainingsSection .trainingsCards .training .trainingMovies a span, .calculatorSection .trainingsCards .training .trainingMovies a span {
   font-size: 12px;
+  text-align: center;
+  width: 180px;
   padding: 0 10px;
   margin: 0;
   background-color: #9b1515;
@@ -788,32 +1611,36 @@ section .artCard .textCard span {
   top: -50px;
   height: 200px;
   width: 100%;
+  z-index: 1;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  -webkit-transition: top 0.5s;
-  transition: top 0.5s;
-  z-index: 1;
+  -webkit-transition: top 0.6s 0.1s;
+  transition: top 0.6s 0.1s;
 }
 
 .trainingsSection .trainingsCards .backgroundTraining h3, .calculatorSection .trainingsCards .backgroundTraining h3 {
+  z-index: 1;
   text-align: center;
   padding: 70px 0px;
   letter-spacing: 4px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  z-index: 1;
+  -webkit-transition: 0.6s 0.1s;
+  transition: 0.6s 0.1s;
+}
+
+.trainingsSection .trainingsCards .backgroundTraining #headerTrainingFunc, .calculatorSection .trainingsCards .backgroundTraining #headerTrainingFunc {
+  padding: 60px 0;
 }
 
 .trainingsSection .trainingsCards .backgroundTraining .backgroundTrainingShadow, .calculatorSection .trainingsCards .backgroundTraining .backgroundTrainingShadow {
   position: absolute;
+  z-index: -1;
   height: 100%;
   width: 100%;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), color-stop(95%, black));
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, black 95%);
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
-  z-index: -1;
 }
 
 .trainingsSection .trainingsCards .backgroundCardio, .calculatorSection .trainingsCards .backgroundCardio {
@@ -833,8 +1660,8 @@ section .artCard .textCard span {
 }
 
 .trainingsSection .trainingsCards .training:hover, .calculatorSection .trainingsCards .training:hover {
-  max-height: 1000px;
-  border: 1px solid #d5d838;
+  max-height: 800px;
+  border: 1px solid #606119;
 }
 
 .trainingsSection .trainingsCards .training:hover .backgroundTraining, .calculatorSection .trainingsCards .training:hover .backgroundTraining {
@@ -842,8 +1669,95 @@ section .artCard .textCard span {
 }
 
 .trainingsSection .trainingsCards .training:hover h3, .calculatorSection .trainingsCards .training:hover h3 {
-  padding: 20px 0px;
-  text-shadow: 2px 2px 2px black;
+  margin: 0;
+  letter-spacing: 4px;
+  text-shadow: 2px 2px 5px black;
+}
+
+.dietSection {
+  overflow: hidden;
+}
+
+.dietSection .dietContainer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  max-width: 560px;
+  padding: 10px 30px;
+  overflow: hidden;
+}
+
+.dietSection .dietContainer a {
+  text-decoration: none;
+  border: none;
+  color: whitesmoke;
+  width: 100%;
+  z-index: 6;
+}
+
+.dietSection .dietContainer a .modalOwn {
+  background-image: url(/imgs/dietCardModal.jpg);
+}
+
+.dietSection .dietContainer a .redirect {
+  background-image: url(/imgs/dietCardRedirect.jpg);
+}
+
+.dietSection .dietContainer a .dietCard {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  height: 200px;
+  width: 100%;
+  min-width: 0px;
+  max-width: 560px;
+  z-index: 5;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.dietSection .dietContainer a .dietCard .textDietHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  overflow: hidden;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(90%, rgba(0, 0, 0, 0.9)));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 90%);
+}
+
+.dietSection .dietContainer a .dietCard .textDietHeader .dietText {
+  text-align: center;
+  text-shadow: 2px 2px 5px black;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: hidden;
 }
 
 .calculatorSection .calculator {
@@ -860,23 +1774,25 @@ section .artCard .textCard span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
 }
 
-.calculatorSection .calculator .dropdown {
-  max-height: 50px;
+.calculatorSection .calculator .dropdownCalculator {
   margin: 30px 0px 0px 0px;
-  font-size: 14px;
+  z-index: 10;
   overflow: hidden;
+  cursor: pointer;
+  max-height: 50px;
+  font-size: 14px;
   border: 1px solid #1f1d1d;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
-  z-index: 5;
   -webkit-transition: max-height 0.5s;
   transition: max-height 0.5s;
 }
 
-.calculatorSection .calculator .dropdown h5 {
+.calculatorSection .calculator .dropdownCalculator h5 {
   font-size: 16px;
   padding: 15px 20px;
   text-align: center;
@@ -886,7 +1802,7 @@ section .artCard .textCard span {
   background-color: #d5d838;
 }
 
-.calculatorSection .calculator .dropdown h5 i {
+.calculatorSection .calculator .dropdownCalculator h5 i {
   padding: 0px 0px 0px 10px;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
@@ -894,46 +1810,30 @@ section .artCard .textCard span {
   transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
-.calculatorSection .calculator .dropdown ul {
+.calculatorSection .calculator .dropdownCalculator ul {
   list-style-type: none;
   text-align: center;
   padding: 0;
-  font-size: 14px;
-  letter-spacing: 1px;
 }
 
-.calculatorSection .calculator .dropdown ul li {
+.calculatorSection .calculator .dropdownCalculator ul li {
   position: relative;
   text-align: center;
   margin: 15px 0px;
   padding: 5px 20px;
   width: 100%;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
-.calculatorSection .calculator .dropdown ul li a {
+.calculatorSection .calculator .dropdownCalculator ul li a {
   text-decoration: none;
   color: white;
   -webkit-transition: color 0.4s;
   transition: color 0.4s;
 }
 
-.calculatorSection .calculator .dropdown ul li .underlineCalc {
-  position: relative;
-  left: calc(50% - 10px);
-  height: 1px;
-  width: 20px;
-  background-color: #d5d838;
-  margin-top: 5px;
-  -webkit-transition: width 0.4s, left 0.4s;
-  transition: width 0.4s, left 0.4s;
-}
-
-.calculatorSection .calculator .dropdown ul li .activeDropdownLink {
-  width: 120px;
-  left: calc(50% - 60px);
-}
-
-.calculatorSection .calculator .dropdown ul li .activeDropdownLinkColor {
+.calculatorSection .calculator .dropdownCalculator ul li .activeDropdownLinkColor {
   color: #d5d838;
 }
 
@@ -946,8 +1846,481 @@ section .artCard .textCard span {
           transform: rotateX(-180deg);
 }
 
+.calculatorSection .calculator .activeCalc {
+  position: relative;
+}
+
+.calculatorSection .calculator .activeCalc .calc {
+  display: inline-block;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  opacity: 0;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 10;
+  margin: 30px;
+  padding: 20px;
+  max-width: 600px;
+  border-radius: 25px;
+  border: 1px solid #0c0c0c;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: whitesmoke;
+  -webkit-box-shadow: 0px 0px 20px #050505;
+          box-shadow: 0px 0px 20px #050505;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  height: 75px;
+  width: 100%;
+  padding: 5px;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 20;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-self: start;
+  width: 100px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .genderIconLink {
+  text-decoration: none;
+  padding: 0px 10px;
+  cursor: pointer;
+  font-size: 36px;
+  color: none;
+  -webkit-transition: color 0.4s, font-size 0.2s;
+  transition: color 0.4s, font-size 0.2s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .female {
+  color: #c762ba;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .male {
+  color: #3f66cf;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .activeGender {
+  color: #d5d838;
+  font-size: 42px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .unactiveGender {
+  font-size: 28px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcQuestion {
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  padding: 10px;
+  text-align: right;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput {
+  -ms-grid-column-align: start;
+      justify-self: start;
+  margin: 0 10px;
+  padding: 10px;
+  cursor: pointer;
+  width: 80px;
+  height: 35px;
+  text-align: center;
+  font-size: 18px;
+  background: none;
+  border: 1px solid grey;
+  border-radius: 20px;
+  color: white;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .activeInput {
+  z-index: 100;
+  border: 1px solid #d5d838 !important;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus {
+  z-index: 1;
+  outline: none;
+  border: 1px solid #d5d838;
+  -webkit-transition: border 0.3s;
+  transition: border 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput::-webkit-input-placeholder {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:-ms-input-placeholder {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput::-ms-input-placeholder {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput::placeholder {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus::-webkit-input-placeholder {
+  color: #ffffff00;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus:-ms-input-placeholder {
+  color: #ffffff00;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus::-ms-input-placeholder {
+  color: #ffffff00;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus::placeholder {
+  color: #ffffff00;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer input::-webkit-outer-spin-button,
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainerActivity {
+  z-index: 10;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainer {
+  position: relative;
+  height: 100%;
+  padding-top: 10px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainer .dropdownKcalCalc {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  top: 10px;
+  left: calc(50% - 90px);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid grey;
+  border-radius: 20px;
+  max-height: 45px;
+  width: 180px;
+  color: whitesmoke;
+  text-align: center;
+  -webkit-box-shadow: 0px 0px 20px #000;
+          box-shadow: 0px 0px 20px #000;
+  z-index: 2;
+  -webkit-transition: max-height 0.6s, border 0.3s, background-color 0.2s;
+  transition: max-height 0.6s, border 0.3s, background-color 0.2s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainer .dropdownKcalCalc .detailsListElement {
+  outline: none !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  background: none;
+  padding: 10px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainer .dropdownKcalCalc .detailsListElement .arrowKcalDetailsList {
+  padding: 0 0 0 10px;
+  -webkit-transform-origin: 17px 9px;
+          transform-origin: 17px 9px;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainer .dropdownKcalCalc .detailsListElement .arrowKcalDetailsListActive {
+  -webkit-transform: rotate(0.5turn);
+          transform: rotate(0.5turn);
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainer .dropdownKcalCalc .choosenOption {
+  position: relative;
+  width: 180px;
+  padding: 10px;
+  color: grey;
+  background: none;
+  -webkit-transition: color 0.2s, border 0.3s, background-color 0.2s;
+  transition: color 0.2s, border 0.3s, background-color 0.2s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainer .dropdownKcalCalc .choosenOptionActive {
+  border-bottom: 1px solid #d5d838;
+  background-color: #d5d838;
+  color: black !important;
+  font-weight: bolder;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainer .dropdownKcalCalc .optionActive {
+  background-color: #d5d838;
+  color: black;
+  font-weight: bolder;
+  border-bottom: 1px solid #d5d838;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainer .dropdownKcalCalcActive {
+  max-height: 280px;
+  background-color: black;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .detailsInfoContainer .detailsInfo .selectContainer .borderActivity {
+  border: 1px solid #d5d838;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcResultBtn {
+  outline: none !important;
+  border: none !important;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-size: 16px;
+  width: 100%;
+  max-width: 200px;
+  height: 45px;
+  margin: 30px auto;
+  padding: 8px 16px;
+  -ms-grid-columns: 8fr 2fr;
+      grid-template-columns: 8fr 2fr;
+  font-weight: bolder;
+  color: black;
+  text-align: center;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  background-color: #d5d838;
+  -webkit-box-shadow: 0px 5px 10px black;
+          box-shadow: 0px 5px 10px black;
+  z-index: 1;
+  -webkit-transition: -webkit-box-shadow 0.11s, -webkit-transform 0.1s;
+  transition: -webkit-box-shadow 0.11s, -webkit-transform 0.1s;
+  transition: box-shadow 0.11s, transform 0.1s;
+  transition: box-shadow 0.11s, transform 0.1s, -webkit-box-shadow 0.11s, -webkit-transform 0.1s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcResultBtn:active {
+  -webkit-box-shadow: 0 2px 3px black inset;
+          box-shadow: 0 2px 3px black inset;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  opacity: 0;
+  z-index: -10;
+  overflow: hidden;
+  max-height: 0%;
+  -webkit-transition: max-height 0.5s, opacity 0.5s;
+  transition: max-height 0.5s, opacity 0.5s;
+  color: whitesmoke;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText {
+  position: absolute;
+  opacity: 0;
+  z-index: -11;
+  -webkit-transition: opacity 2s;
+  transition: opacity 2s;
+  top: -200px;
+  left: 0;
+  padding: 20px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .activeResult {
+  position: relative;
+  opacity: 1;
+  top: 0;
+  z-index: 1;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText {
+  text-align: center;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText .resultKcal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 5px;
+  padding: 10px 0px 0px 0px;
+  font-size: 26px;
+  color: whitesmoke;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText .highlightedResult {
+  color: #d5d838;
+  font-weight: bolder;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .resultShow {
+  position: relative;
+  opacity: 1;
+  top: 0;
+  z-index: 0;
+  max-height: 100%;
+}
+
+.calculatorSection .calculator .activeCalc .calcDisplay {
+  position: relative;
+  visibility: visible;
+  opacity: 1;
+  z-index: 10;
+  height: auto;
+  left: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.calculatorSection .calculator .calcsFAQ {
+  position: relative;
+  text-align: center;
+  margin: 50px 20px;
+}
+
+.calculatorSection .calculator .calcsFAQ .description {
+  text-align: center;
+}
+
 .calculatorSection .calculator .accordion {
-  margin: 0px 30px;
+  margin: 0px auto;
+  max-width: 600px;
 }
 
 .calculatorSection .calculator .accordion .card {
@@ -1038,10 +2411,15 @@ section .artCard .textCard span {
   transition: opacity 0.3s, transform 0.4s, -webkit-transform 0.4s;
 }
 
+.calculatorSection .calculator .accordion .card .card-body {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  color: whitesmoke;
+}
+
 .calculatorSection .calculator .accordion .show {
   font-size: 16px;
   text-align: left;
-  background-color: #0c0c0c;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   -webkit-transition: background-color 0.3s;
@@ -1051,456 +2429,16 @@ section .artCard .textCard span {
 .calculatorSection .calculator .accordion .collapsing {
   font-size: 16px;
   text-align: left;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.calculatorSection .calculator .activeCalc {
-  position: relative;
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-
-.calculatorSection .calculator .activeCalc .calc {
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  z-index: -100;
-  max-height: 0;
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
-  overflow: hidden;
-}
-
-.calculatorSection .calculator .activeCalc .calc .startCalc {
-  border-radius: 25px 25px 0px 0px;
-  padding: 20px;
-  text-align: center;
-  font-family: 'Montserrat', serif;
-}
-
-.calculatorSection .calculator .activeCalc .calc .startCalc .underline {
-  margin: 20px 20px 0px 20px;
-  background-color: #d5d838;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs {
-  font-family: 'Montserrat', serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 20px;
-  border: 1px solid #d5d838;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 25px;
-  z-index: 10;
-  max-height: 650px;
-  -webkit-transition: max-height 0.4s;
-  transition: max-height 0.4s;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  width: 100%;
-  height: 90px;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 20px;
-  z-index: 20;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 70px;
-  width: 100%;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .genderIconLink {
-  text-decoration: none;
-  font-size: 36px;
-  color: none;
-  padding: 15px;
-  -webkit-transition: color 0.4s, font-size 0.5s;
-  transition: color 0.4s, font-size 0.5s;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .female {
-  color: #c762ba;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .male {
-  color: #3f66cf;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .activeGender {
-  color: #d5d838;
-  font-size: 40px;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .unactiveGender {
-  font-size: 26px;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcQuestion {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-grid-column-align: start;
-      justify-self: start;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 14px;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput {
-  width: 100px;
-  height: 30px;
-  background: none;
-  border: 1px solid grey;
-  border-radius: 10px;
-  padding: 3px 6px;
-  color: white;
-  text-align: center;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .selectContainer {
-  width: 100px;
-  background-color: black;
-  border-radius: 10px;
-  -webkit-transition: border 0.3s;
-  transition: border 0.3s;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .selectContainer .activity-form {
-  background-color: black;
-  border-radius: 10px;
-  -ms-grid-column-align: end;
-      justify-self: end;
-  justify-items: end;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  text-align: center;
-  color: whitesmoke;
-  width: 100%;
-  margin: auto;
-  font-size: 14px;
-  outline: none !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-  padding: 5px;
-  border: 1px solid grey;
-  -webkit-transition: border 0.3s;
-  transition: border 0.3s;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .selectContainer .activity-form option {
-  background-color: black;
-  color: whitesmoke;
-  text-align: center;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .selectContainer .activity-form:focus {
-  outline: none;
-  border: 1px solid #d5d838;
-  -webkit-transition: border 0.3s;
-  transition: border 0.3s;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .activeInput {
-  border: 1px solid #d5d838 !important;
-  z-index: 100;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus {
-  outline: none;
-  border: 1px solid #d5d838;
-  -webkit-transition: border 0.3s;
-  transition: border 0.3s;
-  z-index: 1;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput::-webkit-input-placeholder {
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:-ms-input-placeholder {
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput::-ms-input-placeholder {
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput::placeholder {
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus::-webkit-input-placeholder {
-  color: #ffffff00;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus:-ms-input-placeholder {
-  color: #ffffff00;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus::-ms-input-placeholder {
-  color: #ffffff00;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus::placeholder {
-  color: #ffffff00;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer input::-webkit-outer-spin-button,
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .calcResultBtn, .calculatorSection .calculator .activeCalc .calc .calcInputs .kcalResultBtn {
-  outline: none !important;
-  border: none !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-  width: 150px;
-  margin: 30px 20px;
-  padding: 8px 16px;
-  -ms-grid-columns: 8fr 2fr;
-      grid-template-columns: 8fr 2fr;
-  font-family: 'Montserrat', sans-serif;
-  text-decoration: none;
-  font-weight: bolder;
-  color: black;
-  font-size: 16px;
-  text-align: center;
-  border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background-color: #d5d838;
-  z-index: 10;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .result {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  opacity: 0;
-  position: absolute;
-  -webkit-transition: opacity 0.5s;
-  transition: opacity 0.5s;
-  z-index: -10;
-  padding: 20px 20px;
-  border-top: 1px solid #d5d838;
-  overflow: hidden;
-  height: 150px;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .result .wrongInputs, .calculatorSection .calculator .activeCalc .calc .calcInputs .result .gapInputs, .calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText {
-  position: absolute;
-  opacity: 0;
-  z-index: -11;
-  -webkit-transition: opacity 2s;
-  transition: opacity 2s;
-  top: -200px;
-  left: 0;
-  width: 100%;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .result .wrongInputs, .calculatorSection .calculator .activeCalc .calc .calcInputs .result .gapInputs {
-  color: #d5d838;
-  font-weight: bolder;
-  text-align: center;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .result .activeResult {
-  position: relative;
-  opacity: 1;
-  top: 0;
-  z-index: 5;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText {
-  text-align: center;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText .resultKcal {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 5px;
-  padding: 20px 0px 0px 0px;
-  font-size: 26px;
-  color: whitesmoke;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText .highlightedResult {
-  color: #d5d838;
-  font-weight: bolder;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .errorResult {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 20px 0 30px 0;
-  border-top: 1px solid #d5d838;
-  width: 100%;
-  z-index: -11;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputs .resultShow {
-  position: relative;
-  opacity: 1;
-  top: 0;
-  z-index: 5;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputHeightDefault {
-  max-height: 650px;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcBmiInputHeightDefault {
-  max-height: 425px;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcYmcaInputHeightDefault {
-  max-height: 425px;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcInputHeightStretch {
-  max-height: 800px;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcBmiInputHeightStretch {
-  max-height: 575px;
-}
-
-.calculatorSection .calculator .activeCalc .calc .calcYmcaInputHeightStretch {
-  max-height: 575px;
-}
-
-.calculatorSection .calculator .activeCalc .calcDisplay {
-  position: relative;
-  visibility: visible;
-  opacity: 1;
-  z-index: 10;
-  max-height: 1200px;
-  left: 0;
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
-}
-
-.calculatorSection .calculator .calcsFAQ {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.socials {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding: 0px 0px 30px 0px;
-  background-color: black;
-  background-position: center;
-  background-size: cover;
-  text-align: center;
-}
-
-.socials p {
-  padding: 0 30px;
-}
-
-.socials .footerIcons {
-  padding: 10px;
-  text-align: center;
-}
-
-.socials .footerIcons .underline {
-  background-color: #252525;
-}
-
-.socials .footerIcons .icon {
-  text-align: center;
-  padding: 0px 20px;
-  font-size: 30px;
-  text-decoration: none;
-  color: #d5d838;
 }
 
 .footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1508,12 +2446,44 @@ section .artCard .textCard span {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px;
-  border-top: 1px solid whitesmoke;
+  border-top: 1px solid #1f1d1d;
   background-color: black;
+  margin: 0;
+}
+
+.footer h3 {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.footer .footerIcons {
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.footer .footerIcons .icon {
+  border-radius: 100%;
+  background: #161616;
+  text-align: center;
+  padding: 10px 15px;
+  margin: 0px 5px;
+  font-size: 26px;
+  text-decoration: none;
+  color: whitesmoke;
+  -webkit-transition: color 0.2s, background 0.2s;
+  transition: color 0.2s, background 0.2s;
+}
+
+.footer .footerIcons .icon:hover {
+  color: black;
+  background-color: #d5d838;
 }
 
 .footer .copyright {
-  margin: 0 10px;
+  color: whitesmoke;
+  margin: 20px 0px;
 }
 
 @-webkit-keyframes refresher {
@@ -1595,9 +2565,6 @@ section .artCard .textCard span {
     -webkit-transform: rotateZ(0);
             transform: rotateZ(0);
   }
-  30% {
-    color: #686868;
-  }
   100% {
     -webkit-transform: rotateZ(360deg);
             transform: rotateZ(360deg);
@@ -1608,9 +2575,6 @@ section .artCard .textCard span {
   0% {
     -webkit-transform: rotateZ(0);
             transform: rotateZ(0);
-  }
-  30% {
-    color: #686868;
   }
   100% {
     -webkit-transform: rotateZ(360deg);
@@ -1623,9 +2587,6 @@ section .artCard .textCard span {
     -webkit-transform: rotateZ(0);
             transform: rotateZ(0);
   }
-  30% {
-    color: #686868;
-  }
   100% {
     -webkit-transform: rotateZ(360deg);
             transform: rotateZ(360deg);
@@ -1637,12 +2598,205 @@ section .artCard .textCard span {
     -webkit-transform: rotateZ(0);
             transform: rotateZ(0);
   }
-  30% {
-    color: #686868;
-  }
   100% {
     -webkit-transform: rotateZ(360deg);
             transform: rotateZ(360deg);
+  }
+}
+
+@-webkit-keyframes opacityFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacityFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes opacityFadeAway {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes opacityFadeAway {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes paginationLeft {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 6px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes paginationLeft {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 6px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes paginationRight {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -6px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes paginationRight {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -6px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes repeatPaginationLeft {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 6px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes repeatPaginationLeft {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 6px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes repeatPaginationRight {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -6px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes repeatPaginationRight {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -6px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes highlightThead {
+  50% {
+    background-color: #ffff28;
+  }
+}
+
+@keyframes highlightThead {
+  50% {
+    background-color: #ffff28;
+  }
+}
+
+@-webkit-keyframes highlightTheadSwitch {
+  50% {
+    background-color: #ffff28;
+  }
+}
+
+@keyframes highlightTheadSwitch {
+  50% {
+    background-color: #ffff28;
+  }
+}
+
+@media (min-width: 400px) {
+  section .activeQuote {
+    min-height: 280px;
+  }
+}
+
+@media (min-width: 435px) and (max-width: 475px) {
+  .trainingsSection .trainingsCards .training:hover #headerTrainingFunc {
+    padding: 35px 20px;
+    margin: 0;
+  }
+}
+
+@media (min-width: 500px) {
+  body .showDisplayModal .informationWeightOnClick {
+    display: none;
+  }
+  body .showDisplayModal .tableContainer .ownTable .ownTableWeight {
+    display: table-cell;
+    opacity: 1;
+    visibility: visible;
+    width: 15%;
+  }
+  body .showDisplayModal .form-switch {
+    display: none;
+  }
+  section .activeQuote {
+    min-height: 250px;
+  }
+  .smallShortcuts {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .mediumShortcuts {
+    display: none;
   }
 }
 /*# sourceMappingURL=small.css.map */

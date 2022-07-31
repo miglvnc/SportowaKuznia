@@ -3,103 +3,554 @@
     padding: 0
     margin: 0
 
+// scrollbar
+*::-webkit-scrollbar
+    width: 5px
+*::-webkit-scrollbar-track
+    background: #0f0f0f
+*::-webkit-scrollbar-thumb
+    background: #393a0f
+    border-radius: 5px
+*::-webkit-scrollbar-thumb:hover
+    background: #d5d838
+
+body::-webkit-scrollbar
+    width: 10px
+
 body
     background-color: black
     font-family: 'Montserrat', sans-serif
     scroll-behavior: smooth
-    // overflow: hidden
 
-.wrapper
-    display: flex
-    flex-direction: column
-    position: relative
-    // height: 1000px
-    color: white
-    background-image: url(/imgs/bg_small.jpg)
-    background-position: center
-    background-size: cover
-    background-repeat: no-repeat
-    background-attachment: fixed
-    // overflow: hidden
-    z-index: 0
+    .modalDietContainer
+        display: flex
+        flex-direction: column
+        align-items: center
+        position: fixed
+        overflow: auto
+        top: 30px
+        left: 50%
+        height: 90%
+        width: 95%
+        max-width: 900px
+        transform: translateX(-50%)
+        background: rgba(19, 19, 19, 0.96)
+        background-image: url(/imgs/modal_backgroundDark.jpg)
+        background-position: 50%
+        background-size: cover
+        background-repeat: no-repeat
+        background-attachment: fixed
+        box-shadow: 0px 0px 30px #141414
+        border-radius: 5px
+        transition: visibility 0.1s, opacity 1s
+        padding: 20px 5px
 
+    .hideDisplayModal
+        opacity: 0
+        z-index: -102
+        visibility: hidden
+
+    .showDisplayModal // for function that display/hide modal
+        opacity: 1
+        z-index: 102
+        visibility: visible
+
+        .underline
+            margin: 10px auto
+            padding-top: 1px
+            background-color: #6e6e6e
+            width: 85%
+
+        .highlighted
+            color: #d5d838
+            font-weight: bold
+
+        .btnModalExit
+            position: absolute
+            top: 0px
+            align-self: flex-end
+            padding: 10px 20px
+            font-size: 25px
+            text-decoration: none
+            border: none
+            background: none
+
+            .exitModalIcon
+                color: #d5d838e8
+
+        h2, p, #dietInput
+            text-align: center
+            padding: 20px 20px 20px 20px
+            color: whitesmoke
+
+        h2
+            padding: 30px 60px 10px 60px
+        p
+            padding: 20px 10%
+            margin: 0
+
+        .informationWeightOnClick
+            color: grey
+
+        #dietInput
+            margin: 20px
+            padding: 10px
+            outline: none
+            background-color: rgba(0, 0, 0, 0.5)
+            letter-spacing: 3px
+            border: 1px solid grey
+            border-radius: 25px
+            color: whitesmoke
+            font-size: 18px
+
+        #dietInput:focus
+            z-index: 1
+            outline: none
+            border: 1px solid #d5d838
+            transition: border 0.3s
+
+        #dietInput::placeholder
+            color: #b1b1b1
+            transition: color 0.3s
+
+        #dietInput:focus::placeholder
+            color: #00000000
+
+        input::-webkit-inner-spin-button
+            -webkit-appearance: none
+            margin: 0
+
+        input[type=number]
+            -moz-appearance: textfield
+
+        .descriptionModal
+            padding: 20px 10% 0px 10%
+
+        .shortcutsModal
+            list-style-type: none
+            text-align: left
+            font-size: 14px
+            color: grey
+            margin: 10px auto
+            padding: 0
+
+            span
+                font-weight: bold
+                color: #a5a5a5
+
+        .tableContainer
+            margin: 10px
+            max-width: 600px
+
+            .tableShadow
+                position: absolute
+                left: 2.5%
+                width: 95%
+                max-width: 600px
+                height: 0px
+                background-color: #00000070
+                filter: blur(15px)
+                opacity: 0
+                transition: opacity 0.5s, height 0.0s 0.5s
+
+            .tableShadowHide
+                height: 0px
+                opacity: 0
+
+            .tableShadowShow
+                height: 260px
+                opacity: 1
+                transition: opacity 0.5s, height 0.0s 0.0s
+
+            table, th, td
+                border-collapse: collapse
+                color: whitesmoke
+                background-color: #242424
+                font-size: 16px
+
+            table
+                overflow: auto
+                width: 100%
+                cursor: pointer
+                box-shadow: 0px 0px 10px #202020
+                border-top-left-radius: 20px
+                border-top-right-radius: 20px
+
+                thead
+                    display: table
+                    width: 100%
+                    table-layout: fixed
+                    text-align: center
+
+                    th
+                        background-color: #d5d838
+                        text-align: left
+                        padding: 15px 10px
+                        color: black
+
+                        .theadSpanIconContainer
+                            display: grid
+                            grid-template-columns: 1fr 5fr
+
+                            span
+                                text-align: left
+                                color: black
+
+                            .arrowSort
+                                padding-left: 2px
+                                color: #707070
+                                transform: rotateX(180deg)
+                                transition: opacity 0.3s, transform 0.3s
+
+                            .arrowSortShow
+                                visibility: visible
+                                opacity: 1
+                                transition: opacity 0.3s, transform 0.3s
+                                transition: visibility 0.1s, opacity 0.3s, transform 0.3s
+
+                            .arrowSortHide
+                                visibility: hidden
+                                opacity: 0
+                                transition: visibility 0.1s, opacity 0.3s, transform 0.3s
+
+                            .arrowSortAsc
+                                transform: rotateX(180deg)
+
+                            .arrowSortDesc
+                                transform: rotateX(360deg)
+
+                    th:first-child
+                        border-top-left-radius: 20px
+                    th:last-child
+                        border-top-right-radius: 20px
+
+                    .productNameHead
+                        width: 34%
+                        overflow: hidden
+                        background-color: #ffee53e1
+
+                    .highlightThead
+                        animation: highlightThead 0.6s
+
+                    .highlightTheadSwitch
+                        animation: highlightTheadSwitch 0.6s
+
+                tbody
+                    display: block
+                    height: 100%
+                    max-height: 200px
+                    overflow: auto
+                    overflow-y: overlay
+                    text-align: left
+
+                    tr
+                        display: table
+                        width: 100%
+                        table-layout: fixed
+                        text-align: center
+                        overflow: hidden
+
+                        td
+                            text-align: left
+                            overflow: hidden
+                            padding: 15px 10px
+                            transition: background-color 0.5s
+
+                        .productName
+                            width: 34%
+                            overflow: hidden
+                            color: #ffee53e1
+
+                    .addProduct
+                        td
+                            background-color: #4d4c2c
+
+            #dietTable
+                .weightValue
+                    display: none
+
+            .ownTable
+                display: none
+                visibility: hidden
+                border-radius: 20px
+                box-shadow: 0px 0px 10px #202020
+
+                td
+                    transition: width 1s
+
+                .originalTableTheadContainer
+                    text-align: left
+                    overflow: hidden
+                    padding: 10px 0
+
+                .ownTableProductNameHead
+                    width: 34%
+                    overflow: hidden
+                    transition: width 1s, border 1s
+
+                .productNameHide
+                    width: 10%
+                    border-right: 2px solid #ffee530a
+
+                th
+                    background-color: #d5d838
+
+                .ownTableWeight
+                    width: 0%
+                    transition: width 1s
+
+                .ownTableWeightShow
+                    display: table-cell
+                    width: 20%
+                    transition: width 1s
+
+                .sum
+                    th
+                        border-radius: 0
+
+                #ownDietTable
+                    .addProduct
+                        td
+                            background: none
+                            span
+                                background: none
+                            .productValueInput
+                                border: 1px solid grey
+                                border-radius: 10px
+                                background: none
+                                width: 100%
+                                padding: 1px 3px
+                                color: white
+                                text-align: center
+                                // margin: 2px
+                                transition: border 0.2s
+                            .productValueInput:focus
+                                outline: none
+                                border: 1px solid #d5d838
+
+                    .emptyOwnTable
+                        display: flex
+                        flex-direction: column
+                        justify-content: center
+                        align-items: center
+                        height: 100px
+                        border-radius: 20px
+
+                    .hideEmptyOwnTable
+                        display: none
+            .showOwnTable
+                display: block
+                visibility: visible
+                opacity: 1
+                overflow: hidden
+
+        .ownTableHeader
+            display: block
+            padding: 20px 50px 20px 50px
+            font-size: 20px
+            background-color: #242424
+            text-transform: uppercase
+            letter-spacing: 2px
+            border-radius: 15px
+            color: grey
+            box-shadow: 0px 0px 10px #202020
+
+        .form-switch
+            margin-bottom: 30px
+
+        .form-switch.form-switch-lg
+            margin-bottom: 1.5rem
+
+        .form-switch.form-switch-lg .form-check-input
+            height: 2rem
+            width: calc(3rem + 0.75rem)
+            border-radius: 4rem
+
+        .hideOwnTableHeader
+            display: none
+
+        .generatePDFBtn
+            border: none
+            background: none
+            padding: 10px
+            margin: 20px
+            // height: 40px
+            // width: 100px
+            border-radius: 25px
+            font-size: 18px
+            background: none
+            border: none
+            border: 1px solid #d4d664
+            color: #d4d664
+            font-weight: bolder
+            text-transform: uppercase
+            letter-spacing: 2px
+            box-shadow: 0px 5px 3px #292929
+
+        .generatePDFBtn:active
+            box-shadow: 0px 2px 3px #292929
+            transform: translateY(2px)
+
+        .inactiveBtn
+            border: 1px solid #797979
+            color: #797979
+
+    .errorShadow
+        // display: none
+        position: fixed
+        top: auto
+        background: rgba(0,0,0,0.5)
+        min-height: 100%
+        width: 100%
+        z-index: 101
+        visibility: hidden
+        opacity: 0
+        transition: visibility 0s, opacity 0.9s 0.1s
+    .errorShadowShow
+        // display: block
+        visibility: visible
+        opacity: 1
+    .errorShadowClose
+        // display: block
+        visibility: hidden
+        opacity: 0
+        transition: visibility 1.1s, opacity 0.9s 0.1s
+    .errorPopUp
+        position: fixed
+        height: 180px
+        width: 90%
+        max-width: 400px
+        background: #1b1b1b
+        background-color: #d5d838e8
+        border-top-left-radius: 10px
+        border-top-right-radius: 10px
+        border-radius: 5px
+        bottom: -100%
+        left: 50%
+        transform: translateX(-50%)
+        z-index: 102
+        bottom: -200px
+        color: black
+        visibility: hidden
+        opacity: 0
+        transition: visibility 0s, bottom 1s, opacity 0.8s 0.4s
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        font-family: 'Montserrat', sans-serif
+
+        .errorMsg, .errorConfirm
+            // position: absolute
+            color: #111111
+        .errorMsg
+            position: relative
+            font-size: 20px
+            top: -15px
+            // top: 50px
+            font-weight: bolder
+            letter-spacing: 1px
+            padding: 10px
+            // margin-bottom: 20px
+            // margin: auto
+            text-align: center
+
+        .errorConfirm
+            // position: relative
+            top: 130px
+            height: 40px
+            width: 100px
+            border-radius: 25px
+            font-size: 18px
+            background-color: #d4d664
+            border: none
+            border: 1px solid black
+            color: black
+            font-weight: bolder
+            letter-spacing: 2px
+            box-shadow: 0px 5px 5px #1a1a1a
+
+        .errorConfirm:active
+            box-shadow: 0 3px 5px black
+            transform: translateY(2px)
+
+    .errorPopUpClose
+        opacity: 0
+        bottom: -100%
+        visibility: hidden
+        transition: visibility 2s, bottom 1s, opacity 1s 0.4s
+    .errorPopUpShow
+        opacity: 1
+        bottom: 20px
+        visibility: visible
+
+    h1, h3, p
+        color: whitesmoke
+
+    //nav section
     .nav
         display: flex
         position: sticky
         top: 0
         z-index: 100
-        // width: 100%
-        // border-bottom: 1px solid #383838
-
+        font-family: 'Russo One', sans-serif
+        border-bottom: 1px solid #0f0f0f
         .menuLabel
+            position: relative
             display: grid
             grid-template-columns: 1fr 3fr
-            width: 100%
-            padding: 15px 20px
-            background-color: #000000
-            border-bottom: 1px solid #131313
-            // background: linear-gradient(180deg, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%)
-            z-index: 10
             position: sticky
             top: 0
+            z-index: 10
+            padding: 15px 20px
+            width: 100%
+            background-color: #000
 
+            .menuLabelBig //only for bigger devices
+                display: none
             .menuBars
                 display: grid
-                // grid-template-columns: 1fr 1fr
                 justify-self: start
+                align-items: center
+                margin: 0 0 0 5px
                 background: none
                 border: none
-
                 i
                     font-size: 20px
                     color: whitesmoke
-                    align-self: center
                     transition: transform 0.8s, color 0.8s
 
                 .animationBars
                     transform: rotateZ(180deg)
                     color: #d5d838
-
             .logo
                 display: grid
                 grid-template-columns: 3fr 1fr
                 justify-self: end
-
-                h3
+                margin: 0 5px 0 0
+                a
+                    font-family: 'Montserrat', sans-serif
+                    align-self: center
                     margin: 0
+                    text-decoration: none
                     font-size: 20px
                     letter-spacing: 3px
                     color: whitesmoke
-                    align-self: center
-
                 img
                     padding-left: 10px
                     height: 25px
-
-            i
-
-    .scroll-fix::before // fajny sposob na scroll fix zeby nav nie zaslanial strony po przeniesieniu nizej
-        content: ''
-        display: block
-        height: 100px
-        margin-top: -50px
-
     .collapseMenu
         position: absolute
         top: 52px
-        left: -75%// transition to 0 for collapse
-        // background-color: rgba(0, 0, 0, 0.8)
-
-        background: rgb(0,0,0)
+        left: -100%// transition to 0 for collapse
         background: linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(0,0,0,0.85) 100%)
-        // background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 20%)
         color: white
         padding: 15px 10px
+        z-index: 9
+        width: 100vw
         text-align: left
         border-bottom-right-radius: 50px
         transition: left 1.2s
-        z-index: 9
-
         ul
             padding: 0
             margin: 0
@@ -109,673 +560,617 @@ body
             padding: 15px 15px 15px 0
             letter-spacing: 2px
             text-transform: uppercase
-
             a
                 text-decoration: none
                 color: whitesmoke
-
-            .fas
+                text-align: center
+            .menuIcon
+                width: 50px
                 padding: 0px 15px
-                color: #d5d838
+                font-size: 20px
                 color: grey
                 transition: color 0.5s
-
             .activeSection
                 color: #d5d838
                 font-weight: bolder
-
     .activateCollapse
         left: 0
-
-.fa-calculator, .fa-fire-alt, .fa-book-reader, .fa-home
-    color: #d5d838
-
-// .menuLabel
-//     .menuBars:hover .collapseMenu
-//         left: 0
-
-// .menuBars:hover
-//     .fa-bars
-//         color: #d5d838
-//         transform: rotateY(180deg)
-
-// .collapseMenu .nav:hover
-// .nav:hover + .collapseMenu
-//     left: 0
-//     align-self: flex-end
-
-// hover to test
-
-.hero-shadow, .hero-shadow-reverse, .hero-shadow-bothsides, .hero-shadow-quote
+// hero-shadows for web
+.hero-shadow
     position: absolute
-    background: rgb(0,0,0)
-    background: linear-gradient(180deg, rgba(0,0,0,0.6) 50%, rgba(0,0,0,1) 100%)
+    background: rgba(0,0,0,0.35)
     height: 100%
     width: 100%
     z-index: -1
-
-.hero-shadow-quote
-    background-color: rgba(0,0,0, 0.5)
-    top: 0
-    left: 0
-    border-radius: 25px
-
-.hero-shadow-reverse
-
 .hero-shadow-bothsides
-    // background: #080808
-    background: linear-gradient(180deg, rgba(0,0,0,1) 5%, rgba(0,0,0,0.8), rgba(0, 0, 0, 1) 95%)
-    // background-attachment: fixed
+    background: linear-gradient(180deg, rgba(0,0,0,1) 2%, rgba(0,0,0,0.45), rgba(0, 0, 0, 1) 98%)
+.first-hero-shadow
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 1) 70%)
 
-.header
+.wrapper // main container
     display: flex
     flex-direction: column
-    align-items: center
-    justify-content: center
     position: relative
-    width: 100%
-    height: 100vh
-    background-image: url(/imgs/headerSmall2.jpg)
-    // background-color: black
-    background-position: center
+    z-index: 1
+    overflow: hidden
+    background-image: url(/imgs/bg2_big.jpg)
+    background-position: 5%
     background-size: cover
     background-repeat: no-repeat
     background-attachment: fixed
-    z-index: 0
-    margin-top: -55px
-    text-shadow: 2px 2px 2px black
-
-    h1
-        color: white
-        // font-weight: bolder
-        text-align: center
-        text-transform: uppercase
-        letter-spacing: 2px
-        font-size: 24px
-        padding: 5px
-
-    span
-        color: #d5d838
-        text-align: center
-        font-size: 16px
-        padding: 5px
-        margin-bottom: 50px
-
-.articlesListSection
-    // background-color: #ffffff
-    overflow: hidden
-    z-index: 1
-
+    transition: filter 1s
+    .scroll-fix::before // fajny sposob na scroll fix zeby nav nie zaslanial strony po przeniesieniu nizej
+        content: ''
+        display: block
+        height: 100px
+        margin-top: -50px
+    .header
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        position: relative
+        margin-top: -60px
+        z-index: 0
+        overflow: hidden
+        width: 100vw
+        height: 100vh
+        background: none
+        h1
+            text-align: center
+            margin-bottom: 0
+            padding: 0px 15px
+            font-family: 'Russo One', sans-serif
+            font-weight: bolder
+            font-size: 45px
+            color: #d1d1d1
+            text-shadow: 8px 8px 5px black
+        span
+            font-family: 'Pacifico', sans-serif
+            color: #d5d838
+            text-align: center
+            font-size: 16px
+            text-shadow: 3px 3px 6px black
+            padding: 0px 0px
+            margin-top: 0
+            margin-bottom: 50px
+.errorBlurClose
+    filter: blur(0)
+    transition: filter 1s
+.errorBlurShow
+    filter: blur(3px)
 section
     display: flex
     position: relative
     flex-direction: column
+    overflow: hidden
     height: 100%
     width: 100%
-    // overflow: hidden
-    // height: 1000px
-    // background-color: black
-    background-position: center
-    background-size: cover
-
+    .description
+        margin: 20px 30px 0px 30px
+    .headerTitle
+        margin: 0px 30px
+        padding: 30px 0px 20px 0px
+        text-align: left
+        font-size: 22px
+        text-transform: uppercase
+        letter-spacing: 3px
+        .headerIcons
+            padding: 0 10px 0 0
+            color: #d5d838
+    .underline
+        margin: 0px 30px
+        height: 1px
+        background-color: #cecece
+    .headerSubtitle
+        text-transform: uppercase
+        letter-spacing: 2px
+        font-size: 20px
+        margin: 20px 30px
     .highlighted
         color: #d5d838
-        // color: black
         font-weight: bold
-        // background-color: #d5d838
-
-    // .highlightedOpacity
-    //     opacity: 0
-    //     transition: opacity 1s 0.5s
-
-    // .highlightedOpacityShow
-    //     opacity: 1
-
-    .description, .activeQuote
-        margin: 0px 30px 0px 30px
-        // padding: 10px
-
+.motivationSection
     .allQuotes
         display: none
-
     .activeQuote
         position: relative
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-content: center
+        align-items: center
+        margin: 20px 30px 0px 30px
+        z-index: 0
+        min-height: 330px
+        font-family: 'Just Me Again Down Here'
+        font-size: 36px
+        color: #e0e0e0
         text-align: center
-        min-height: 130px
-        // padding: 15px
-        // box-shadow: 0px 0px 30px #1d1d1d
-        // border: 1px solid #3a3a3a
-        // border-radius: 25px
-        // background-color: #0f0f0f
-        // background-image: url(/imgs/fire-quote2.jpg)
         background-size: cover
         background-position: center
-        z-index: 0
-
         .quoteContainer
             display: flex
             flex-direction: column
-            margin: 10px 0
-            color: #e6e6e6
-
+            justify-content: center
+            align-items: center
             .quoteAuthor
-                padding-top: 15px
-                font-size: 14px
-
-    .quoteChange
-        font-size: 14px
+                padding-top: 10px
+                font-size: 26px
+                color: #b3b3b3
+    .quoteChangeBtn
+        margin: 10px auto
+        margin-bottom: 30px
+        width: 100px
+        height: 40px
         text-align: center
-        margin: 20px auto
-        width: 70px
         background-color: #d5d838
+        box-shadow: 0px 5px 10px black
+        border: none
         border-radius: 20px
+        transition: box-shadow 0.05s, transform 0.05s
         i
+            font-size: 20px
             padding: 10px
             color: black
-
         .transformIcons
             animation: transformIcon 0.8s ease 0s 1 normal forwards
-
         .nextTransformIcons
             animation: nextTransformIcon 0.8s ease 0s 1 normal forwards
-
-    .about
-    h3
-        padding: 30px 0px 20px 0px
-        margin: 0px 30px
-        font-size: 18px
-        text-align: left
-        text-transform: uppercase
-        letter-spacing: 2px
-        // border-bottom: 1px solid white
-
-        // i
-        //     color: #ff7300
-
-    .underline
-        // align-self: center
-        margin: 0px 30px 30px 30px
-        height: 1px
-        background-color: whitesmoke
-        background-color: #cecece
-        // width: 80%
-
-    .articlesPages
-        position: relative
-        display: flex
-        // flex-direction: column
-        // justify-content: 
-        // margin: auto
-        width: 100vw
-        margin-top: -30px
-        // left: -300%
-
-        .pageArticle
-            // position: absolute
-            // margin: 0px 30px 0px 30px
-            width: 100vw
-
-        .articlesFirstPage
-            position: absolute
-            opacity: 0
-            // left: -100%
-            // margin: 30px
-            padding: 0px 30px
-            // transition: left 5s
-            transition: opacity 0.5s ease-out
-
-        .articlesSecondPage
-            position: absolute
-            opacity: 0
-            // left: 100%
-            // margin: 30px
-            padding: 0px 30px
-            transition: opacity 0.5s ease-out
-
-        .activePage
-            position: relative
-            // left: 0
-            opacity: 1
-            z-index: 10
-
-        // .unactivePageOne
-        //     left: -100%
-        //     opacity: 0
-
-    .artCard
-        align-self: center
-        height: 250px
-        width: 100%
-        margin: 30px 0px
-        background-size: cover
-        background-position: center
-        z-index: 1
-
-        .textCard
-            display: flex
-            flex-direction: column
-            justify-content: flex-end
-            align-items: center
-            height: 100%
-            width: 100%
-            background: rgb(0,0,0)
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.9) 70%)
-            z-index: -1
-
-            h3, span
-                margin: 0 10px
-                padding: 10px
-                text-align: left
-
-            h3
-                font-size: 20px
-                border-bottom: 1px solid grey
-            span
-                font-size: 14px
-
-.firstArticle
-    background-image: url(/imgs/article_zmeczenie.jpg)
-.secondArticle
-    background-image: url(/imgs/article_zdrowiepsych.jpg)
-.thirdArticle
-    background-image: url(/imgs/article_sauna.jpg)
-.fourthArticle
-    background-image: url(/imgs/article_podstawy.jpg)
-.fifthArticle
-    background-image: url(/imgs/bledySmall.jpg)
-.sixthArticle
-    background-image: url(/imgs/burgerSmall.jpg)
-
+    .quoteChangeBtn:active
+        box-shadow: 0 1px 3px black inset
+        transform: translateY(2px)
 .articlesListSection
     background-color: #000000
-
-    a
-        text-decoration: none
-        border: none
-        color: whitesmoke
-
+    .articlesPagesContainer
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 100%
+        .pageArticle
+            position: absolute
+            opacity: 0
+            padding: 0px 30px
+            width: 100%
+            transition: opacity 0.5s ease-out
+            a
+                text-decoration: none
+                border: none
+                color: whitesmoke
+                .firstArticle
+                    background-image: url(/imgs/article_podstawy.jpg)
+                .secondArticle
+                    background-image: url(/imgs/article_zdrowiepsych.jpg)
+                .thirdArticle
+                    background-image: url(/imgs/article_zmeczenie.jpg)
+                .fourthArticle
+                    background-image: url(/imgs/article_sauna.jpg)
+                .fifthArticle
+                    background-image: url(/imgs/bledySmall.jpg)
+                .sixthArticle
+                    background-image: url(/imgs/burgerSmall.jpg)
+                .artCard
+                    align-self: center
+                    margin: 30px auto
+                    height: 250px
+                    width: 100%
+                    z-index: 1
+                    max-width: 500px
+                    background-size: cover
+                    background-position: center
+                    .textCard
+                        display: flex
+                        flex-direction: column
+                        justify-content: flex-end
+                        z-index: -1
+                        height: 100%
+                        width: 100%
+                        background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.9) 70%)
+                        transition: color 0.5s
+                        h3, span
+                            margin: 0 10px
+                            padding: 10px 0
+                            text-align: left
+                        h3
+                            font-size: 20px
+                            letter-spacing: 2px
+                            text-transform: uppercase
+                        span
+                            font-size: 14px
+                        .articleUnderline
+                            margin: 0 10px
+                            padding: 0 0
+                            height: 1px
+                            background-color: grey
+        .activePage
+            position: relative
+            z-index: 10
+            opacity: 1
     .paginationArticles
         display: flex
         justify-content: center
+        align-items: center
         margin-top: 20px
-
-        ul
-            color: black
+        height: 60px
+        font-size: 20px
+        .pagination
+            display: flex
+            align-items: center
+            justify-content: center
             margin: 0
-
-            li
+            color: black
+            .page-item
                 color: black
                 background-color: black
-
-                a
-                    background-color: black
+                cursor: pointer
+                .page-link
+                    text-decoration: none
+                    align-self: self-start
+                    margin: 0 1.5px
+                    padding: 10px 20px
+                    background-color: #111111
                     color: whitesmoke
-                    border: 1px solid #d5d838
-                    // font-weight: bolder
-
-                a:focus
-                    box-shadow: none
-                    // background-color: #d5d838
-                    // color: black
-                    // border: 1px solid black
-
-                a:hover
-                    background-color: #d5d838
-                    color: black
-                    border: 1px solid black
-
-                .pageNext:hover, .pagePrevious:hover
-                    background: none
-                    color: whitesmoke
-                    border: 1px solid #d5d838
-
-        .active
-            background-color: #d5d838
-            color: black
-            font-weight: bolder
-            border: 1px solid black
-
-    // .pagination
-    //     color: black
-    //     background-color: black
-
+                    border: none
+                    transition: background-color 0.3s, padding 0.3s
+                .pageNext
+                    border-top-right-radius: 5px
+                    border-bottom-right-radius: 5px
+                .pagePrevious
+                    border-top-left-radius: 5px
+                    border-bottom-left-radius: 5px
+                    .nextArrow, .previousArrow
+                        position: relative
+                    .paginationLeft
+                        animation: paginationLeft 0.5s
+                    .repeatPaginationLeft
+                        animation: repeatPaginationLeft 0.5s
+                    .paginationRight
+                        animation: paginationRight 0.5s
+                    .repeatPaginationRight
+                        animation: repeatPaginationRight 0.5s
+                .active
+                    background-color: #1a1a1a
+                    padding: 14px 20px
+                    border-radius: 5px
 .currentArticleSection
     display: flex
     flex-direction: column
     justify-content: center
-    // background-image: url(/imgs/bg3_small.jpg)
+    overflow: hidden
     height: 100%
     width: 100%
-    // padding-top: 30px
-    // // z-index: -1
-    overflow: hidden
-
+    .hero-shadow-bothsides
+        background: linear-gradient(180deg, rgba(0,0,0,1) 2%, rgba(0,0,0,0.55), rgba(0, 0, 0, 1) 98%)
     .allArticles
         display: none
-
     .activeArticle
         display: flex
         flex-direction: column
         margin: 0px 30px
-        // overflow: hidden
         max-height: 450px
-        // justify-content: center
         transition: max-height 2s
-
-        .articleInfo
+        .articleText
             display: flex
             flex-direction: column
-            .articleDate, h5
-                display: inline-block
-
-        img
-            align-self: center
-            // height: 250px
-            max-width: 500px
-            width: 100%
-            margin: 20px
-            background-size: cover
-            background-position: center
-
-        h5, .articleDate, .source
-            margin: 2px
-            font-size: 12px
-            text-align: left
-            color: #bebebe
-
-            .fas, .far
-                padding-right: 5px
-
-        .zmeczenieArticle, .cwiczeniaArticle, .saunaArticle, .podstawyArticle, .bledyArticle, .postanowieniaArticle
-            // .cwiczeniaArticle, .saunaArticle, .podstawyArticle
-            display: flex
-            // display: none
-            flex-direction: column
-            // height: 500px
-            // opacity: 0
-            // transition: opacity 0.4s 0.5s
-
-            h3, .underline
+            .headerSubtitle
+                text-transform: uppercase
+                letter-spacing: 2px
+                font-size: 20px
                 margin: 0
-
+            .underline
+                margin: 10px 0 10px 0
+            .articleInfo
+                display: flex
+                flex-direction: column
+                .articleDate, h5
+                    display: inline-block
+                .imgArticleMain
+                    display: flex
+                    flex-direction: column
+                    justify-content: center
+                    align-items: center
+                    margin: 30px 0 0 0
+                    overflow: hidden
+                    width: 100%
+                    max-height: 350px
+                    border: 1px 1px solid
+                    img
+                        align-self: center
+                        width: 100%
+                        background-size: cover
+                        background-position: center
+                .articleDetailsContainer
+                    .articleAuthor, .articleDate, .source
+                        margin: 10px 2px 0 2px
+                        font-size: 12px
+                        text-align: left
+                        color: #bebebe
+                        .fas, .far
+                            padding-right: 5px
             .mainArticle
                 margin-top: 20px
                 text-align: left
                 font-size: 14px
-                color: #d6d6d6
-
                 .Section
-                    padding-top: 10px
-                    line-height: 24px
-
+                    padding-top: 20px
+                    p
+                        font-size: 18px
+                        line-height: 34px
+                        color: #c9c9c9
+                    h5
+                        color: #e0e0e0
+                        padding-bottom: 5px
+                        font-size: 18px
+                        text-align: left
+                        letter-spacing: 2px
+                        font-weight: bolder
+                    ul
+                        li
+                            color: #c9c9c9
+                            font-size: 18px
+                            line-height: 34px
+                    .bibliography
+                        font-size: 12px
+                    .source
+                        font-size: 14px
+                        display: block
+                        .sourceLink
+                            text-decoration: none
+                            color: whitesmoke
                 .firstSection
                     font-weight: bold
-
-                .bibliography
-                    font-size: 12px
-
-                h5
-                    color: white
-                    padding-bottom: 5px
-                    font-size: 18px
-                    text-align: left
-                    letter-spacing: 1px
-
-                .source
-                    display: block
-
-        .showArticle
 
     .dropdownArticles
         position: relative
         display: flex
         flex-direction: column
         justify-content: flex-end
-        background: linear-gradient(180deg, #ffffff00 0%, #000000 85%)
         align-items: center
-        // justify-content: center
-        // text-align: center
-        // top: 400px
-        // padding-bottom: 50px
-        // margin-top: -150px
-        height: 450px
-        // width: 100%
-        // padding-bottom: 100px
-        // margin-bottom: -50px
-        // background: rgb(255,255,255)
-        // background-color: #ffffff67
-        // background-color: rgba(0,0,0,0.5)
-        text-align: center
-        // opacity: 0
-        // z-index: -10
-        // color: white
         z-index: 10
-        // overflow: hidden
-        cursor: pointer
+        text-align: center
+        background: linear-gradient(180deg, #ffffff00 0%, #000000 85%)
+        height: 450px
         transition: height 1s 1s, padding 1s 1s, margin 1s 1s
-
         .aRollUp
+            cursor: pointer
             position: absolute
             text-decoration: none
             border: none
             padding: 25px 10px 10px 10px
             z-index: -10
-
         .zIndex
             z-index: 10
-
         span
             color: whitesmoke
-            // color: #d5d838
             font-size: 16px
-            // font-weight: bolder
             letter-spacing: 1px
-            // background-color: black
-            // padding: 0px 10% 100px 10%
-            // padding-top: 100px
             padding: 25px 10px
-            // opacity: 1
-            // transition: 3s
-
         .clickToExtend
+            cursor: pointer
             opacity: 1
             position: relative
-            transition: opacity 0.3s 2.2s
+            transition: opacity 0.3s 2.2s, color 0.3s
 
+        .clickToExtend:hover
+            color: #d5d838
         .dropdownSpanChange
-            // position: absolute
             opacity: 0
             transition: opacity 0.3s
-
         .clickToRoll
             opacity: 0
-            // position: absolute
             padding: 0
             color: grey
             font-size: 12px
             z-index: 15
             transition: opacity 0.3s
-
         .clickToRollShow
             opacity: 1
             position: relative
             transition: opacity 0.3s 2.2s
-
-        // .opacityChange
-        //     opacity: 1
-
     .heightReset
-        max-height: 7000px
+        max-height: 12000px
     .dropdownHeight
         height: 50px
-        padding: 0
+        padding-top: 20px
         margin: 0
-
-        // top: 0
-        // max-height: 20px
-        // display: none
-        // a
-        //     animation: bounce infinite 2s 1s
-        //     font-size: 20px
-        //     padding-bottom: 5px
-        //     padding-top: 40px
-        //     // animation-duration: 2s
-        //     // animation-delay: 1s
-        //     i
-
-        // i
-        //     animation: bounce infinite 2s 1s
-        //     font-size: 20px
-        //     padding-bottom: 5px
-        //     padding-top: 40px
-        //     // animation-duration: 2s
-        //     // animation-delay: 1s
-        //     color: #d5d838
-
 .trainingsSection, .calculatorSection
-
     .trainingsCards
         display: flex
         flex-direction: column
-        // background-color: rgba(0, 0, 0, 0.1)
-        // background: linear-gradient(180deg, rgba(0,0,0,0) 0%, black 20%)
-
+        align-content: center
+        margin: auto
         .training
             margin: 20px 30px
             max-height: 80px
-            // background-color: #1b1b1b 
+            max-width: 750px
+            overflow: hidden
+            z-index: 5
+            cursor: pointer
             background: linear-gradient(180deg, rgba(0,0,0,1) 30%, black 90%)
             border-radius: 10px
-            overflow: hidden
             border: 1px solid #141414
-            transition: 1s
-
+            transition: max-height 0.8s 0.15s, border 0.8s 0.15s
             p
                 padding: 0px 15px 0px 15px
                 text-align: left
-
             .trainingMovies
                 display: flex
                 flex-direction: column
-                justify-content: center
-                align-items: start
-                align-content: center
-                // display: inline-block
+                justify-content: left
                 margin: 0 0 20px 0
-
                 a
+                    text-decoration: none
                     display: flex
                     flex-direction: row
-                    justify-content: center
-                    align-content: center
                     align-items: center
-                    color: #e0e0e0
-                    // font-size: 12px
-                    text-decoration: none
+                    margin: auto
                     padding: 10px
-
+                    color: #e0e0e0
                     i
-                        color: #b31818
                         font-size: 40px
-                        // padding: 0px 10px
-                        text-decoration: none
-                        // background-color: #fff
-                        border-radius: 5px
-                    p
+                        color: #b31818
+                    span
                         font-size: 12px
+                        text-align: center
+                        width: 180px
                         padding: 0 10px
                         margin: 0
                         background-color: #9b1515
                         color: white
                         font-weight: bolder
-
         .backgroundTraining
-            // display: flex
-            // flex-direction: column
-            // justify-content: center
             position: relative
             top: -50px
             height: 200px
             width: 100%
+            z-index: 1
             background-size: cover
             background-position: center
             background-repeat: no-repeat
-            transition: top 0.5s
-            z-index: 1
-
+            transition: top 0.6s 0.1s
             h3
+                z-index: 1
                 text-align: center
                 padding: 70px 0px
                 letter-spacing: 4px
-                transition: 0.5s
-                z-index: 1
-
+                transition: 0.6s 0.1s
+            #headerTrainingFunc
+                padding: 60px 0
             .backgroundTrainingShadow
                 position: absolute
+                z-index: -1
                 height: 100%
                 width: 100%
-                // background-color: rgba(0,0,0,0.7)
                 background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 95%)
-                // background: linear-gradient(180deg, #00000000 0%, #000000 99%)
                 transition: background-color 0.5s
-                z-index: -1
-
         .backgroundCardio
             background-image: url(/imgs/training_cardio3.jpg)
-
         .backgroundFitness
             background-image: url(/imgs/trainign_fitness.jpg)
-
         .backgroundStrength
             background-image: url(/imgs/training_StrengthSMALL.jpg)
-
         .backgroundFunctional
             background-image: url(/imgs/training_functional.jpg)
-
         .training:hover
-            max-height: 1000px
-            border: 1px solid #d5d838
-
+            max-height: 800px
+            border: 1px solid #606119
         .training:hover .backgroundTraining
             top: 0
-
-        .training:hover .backgroundTrainingShadow
-            // background: linear-gradient(180deg, #ffffff00 0%, #000000 70%)
-            // background-color: rgba(0,0,0,0.4)
-            // background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 90%)
-
         .training:hover h3
-            padding: 20px 0px
-            // align-self: center
-            // justify-self: center
-            text-shadow: 2px 2px 2px black
-            // background-color: rgba(0,0,0,0.7)
-            // text-align: left
-
+            margin: 0
+            // padding: 35px 20px
+            // font-size: 22px
+            letter-spacing: 4px
+            text-shadow: 2px 2px 5px black
+        // .training:hover #headerTrainingFunc
+        //     padding: 35px 0
+        //     margin: 0
+// .dietSection
+//     display: flex
+//     flex-direction: column
+//     justify-content: center
+//     align-items: center
+//     .dietContainer
+//         // width: 100vw
+//         margin: 0px 30px 20px 30px
+//         max-width: 500px
+//         // margin: 20px auto
+//         // .dietCardLink
+//         .modalOwn
+//             background: url(/imgs/dietCardModal.jpg)
+//         .redirect
+//             background: url(/imgs/dietCardRedirect.jpg)
+//         .dietCard
+//             display: flex
+//             justify-content: center
+//             align-items: center
+//                 // justify-self: center
+//             margin: 15px auto
+//             text-align: center
+//             height: 250px
+//             width: 100%
+//             z-index: 1
+//             // max-width: 500px
+//             background-size: cover
+//             background-position: center
+//             h3
+//                 width: 100%
+//                 padding: 20px
+.dietSection
+    overflow: hidden
+    .dietContainer
+        position: relative
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        width: 100vw
+        max-width: 560px
+        padding: 10px 30px
+        // margin: 20px 30px
+        // margin: 0 100px
+        overflow: hidden
+        a
+            text-decoration: none
+            border: none
+            color: whitesmoke
+            width: 100%
+            z-index: 6
+            .modalOwn
+                background-image: url(/imgs/dietCardModal.jpg)
+            .redirect
+                background-image: url(/imgs/dietCardRedirect.jpg)
+            .dietCard
+                align-self: center
+                height: 200px
+                width: 100%
+                min-width: 0px
+                max-width: 560px
+                z-index: 5
+                background-size: cover
+                background-position: center
+                overflow: hidden
+                .textDietHeader
+                    // position: absolute
+                    display: flex
+                    flex-direction: column
+                    justify-content: center
+                    align-items: center
+                    z-index: 0
+                    height: 100%
+                    width: 100%
+                    opacity: 1
+                    overflow: hidden
+                    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 90%)
+                    .dietText
+                        text-align: center
+                        // display: inline
+                        text-shadow: 2px 2px 5px black
+                        margin: 0 auto
+                        padding: 20px
+                        overflow: hidden
+                        // white-space: nowrap
 .calculatorSection
-    // overflow: hidden
     .calculator
         display: flex
         flex-direction: column
         justify-content: center
         align-items: center
-
-        .dropdown
-            max-height: 50px
-            // padding: 15px
+        overflow: hidden
+        .dropdownCalculator
             margin: 30px 0px 0px 0px
-            font-size: 14px
+            z-index: 10
             overflow: hidden
+            cursor: pointer
+            max-height: 50px
+            font-size: 14px
             border: 1px solid #1f1d1d
             border-radius: 20px
             background-color: rgba(0, 0, 0, 0.5)
-            // background: linear-gradient(180deg, rgba(0,0,0,1) 0%, #131313 60%)
             text-transform: uppercase
-            z-index: 5
             transition: max-height 0.5s
-
             h5
-                // border-bottom: 1px solid white
                 font-size: 16px
                 padding: 15px 20px
                 text-align: center
@@ -783,71 +1178,321 @@ section
                 color: black
                 letter-spacing: 2px
                 background-color: #d5d838
-
                 i
                     padding: 0px 0px 0px 10px
                     transition: transform 0.5s
-
             ul
                 list-style-type: none
                 text-align: center
-                // margin: 10px
                 padding: 0
-                font-size: 14px
-                letter-spacing: 1px
                 li
                     position: relative
                     text-align: center
                     margin: 15px 0px
                     padding: 5px 20px
                     width: 100%
-
+                    font-size: 14px
+                    letter-spacing: 1px
                     a
                         text-decoration: none
                         color: white
                         transition: color 0.4s
-
-                    .underlineCalc
-                        position: relative
-                        left: calc(50% - 10px)
-                        height: 1px
-                        width: 20px
-                        background-color: #d5d838
-                        margin-top: 5px
-                        transition: width 0.4s, left 0.4s
-
-                    .activeDropdownLink
-                        width: 120px
-                        left: calc(50% - 60px)
-
                     .activeDropdownLinkColor
                         color: #d5d838
-
-                // a:hover + .underlineCalc
-                //     width: 120px
-                //     left: calc(50% - 60px)
-
-                // a:hover
-                //     color: #d5d838
-
         .dropdownHeightChange
             max-height: 215px
-
         .dropdownArrowChange
             transform: rotateX(-180deg)
+        .activeCalc
+            position: relative
+            .calc
+                display: inline-block
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                position: absolute
+                opacity: 0
+                .calcInputs
+                    display: flex
+                    flex-direction: column
+                    justify-content: center
+                    align-items: center
+                    z-index: 10
+                    margin: 30px
+                    padding: 20px
+                    max-width: 600px
+                    border-radius: 25px
+                    border: 1px solid #0c0c0c
+                    background-color: rgba(0,0,0,0.6)
+                    color: whitesmoke
+                    box-shadow: 0px 0px 20px #050505
+                    .calcInputContainer
+                        display: grid
+                        grid-template-columns: 1fr 1fr
+                        height: 75px
+                        width: 100%
+                        padding: 5px
+                        justify-items: center
+                        align-items: center
+                        z-index: 20
+                        .genderIcons
+                            display: flex
+                            flex-direction: row
+                            justify-content: center
+                            align-items: center
+                            justify-self: start
+                            width: 100px
+                            .genderIconLink
+                                text-decoration: none
+                                padding: 0px 10px
+                                cursor: pointer
+                                font-size: 36px
+                                color: none
+                                transition: color 0.4s, font-size 0.2s
+                            .female
+                                color: #c762ba
+                            .male
+                                color: #3f66cf
+                            .activeGender
+                                color: #d5d838
+                                font-size: 42px
+                            .unactiveGender
+                                font-size: 28px
+                        .calcQuestion
+                            position: relative
+                            align-items: center
+                            justify-self: end
+                            padding: 10px
+                            text-align: right
+                            font-size: 18px
+                            letter-spacing: 2px
+                            text-transform: uppercase
+                        .calcInput
+                            justify-self: start
+                            margin: 0 10px
+                            padding: 10px
+                            cursor: pointer
+                            width: 80px
+                            height: 35px
+                            text-align: center
+                            font-size: 18px
+                            background: none
+                            border: 1px solid grey
+                            border-radius: 20px
+                            color: white
+                        .activeInput
+                            z-index: 100
+                            border: 1px solid #d5d838 !important
+                        .calcInput:focus
+                            z-index: 1
+                            outline: none
+                            border: 1px solid #d5d838
+                            transition: border 0.3s
+                        .calcInput::placeholder
+                            transition: color 0.3s
+                        .calcInput:focus::placeholder
+                            color: #ffffff00
+                        input::-webkit-outer-spin-button,
+                        input::-webkit-inner-spin-button
+                            -webkit-appearance: none
+                            margin: 0
+                        input[type=number]
+                            -moz-appearance: textfield
 
-        // .dropdown:hover
-        //     max-height: 215px
-        //     // border-bottom-left-radius: 20px
-        //     // border-bottom-right-radius: 20px
+                    .detailsInfoContainer
+                        display: flex
+                        flex-direction: column
+                        justify-content: center
+                        align-items: center
+
+                        .detailsInfo
+                            display: flex
+                            flex-direction: column
+                            justify-content: center
+                            align-items: center
+                            padding: 15px
+                            font-size: 18px
+                            text-transform: uppercase
+                            letter-spacing: 2px
+                            margin-bottom: 50px
+
+                            .selectContainerActivity
+                                z-index: 10
+
+                            .selectContainer
+                                position: relative
+                                height: 100%
+                                padding-top: 10px
+
+                                .dropdownKcalCalc
+                                    position: absolute
+                                    display: flex
+                                    flex-direction: column
+                                    justify-content: start
+                                    top: 10px
+                                    left: calc(50% - 90px)
+                                    padding: 0
+                                    overflow: hidden
+                                    border: 1px solid grey
+                                    border-radius: 20px
+                                    max-height: 45px
+                                    width: 180px
+                                    color: whitesmoke
+                                    text-align: center
+                                    box-shadow: 0px 0px 20px #000
+                                    z-index: 2
+                                    transition: max-height 0.6s, border 0.3s, background-color 0.2s
+
+                                    .detailsListElement
+                                        outline: none !important
+                                        border: none !important
+                                        box-shadow: none !important
+                                        // font-family: 'Montserrat', sans-serif
+                                        text-transform: uppercase
+                                        letter-spacing: 2px
+                                        text-decoration: none
+                                        font-size: 16px
+                                        border: none
+                                        background: none
+                                        padding: 10px
+                                        width: 100%
+                                        background-color: black
+                                        color: white
+                                        transition: background-color 0.2s, color 0.2s
+
+                                        .arrowKcalDetailsList
+                                            padding: 0 0 0 10px
+                                            transform-origin: 17px 9px
+                                            transition: transform 0.3s
+
+                                        .arrowKcalDetailsListActive
+                                            transform: rotate(0.5turn)
+
+                                    .choosenOption
+                                        position: relative
+                                        width: 180px
+                                        padding: 10px
+                                        color: grey
+                                        background: none
+                                        transition: color 0.2s, border 0.3s, background-color 0.2s
+
+                                    .choosenOptionActive
+                                        border-bottom: 1px solid #d5d838
+                                        background-color: #d5d838
+                                        color: black !important
+                                        font-weight: bolder
+
+                                    .optionActive
+                                        background-color: #d5d838
+                                        color: black
+                                        font-weight: bolder
+                                        border-bottom: 1px solid #d5d838
+
+                                .dropdownKcalCalcActive
+                                    max-height: 280px
+                                    background-color: black
+
+                                .borderActivity
+                                    border: 1px solid #d5d838
+
+                    .calcResultBtn
+                        outline: none !important
+                        border: none !important
+                        font-family: 'Montserrat', sans-serif
+                        text-decoration: none
+                        font-size: 16px
+                        width: 100%
+                        max-width: 200px
+                        height: 45px
+                        margin: 30px auto
+                        padding: 8px 16px
+                        grid-template-columns: 8fr 2fr
+                        font-weight: bolder
+                        color: black
+                        text-align: center
+                        border-radius: 20px
+                        text-transform: uppercase
+                        letter-spacing: 2px
+                        border-radius: 20px
+                        background-color: #d5d838
+                        box-shadow: 0px 5px 10px black
+                        z-index: 1
+                        transition: box-shadow 0.11s, transform 0.1s
+
+                    .calcResultBtn:active
+                        box-shadow: 0 2px 3px black inset
+                        transform: translateY(2px)
+
+                    .result
+                        display: flex
+                        flex-direction: column
+                        justify-content: center
+                        align-items: center
+                        position: relative
+                        opacity: 0
+                        z-index: -10
+                        overflow: hidden
+                        max-height: 0%
+                        // background-color: #fff
+                        transition: max-height 0.5s, opacity 0.5s
+                        color: whitesmoke
+
+                        .resultFullText
+                            position: absolute
+                            opacity: 0
+                            z-index: -11
+                            transition: opacity 2s
+                            top: -200px
+                            left: 0
+                            padding: 20px
+
+                        .activeResult
+                            position: relative
+                            opacity: 1
+                            top: 0
+                            z-index: 1
+                        .resultFullText
+                            text-align: center
+                            .resultKcal
+                                display: flex
+                                flex-direction: row
+                                justify-content: center
+                                gap: 5px
+                                padding: 10px 0px 0px 0px
+                                font-size: 26px
+                                color: whitesmoke
+
+                            .highlightedResult
+                                color: #d5d838
+                                font-weight: bolder
+
+                    .resultShow
+                        position: relative
+                        opacity: 1
+                        top: 0
+                        z-index: 0
+                        max-height: 100%
+
+            .calcDisplay
+                position: relative
+                visibility: visible
+                opacity: 1
+                z-index: 10
+                height: auto
+                left: 0
+                transition: opacity 0.5s
+
+        .calcsFAQ
+            position: relative
+            text-align: center
+            margin: 50px 20px
+            .description
+                text-align: center
         .accordion
-            // background: none
-            // background-color: #d5d838
-            margin: 0px 30px
-            // width: 80%
+            margin: 0px auto
+            max-width: 600px
 
             .card
-                // margin: 10px 0px
                 border-radius: 0
                 font-size: 10px
                 .card-header
@@ -871,18 +1516,11 @@ section
                         i
                             align-self: center
                             justify-self: end
-                            // margin-left: 30px
                             transition:
-
-                        // .fa-minus   
-                        //     display: none
-
                         button
                             outline: none !important
                             border: none !important
                             box-shadow: none !important
-
-                        .btn
 
                         .btn-link
                             .fa-plus
@@ -909,8 +1547,6 @@ section
                                 transform: rotateZ(90deg)
                                 transition: opacity 0.3s, transform 0.4s
 
-            // .collapse
-            //     transition: 0.5s
                 .card-body
                     font-size: 16px
                     font-family: 'Montserrat', sans-serif
@@ -919,7 +1555,6 @@ section
             .show
                 font-size: 16px
                 text-align: left
-                background-color: #0c0c0c
                 border-bottom-left-radius: 10px
                 border-bottom-right-radius: 10px
                 transition: background-color 0.3s
@@ -927,365 +1562,43 @@ section
             .collapsing
                 font-size: 16px
                 text-align: left
-                background-color: rgba(0,0,0,0.5)
-
-        .activeCalc
-            position: relative
-            margin-bottom: 20px
-            overflow: hidden
-            // max-height: 0
-            // opacity: 0
-            // transition: max-height 1s, opacity 2s
-            .calc
-                position: absolute
-                visibility: hidden
-                // display: none
-                // left: -1000px
-                opacity: 0
-                z-index: -100
-                max-height: 0
-                transition: opacity 1s
-                overflow: hidden
-                .startCalc
-                    // width: 100%
-                    // background-color: #d5d838
-                    // background-color: black
-                    border-radius: 25px 25px 0px 0px
-                    padding: 20px
-                    text-align: center
-                    font-family: 'Montserrat', serif
-                    // font-weight: bolder
-                    // margin-bottom: 10px
-                    span
-                        // color: whitesmoke
-                    .underline
-                        margin: 20px 20px 0px 20px
-                        background-color: #d5d838
-
-                .calcInputs
-                    font-family: 'Montserrat', serif
-                    display: flex
-                    flex-direction: column
-                    justify-content: center
-                    align-items: center
-                    margin: 20px
-                    // width: 90%
-                    border: 1px solid #d5d838
-                    background-color: rgba(0,0,0,0.3)
-                    border-radius: 25px
-                    z-index: 10
-                    max-height: 650px
-                    transition: max-height 0.4s
-
-                    .calcInputContainer
-                        display: grid
-                        grid-template-columns: 1fr 1fr
-                        width: 100%
-                        height: 90px
-                        justify-items: center
-                        align-items: center
-                        padding: 20px
-                        z-index: 20
-
-                        .genderIcons
-                            display: flex
-                            flex-direction: row
-                            justify-content: center
-                            align-items: center
-                            height: 70px
-                            width: 100%
-
-                            .genderIconLink
-                                text-decoration: none
-                                font-size: 36px
-                                color: none
-                                padding: 15px
-                                transition: color 0.4s, font-size 0.5s
-                                // .fas
-                                //     // font-size: 40px
-
-                            .female
-                                color: #c762ba
-
-                            .male
-                                color: #3f66cf
-
-                            .activeGender
-                                color: #d5d838
-                                font-size: 40px
-                            .unactiveGender
-                                font-size: 26px
-
-                            
-
-                                
-
-                        .calcQuestion
-                            align-items: center
-                            justify-self: start
-                            letter-spacing: 2px
-                            text-transform: uppercase
-                            font-size: 14px
-
-                        .calcInput
-                            width: 100px
-                            height: 30px
-                            background: none
-                            border: 1px solid grey
-                            // border-bottom: 1px solid grey
-                            border-radius: 10px
-                            padding: 3px 6px
-                            color: white
-                            text-align: center
-                            // justify-self: center
-
-                        .selectContainer
-                            width: 100px
-                            // height: 30px
-                            background-color: black
-                            // border: 1px solid grey
-                            border-radius: 10px
-                            transition: border 0.3s
-
-                            .activity-form
-                                background-color: black
-                                border-radius: 10px
-                                justify-self: end
-                                justify-items: end
-                                align-self: center
-                                text-align: center
-                                color: whitesmoke
-                                width: 100%
-                                margin: auto
-                                font-size: 14px
-                                // font-weight: bolder   
-                                // background-color: #ffffff00
-                                outline: none !important
-                                // border: none !important
-                                box-shadow: none !important
-                                padding: 5px
-                                border: 1px solid grey
-                                transition: border 0.3s
-
-                                option
-                                    background-color: black
-                                    color: whitesmoke
-                                    text-align: center
-
-                            .activity-form:focus
-                                outline: none
-                                border: 1px solid #d5d838
-                                transition: border 0.3s
-
-                        .activeInput
-                            border: 1px solid #d5d838 !important
-                            z-index: 100
-
-                        .calcInput:focus
-                            outline: none
-                            border: 1px solid #d5d838
-                            transition: border 0.3s
-                            z-index: 1
-
-                        .calcInput::placeholder
-                            transition: color 0.3s
-
-                        .calcInput:focus::placeholder
-                            color: #ffffff00
-
-                        input::-webkit-outer-spin-button,
-                        input::-webkit-inner-spin-button
-                            -webkit-appearance: none
-                            margin: 0
-
-                        input[type=number]
-                            -moz-appearance: textfield
-
-                    .calcResultBtn, .kcalResultBtn
-                        outline: none !important
-                        border: none !important
-                        box-shadow: none !important
-                        width: 150px
-                        margin: 30px 20px
-                        padding: 8px 16px
-                        grid-template-columns: 8fr 2fr
-                        font-family: 'Montserrat', sans-serif
-                        text-decoration: none
-                        font-weight: bolder
-                        color: black
-                        font-size: 16px
-                        text-align: center
-                        border-radius: 20px
-                        text-transform: uppercase
-                        letter-spacing: 2px
-                        background-color: #d5d838
-                        z-index: 10
-
-                    .result
-                        // margin: 0px 0 30px 0
-                        // height: 100%
-                        // text-align: center
-                        display: flex
-                        flex-direction: column
-                        justify-content: center
-                        align-items: center
-                        opacity: 0
-                        position: absolute
-                        transition: opacity 0.5s
-                        z-index: -10
-                        padding: 20px 20px
-                        border-top: 1px solid #d5d838
-                        overflow: hidden
-                        height: 150px
-                        // position: relative
-                        // display: none
-
-                        // .resultFullText
-                        //     display: grid
-                        //     // grid-template-rows: 1fr
-
-                        .wrongInputs, .gapInputs, .resultFullText
-                            // display: none
-                            position: absolute
-                            opacity: 0
-                            z-index: -11
-                            transition: opacity 2s
-                            top: -200px
-                            left: 0
-                            width: 100%
-                            // padding: 20px 10px 20px 10px
-
-                        .wrongInputs, .gapInputs
-                            color: #d5d838
-                            font-weight: bolder
-                            text-align: center
-
-                        .activeResult
-                            // display: inline-block
-                            position: relative
-                            opacity: 1
-                            top: 0
-                            z-index: 5
-                            // transition: opacity 0.4s 0.3s
-                            // left: 0
-                        .resultFullText
-                            text-align: center
-                                // display: flex
-                                // flex-direction: column
-                                // justify-content: center
-
-                            .resultKcal
-                                display: flex
-                                flex-direction: row
-                                justify-content: center
-                                gap: 5px
-                                // margin: 20px
-                                padding: 20px 0px 0px 0px
-                                font-size: 26px
-                                color: whitesmoke
-
-                            .highlightedResult
-                                color: #d5d838
-                                font-weight: bolder
-
-                    .errorResult
-                        // position: relative
-                        // opacity: 1
-                        // top: 0
-                        // z-index: 5
-                        display: flex
-                        flex-direction: column
-                        justify-content: center
-                        margin: 20px 0 30px 0
-                        // padding: 30px 20px 0 20px
-                        border-top: 1px solid #d5d838
-                        width: 100%
-                        z-index: -11
-
-                    .resultShow
-                        position: relative
-                        opacity: 1
-                        top: 0
-                        z-index: 5
-
-                .calcInputHeightDefault
-                    max-height: 650px
-                .calcBmiInputHeightDefault
-                    max-height: 425px
-                .calcYmcaInputHeightDefault
-                    max-height: 425px
-                .calcInputHeightStretch
-                    max-height: 800px
-                    // transition: max-height 1s
-                .calcBmiInputHeightStretch
-                    max-height: 575px
-                .calcYmcaInputHeightStretch
-                    max-height: 575px
-
-            .calcDisplay
-                // display: inline-block
-                position: relative
-                visibility: visible
-                opacity: 1
-                z-index: 10
-                max-height: 1200px
-                left: 0
-                transition: opacity 1s
-
-        .calcsFAQ
-            text-align: center
-            margin-bottom: 30px
-
-.socials
-    display: flex
-    position: relative
-    flex-direction: column
-    height: 100%
-    width: 100%
-    padding: 0px 0px 30px 0px
-    // overflow: hidden
-    // height: 1000px
-    background-color: black
-    background-position: center
-    background-size: cover
-    text-align: center
-
-    p
-        padding: 0 30px
-
-    .footerIcons
-        // width: 100vw
-        // background-color: rgba(15, 15, 15, 0.4)
-        // background-color: #d5d838
-        // margin: 0px 30px
-        padding: 10px
-        text-align: center
-        // border-top: solid 1px #d5d838
-        // border-top: solid 1px #252525
-
-        .underline
-            background-color: #252525
-
-        .icon
-            text-align: center
-            padding: 0px 20px
-            font-size: 30px
-            text-decoration: none
-            color: #d5d838
-        // color: black
 
 .footer
     display: flex
-    flex-direction: row
+    flex-direction: column
     justify-content: center
     align-items: center
-    // margin-top: 20px
     padding: 10px
-    border-top: 1px solid whitesmoke
+    border-top: 1px solid #1f1d1d
     background-color: black
+    margin: 0
 
+    h3
+        padding: 20px
+        text-align: center
+        font-size: 14px
+
+    .footerIcons
+        padding: 10px
+        margin: 10px
+        text-align: center
+        .icon
+            border-radius: 100%
+            background: #161616
+            text-align: center
+            padding: 10px 15px
+            margin: 0px 5px
+            font-size: 26px
+            text-decoration: none
+            color: whitesmoke
+            transition: color 0.2s, background 0.2s
+
+        .icon:hover
+            color: black
+            background-color: #d5d838
     .copyright
-        margin: 0 10px
+        color: whitesmoke
+        margin: 20px 0px
 
 @keyframes refresher
     0%
@@ -1312,89 +1625,104 @@ section
 @keyframes transformIcon
     0%
         transform: rotateZ(0)
-    30%
-        color: #686868
     100%
         transform: rotateZ(360deg)
 @keyframes nextTransformIcon
     0%
         transform: rotateZ(0)
-    30%
-        color: #686868
     100%
         transform: rotateZ(360deg)
 
-// .dropdown-menu
-//     left: 50% !important
-//     transform: translateX(-50%) !important
-//     top: 100% !important
+@keyframes opacityFadeIn
+    0%
+        opacity: 0
 
-// .animate
-//     animation-duration: 0.4s
-//     -webkit-animation-duration: 0.4s
-//     // animation-fill-mode: both
-//     // -webkit-animation-fill-mode: both
+    100%
+        opacity: 1
 
-// @keyframes slideIn
-//     0%
-//         // transform: translateX(1rem)
-//         opacity: 0
+@keyframes opacityFadeAway
+    0%
+        opacity: 1
 
-//     100% 
-//         // transform: translateX(0rem)
-//         opacity: 1
+    100%
+        opacity: 0
 
-// .slideIn
-//     animation-name: slideIn
+@keyframes paginationLeft
+    0%
+        left: 0
+    50%
+        left: 6px
+    100%
+        left: 0
 
-    //odnosnie propozycji 1 z bootstrapowym buttonem
+@keyframes paginationRight
+    0%
+        left: 0
+    50%
+        left: -6px
+    100%
+        left: 0
+@keyframes repeatPaginationLeft
+    0%
+        left: 0
+    50%
+        left: 6px
+    100%
+        left: 0
 
-// .main
-//     display: flex
-//     justify-content: center
-//     height: 1000px
+@keyframes repeatPaginationRight
+    0%
+        left: 0
+    50%
+        left: -6px
+    100%
+        left: 0
 
-// .nav
-//     width: 100%
-//     display: flex
-//     justify-content: center
+@keyframes highlightThead
 
-// .menuLabel
-//     display: grid
-//     grid-template-columns: 10fr 2fr
-//     padding: 10px
-//     height: 60px
-//     background-color: black
+    50%
+        background-color: #ffff28
 
-//     // .menuBars
-//     //     display: grid
-//     //     justify-self: end 
-//     //     width: 40px
-//     //     height: 40px
+@keyframes highlightTheadSwitch
+    50%
+        background-color: #ffff28
 
-                // .animationBars
-            //     // animation: rotateBars 0.8s ease 0s 1 normal forwards
-            //     transform: rotateZ(180deg)
-            //     color: #d5d838
-            //     // backface-visibility: hidden
-            //     // perspective: 1000
-            // .reverseAnimationBars
-            //     // animation: reverseRotateBars 0.8s ease 0s 1 normal forwards
-            //     transform: rotateZ('-180deg')
-            //     color: whitesmoke
-                // backface-visibility: hidden
-                // perspective: 1000
+@media (min-width: 400px)
+    section
+        .activeQuote
+            min-height: 280px
 
-//                 @keyframes rotateBars
-//     0%
-//         transform: rotateZ(0)
-//         color: whitesmoke
-//     100%
-//         color: #d5d838
-// @keyframes reverseRotateBars
-//     0%
-//         transform: rotateZ(0)
-//         color: #d5d838
-//     100%
-//         transform: rotateZ(-180deg)
-//         color: whitesmoke
+@media (min-width: 435px)  and (max-width: 475px)
+    .trainingsSection
+        .trainingsCards
+            .training:hover #headerTrainingFunc
+                padding: 35px 20px
+                margin: 0
+@media (min-width: 500px)
+    body
+        .showDisplayModal
+            .informationWeightOnClick
+                display: none
+            .tableContainer
+                .ownTable
+                    .ownTableWeight
+                        display: table-cell
+                        opacity: 1
+                        visibility: visible
+                        width: 15%
+            .form-switch
+                display: none
+    section
+        .activeQuote
+            min-height: 250px
+
+    .smallShortcuts
+        display: none
+
+    // .mediumShortcuts
+    //     text-align: center
+    //     display: block
+
+@media ( max-width: 500px )
+    .mediumShortcuts
+        display: none

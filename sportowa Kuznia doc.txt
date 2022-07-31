@@ -1,0 +1,10 @@
+{product: 'Ziemniak', kcal: 79, protein: 1.9, carbs: 16.8, fat: 0.1}, 
+{product: 'Pomidor', kcal: 19, protein: 0.9, carbs: 2.9, fat: 0.2}, 
+{product: 'Kurczak', kcal: 98, protein: 21, carbs: 0, carbs: 1.3}, 
+{product: 'Wołowina', kcal: 112, protein: 20.1, carbs: 0, carbs: 3.5}, 
+{product: 'Makaron penne', kcal: 345, protein: 15.2, carbs: 68, carbs: 1.3}, 
+{product: 'Ryż biały', kcal: 345, protein: 7, carbs: 76.5, carbs: 0.7}, 
+{product: 'Mleko 2%', kcal: 51, protein: 3.3, carbs: 4.9, carbs: 2.0}, 
+{product: 'Ser Gouda', kcal: 316, protein: 27.3, carbs: 0.1, carbs: 22.9}, 
+{product: 'Masło', kcal: 735, protein: 0.7, carbs: 0.7, carbs: 82.5}, 
+{product: 'Tuńczyk', kcal: 110, protein: 25.1, carbs: 0, carbs: 0.9}
