@@ -2,11 +2,13 @@
 <html lang="pl">
 
 <!-- do zrobienia:
-artykuly js, active article zmiana,
-form kalkulatorow,
-hovery treningu + stylizacja ich, bo taka se
+
+poprawic formuly kalkulatorow - dodac warunki przy minusowych wartosciach
+kolejne waypointy screenwidth do wystylizowania
+poukladac JS, CSS i HTML
+
 posprzatac
-ddl 31.01. ostateczny 
+
 -->
 
 <head>
@@ -108,7 +110,7 @@ ddl 31.01. ostateczny
             <div class="activeQuote">
             </div>
             <a class="quoteChange"><i class="fas fa-redo"></i></a>
-            <div class="desrciption">
+            <div class="description">
                 <p>Jeżeli tu trafiles to znaczy, że interesuje Cię <span class="highlighted">zbudowanie formy</span> nie
                     tylko na jeden sezon, ale na
                     lata!</p>
@@ -117,46 +119,85 @@ ddl 31.01. ostateczny
                         indywidualny trening</span>. Pomożemy Ci
                     również w wyliczeniu podstawowych
                     mierników określających zdrowe i sprawne cialo.</p>
-                <p>Jeżeli będziesz mial jakiekolwiek pytania - skorzystaj z poniższych platform, aby uzyskać
-                    odpowiedź wprost od twórców!</p>
-            </div>
-            <div class="footerIcons">
-                <a href="" class="icon link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="" class="icon git"><i class="fab fa-github"></i></a>
-                <a href="" class="icon ig"><i class="fab fa-instagram"></i></a>
             </div>
         </section>
         <section class="articlesListSection scroll-fix" id="articlesListSection">
             <div class="hero-shadow-bothsides"></div>
             <h3><i class="fas fa-book-reader"></i> Artykuły</h3>
             <div class="underline"></div>
+            <div class="articlesPages">
+                <div class="articlesFirstPage pageArticle activePage">
+                    <a href="#currentArticleSectionID">
+                        <div class="artCard firstArticle">
+                            <div class="textCard">
+                                <h3>Zmęczenie w ciągu dnia</h3>
+                                <span>Skąd się bierze i jakie popelniamy bledy?</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#currentArticleSectionID">
+                        <div class="artCard secondArticle">
+                            <div class="textCard">
+                                <h3>Ćwiczenia a zdrowie psychiczne</h3>
+                                <span>Benefity zdrowotne dzięki aktywności fizycznej</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#currentArticleSectionID">
+                        <div class="artCard thirdArticle">
+                            <div class="textCard">
+                                <h3>Sauna na regenerację</h3>
+                                <span>Czy sauna po treningu fizycznym jest wskazana?</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="articlesSecondPage pageArticle">
+                    <a href="#currentArticleSectionID">
+                        <div class="artCard fourthArticle" id="paginationTEST">
+                            <div class="textCard">
+                                <h3>Podstawy treningu - ile serii robić?</h3>
+                                <span>Jak dobrać optymalną ilość serii dla konkretnego celu?</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#currentArticleSectionID">
+                        <div class="artCard fifthArticle">
+                            <div class="textCard">
+                                <h3>Błędy na siłowni</h3>
+                                <span>Jak uniknąć najczęściej popełnianianych błędów?</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#currentArticleSectionID">
+                        <div class="artCard sixthArticle">
+                            <div class="textCard">
+                                <h3>Jak wytrwać w postanowieniach noworocznych?</h3>
+                                <span>Poznaj 7 wskazówek na utrzymanie postanowień!</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-            <div class="artCard firstArticle">
-                <div class="textCard">
-                    <h3>Zmęczenie w ciągu dnia</h3>
-                    <span>Skąd się bierze i jakie popelniamy bledy?</span>
-                </div>
             </div>
-            <div class="artCard secondArticle">
-                <div class="textCard">
-                    <h3>Ćwiczenia a zdrowie psychiczne</h3>
-                    <span>Benefity zdrowotne dzięki aktywności fizycznej</span>
-                </div>
-            </div>
-            <div class="artCard thirdArticle">
-                <div class="textCard">
-                    <h3>Sauna na regenerację</h3>
-                    <span>Czy sauna po treningu fizycznym jest wskazana?</span>
-                </div>
-            </div>
-            <div class="artCard fourthArticle">
-                <div class="textCard">
-                    <h3>Podstawy treningu - ile serii robić?</h3>
-                    <span>Jak dobrać optymalną ilość serii dla konkretnego celu?</span>
-                </div>
-            </div>
+            <nav class="paginationArticles" aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link pagePrevious" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link pageNumber pageOne active">1</a></li>
+                    <li class="page-item"><a class="page-link pageNumber pageTwo">2</a></li>
+                    <li class="page-item">
+                        <a class="page-link pageNext" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </section>
-        <section class="currentArticleSection">
+        <section class="currentArticleSection scroll-fix" id="currentArticleSectionID">
             <div class="hero-shadow-bothsides"></div>
 
             <div class="allArticles">
@@ -349,6 +390,375 @@ ddl 31.01. ostateczny
                             </p>
 
                         </div>
+
+                    </span>
+                </div>
+                <div class="postanowieniaArticle">
+                    <h3>Jak wytrwać w postanowieniach noworocznych?</h3>
+                    <div class="underline"></div>
+                    <div class="articleInfo">
+                        <img src="/imgs/burgerSmall.jpg" alt="">
+                        <div class="articleAuthorDate">
+                            <h5 class="articleAuthor"><i class="fas fa-user-edit"></i>Aneta Buczak</h5>
+                            <span class="articleDate"><i class="far fa-calendar"></i>13.01.2022</span>
+                        </div>
+                    </div>
+                    <span class="mainArticle">
+                        <div class="firstSection Section">
+                            <p>
+                                Ile razy podejmowałeś jakieś postanowienie noworoczne, żeby wkrótce potem je złamać? A
+                                może już nawet nie chce Ci się niczego postanawiać, ponieważ nie wiesz jak w takim
+                                postanowieniu wytrwać? W tym roku zatrzymaj zaklęty krąg niezrealizowanych decyzji.
+                                Jeśli Twoim noworocznym postanowieniem jest zadbanie o siebie i bycie zdrowym,
+                                osiągniesz to, jeśli będziesz miał na uwadze konkretne wskazówki. Czy silną wolę można
+                                wyćwiczyć jak biceps i wytrwać w realizacji postanowień noworocznych?
+                            </p>
+
+                        </div>
+                        <div class="Section">
+                            <h5>Jak wytrwać w postanowieniach noworocznych?</h5>
+                            <p>
+                                Początek nowego roku sprzyja podejmowaniu postanowień, które mają zmienić życie. Jednak
+                                ta noworoczna magia ulatnia się jak gaz z sylwestrowego szampana, a wraz z nią
+                                determinacja do dokonania pozytywnych zmian. Badania pokazują, że aż połowa osób
+                                podejmujących noworoczne postanowienia porzuca je w pierwszym tygodniu stycznia.
+
+                                Co możesz zrobić, aby tym razem urzeczywistnić swoje marzenia o sześciopaku, czy
+                                kondycji? Oto 7 wskazówek, które pozwolą Ci zachować motywację przez cały czas
+                                realizacji postanowienia noworocznego:
+                            </p>
+                        </div>
+                        <div class="Section">
+                            <h5>1. Ustal plan działania</h5>
+                            <p>
+                                Nie podejmuj postanowienia pod wpływem chwili. Jeśli to zrobisz, będzie ono oparte na
+                                Twoim sposobie myślenia tego konkretnego dnia. Planuj — prawdziwe postanowienie
+                                koncentruje się na tym, jak osiągnąć cel.
+
+                                Wymyśl, jak poradzisz sobie z pokusą pominięcia ćwiczeń lub zjedzenia kawałka ciasta.
+                                Być może będzie to obejmować ćwiczenie pozytywnego myślenia, prośbę o wsparcie
+                                przyjaciela, czy wyobrażenie sobie, jak realizacja postanowienia i osiągnięcie danego
+                                celu pozytywnie wpłynie Twoją przyszłość.
+                            </p>
+                        </div>
+                        <div class="Section">
+                            <h5>2. Bądź realistą</h5>
+
+                            <p>
+                                Najpewniejszym sposobem na pogrzebanie realizacji celu jest spowodowanie, że będzie
+                                nieosiągalny. Jeśli postanowisz, aby nigdy więcej nie jeść ulubionego jedzenia, z góry
+                                narażasz się na porażkę. Zamiast tego ustal realny i osiągalny cel, na przykład unikaj
+                                tego jedzenia częściej niż teraz.
+                            </p>
+
+
+                        </div>
+                        <div class="Section">
+                            <h5>3. Znajdź w kimś wsparcie</h5>
+
+                            <p>
+                                Nie trzymaj chęci wprowadzenia zmian w swoim życiu w tajemnicy. Podziel się informacją o
+                                swoim postanowieniu z przyjaciółmi i rodziną, aby wsparli Twoje dążenie do poprawy
+                                kondycji i zdrowia. Najlepszym pomysłem będzie znalezienie kogoś, kto podejmie
+                                postanowienie razem z Tobą. Będziecie motywować się nawzajem.
+                            </p>
+                        </div>
+                        <div class="Section">
+                            <h5>4. Śledź swoje postępy</h5>
+                            <p>
+                                Odnotowuj każdy sukces. Po pierwsze cele krótkoterminowe są łatwiejsze do osiągnięcia,
+                                po drugie, każde osiągnięcie pomoże Ci utrzymać motywację i wytrwać w postanowieniu.
+                                Zamiast skupiać się na utracie 20 kilogramów, skup się na utracie pierwszych 2. Prowadź
+                                dziennik żywienia, który pomoże Ci trzymać się diety i nagradzaj się za każdy stracony
+                                kilogram, nie burząc przy tym dobrej rutyny.
+                            </p>
+
+                        </div>
+                        <div class="Section">
+                            <h5>5. Nagradzaj się</h5>
+                            <p>
+                                Nagradzanie drobnych sukcesów nie pozwoli odczuwać frustracji z braku wielkich wyników.
+                                Oczywiście nie oznacza to, że po zrzuceniu 1 kg możesz zjeść całe pudełko czekoladek.
+                                Zamiast tego świętuj sukces, robiąc coś, co sprawi Ci przyjemność i nie jest sprzeczne z
+                                postanowieniem. Jeśli osiągniesz kolejny etap utraty kilogramów, nagrodź się nową
+                                koszulką treningową.
+                            </p>
+
+                        </div>
+                        <div class="Section">
+                            <h5>6. Stosuj metodę małych kroków</h5>
+                            <p>
+                                Nie dokonuj gwałtownych zmian. Pamiętaj, że nawet najambitniejsze plany składają się z
+                                wielu małych kroków. Każdy marzy o osiąganiu wielkich rzeczy. Przyjmij, że wielkie
+                                rzeczy nie powstają z dnia na dzień. Angażuj się na co dzień, wykonując plan po trochu i
+                                obserwuj postępy. W przeciwnym razie będziesz jedynie marzyć o wielkich rzeczach i nigdy
+                                nie zrobisz pierwszego kroku.
+
+                                Podnoś poprzeczkę w miarę postępów. Jeśli chcesz zacząć ćwiczyć, zacznij od 2 pompek czy
+                                10 przysiadów. Po pewnym czasie efekty codziennych ćwiczeń spowodują, że będziesz w
+                                stanie zwiększyć liczbę powtórzeń, a z czasem zobaczysz, jak długą drogę przeszedłeś.
+                            </p>
+
+                        </div>
+                        <div class="Section">
+                            <h5>7. Nie zadręczaj się</h5>
+                            <p>
+                                Musisz uwierzyć, że poczucie winy za nadarzające się potknięcia nie pomoże Ci osiągnąć
+                                celu. Rozliczaj się z etapów realizacji planu. Wykonuj jego założenia, najlepiej jak
+                                możesz. Nie staraj się przyspieszyć procesu, który z założenia musi trwać (w 3 dni nie
+                                można schudnąć, zbudować muskulatury, ani przygotować się do maratonu). Zadręczanie się
+                                pozornym brakiem wyników czy chwilowym odejściem od planu jedynie zdemotywuje Cię i
+                                przyniesie odwrotny skutek do zamierzonego.
+
+                                Wykształcenie nowego nawyku zdrowotnego zajmuje średnio około 66 dni (chociaż może wahać
+                                się od 18 do ponad 120 dni) [1]. Czas ten uzależniony jest od tego, jak długo zajmuje
+                                mózgowi utworzenie wystarczająco silnego połączenia, aby nowe działanie stało się
+                                automatyczne. Nie jesteśmy przystosowani do szybkich zmian, tylko do nawyków, które
+                                bezpiecznie utrzymują nas przy życiu.
+                            </p>
+
+                        </div>
+                        <div class="Section">
+                            <h5></h5>
+                            <p>
+                                Nasz mózg uwielbia automatyzację. Dlatego, kiedy zrealizujesz postanowienia noworoczne i
+                                zmienisz już swoje nawyki obejmujące zdrowe odżywianie, czy wyższą aktywność, będzie tak
+                                samo trudno je przełamać, jak trudno było je uformować. Bądź konsekwentny, a osiągniesz
+                                konkretny cel.
+                            </p>
+                            <span class="source">
+                                <i class="far fa-newspaper"></i>
+                                <a
+                                    href="https://testosterone.pl/wiedza/cwiczenia-a-zdrowie-psychiczne">testosterone.pl</a>
+                            </span>
+
+                        </div>
+                        <div class="Section bibliography">
+                            <h5>Literatura</h5>
+
+                            <p>
+                                [1] [1] Benjamin Gardner: Making health habitual: the psychology of ‘habit-formation’
+                                and general practice. Br J Gen Pract. 2012 Dec; 62(605): 664–666.
+                            </p>
+                            <p>
+                                https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3505409/
+                            </p>
+
+                        </div>
+
+                    </span>
+                </div>
+                <div class="bledyArticle">
+                    <h3>Najczęściej popełniane błędy na siłowni</h3>
+                    <div class="underline"></div>
+                    <div class="articleInfo">
+                        <img src="/imgs/bledySmall.jpg" alt="">
+                        <div class="articleAuthorDate">
+                            <h5 class="articleAuthor"><i class="fas fa-user-edit"></i>Michalina Walkowiak
+                            </h5>
+                            <span class="articleDate"><i class="far fa-calendar"></i>01.01.2022</span>
+                        </div>
+                    </div>
+                    <span class="mainArticle">
+                        <div class="firstSection Section">
+                            <p>
+                                Każdy był kiedyś nowy na siłowni. Cofając się pamięcią wstecz, zapewne każdy popełniał
+                                większe lub mniejsze błędy treningowe. Z perspektywy czasu, warto się zastanowić, czego
+                                unikać na początku drogi na siłownią, która jeśli dobrze poprowadzona może być bardzo
+                                wdzięczną drogą, lub bardzo krętą i niebezpieczną, jeśli nie zwrócicie uwagi na
+                                najczęstsze błędy. Przedstawię Wam najczęściej zaobserwowane przeze mnie.
+                            </p>
+
+                        </div>
+                        <div class="Section">
+                            <h5>Niepoprawna technika</h5>
+                            <p>
+                                Nie bez powodu jako pierwsza. Braki w technice podczas wykonywania ćwiczeń prowadzą do
+                                przeciążeń aparatu ruchu. Pomyśl, ile powtórzeń średnio robisz podczas treningu – w
+                                skali tygodnia czy miesiąca już te kilka powtórzeń będzie wpływało na stan Twojego
+                                organizmu. Co więcej, utrwalony nieoptymalny dla naszego ciała wzorzec ruchowy będzie
+                                wykorzystywany podczas codziennych czynności. Spójrzmy w skali tygodnia – ile czasu
+                                poświęcasz na trening, a ile niedbałych ruchów wykonasz, robiąc codzienne, prozaiczne
+                                czynności? Przecież nic mi się nie stanie, nie mam ciężaru! Nic bardziej mylnego. Suma
+                                mniejszych przeciążeń może być potencjalnie bardziej niebezpieczna dla aparatu ruchu niż
+                                jednorazowe przeciążenie.
+                            </p>
+                        </div>
+                        <div class="Section">
+                            <h5>Za duży ciężar</h5>
+                            <p>
+                                Nawiązując do poprzedniego aspektu – zbyt duży ciężar dla osoby ćwiczącej będzie
+                                zaburzać technikę wykonania. Na pewno miałeś okazję widzieć martwy ciąg na zaokrąglonych
+                                plecach czy bujanie się podczas uginania na biceps? O ile nie jesteś profesjonalistą i
+                                nie podchodzicie pod życiowy rekord, powtarzalność takiej techniki będzie prostą drogą
+                                do przeciążeń, a w konsekwencji do kontuzji. Zwiększanie ciężaru powinno być zaplanowane
+                                i ostrożne. Powinieneś też słuchać swojego organizmu i sygnałów jakie wysyła. Warto
+                                czasami zostawić ego w szatni i zdjąć kilogramy ze sztangi – raczej nikomu nie imponują
+                                ćwierć przysiady, spłycone bo ciężar był za duży. Ciężar w danym ćwiczeniu powinien być
+                                zwiększany nie kosztem zakresu ruchu czy techniki. Jeśli postęp następuję kosztem innego
+                                aspektu, czy w dalszym ciągu mówimy o postępie? Zastanów się, czy chcesz trenować zdrowo
+                                i długo, czy niezdrowo i krótko?
+                            </p>
+                        </div>
+                        <div class="Section">
+                            <h5>Brak regeneracji</h5>
+
+                            <p>
+                                Ciężkie treningi należy uzupełnić odpowiednią regeneracją i dietą. Możesz trenować
+                                najlepszym dla Ciebie planem , ale wystarczy nieodpowiednia dieta, brak snu czy stres,
+                                które skutecznie utrudnią Ci osiągnięcie wymarzonego celu, na który tak ciężko
+                                pracujesz. Trening jest złożonym procesem, który nie jest tylko kilkoma godzinami
+                                spędzonymi na siłowni, ale również wszystkim, co się dzieje dookoła. Jesteś niewyspany?
+                                Głodny? Miałeś ciężki, stresujący dzień? Niebzyt chce Ci się trenować, ciężko się skupić
+                                czy czujesz, że za szybko się meczysz a ciężar jakby ważył dzisiaj więcej? To skutki
+                                nieodpowiedniej regeneracji między treningami. Jeśli nie jesteś zawodowcem i nie
+                                podporządkujesz każdego aspektu życia pod proces treningowy, może być ciężko dopiąć
+                                wszystko na sto procent. Nie mniej, nie powinieneś całkowicie zaniedbywać procesów,
+                                mających wpływ na regenerację okołotreningową. Poprawią się nie tylko wyniki sportowe,
+                                ale również zdrowie, a co za tym idzie – jakość życia.
+                            </p>
+
+
+                        </div>
+                        <div class="Section">
+                            <h5>Sprzęt</h5>
+
+                            <p>
+                                Więcej sprzętu niż talentu – pewnie miałeś okazję to słyszeć. Otóż to – niepoprawnej
+                                techniki, braku odpowiedniego przeładowania, które będzie bodźcem do adaptacji czy
+                                ciężaru na sztandze nie nadrobi drogi sprzęt. Zaczynając przygodę z siłownią, jedyne
+                                czego tak na prawdę potrzebujesz to strój (wcale nie musi być idealnie dopasowany
+                                kolorystycznie z najnowszej kolekcji), uniwersalne obuwie (możesz też trenować w samych
+                                skarpetach) i butelka z wodą. A co z pasem, rękawiczkami, owijkami na nadgarstki,
+                                zegarkiem sportowym, butami z podbiciem, ochraniaczami na kolana czy innym sprzętem
+                                który mają koledzy/koleżanki? Wraz z zaawansowaniem i stażem, czy ukierunkowaniem
+                                treningu pod konkretne cele, sam zobaczysz, czy w ogóle potrzebujesz takiego sprzętu.
+                                Nie mniej, w dalszym ciągu nie wykona on pracy za Ciebie. Przykładowo – masz braki
+                                mobilności w stawie skokowym? Lepiej skupić się na zwiększeniu zakresu technikami
+                                mobilizacyjnymi, czy kupić najdroższe buty z podbiciem? O ile nie jesteś zawodnikiem
+                                trójboju czy dwuboju, czy nie trenujesz pod wynik sportowy zdecydowanie lepszym
+                                rozwiązaniem będzie zadbanie o aparat ruchu, który będzie funkcjonował w każdych
+                                warunkach, również poza siłownią w każdym obuwiu. Kupiłeś najnowszy zegarek z opaską do
+                                mierzenia tętna, dystansu i innych parametrów? Owszem, będzie świetny do monitorowania
+                                treningu i postępów, ale jeśli nie będziesz systematycznie trenować nie zagwarantuje Ci
+                                zwiększenia prędkości biegu czy dystansu. Musisz również wiedzieć, co te parametry
+                                treningowe dla Ciebie znaczą – stąd zapraszam do zapoznania się z artykułem „ Procesy
+                                energetyczne w wysiłkach o różnej intensywności i czasie trwania”.
+                            </p>
+                        </div>
+                        <div class="Section">
+                            <h5>Kolega jako trener</h5>
+                            <p>
+                                Na pewno widziałeś na siłowni typowego nowicjusza, który zaczął trenować ze stałym
+                                bywalcem Twojej siłowni. Pojawia się pytanie – czy taka osoba na pewno ma kompetencje i
+                                kwalifikacje do trenowania innych osób? Czy chodzenie na siłownię, lub estetyczna
+                                sylwetka czyni z niej eksperta w tej dziedzinie? Owszem, może pomóc nowicjuszowi na
+                                samym początku swojej drogi. Jednak odwzorowanie swojego treningu na nowicjuszu nie
+                                będzie dobrym rozwiązaniem – to co działa na niego, niekoniecznie będzie dobre dla
+                                początkującego, szczególnie na samym początku z siłownią. Cel sam w sobie też może być
+                                odmienny, przez co proces treningowy powinien być zaplanowany w inny sposób. Aparat
+                                ruchu również będzie w innym stanie – jeśli stały bywalec jest aktywny fizycznie od
+                                długiego czasu, a nowicjusz pracuje przy biurku przez pół dnia a drugie pół spędza na
+                                kanapie, ich ciało będzie miało inne ograniczenia i możliwości. Warto zatem ostrożnie
+                                podchodzić do wybierania autorytetu do treningów.
+                            </p>
+
+                        </div>
+                        <div class="Section">
+                            <h5>Trening z instagrama</h5>
+                            <p>
+                                W sieci możemy spotkać wiele wręcz idealnych sylwetek. Kto nie chciałby wyglądać w ten
+                                sposób? Warto się jednak zatrzymać i zastanowić – czy forma prezentowana na zdjęciach
+                                jest zasługą odpowiedniego treningu, diety i regeneracji czy nienaturalną pozą, światłem
+                                i zmanipulowana przy obróbce? Często takie osoby publikują swoje treningi, czy specjalne
+                                zestawy ćwiczeń dla swoich followersów. Tutaj również przestrzegam przed ślepym
+                                kopiowaniem takich treningów. Zastanów się najpierw czy prezentowane ćwiczenia będą
+                                odpowiednie pod Twoje cele i możliwości? Warto sprawdzić, czy osoba, która je publikuje
+                                poza byciem influencerem, czy modelem ma pojęcie o treningu i funkcjonowaniu ludzkiego
+                                ciała. Czy to, że ktoś ma idealną sylwetkę oznacza że wie wszystko od A do Z? Na
+                                poprawkę należy też wziąć sposób wykonywania publikowanych ćwiczeń – zwróć uwagę na
+                                technikę i zastosowanie ćwiczeń. Przykładowo – kolana uciekają do środka podczas
+                                przysiadu, a pupa jest nienaturalnie wypięta? Na sztandze załadowana pokaźna ilość
+                                talerzy a przysiad jest ćwierć przysiadem z podwijającą się miednicą? Nawet ilość
+                                założonego sprzętu nie pomaga? Warto się zastanowić, czy takie osoby zawdzięczają swoją
+                                formę właśnie takim treningom, czy podstawy wykonywane przez lata treningu? A może
+                                wspomagają się najróżniejszymi środkami, które niekoniecznie będą zdrowe dla Ciebie?
+                                Może mają dobrą genetykę, która czyni ich sylwetki atrakcyjniejszymi? Pomyśl, czy nie
+                                lepiej w takiej sytuacji poszukać bardziej rzetelnego źródła inspiracji i wiedzy?
+                            </p>
+
+                        </div>
+                        <div class="Section">
+                            <h5>Nieodpowiednio dopasowany plan</h5>
+                            <p>
+                                Najprościej mówiąc trening jest złożonym procesem, który poprzez stymulowanie organizmu
+                                bodźcami prowadzi do adaptacji. A co to ma do rzeczy? Proces, żeby był skuteczny i
+                                bezpieczny powinien być odpowiednio zaplanowany. Systematyczne przeciążenie, które nie
+                                będzie za wysokie (organizm może się z niego nie zregenerować) i za niskie (brak
+                                wystarczającego bodźca) będzie powodowało adaptację. Zbyt lekkie treningi nie będą
+                                przynosić pożądanych efektów sportowych. W drugą stronę tak samo – zbyt ciężkie treningi
+                                nie pozwolą Ci się w pewnym momencie zregenerować i adaptować organizm, w rezultacie
+                                powodując hamowanie postępu. W zależności od celu i treningu może to być przykładowo
+                                wzrost siły, masy mięśniowej, wytrzymałości czy innej cechy/zdolności, lub spadek masy
+                                ciała, utrata tkanki tłuszczowej. Przykładowo chcesz zwiększyć siłę – wykonując trening
+                                siłowy oparty o ćwiczenia, które akurat w danym momencie przyjdą Ci do głowy, na losowym
+                                ciężarze, w losowej liczbie serii i powtórzeń nie ma mowy o jakimkolwiek zwiększeniu
+                                siły na poziomie średniozaawansowanym (jedynie może podziałać na początkującego).
+                                Trenowanie planem kolegi/koleżanki, który dostosowany jest pod ich cele i możliwości też
+                                nie gwarantuje Ci takich samych rezultatów, jakie oni uzyskali. Każdy z nas jest inny i
+                                plan powinien być dopasowany indywidualnie do Ciebie – tylko wtedy masz pewność, że
+                                będziesz w stanie z tym planem osiągnąć zamierzony cel.
+                            </p>
+
+                        </div>
+                        <div class="Section">
+                            <h5>Brak systematyczności</h5>
+                            <p>
+                                Skoro wiemy już, czym jest trening i jak ważny jest indywidualny plan – warto wspomnieć
+                                o systematyczności. Nawet najlepszy plan, dieta i odpowiednia regeneracja nie będą
+                                działać, jeśli nie będzie systematyki. Jednorazowy bodziec nie wywoła długotrwałej
+                                adaptacji. Organizm nie będzie chciał się zaadaptować do warunków, które nie są
+                                relatywnie stałe. Działa to też odwrotnie – na przykład zaprzestanie treningów po
+                                osiągnięciu docelowej masy mięśniowej będzie skutkowało odcięciem bodźca, który
+                                powodował adaptację. Każdy kilogram tkanki mięśniowej to potrzebna dodatkowa energia
+                                żeby go utrzymać. Ale po co organizm ma utrzymać taką masę mięśniową, skoro nie jest mu
+                                już do niczego potrzebna?
+                            </p>
+
+                        </div>
+                        <div class="Section">
+                            <h5>Szybkie efekty w krótkim czasie</h5>
+
+                            <p>
+                                Część osób po latach bezczynności, niedbania o swoje zdrowie i sylwetkę zaczyna
+                                podejmować działania, które mają na celu odwrócenie tych procesów. Stawianie sobie
+                                nierealnych celów, brzmiących jak reklama diety cud, typu: schudnę 20 kilogramów w
+                                miesiąc jest nierealne, lub jeśli jakimś cudem się uda – niezdrowe i nieoptymalne.
+                                Jednak trzeba sobie uświadomić, że te wspomniane 20 kilogramów nie przybyło w magiczny
+                                sposób z dnia na dzień. Tak też nie zniknie w 30 dni, a nawet jeśli – zostawi po sobie
+                                nieestetyczne ślady. Należy stawiać sobie realne, dobrze zaplanowane cele, bo brak
+                                efektu skutecznie ostudzi zapał do treningów.
+
+                                Błędów popełnianych na siłowni może być jeszcze więcej. Niemniej, warto eliminować te
+                                najczęstsze, które skutecznie niweczą starania wielu osób w drodze po wyznaczony sobie
+                                cel. Warto uczyć się na błędach, czy to swoich czy innych, a przygoda z siłownią z
+                                pewnością będzie przyjemniejsza i bardziej efektywna.
+                            </p>
+                            <span class="source">
+                                <i class="far fa-newspaper"></i>
+                                <a
+                                    href="https://testosterone.pl/wiedza/najczesciej-popelniane-bledy-na-silowni-oraz-jak-im-zapobiegac/">testosterone.pl</a>
+                            </span>
+
+                        </div>
+                        <!-- <div class="Section bibliography">
+                            <h5>Literatura</h5>
+
+                            <p>
+                                https://www.ncbi.nlm.nih.gov/pubmed/30099000?fbclid=IwAR0x5rbhPi7xrjn6DDwvl2497lb2u9dPVCJkfsrMBguF9Iq2TxaH7-crKrM
+                            </p>
+
+                        </div> -->
 
                     </span>
                 </div>
@@ -923,7 +1333,8 @@ ddl 31.01. ostateczny
             </div>
             <div class="dropdownArticles">
                 <span class="clickToExtend">Kliknij, aby czytać dalej</span>
-                <span class="clickToRoll">Kliknij, aby zwinąć tekst</span>
+                <a href="#currentArticleSectionID" class="aRollUp"><span class="clickToRoll">Kliknij, aby zwinąć
+                        tekst</span></a>
                 <!-- <i class="fas fa-chevron-down animate__animated animate__bounce"></i> -->
                 <!-- <a class="animate__animated animate__bounce">
                 </a> -->
@@ -934,7 +1345,7 @@ ddl 31.01. ostateczny
             </div>
             <h3><i class="fas fa-fire-alt"></i> Trening</h3>
             <div class="underline"></div>
-            <div class="desrciption">
+            <div class="description">
                 <p>Przy wyborze odpowiedniego treningu powinniśmy zastanowić się na jakich
                     efektach
                     nam zależy oraz
@@ -953,7 +1364,7 @@ ddl 31.01. ostateczny
             <div class="trainingsCards">
                 <h3>Rodzaje treningów</h3>
                 <div class="underline"></div>
-                <div class="training strength">
+                <div class="training strength" id="#strength">
                     <div class="extendTraining">
                         <div class="backgroundTraining backgroundStrength">
                             <div class="backgroundTrainingShadow"></div>
@@ -971,16 +1382,16 @@ ddl 31.01. ostateczny
                         </p>
                         <div class="trainingMovies">
 
-                            <a href="https://youtu.be/5sLYGvCGSHY" target="_blank"><i class="fab fa-youtube"></i>Trening
-                                silowy FBW</a>
+                            <a href="https://youtu.be/5sLYGvCGSHY" target="_blank"><i class="fab fa-youtube"></i><p>Trening
+                                silowy FBW</p></a>
 
-                            <a href="https://youtu.be/afXGD0ddvPg" target="_blank"><i class="fab fa-youtube"></i>Trening
-                                FBW vs SPLIT</a>
+                            <a href="https://youtu.be/afXGD0ddvPg" target="_blank"><i class="fab fa-youtube"></i><p>Trening
+                                FBW vs SPLIT</p></a>
                         </div>
 
                     </div>
                 </div>
-                <div class="training cardio">
+                <div class="training cardio" id='#cardio'>
                     <div class="extendTraining">
                         <div class="backgroundTraining backgroundCardio">
                             <div class="backgroundTrainingShadow"></div>
@@ -999,12 +1410,13 @@ ddl 31.01. ostateczny
                         <p>Sprawdż poniżej jak wygladają treningi cardio:
                         </p>
                         <div class="trainingMovies">
-                            <a href="https://youtu.be/fwTffUDL1lQ" target="_blank"><i class="fab fa-youtube"></i>Trening
-                                odchudzający</a>
-                            <a href="https://youtu.be/ex5H5i9DjTE" target="_blank"><i class="fab fa-youtube"></i>Trening
-                                ujędrniający</a>
+                            <a href="https://youtu.be/fwTffUDL1lQ" target="_blank"><i class="fab fa-youtube"></i><p>Trening
+                                odchudzający</p></a>
+                            <a href="https://youtu.be/ex5H5i9DjTE" target="_blank"><i class="fab fa-youtube"></i><p>Trening
+                                ujędrniający</p></a>
                         </div>
                     </div>
+
                 </div>
                 <div class="training functional">
                     <div class="extendTraining">
@@ -1022,12 +1434,13 @@ ddl 31.01. ostateczny
                     <p>Sprawdż poniżej jak wygladają treningi funkcjonalne:
                     </p>
                     <div class="trainingMovies">
-                        <a href="https://youtu.be/Vmuv2ZL_u1c" target="_blank"><i class="fab fa-youtube"></i>Trening w
-                            domu</a>
-                        <a href="https://youtu.be/oI826ucjeNM" target="_blank"><i class="fab fa-youtube"></i>Dla
-                            zaawansowanych</a>
+                        <a href="https://youtu.be/Vmuv2ZL_u1c" target="_blank"><i class="fab fa-youtube"></i><p>Trening w
+                            domu</p></a>
+                        <a href="https://youtu.be/oI826ucjeNM" target="_blank"><i class="fab fa-youtube"></i><p>Dla
+                            zaawansowanych</p></a>
                     </div>
                 </div>
+
                 <div class="training fitness">
                     <div class="extendTraining">
                         <div class="backgroundTraining backgroundFitness">
@@ -1047,19 +1460,20 @@ ddl 31.01. ostateczny
                     <p>Sprawdż poniżej jak wygladają treningi fitness:
                     </p>
                     <div class="trainingMovies">
-                        <a href="https://youtu.be/LFOFD0G8zjU" target="_blank"><i class="fab fa-youtube"></i>Trening dla
-                            otylych</a>
-                        <a href="https://youtu.be/x_9_tmZWCuw" target="_blank"><i class="fab fa-youtube"></i>Trening
-                            pilates</a>
+                        <a href="https://youtu.be/LFOFD0G8zjU" target="_blank"><i class="fab fa-youtube"></i><p>Trening dla
+                            otylych</p></a>
+                        <a href="https://youtu.be/x_9_tmZWCuw" target="_blank"><i class="fab fa-youtube"></i><p>Trening
+                            pilates</p></a>
                     </div>
                 </div>
+
             </div>
         </section>
         <section class="calculatorSection scroll-fix" id="calculatorSection">
             <div class="hero-shadow-bothsides"></div>
             <h3><i class="fas fa-calculator"></i> Kalkulatory</h3>
             <div class="underline"></div>
-            <div class="desrciption">
+            <div class="description">
                 <p>W Internecie można znaleźć wiele różnych, pomocnych kalkulatorów, które pomogą nam wyliczyć mnóstwo
                     wskaźników. Do najpopularniejszych zaliczamy kalkulator zapotrzebowania kalorycznego czy kalkulator
                     BMI. Dzięki nim jesteśmy w stanie sprawdzić <span class="highlighted">ile powinniśmy jeść</span>
@@ -1068,44 +1482,213 @@ ddl 31.01. ostateczny
             </div>
             <div class="calculator">
                 <div class="dropdown">
-                    <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown button
-                    </button>
-                    <ul class="dropdown-menu animate slideIn" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Zapotrzebowanie kaloryczne</a></li>
-                        <li><a class="dropdown-item" href="#">YMCA</a></li>
-                        <li><a class="dropdown-item" href="#">BMI</a></li>
-                    </ul> -->
-                    <!-- propozycja 1 z zwyklym buttonem z bootstrapa -->
-                    <h5>kalkulkator<i class="fas fa-chevron-down"></i></h5>
+                    <h5 class="dropdownHeader">kalkulkator<i class="fas fa-chevron-down"></i></h5>
                     <ul>
-                        <li>Zapotrzebowania kcal
+                        <li><a href="#activeCalc" class="dropdownLink activeDropdownLinkColor">zapotrzebowanie kal.</a>
+                            <div class="underlineCalc activeDropdownLink"></div>
+                        </li>
+                        <li><a href="#activeCalc" class="dropdownLink">body mass index (BMI)</a>
                             <div class="underlineCalc"></div>
                         </li>
-                        <li>body mass index (BMI)
-                            <div class="underlineCalc"></div>
-                        </li>
-                        <li>body fat (YMCA)
+                        <li><a href="#activeCalc" class="dropdownLink">body fat (YMCA)</a>
                             <div class="underlineCalc"></div>
                         </li>
                     </ul>
                 </div>
+                <div class="activeCalc scroll-fix" id="activeCalc">
+
+                    <div class="kcalCalc calc calcDisplay">
+                        <h3>Kalkulator zapotrzebowania kalorycznego</h3>
+                        <div class="underline"></div>
+                        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+                            nulla, beatae tenetur aspernatur eum non numquam ad dolores praesentium fuga molestiae
+                            maxime modi debitis aut, repellendus ratione obcaecati enim quidem.
+                        </div>
+                        <div class="calcInputs">
+                            <div class="startCalc">
+                                <span class="openingCalc">Uzupelnij poniższe pola i kliknij <span
+                                        class="highlighted">oblicz</span>.</span>
+                                <div class="underline"></div>
+                            </div>
+                            <div class="calcInputContainer">
+                                <span class="calcQuestion gender">Pleć</span>
+                                <!-- <div class="selectContainer">
+                                    <select class="activity-form kcalGenderSelect" aria-label="activity-select">
+                                        <option value="chooseOption">Wybierz</option>
+                                        <option value="female">Kobieta</option>
+                                        <option value="male">Mężczyzna</option>
+                                    </select>
+                                </div> -->
+                                <div class="genderIcons">
+                                    <a class="female genderIconLink"><i class="fas fa-venus"></i></a>
+                                    <a class="male genderIconLink"><i class="fas fa-mars"></i></a>
+                                </div>
+
+                            </div>
+                            <div class="calcInputContainer">
+                                <span class="calcQuestion age">Wiek</span>
+                                <input type="text" placeholder="lata" class="calcInput inputAge" pattern="\d*"
+                                    maxlength="2">
+                            </div>
+                            <div class="calcInputContainer">
+                                <span class="calcQuestion weight">Waga</span>
+                                <input type="text" placeholder="kg" class="calcInput inputWeight" pattern="\d*"
+                                    maxlength="3">
+                            </div>
+                            <div class="calcInputContainer">
+                                <span class="calcQuestion height">Wzrost</span>
+                                <input type="text" placeholder="cm" class="calcInput inputHeight" pattern="\d*"
+                                    maxlength="3">
+                            </div>
+                            <div class="calcInputContainer">
+                                <span class="calcQuestion activity">Aktywność</span>
+                                <div class="selectContainer">
+                                    <select class="activity-form activitySelect" aria-label="activity-select">
+                                        <option value="chooseOption">Wybierz</option>
+                                        <option value="vlow">Niewielka</option>
+                                        <option value="low">Niska</option>
+                                        <option value="medium">Średnia</option>
+                                        <option value="high">Wysoka</option>
+                                        <option value="vhigh">B. wysoka</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="calcInputContainer">
+                                <span class="calcQuestion target">Cel</span>
+                                <div class="selectContainer">
+                                    <select class="activity-form targetSelect" aria-label="activity-select">
+                                        <option value="chooseOption">Wybierz</option>
+                                        <option value="weightLoss">Redukcja</option>
+                                        <option value="weightGain">Przytycie</option>
+                                        <option value="weightStay">Utrzymanie</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="kcalResultBtn" id="kcalResultId">Oblicz</button>
+                            <div class="result kcal">
+                                <div class="resultFullText">Aby
+                                    <span class="resultWeightTarget highlighted"></span>
+                                    musisz spożywać
+                                    każdego
+                                    dnia
+                                    <span class="resultKcal"><span class="highlightedResult"></span>
+                                    kcal
+                                </span>
+                                </div>
+                                <span class="gapInputs">gravis</span>
+                                <span class="wrongInputs">Uzupełnił wszystkie pola lub wpisz poprawne
+                                    wartości!</span>
+                            </div>
+                            <!-- <div class="result errorResult">
+                                </div> -->
+                        </div>
+                    </div>
+                    <div class="bmi calc">
+                        <h3>Kalkulator BMI</h3>
+                        <div class="underline"></div>
+                        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+                            nulla, beatae tenetur aspernatur eum non numquam ad dolores praesentium fuga molestiae
+                            maxime modi debitis aut, repellendus ratione obcaecati enim quidem.
+                        </div>
+                        <div class="calcInputs">
+                            <div class="startCalc">
+                                <span class="openingCalc">Uzupelnij poniższe pola i kliknij <span
+                                    class="highlighted">oblicz</span>.</span>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="calcInputContainer">
+                                <span class="calcQuestion gender">Pleć</span>
+                                <div class="genderIcons">
+                                    <a class="female genderIconLink"><i class="fas fa-venus"></i></a>
+                                    <a class="male genderIconLink"><i class="fas fa-mars"></i></a>
+                                </div>
+                                <!-- <div class="selectContainer">
+                                    <select class="activity-form bmiGenderSelect" aria-label="activity-select">
+                                        <option value="chooseOption">Wybierz</option>
+                                        <option value="female">Kobieta</option>
+                                        <option value="male">Mężczyzna</option>
+                                    </select>
+                                </div> -->
+                            </div>
+                            <div class="calcInputContainer">
+                                <span class="calcQuestion weight">Waga</span>
+                                <input type="text" placeholder="kg" class="calcInput bmiInput inputWeight" pattern="\d*"
+                                maxlength="3">
+                            </div>
+                            <div class="calcInputContainer">
+                                <span class="calcQuestion height">Wzrost</span>
+                                <input type="text" placeholder="cm" class="calcInput bmiInput inputHeight" pattern="\d*"
+                                    maxlength="3">
+                            </div>
+                            <button class="bmiResultBtn calcResultBtn" id="bmiResultId">Oblicz</button>
+                            <div class="result bmi">
+                                <span class="resultFullText">Twój wskaźnik masy ciała wynosi <span class="resultBmi highlightedResult">x</span>. Wyliczone BMI wskazuje na
+                                <span class="resultWeightTargetBmi highlighted">x</span>.
+                                </span>
+                                <span class="gapInputs">gravis</span>
+                                <span class="wrongInputs">Uzupełnił wszystkie pola lub wpisz poprawne
+                                    wartości!</span>
+                            </div>
+                            <!-- <div class="result errorResult"><span>Uzupełnił wszystkie pola lub wpisz poprawne
+                                    wartości!</span></div> -->
+                        </div>
+                    </div>
+                    <div class="ymca calc">
+                        <h3>Kalkulator YMCA</h3>
+                        <div class="underline"></div>
+                        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+                            nulla, beatae tenetur aspernatur eum non numquam ad dolores praesentium fuga molestiae
+                            maxime modi debitis aut, repellendus ratione obcaecati enim quidem.
+                        </div>
+                        <div class="calcInputs">
+                            <div class="startCalc">
+                                <span class="openingCalc">Uzupelnij poniższe pola i kliknij <span
+                                    class="highlighted">oblicz</span>.</span>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="calcInputContainer">
+                                <span class="calcQuestion gender">Pleć</span>
+                                <div class="genderIcons">
+                                    <a class="female genderIconLink"><i class="fas fa-venus"></i></a>
+                                    <a class="male genderIconLink"><i class="fas fa-mars"></i></a>
+                                </div>
+                                <!-- <div class="selectContainer">
+                                    <select class="activity-form ymcaGenderSelect" aria-label="activity-select">
+                                        <option value="chooseOption">Wybierz</option>
+                                        <option value="female">Kobieta</option>
+                                        <option value="male">Mężczyzna</option>
+                                    </select>
+                                </div> -->
+                            </div>
+                            <div class="calcInputContainer">
+                                <span class="calcQuestion weight">Waga</span>
+                                <input type="text" placeholder="kg" class="calcInput ymcaInput inputWeight" pattern="\d*"
+                                maxlength="3">
+                            </div>
+                            <div class="calcInputContainer">
+                                <span class="calcQuestion waist">Obwód pasa</span>
+                                <input type="text" placeholder="cm" class="calcInput ymcaInput inputWaist" pattern="\d*"
+                                    maxlength="3">
+                            </div>
+                            <button class="ymcaResultBtn calcResultBtn" id="ymcaResultId">Oblicz</button>
+                            <div class="result ymca">
+                                <span class="resultFullText">Zawartość tkanki tłuszczowej wynosi: <span class="resultYmca highlightedResult">x</span>%. Wyliczony wskaźnik sugeruje 
+                                <span class="resultWeightTargetYmca highlighted"></span>.
+                                </span>
+                                <span class="gapInputs">gravis</span>
+                                <span class="wrongInputs">Uzupełnił wszystkie pola lub wpisz poprawne
+                                    wartości!</span>
+                            </div>
+                            <!-- <div class="result errorResult"><span>Uzupełnił wszystkie pola lub wpisz poprawne
+                                    wartości!</span></div> -->
+                        </div>
+                    </div>
+                </div>
                 <div class="calcsFAQ">
-                    <div class="desrciption">
+                    <div class="description">
                         <p>Poniżej znajdziesz <span class="highlighted">FAQ</span>, czyli najczęściej zadawane pytania:
                         </p>
                     </div>
-                    <!-- <div class="dropdown faqQuestion">
-                        <h5>Jak skorzystać z kalkulatora</h5>
-                        <p>Kliknij w napis KALKULATOR a następnie wybierz interesujący Cię kalkulator. Poniżej ukaże się
-                            formularz. Uzupelnij dane a następnie kliknij "oblicz", aby otrzymać wyniki.</p>
-                    </div>
-                    <div class="dropdown faqQuestion"></div>
-                    <div class="dropdown faqQuestion"></div>
-                    <div class="dropdown faqQuestion"></div>
-                    <div class="dropdown faqQuestion"></div>
-                    <div class="dropdown faqQuestion"></div> -->
                     <div class="accordion" id="FAQWrapper">
                         <div class="FAQQuestion card bg-transparent">
                             <div class="card-header" id="headingOne">
@@ -1151,8 +1734,8 @@ ddl 31.01. ostateczny
                             <div class="card-header" id="headingThree">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                    data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
                                         Co to jest BMI?
                                         <i class="fas fa-plus"></i>
                                         <i class="fas fa-minus"></i>
@@ -1193,7 +1776,7 @@ ddl 31.01. ostateczny
                             <div class="card-header" id="headingFive">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseFive" aria-expanded="false"
+                                    data-bs-target="#collapseFive" aria-expanded="false"
                                         aria-controls="collapseFive">
                                         Jak schudnąć?
                                         <i class="fas fa-plus"></i>
@@ -1202,7 +1785,7 @@ ddl 31.01. ostateczny
                                 </h2>
                             </div>
                             <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
-                                data-bs-parent="#FAQWrapper">
+                            data-bs-parent="#FAQWrapper">
                                 <div class="card-body">
                                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nemo animi
                                         laboriosam at accusantium odio cupiditate maiores vero repudiandae veritatis?
@@ -1214,17 +1797,17 @@ ddl 31.01. ostateczny
                             <div class="card-header" id="headingSix">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                        Jak przytyć?
-                                        <i class="fas fa-plus"></i>
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </h2>
-                            </div>
+                                    data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    Jak przytyć?
+                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </h2>
+                        </div>
                             <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
-                                data-bs-parent="#FAQWrapper">
-                                <div class="card-body">
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nemo animi
+                            data-bs-parent="#FAQWrapper">
+                            <div class="card-body">
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nemo animi
                                         laboriosam at accusantium odio cupiditate maiores vero repudiandae veritatis?
                                     </p>
                                 </div>
@@ -1232,128 +1815,18 @@ ddl 31.01. ostateczny
                         </div>
                     </div>
                 </div>
-                <div class="allCalcs">
-                    <div class="ymcaCalc">
-                        <h3>Kalkulator YMCA</h3>
-                        <div class="underline"></div>
-                        <div class="desrciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                            nulla, beatae tenetur aspernatur eum non numquam ad dolores praesentium fuga molestiae
-                            maxime modi debitis aut, repellendus ratione obcaecati enim quidem.
 
-                            <a href="#">FAQ</a>
-                            <div class="ymcaInputContainer">
-                                <span class="ymcaQuestion gender">Pleć</span>
-                                <button>wybierz</button>
-                            </div>
-                            <div class="ymcaInputContainer">
-                                <span class="ymcaQuestion weight">Waga</span>
-                                <button>wybierz</button>
-                            </div>
-                            <div class="ymcaInputContainer">
-                                <span class="ymcaQuestion height">Obwód pasa</span>
-                                <button>wybierz</button>
-                            </div>
-                            <div class="result">
-                                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, quis.</span>
-                            </div>
-
-                        </div>
-                        <div class="bmiCalc">
-                            <h3>Kalkulator BMI</h3>
-                            <div class="underline"></div>
-                            <div class="desrciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                                nulla, beatae tenetur aspernatur eum non numquam ad dolores praesentium fuga molestiae
-                                maxime modi debitis aut, repellendus ratione obcaecati enim quidem.
-
-                                <a href="#">FAQ</a>
-
-                            </div>
-                            <div class="bmiInputContainer">
-                                <span class="bmiQuestion gender">Pleć</span>
-                                <button>wybierz</button>
-                            </div>
-                            <div class="bmiInputContainer">
-                                <span class="bmiQuestion weight">Waga</span>
-                                <button>wybierz</button>
-                            </div>
-                            <div class="bmiInputContainer">
-                                <span class="bmiQuestion height">Wzrost</span>
-                                <button>wybierz</button>
-                            </div>
-                            <div class="result">
-                                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, quis.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="activeCalc">
-                    <div class="kcalCalc">
-                        <h3>Kalkulator zapotrzebowania kalorycznego</h3>
-                        <div class="underline"></div>
-                        <div class="desrciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                            nulla, beatae tenetur aspernatur eum non numquam ad dolores praesentium fuga molestiae
-                            maxime modi debitis aut, repellendus ratione obcaecati enim quidem.
-                        </div>
-                        <div class="kcalInputs">
-                            <div class="startCalc">
-                                <span class="openingCalc">Uzupelnij poniższe pola i kliknij <span
-                                        class="highlighted">oblicz</span>.</span>
-                                <div class="underline"></div>
-                            </div>
-                            <div class="kcalInputContainer">
-                                <span class="kcalQuestion gender">Pleć</span>
-                                <div class="genderContainer">
-                                    <select class="activity-form" aria-label="activity-select">
-                                        <option value="chooseOption">Wybierz</option>
-                                        <option value="female">Kobieta</option>
-                                        <option value="male">Mężczyzna</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="kcalInputContainer">
-                                <span class="kcalQuestion age">Wiek</span>
-                                <input type="text" class="kcalInput inputAge" pattern="\d*" maxlength="2">
-                            </div>
-                            <div class="kcalInputContainer">
-                                <span class="kcalQuestion weight">Waga</span>
-                                <input type="text" class="kcalInput inputAge" pattern="\d*" maxlength="2">
-                            </div>
-                            <div class="kcalInputContainer">
-                                <span class="kcalQuestion height">Wzrost</span>
-                                <input type="text" class="kcalInput inputAge" pattern="\d*" maxlength="2">
-                            </div>
-                            <div class="kcalInputContainer">
-                                <span class="kcalQuestion activity">Aktywność</span>
-                                <div class="activityContainer">
-                                    <select class="activity-form" aria-label="activity-select">
-                                        <option value="chooseOption">Wybierz</option>
-                                        <option value="vlow">Niewielka</option>
-                                        <option value="low">Niska</option>
-                                        <option value="medium">Średnia</option>
-                                        <option value="high">Wysoka</option>
-                                        <option value="vhigh">B. wysoka</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="kcalInputContainer">
-                                <span class="kcalQuestion target">Cel</span>
-                                <div class="activityContainer">
-                                    <select class="activity-form" aria-label="activity-select">
-                                        <option value="chooseOption">Wybierz</option>
-                                        <option value="weightLoss">Redukcja wagi</option>
-                                        <option value="weightGain">Przybranie wagi</option>
-                                        <option value="weightStay">Utrzymanie wagi</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button class="kcalResultBtn">Oblicz</button>
-                            <div class="result">
-                                <span>Aby <span class="resultWeight highlighted">utrzymać wagę</span> musisz spożywać
-                                    każdego
-                                    dnia <span class="resultKcal highlighted">9999</span> kcal.</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- <div class="allCalcs">
+                </div> -->
+        </section>
+        <section class="socials">
+            <p>Jeżeli masz jakieś pytania lub sugestie śmiało skorzystaj z poniższych social mediów!</p>
+            <div class="footerIcons">
+                <div class="underline"></div>
+                <a href="" class="icon link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="" class="icon git"><i class="fab fa-github"></i></a>
+                <a href="" class="icon ig"><i class="fab fa-instagram"></i></a>
+            </div>
         </section>
         <section class="footer">
             <div class="copyright"><span>@ Marcin Bogucki 2021</span></div>

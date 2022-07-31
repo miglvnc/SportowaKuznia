@@ -3,11 +3,11 @@
     padding: 0
     margin: 0
 
-
 body
     background-color: black
     font-family: 'Montserrat', sans-serif
     scroll-behavior: smooth
+    // overflow: hidden
 
 .wrapper
     display: flex
@@ -19,10 +19,9 @@ body
     background-position: center
     background-size: cover
     background-repeat: no-repeat
-    background-attachment: fixed 
+    background-attachment: fixed
     // overflow: hidden
     z-index: 0
-
 
     .nav
         display: flex
@@ -57,9 +56,8 @@ body
                     align-self: center
                     transition: transform 0.8s, color 0.8s
 
-
                 .animationBars
-                    transform: rotateZ(180deg);
+                    transform: rotateZ(180deg)
                     color: #d5d838
 
             .logo
@@ -74,13 +72,11 @@ body
                     color: whitesmoke
                     align-self: center
 
-
                 img
                     padding-left: 10px
                     height: 25px
 
             i
-
 
     .scroll-fix::before // fajny sposob na scroll fix zeby nav nie zaslanial strony po przeniesieniu nizej
         content: ''
@@ -133,7 +129,6 @@ body
 
 .fa-calculator, .fa-fire-alt, .fa-book-reader, .fa-home
     color: #d5d838
-
 
 // .menuLabel
 //     .menuBars:hover .collapseMenu
@@ -199,7 +194,6 @@ body
         font-size: 24px
         padding: 5px
 
-    
     span
         color: #d5d838
         text-align: center
@@ -209,9 +203,8 @@ body
 
 .articlesListSection
     // background-color: #ffffff
-
+    overflow: hidden
     z-index: 1
-
 
 section
     display: flex
@@ -219,6 +212,7 @@ section
     flex-direction: column
     height: 100%
     width: 100%
+    // overflow: hidden
     // height: 1000px
     // background-color: black
     background-position: center
@@ -230,14 +224,19 @@ section
         font-weight: bold
         // background-color: #d5d838
 
+    // .highlightedOpacity
+    //     opacity: 0
+    //     transition: opacity 1s 0.5s
 
-    .desrciption, .activeQuote
-        margin: 20px 30px 0px 30px
+    // .highlightedOpacityShow
+    //     opacity: 1
+
+    .description, .activeQuote
+        margin: 0px 30px 0px 30px
         // padding: 10px
 
     .allQuotes
         display: none
-
 
     .activeQuote
         position: relative
@@ -277,30 +276,10 @@ section
         .transformIcons
             animation: transformIcon 0.8s ease 0s 1 normal forwards
 
-
         .nextTransformIcons
             animation: nextTransformIcon 0.8s ease 0s 1 normal forwards
-            
-
-
 
     .about
-    .footerIcons
-        width: 100vw
-        background-color: rgba(15, 15, 15, 0.4)
-        // background-color: #d5d838
-        margin: 0px auto 20px auto
-        padding: 10px
-        text-align: center
-
-    .icon
-        text-align: center
-        padding: 0px 20px
-        font-size: 30px
-        text-decoration: none
-        color: #d5d838
-        // color: black
-
     h3
         padding: 30px 0px 20px 0px
         margin: 0px 30px
@@ -321,14 +300,55 @@ section
         background-color: #cecece
         // width: 80%
 
+    .articlesPages
+        position: relative
+        display: flex
+        // flex-direction: column
+        // justify-content: 
+        // margin: auto
+        width: 100vw
+        margin-top: -30px
+        // left: -300%
+
+        .pageArticle
+            // position: absolute
+            // margin: 0px 30px 0px 30px
+            width: 100vw
+
+        .articlesFirstPage
+            position: absolute
+            opacity: 0
+            // left: -100%
+            // margin: 30px
+            padding: 0px 30px
+            // transition: left 5s
+            transition: opacity 0.5s ease-out
+
+        .articlesSecondPage
+            position: absolute
+            opacity: 0
+            // left: 100%
+            // margin: 30px
+            padding: 0px 30px
+            transition: opacity 0.5s ease-out
+
+        .activePage
+            position: relative
+            // left: 0
+            opacity: 1
+            z-index: 10
+
+        // .unactivePageOne
+        //     left: -100%
+        //     opacity: 0
+
     .artCard
         align-self: center
         height: 250px
-        width: 80%
-        margin: 20px
+        width: 100%
+        margin: 30px 0px
         background-size: cover
         background-position: center
-        box-shadow: 0px 0px 20px #0c0c0c
         z-index: 1
 
         .textCard
@@ -353,8 +373,6 @@ section
             span
                 font-size: 14px
 
-
-
 .firstArticle
     background-image: url(/imgs/article_zmeczenie.jpg)
 .secondArticle
@@ -363,9 +381,63 @@ section
     background-image: url(/imgs/article_sauna.jpg)
 .fourthArticle
     background-image: url(/imgs/article_podstawy.jpg)
+.fifthArticle
+    background-image: url(/imgs/bledySmall.jpg)
+.sixthArticle
+    background-image: url(/imgs/burgerSmall.jpg)
 
 .articlesListSection
     background-color: #000000
+
+    a
+        text-decoration: none
+        border: none
+        color: whitesmoke
+
+    .paginationArticles
+        display: flex
+        justify-content: center
+        margin-top: 20px
+
+        ul
+            color: black
+            margin: 0
+
+            li
+                color: black
+                background-color: black
+
+                a
+                    background-color: black
+                    color: whitesmoke
+                    border: 1px solid #d5d838
+                    // font-weight: bolder
+
+                a:focus
+                    box-shadow: none
+                    // background-color: #d5d838
+                    // color: black
+                    // border: 1px solid black
+
+                a:hover
+                    background-color: #d5d838
+                    color: black
+                    border: 1px solid black
+
+                .pageNext:hover, .pagePrevious:hover
+                    background: none
+                    color: whitesmoke
+                    border: 1px solid #d5d838
+
+        .active
+            background-color: #d5d838
+            color: black
+            font-weight: bolder
+            border: 1px solid black
+
+    // .pagination
+    //     color: black
+    //     background-color: black
 
 .currentArticleSection
     display: flex
@@ -375,7 +447,7 @@ section
     height: 100%
     width: 100%
     // padding-top: 30px
-    // z-index: -1
+    // // z-index: -1
     overflow: hidden
 
     .allArticles
@@ -388,7 +460,7 @@ section
         // overflow: hidden
         max-height: 450px
         // justify-content: center
-        transition: max-height 4s
+        transition: max-height 2s
 
         .articleInfo
             display: flex
@@ -409,30 +481,28 @@ section
             margin: 2px
             font-size: 12px
             text-align: left
-            color: #bebebe 
+            color: #bebebe
 
             .fas, .far
                 padding-right: 5px
 
-
-
-        .zmeczenieArticle, .cwiczeniaArticle, .saunaArticle, .podstawyArticle
+        .zmeczenieArticle, .cwiczeniaArticle, .saunaArticle, .podstawyArticle, .bledyArticle, .postanowieniaArticle
             // .cwiczeniaArticle, .saunaArticle, .podstawyArticle
             display: flex
             // display: none
             flex-direction: column
             // height: 500px
-
+            // opacity: 0
+            // transition: opacity 0.4s 0.5s
 
             h3, .underline
                 margin: 0
-
 
             .mainArticle
                 margin-top: 20px
                 text-align: left
                 font-size: 14px
-                color: #d6d6d6 
+                color: #d6d6d6
 
                 .Section
                     padding-top: 10px
@@ -453,6 +523,8 @@ section
 
                 .source
                     display: block
+
+        .showArticle
 
     .dropdownArticles
         position: relative
@@ -482,6 +554,16 @@ section
         cursor: pointer
         transition: height 1s 1s, padding 1s 1s, margin 1s 1s
 
+        .aRollUp
+            position: absolute
+            text-decoration: none
+            border: none
+            padding: 25px 10px 10px 10px
+            z-index: -10
+
+        .zIndex
+            z-index: 10
+
         span
             color: whitesmoke
             // color: #d5d838
@@ -498,38 +580,36 @@ section
         .clickToExtend
             opacity: 1
             position: relative
-            transition: opacity 0.8s 4.3s
+            transition: opacity 0.3s 2.2s
 
         .dropdownSpanChange
-            position: absolute
+            // position: absolute
             opacity: 0
-            transition: opacity 0.8s
+            transition: opacity 0.3s
 
         .clickToRoll
             opacity: 0
-            position: absolute
+            // position: absolute
             padding: 0
             color: grey
             font-size: 12px
             z-index: 15
-            transition: opacity 0.8s
+            transition: opacity 0.3s
 
         .clickToRollShow
             opacity: 1
             position: relative
-            transition: opacity 0.8s 3.3s
+            transition: opacity 0.3s 2.2s
 
         // .opacityChange
         //     opacity: 1
 
-
     .heightReset
-        max-height: 5000px
+        max-height: 7000px
     .dropdownHeight
         height: 50px
         padding: 0
         margin: 0
-
 
         // top: 0
         // max-height: 20px
@@ -551,10 +631,6 @@ section
         //     // animation-duration: 2s
         //     // animation-delay: 1s
         //     color: #d5d838
-
-
-
-
 
 .trainingsSection, .calculatorSection
 
@@ -581,20 +657,37 @@ section
             .trainingMovies
                 display: flex
                 flex-direction: column
-                justify-content: start
+                justify-content: center
                 align-items: start
+                align-content: center
                 // display: inline-block
+                margin: 0 0 20px 0
 
-                a, i
-                    font-size: 16px
-                    padding: 10px
-                    text-decoration: none
                 a
+                    display: flex
+                    flex-direction: row
+                    justify-content: center
+                    align-content: center
+                    align-items: center
                     color: #e0e0e0
+                    // font-size: 12px
+                    text-decoration: none
+                    padding: 10px
 
-                i
-                    color: #b31818
-
+                    i
+                        color: #b31818
+                        font-size: 40px
+                        // padding: 0px 10px
+                        text-decoration: none
+                        // background-color: #fff
+                        border-radius: 5px
+                    p
+                        font-size: 12px
+                        padding: 0 10px
+                        margin: 0
+                        background-color: #9b1515
+                        color: white
+                        font-weight: bolder
 
         .backgroundTraining
             // display: flex
@@ -643,7 +736,6 @@ section
             max-height: 1000px
             border: 1px solid #d5d838
 
-
         .training:hover .backgroundTraining
             top: 0
 
@@ -661,25 +753,26 @@ section
             // text-align: left
 
 .calculatorSection
+    // overflow: hidden
     .calculator
         display: flex
         flex-direction: column
         justify-content: center
         align-items: center
 
-
         .dropdown
             max-height: 50px
             // padding: 15px
-            margin-bottom: 20px
+            margin: 30px 0px 0px 0px
             font-size: 14px
             overflow: hidden
-            // border: 1px solid white
+            border: 1px solid #1f1d1d
             border-radius: 20px
             background-color: rgba(0, 0, 0, 0.5)
             // background: linear-gradient(180deg, rgba(0,0,0,1) 0%, #131313 60%)
             text-transform: uppercase
-            transition: 0.5s
+            z-index: 5
+            transition: max-height 0.5s
 
             h5
                 // border-bottom: 1px solid white
@@ -690,7 +783,6 @@ section
                 color: black
                 letter-spacing: 2px
                 background-color: #d5d838
-                
 
                 i
                     padding: 0px 0px 0px 10px
@@ -709,7 +801,11 @@ section
                     margin: 15px 0px
                     padding: 5px 20px
                     width: 100%
-                    transition: 0.6s
+
+                    a
+                        text-decoration: none
+                        color: white
+                        transition: color 0.4s
 
                     .underlineCalc
                         position: relative
@@ -717,28 +813,38 @@ section
                         height: 1px
                         width: 20px
                         background-color: #d5d838
-                        margin-top: 5px 
-                        transition: 0.5s
+                        margin-top: 5px
+                        transition: width 0.4s, left 0.4s
 
-                li:hover .underlineCalc
-                    width: 120px
-                    left: calc(50% - 60px)
+                    .activeDropdownLink
+                        width: 120px
+                        left: calc(50% - 60px)
 
-                li:hover
-                    color: #d5d838
+                    .activeDropdownLinkColor
+                        color: #d5d838
 
-        .dropdown:hover
+                // a:hover + .underlineCalc
+                //     width: 120px
+                //     left: calc(50% - 60px)
+
+                // a:hover
+                //     color: #d5d838
+
+        .dropdownHeightChange
             max-height: 215px
-            // border-bottom-left-radius: 20px
-            // border-bottom-right-radius: 20px
 
-            i
-                transform: rotateX(-180deg)
+        .dropdownArrowChange
+            transform: rotateX(-180deg)
+
+        // .dropdown:hover
+        //     max-height: 215px
+        //     // border-bottom-left-radius: 20px
+        //     // border-bottom-right-radius: 20px
         .accordion
             // background: none
             // background-color: #d5d838
-            margin: auto
-            width: 80%
+            margin: 0px 30px
+            // width: 80%
 
             .card
                 // margin: 10px 0px
@@ -766,7 +872,7 @@ section
                             align-self: center
                             justify-self: end
                             // margin-left: 30px
-                            transition: 
+                            transition:
 
                         // .fa-minus   
                         //     display: none
@@ -776,19 +882,35 @@ section
                             border: none !important
                             box-shadow: none !important
 
+                        .btn
+
                         .btn-link
                             .fa-plus
-                                display: none
-                                // color: #ffffff
+                                position: absolute
+                                opacity: 0
+                                transition: opacity 0.3s, transform 0.4s
+                            .fa-minus
+                                position: relative
+                                opacity: 1
+                                transition: opacity 0.5s
+                                transition: opacity 0.3s, transform 0.4s
 
                         .collapsed
                             .fa-minus
-                                display: none
+                                position: absolute
+                                opacity: 0
+                                transition: opacity 0.2s
+                                transform: rotateZ(90deg)
+                                transition: opacity 0.3s, transform 0.4s
                             .fa-plus
-                                display: block
+                                position: relative
+                                opacity: 1
+                                transition: opacity 0.5s
+                                transform: rotateZ(90deg)
+                                transition: opacity 0.3s, transform 0.4s
 
-            .collapse
-                transition: 0.5s
+            // .collapse
+            //     transition: 0.5s
                 .card-body
                     font-size: 16px
                     font-family: 'Montserrat', sans-serif
@@ -796,15 +918,34 @@ section
 
             .show
                 font-size: 16px
-                background-color: rgba(0,0,0,0.5)
+                text-align: left
+                background-color: #0c0c0c
+                border-bottom-left-radius: 10px
+                border-bottom-right-radius: 10px
+                transition: background-color 0.3s
 
             .collapsing
                 font-size: 16px
+                text-align: left
                 background-color: rgba(0,0,0,0.5)
 
         .activeCalc
+            position: relative
             margin-bottom: 20px
-            .kcalCalc
+            overflow: hidden
+            // max-height: 0
+            // opacity: 0
+            // transition: max-height 1s, opacity 2s
+            .calc
+                position: absolute
+                visibility: hidden
+                // display: none
+                // left: -1000px
+                opacity: 0
+                z-index: -100
+                max-height: 0
+                transition: opacity 1s
+                overflow: hidden
                 .startCalc
                     // width: 100%
                     // background-color: #d5d838
@@ -821,7 +962,7 @@ section
                         margin: 20px 20px 0px 20px
                         background-color: #d5d838
 
-                .kcalInputs
+                .calcInputs
                     font-family: 'Montserrat', serif
                     display: flex
                     flex-direction: column
@@ -830,57 +971,127 @@ section
                     margin: 20px
                     // width: 90%
                     border: 1px solid #d5d838
-                    background-color: rgba(0,0,0,0.6)
+                    background-color: rgba(0,0,0,0.3)
                     border-radius: 25px
+                    z-index: 10
+                    max-height: 650px
+                    transition: max-height 0.4s
 
-                    .kcalInputContainer
+                    .calcInputContainer
                         display: grid
-                        grid-template-columns: 1fr 2fr
+                        grid-template-columns: 1fr 1fr
                         width: 100%
-                        justify-items: end
+                        height: 90px
+                        justify-items: center
                         align-items: center
                         padding: 20px
+                        z-index: 20
 
-                        .kcalQuestion
+                        .genderIcons
+                            display: flex
+                            flex-direction: row
+                            justify-content: center
+                            align-items: center
+                            height: 70px
+                            width: 100%
+
+                            .genderIconLink
+                                text-decoration: none
+                                font-size: 36px
+                                color: none
+                                padding: 15px
+                                transition: color 0.4s, font-size 0.5s
+                                // .fas
+                                //     // font-size: 40px
+
+                            .female
+                                color: #c762ba
+
+                            .male
+                                color: #3f66cf
+
+                            .activeGender
+                                color: #d5d838
+                                font-size: 40px
+                            .unactiveGender
+                                font-size: 26px
+
+                            
+
+                                
+
+                        .calcQuestion
                             align-items: center
                             justify-self: start
                             letter-spacing: 2px
                             text-transform: uppercase
                             font-size: 14px
 
-                        .kcalInput
-                            width: 80px
+                        .calcInput
+                            width: 100px
+                            height: 30px
                             background: none
                             border: 1px solid grey
                             // border-bottom: 1px solid grey
                             border-radius: 10px
                             padding: 3px 6px
                             color: white
+                            text-align: center
                             // justify-self: center
 
-                        .activityContainer, .genderContainer
-                            // background-color: none
+                        .selectContainer
+                            width: 100px
+                            // height: 30px
+                            background-color: black
+                            // border: 1px solid grey
+                            border-radius: 10px
+                            transition: border 0.3s
+
                             .activity-form
-                                // background: none
-                                border: none
+                                background-color: black
+                                border-radius: 10px
                                 justify-self: end
                                 justify-items: end
                                 align-self: center
-                                text-align: right
-                                color: white
+                                text-align: center
+                                color: whitesmoke
                                 width: 100%
                                 margin: auto
-                                font-size: 14px    
-                                background-color: black
+                                font-size: 14px
+                                // font-weight: bolder   
+                                // background-color: #ffffff00
                                 outline: none !important
-                                border: none !important
+                                // border: none !important
                                 box-shadow: none !important
+                                padding: 5px
+                                border: 1px solid grey
+                                transition: border 0.3s
 
-                        .kcalInput:focus
+                                option
+                                    background-color: black
+                                    color: whitesmoke
+                                    text-align: center
+
+                            .activity-form:focus
+                                outline: none
+                                border: 1px solid #d5d838
+                                transition: border 0.3s
+
+                        .activeInput
+                            border: 1px solid #d5d838 !important
+                            z-index: 100
+
+                        .calcInput:focus
                             outline: none
                             border: 1px solid #d5d838
                             transition: border 0.3s
                             z-index: 1
+
+                        .calcInput::placeholder
+                            transition: color 0.3s
+
+                        .calcInput:focus::placeholder
+                            color: #ffffff00
 
                         input::-webkit-outer-spin-button,
                         input::-webkit-inner-spin-button
@@ -890,12 +1101,12 @@ section
                         input[type=number]
                             -moz-appearance: textfield
 
-                    .kcalResultBtn
+                    .calcResultBtn, .kcalResultBtn
                         outline: none !important
                         border: none !important
                         box-shadow: none !important
                         width: 150px
-                        margin: 20px
+                        margin: 30px 20px
                         padding: 8px 16px
                         grid-template-columns: 8fr 2fr
                         font-family: 'Montserrat', sans-serif
@@ -905,44 +1116,163 @@ section
                         font-size: 16px
                         text-align: center
                         border-radius: 20px
-                        text-transform: uppercase 
+                        text-transform: uppercase
                         letter-spacing: 2px
                         background-color: #d5d838
+                        z-index: 10
 
                     .result
-                        margin: 20px
-                        text-align: center
+                        // margin: 0px 0 30px 0
+                        // height: 100%
+                        // text-align: center
+                        display: flex
+                        flex-direction: column
+                        justify-content: center
+                        align-items: center
+                        opacity: 0
+                        position: absolute
+                        transition: opacity 0.5s
+                        z-index: -10
+                        padding: 20px 20px
+                        border-top: 1px solid #d5d838
+                        overflow: hidden
+                        height: 150px
+                        // position: relative
+                        // display: none
 
+                        // .resultFullText
+                        //     display: grid
+                        //     // grid-template-rows: 1fr
 
+                        .wrongInputs, .gapInputs, .resultFullText
+                            // display: none
+                            position: absolute
+                            opacity: 0
+                            z-index: -11
+                            transition: opacity 2s
+                            top: -200px
+                            left: 0
+                            width: 100%
+                            // padding: 20px 10px 20px 10px
 
-        .allCalcs
-            display: none
+                        .wrongInputs, .gapInputs
+                            color: #d5d838
+                            font-weight: bolder
+                            text-align: center
 
-// [aria-label]
-//     position: relative
+                        .activeResult
+                            // display: inline-block
+                            position: relative
+                            opacity: 1
+                            top: 0
+                            z-index: 5
+                            // transition: opacity 0.4s 0.3s
+                            // left: 0
+                        .resultFullText
+                            text-align: center
+                                // display: flex
+                                // flex-direction: column
+                                // justify-content: center
 
-//     [aria-label="activity-select"]:after
-//         content: attr(aria-label)
-//         display: none
-//         position: absolute
-//         top: 110%
-//         left: 10px
-//         z-index: 5000
-//         pointer-events: none
-//         padding: 8px 10px
-//         line-height: 15px
-//         white-space: nowrap
-//         text-decoration: none
-//         text-indent: 0
-//         overflow: visible
-//         font-size: .9em
-//         font-weight: normal
-//         color: #fff
-//         text-shadow: 1px 0 1px #888
-//         background-color: #412917
-//         border-left: 6px solid #d37092
-//         border-radius: 2px
-//         box-shadow: 1px 2px 6px rgba(0,0,0,0.3)
+                            .resultKcal
+                                display: flex
+                                flex-direction: row
+                                justify-content: center
+                                gap: 5px
+                                // margin: 20px
+                                padding: 20px 0px 0px 0px
+                                font-size: 26px
+                                color: whitesmoke
+
+                            .highlightedResult
+                                color: #d5d838
+                                font-weight: bolder
+
+                    .errorResult
+                        // position: relative
+                        // opacity: 1
+                        // top: 0
+                        // z-index: 5
+                        display: flex
+                        flex-direction: column
+                        justify-content: center
+                        margin: 20px 0 30px 0
+                        // padding: 30px 20px 0 20px
+                        border-top: 1px solid #d5d838
+                        width: 100%
+                        z-index: -11
+
+                    .resultShow
+                        position: relative
+                        opacity: 1
+                        top: 0
+                        z-index: 5
+
+                .calcInputHeightDefault
+                    max-height: 650px
+                .calcBmiInputHeightDefault
+                    max-height: 425px
+                .calcYmcaInputHeightDefault
+                    max-height: 425px
+                .calcInputHeightStretch
+                    max-height: 800px
+                    // transition: max-height 1s
+                .calcBmiInputHeightStretch
+                    max-height: 575px
+                .calcYmcaInputHeightStretch
+                    max-height: 575px
+
+            .calcDisplay
+                // display: inline-block
+                position: relative
+                visibility: visible
+                opacity: 1
+                z-index: 10
+                max-height: 1200px
+                left: 0
+                transition: opacity 1s
+
+        .calcsFAQ
+            text-align: center
+            margin-bottom: 30px
+
+.socials
+    display: flex
+    position: relative
+    flex-direction: column
+    height: 100%
+    width: 100%
+    padding: 0px 0px 30px 0px
+    // overflow: hidden
+    // height: 1000px
+    background-color: black
+    background-position: center
+    background-size: cover
+    text-align: center
+
+    p
+        padding: 0 30px
+
+    .footerIcons
+        // width: 100vw
+        // background-color: rgba(15, 15, 15, 0.4)
+        // background-color: #d5d838
+        // margin: 0px 30px
+        padding: 10px
+        text-align: center
+        // border-top: solid 1px #d5d838
+        // border-top: solid 1px #252525
+
+        .underline
+            background-color: #252525
+
+        .icon
+            text-align: center
+            padding: 0px 20px
+            font-size: 30px
+            text-decoration: none
+            color: #d5d838
+        // color: black
 
 .footer
     display: flex
@@ -960,7 +1290,7 @@ section
 @keyframes refresher
     0%
         transform: rotate(0)
-        
+
     100%
         transform: rotate(360deg)
 
@@ -993,11 +1323,6 @@ section
         color: #686868
     100%
         transform: rotateZ(360deg)
-        
-        
-
-
-
 
 // .dropdown-menu
 //     left: 50% !important
@@ -1014,7 +1339,6 @@ section
 //     0%
 //         // transform: translateX(1rem)
 //         opacity: 0
-  
 
 //     100% 
 //         // transform: translateX(0rem)
@@ -1024,16 +1348,6 @@ section
 //     animation-name: slideIn
 
     //odnosnie propozycji 1 z bootstrapowym buttonem
-  
-
-    
-    
-
-
-
-
-
-
 
 // .main
 //     display: flex
@@ -1057,7 +1371,6 @@ section
 //     //     justify-self: end 
 //     //     width: 40px
 //     //     height: 40px
-
 
                 // .animationBars
             //     // animation: rotateBars 0.8s ease 0s 1 normal forwards
@@ -1085,5 +1398,3 @@ section
 //     100%
 //         transform: rotateZ(-180deg)
 //         color: whitesmoke
-
-    

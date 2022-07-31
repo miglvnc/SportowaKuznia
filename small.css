@@ -1,5 +1,6 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
@@ -11,8 +12,13 @@ body {
 }
 
 .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: relative;
   color: white;
   background-image: url(/imgs/bg_small.jpg);
@@ -24,27 +30,35 @@ body {
 }
 
 .wrapper .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .wrapper .nav .menuLabel {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  -ms-grid-columns: 1fr 3fr;
+      grid-template-columns: 1fr 3fr;
   width: 100%;
   padding: 15px 20px;
   background-color: #000000;
   border-bottom: 1px solid #131313;
   z-index: 10;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
 
 .wrapper .nav .menuLabel .menuBars {
+  display: -ms-grid;
   display: grid;
-  justify-self: start;
+  -ms-grid-column-align: start;
+      justify-self: start;
   background: none;
   border: none;
 }
@@ -52,19 +66,28 @@ body {
 .wrapper .nav .menuLabel .menuBars i {
   font-size: 20px;
   color: whitesmoke;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -webkit-transition: color 0.8s, -webkit-transform 0.8s;
+  transition: color 0.8s, -webkit-transform 0.8s;
   transition: transform 0.8s, color 0.8s;
+  transition: transform 0.8s, color 0.8s, -webkit-transform 0.8s;
 }
 
 .wrapper .nav .menuLabel .menuBars .animationBars {
-  transform: rotateZ(180deg);
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
   color: #d5d838;
 }
 
 .wrapper .nav .menuLabel .logo {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  justify-self: end;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+  -ms-grid-column-align: end;
+      justify-self: end;
 }
 
 .wrapper .nav .menuLabel .logo h3 {
@@ -72,7 +95,9 @@ body {
   font-size: 20px;
   letter-spacing: 3px;
   color: whitesmoke;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .wrapper .nav .menuLabel .logo img {
@@ -92,11 +117,13 @@ body {
   top: 52px;
   left: -75%;
   background: black;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, black), to(rgba(0, 0, 0, 0.85)));
   background: linear-gradient(180deg, black 20%, rgba(0, 0, 0, 0.85) 100%);
   color: white;
   padding: 15px 10px;
   text-align: left;
   border-bottom-right-radius: 50px;
+  -webkit-transition: left 1.2s;
   transition: left 1.2s;
   z-index: 9;
 }
@@ -123,6 +150,7 @@ body {
   padding: 0px 15px;
   color: #d5d838;
   color: grey;
+  -webkit-transition: color 0.5s;
   transition: color 0.5s;
 }
 
@@ -142,6 +170,7 @@ body {
 .hero-shadow, .hero-shadow-reverse, .hero-shadow-bothsides, .hero-shadow-quote {
   position: absolute;
   background: black;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, rgba(0, 0, 0, 0.6)), to(black));
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 50%, black 100%);
   height: 100%;
   width: 100%;
@@ -156,14 +185,24 @@ body {
 }
 
 .hero-shadow-bothsides {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, black), color-stop(rgba(0, 0, 0, 0.8)), color-stop(95%, black));
   background: linear-gradient(180deg, black 5%, rgba(0, 0, 0, 0.8), black 95%);
 }
 
 .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -195,13 +234,19 @@ body {
 }
 
 .articlesListSection {
+  overflow: hidden;
   z-index: 1;
 }
 
 section {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100%;
   width: 100%;
   background-position: center;
@@ -213,8 +258,8 @@ section .highlighted {
   font-weight: bold;
 }
 
-section .desrciption, section .activeQuote {
-  margin: 20px 30px 0px 30px;
+section .description, section .activeQuote {
+  margin: 0px 30px 0px 30px;
 }
 
 section .allQuotes {
@@ -231,8 +276,13 @@ section .activeQuote {
 }
 
 section .activeQuote .quoteContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 10px 0;
   color: #e6e6e6;
 }
@@ -257,27 +307,13 @@ section .quoteChange i {
 }
 
 section .quoteChange .transformIcons {
-  animation: transformIcon 0.8s ease 0s 1 normal forwards;
+  -webkit-animation: transformIcon 0.8s ease 0s 1 normal forwards;
+          animation: transformIcon 0.8s ease 0s 1 normal forwards;
 }
 
 section .quoteChange .nextTransformIcons {
-  animation: nextTransformIcon 0.8s ease 0s 1 normal forwards;
-}
-
-section .footerIcons {
-  width: 100vw;
-  background-color: rgba(15, 15, 15, 0.4);
-  margin: 0px auto 20px auto;
-  padding: 10px;
-  text-align: center;
-}
-
-section .icon {
-  text-align: center;
-  padding: 0px 20px;
-  font-size: 30px;
-  text-decoration: none;
-  color: #d5d838;
+  -webkit-animation: nextTransformIcon 0.8s ease 0s 1 normal forwards;
+          animation: nextTransformIcon 0.8s ease 0s 1 normal forwards;
 }
 
 section h3 {
@@ -296,25 +332,71 @@ section .underline {
   background-color: #cecece;
 }
 
+section .articlesPages {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  margin-top: -30px;
+}
+
+section .articlesPages .pageArticle {
+  width: 100vw;
+}
+
+section .articlesPages .articlesFirstPage {
+  position: absolute;
+  opacity: 0;
+  padding: 0px 30px;
+  -webkit-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+}
+
+section .articlesPages .articlesSecondPage {
+  position: absolute;
+  opacity: 0;
+  padding: 0px 30px;
+  -webkit-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+}
+
+section .articlesPages .activePage {
+  position: relative;
+  opacity: 1;
+  z-index: 10;
+}
+
 section .artCard {
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   height: 250px;
-  width: 80%;
-  margin: 20px;
+  width: 100%;
+  margin: 30px 0px;
   background-size: cover;
   background-position: center;
-  box-shadow: 0px 0px 20px #0c0c0c;
   z-index: 1;
 }
 
 section .artCard .textCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100%;
   width: 100%;
   background: black;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), color-stop(70%, rgba(0, 0, 0, 0.9)));
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.9) 70%);
   z-index: -1;
 }
@@ -350,14 +432,85 @@ section .artCard .textCard span {
   background-image: url(/imgs/article_podstawy.jpg);
 }
 
+.fifthArticle {
+  background-image: url(/imgs/bledySmall.jpg);
+}
+
+.sixthArticle {
+  background-image: url(/imgs/burgerSmall.jpg);
+}
+
 .articlesListSection {
   background-color: #000000;
 }
 
-.currentArticleSection {
+.articlesListSection a {
+  text-decoration: none;
+  border: none;
+  color: whitesmoke;
+}
+
+.articlesListSection .paginationArticles {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+}
+
+.articlesListSection .paginationArticles ul {
+  color: black;
+  margin: 0;
+}
+
+.articlesListSection .paginationArticles ul li {
+  color: black;
+  background-color: black;
+}
+
+.articlesListSection .paginationArticles ul li a {
+  background-color: black;
+  color: whitesmoke;
+  border: 1px solid #d5d838;
+}
+
+.articlesListSection .paginationArticles ul li a:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.articlesListSection .paginationArticles ul li a:hover {
+  background-color: #d5d838;
+  color: black;
+  border: 1px solid black;
+}
+
+.articlesListSection .paginationArticles ul li .pageNext:hover, .articlesListSection .paginationArticles ul li .pagePrevious:hover {
+  background: none;
+  color: whitesmoke;
+  border: 1px solid #d5d838;
+}
+
+.articlesListSection .paginationArticles .active {
+  background-color: #d5d838;
+  color: black;
+  font-weight: bolder;
+  border: 1px solid black;
+}
+
+.currentArticleSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -368,16 +521,27 @@ section .artCard .textCard span {
 }
 
 .currentArticleSection .activeArticle {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 0px 30px;
   max-height: 450px;
-  transition: max-height 4s;
+  -webkit-transition: max-height 2s;
+  transition: max-height 2s;
 }
 
 .currentArticleSection .activeArticle .articleInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .currentArticleSection .activeArticle .articleInfo .articleDate, .currentArticleSection .activeArticle .articleInfo h5 {
@@ -385,7 +549,9 @@ section .artCard .textCard span {
 }
 
 .currentArticleSection .activeArticle img {
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   max-width: 500px;
   width: 100%;
   margin: 20px;
@@ -404,36 +570,41 @@ section .artCard .textCard span {
   padding-right: 5px;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle, .currentArticleSection .activeArticle .cwiczeniaArticle, .currentArticleSection .activeArticle .saunaArticle, .currentArticleSection .activeArticle .podstawyArticle {
+.currentArticleSection .activeArticle .zmeczenieArticle, .currentArticleSection .activeArticle .cwiczeniaArticle, .currentArticleSection .activeArticle .saunaArticle, .currentArticleSection .activeArticle .podstawyArticle, .currentArticleSection .activeArticle .bledyArticle, .currentArticleSection .activeArticle .postanowieniaArticle {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle h3, .currentArticleSection .activeArticle .zmeczenieArticle .underline, .currentArticleSection .activeArticle .cwiczeniaArticle h3, .currentArticleSection .activeArticle .cwiczeniaArticle .underline, .currentArticleSection .activeArticle .saunaArticle h3, .currentArticleSection .activeArticle .saunaArticle .underline, .currentArticleSection .activeArticle .podstawyArticle h3, .currentArticleSection .activeArticle .podstawyArticle .underline {
+.currentArticleSection .activeArticle .zmeczenieArticle h3, .currentArticleSection .activeArticle .zmeczenieArticle .underline, .currentArticleSection .activeArticle .cwiczeniaArticle h3, .currentArticleSection .activeArticle .cwiczeniaArticle .underline, .currentArticleSection .activeArticle .saunaArticle h3, .currentArticleSection .activeArticle .saunaArticle .underline, .currentArticleSection .activeArticle .podstawyArticle h3, .currentArticleSection .activeArticle .podstawyArticle .underline, .currentArticleSection .activeArticle .bledyArticle h3, .currentArticleSection .activeArticle .bledyArticle .underline, .currentArticleSection .activeArticle .postanowieniaArticle h3, .currentArticleSection .activeArticle .postanowieniaArticle .underline {
   margin: 0;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle, .currentArticleSection .activeArticle .saunaArticle .mainArticle, .currentArticleSection .activeArticle .podstawyArticle .mainArticle {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle, .currentArticleSection .activeArticle .saunaArticle .mainArticle, .currentArticleSection .activeArticle .podstawyArticle .mainArticle, .currentArticleSection .activeArticle .bledyArticle .mainArticle, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle {
   margin-top: 20px;
   text-align: left;
   font-size: 14px;
   color: #d6d6d6;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .Section, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .Section, .currentArticleSection .activeArticle .saunaArticle .mainArticle .Section, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .Section {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .Section, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .Section, .currentArticleSection .activeArticle .saunaArticle .mainArticle .Section, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .Section, .currentArticleSection .activeArticle .bledyArticle .mainArticle .Section, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle .Section {
   padding-top: 10px;
   line-height: 24px;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .saunaArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .firstSection {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .saunaArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .bledyArticle .mainArticle .firstSection, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle .firstSection {
   font-weight: bold;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .saunaArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .bibliography {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .saunaArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .bledyArticle .mainArticle .bibliography, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle .bibliography {
   font-size: 12px;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle h5, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle h5, .currentArticleSection .activeArticle .saunaArticle .mainArticle h5, .currentArticleSection .activeArticle .podstawyArticle .mainArticle h5 {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle h5, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle h5, .currentArticleSection .activeArticle .saunaArticle .mainArticle h5, .currentArticleSection .activeArticle .podstawyArticle .mainArticle h5, .currentArticleSection .activeArticle .bledyArticle .mainArticle h5, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle h5 {
   color: white;
   padding-bottom: 5px;
   font-size: 18px;
@@ -441,22 +612,45 @@ section .artCard .textCard span {
   letter-spacing: 1px;
 }
 
-.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .source, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .source, .currentArticleSection .activeArticle .saunaArticle .mainArticle .source, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .source {
+.currentArticleSection .activeArticle .zmeczenieArticle .mainArticle .source, .currentArticleSection .activeArticle .cwiczeniaArticle .mainArticle .source, .currentArticleSection .activeArticle .saunaArticle .mainArticle .source, .currentArticleSection .activeArticle .podstawyArticle .mainArticle .source, .currentArticleSection .activeArticle .bledyArticle .mainArticle .source, .currentArticleSection .activeArticle .postanowieniaArticle .mainArticle .source {
   display: block;
 }
 
 .currentArticleSection .dropdownArticles {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff00), color-stop(85%, #000000));
   background: linear-gradient(180deg, #ffffff00 0%, #000000 85%);
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 450px;
   text-align: center;
   z-index: 10;
   cursor: pointer;
+  -webkit-transition: height 1s 1s, padding 1s 1s, margin 1s 1s;
   transition: height 1s 1s, padding 1s 1s, margin 1s 1s;
+}
+
+.currentArticleSection .dropdownArticles .aRollUp {
+  position: absolute;
+  text-decoration: none;
+  border: none;
+  padding: 25px 10px 10px 10px;
+  z-index: -10;
+}
+
+.currentArticleSection .dropdownArticles .zIndex {
+  z-index: 10;
 }
 
 .currentArticleSection .dropdownArticles span {
@@ -469,33 +663,35 @@ section .artCard .textCard span {
 .currentArticleSection .dropdownArticles .clickToExtend {
   opacity: 1;
   position: relative;
-  transition: opacity 0.8s 4.3s;
+  -webkit-transition: opacity 0.3s 2.2s;
+  transition: opacity 0.3s 2.2s;
 }
 
 .currentArticleSection .dropdownArticles .dropdownSpanChange {
-  position: absolute;
   opacity: 0;
-  transition: opacity 0.8s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .currentArticleSection .dropdownArticles .clickToRoll {
   opacity: 0;
-  position: absolute;
   padding: 0;
   color: grey;
   font-size: 12px;
   z-index: 15;
-  transition: opacity 0.8s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .currentArticleSection .dropdownArticles .clickToRollShow {
   opacity: 1;
   position: relative;
-  transition: opacity 0.8s 3.3s;
+  -webkit-transition: opacity 0.3s 2.2s;
+  transition: opacity 0.3s 2.2s;
 }
 
 .currentArticleSection .heightReset {
-  max-height: 5000px;
+  max-height: 7000px;
 }
 
 .currentArticleSection .dropdownHeight {
@@ -505,17 +701,24 @@ section .artCard .textCard span {
 }
 
 .trainingsSection .trainingsCards, .calculatorSection .trainingsCards {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .trainingsSection .trainingsCards .training, .calculatorSection .trainingsCards .training {
   margin: 20px 30px;
   max-height: 80px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, black), color-stop(90%, black));
   background: linear-gradient(180deg, black 30%, black 90%);
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #141414;
+  -webkit-transition: 1s;
   transition: 1s;
 }
 
@@ -525,24 +728,59 @@ section .artCard .textCard span {
 }
 
 .trainingsSection .trainingsCards .training .trainingMovies, .calculatorSection .trainingsCards .training .trainingMovies {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-}
-
-.trainingsSection .trainingsCards .training .trainingMovies a, .trainingsSection .trainingsCards .training .trainingMovies i, .calculatorSection .trainingsCards .training .trainingMovies a, .calculatorSection .trainingsCards .training .trainingMovies i {
-  font-size: 16px;
-  padding: 10px;
-  text-decoration: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin: 0 0 20px 0;
 }
 
 .trainingsSection .trainingsCards .training .trainingMovies a, .calculatorSection .trainingsCards .training .trainingMovies a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #e0e0e0;
+  text-decoration: none;
+  padding: 10px;
 }
 
-.trainingsSection .trainingsCards .training .trainingMovies i, .calculatorSection .trainingsCards .training .trainingMovies i {
+.trainingsSection .trainingsCards .training .trainingMovies a i, .calculatorSection .trainingsCards .training .trainingMovies a i {
   color: #b31818;
+  font-size: 40px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.trainingsSection .trainingsCards .training .trainingMovies a p, .calculatorSection .trainingsCards .training .trainingMovies a p {
+  font-size: 12px;
+  padding: 0 10px;
+  margin: 0;
+  background-color: #9b1515;
+  color: white;
+  font-weight: bolder;
 }
 
 .trainingsSection .trainingsCards .backgroundTraining, .calculatorSection .trainingsCards .backgroundTraining {
@@ -553,6 +791,7 @@ section .artCard .textCard span {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  -webkit-transition: top 0.5s;
   transition: top 0.5s;
   z-index: 1;
 }
@@ -561,6 +800,7 @@ section .artCard .textCard span {
   text-align: center;
   padding: 70px 0px;
   letter-spacing: 4px;
+  -webkit-transition: 0.5s;
   transition: 0.5s;
   z-index: 1;
 }
@@ -569,7 +809,9 @@ section .artCard .textCard span {
   position: absolute;
   height: 100%;
   width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), color-stop(95%, black));
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, black 95%);
+  -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
   z-index: -1;
 }
@@ -605,21 +847,33 @@ section .artCard .textCard span {
 }
 
 .calculatorSection .calculator {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .calculatorSection .calculator .dropdown {
   max-height: 50px;
-  margin-bottom: 20px;
+  margin: 30px 0px 0px 0px;
   font-size: 14px;
   overflow: hidden;
+  border: 1px solid #1f1d1d;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
-  transition: 0.5s;
+  z-index: 5;
+  -webkit-transition: max-height 0.5s;
+  transition: max-height 0.5s;
 }
 
 .calculatorSection .calculator .dropdown h5 {
@@ -634,7 +888,10 @@ section .artCard .textCard span {
 
 .calculatorSection .calculator .dropdown h5 i {
   padding: 0px 0px 0px 10px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 .calculatorSection .calculator .dropdown ul {
@@ -651,7 +908,13 @@ section .artCard .textCard span {
   margin: 15px 0px;
   padding: 5px 20px;
   width: 100%;
-  transition: 0.6s;
+}
+
+.calculatorSection .calculator .dropdown ul li a {
+  text-decoration: none;
+  color: white;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
 }
 
 .calculatorSection .calculator .dropdown ul li .underlineCalc {
@@ -661,29 +924,30 @@ section .artCard .textCard span {
   width: 20px;
   background-color: #d5d838;
   margin-top: 5px;
-  transition: 0.5s;
+  -webkit-transition: width 0.4s, left 0.4s;
+  transition: width 0.4s, left 0.4s;
 }
 
-.calculatorSection .calculator .dropdown ul li:hover .underlineCalc {
+.calculatorSection .calculator .dropdown ul li .activeDropdownLink {
   width: 120px;
   left: calc(50% - 60px);
 }
 
-.calculatorSection .calculator .dropdown ul li:hover {
+.calculatorSection .calculator .dropdown ul li .activeDropdownLinkColor {
   color: #d5d838;
 }
 
-.calculatorSection .calculator .dropdown:hover {
+.calculatorSection .calculator .dropdownHeightChange {
   max-height: 215px;
 }
 
-.calculatorSection .calculator .dropdown:hover i {
-  transform: rotateX(-180deg);
+.calculatorSection .calculator .dropdownArrowChange {
+  -webkit-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
 }
 
 .calculatorSection .calculator .accordion {
-  margin: auto;
-  width: 80%;
+  margin: 0px 30px;
 }
 
 .calculatorSection .calculator .accordion .card {
@@ -700,8 +964,10 @@ section .artCard .textCard span {
   width: 100%;
   margin: 0;
   padding: 8px 16px;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 8fr 2fr;
+  -ms-grid-columns: 8fr 2fr;
+      grid-template-columns: 8fr 2fr;
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   font-weight: bolder;
@@ -712,143 +978,330 @@ section .artCard .textCard span {
 }
 
 .calculatorSection .calculator .accordion .card .card-header h2 i {
-  align-self: center;
-  justify-self: end;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: end;
+      justify-self: end;
 }
 
 .calculatorSection .calculator .accordion .card .card-header h2 button {
   outline: none !important;
   border: none !important;
-  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 .calculatorSection .calculator .accordion .card .card-header h2 .btn-link .fa-plus {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.4s;
+  transition: opacity 0.3s, -webkit-transform 0.4s;
+  transition: opacity 0.3s, transform 0.4s;
+  transition: opacity 0.3s, transform 0.4s, -webkit-transform 0.4s;
+}
+
+.calculatorSection .calculator .accordion .card .card-header h2 .btn-link .fa-minus {
+  position: relative;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.4s;
+  transition: opacity 0.3s, -webkit-transform 0.4s;
+  transition: opacity 0.3s, transform 0.4s;
+  transition: opacity 0.3s, transform 0.4s, -webkit-transform 0.4s;
 }
 
 .calculatorSection .calculator .accordion .card .card-header h2 .collapsed .fa-minus {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.4s;
+  transition: opacity 0.3s, -webkit-transform 0.4s;
+  transition: opacity 0.3s, transform 0.4s;
+  transition: opacity 0.3s, transform 0.4s, -webkit-transform 0.4s;
 }
 
 .calculatorSection .calculator .accordion .card .card-header h2 .collapsed .fa-plus {
-  display: block;
-}
-
-.calculatorSection .calculator .accordion .collapse {
-  transition: 0.5s;
-}
-
-.calculatorSection .calculator .accordion .collapse .card-body {
-  font-size: 16px;
-  font-family: 'Montserrat', sans-serif;
-  color: whitesmoke;
+  position: relative;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.4s;
+  transition: opacity 0.3s, -webkit-transform 0.4s;
+  transition: opacity 0.3s, transform 0.4s;
+  transition: opacity 0.3s, transform 0.4s, -webkit-transform 0.4s;
 }
 
 .calculatorSection .calculator .accordion .show {
   font-size: 16px;
-  background-color: rgba(0, 0, 0, 0.5);
+  text-align: left;
+  background-color: #0c0c0c;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
 }
 
 .calculatorSection .calculator .accordion .collapsing {
   font-size: 16px;
+  text-align: left;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .calculatorSection .calculator .activeCalc {
+  position: relative;
   margin-bottom: 20px;
+  overflow: hidden;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .startCalc {
+.calculatorSection .calculator .activeCalc .calc {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -100;
+  max-height: 0;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+  overflow: hidden;
+}
+
+.calculatorSection .calculator .activeCalc .calc .startCalc {
   border-radius: 25px 25px 0px 0px;
   padding: 20px;
   text-align: center;
   font-family: 'Montserrat', serif;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .startCalc .underline {
+.calculatorSection .calculator .activeCalc .calc .startCalc .underline {
   margin: 20px 20px 0px 20px;
   background-color: #d5d838;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs {
+.calculatorSection .calculator .activeCalc .calc .calcInputs {
   font-family: 'Montserrat', serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 20px;
   border: 1px solid #d5d838;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 25px;
+  z-index: 10;
+  max-height: 650px;
+  -webkit-transition: max-height 0.4s;
+  transition: max-height 0.4s;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer {
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   width: 100%;
-  justify-items: end;
-  align-items: center;
+  height: 90px;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 20px;
+  z-index: 20;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .kcalQuestion {
-  align-items: center;
-  justify-self: start;
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 70px;
+  width: 100%;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .genderIconLink {
+  text-decoration: none;
+  font-size: 36px;
+  color: none;
+  padding: 15px;
+  -webkit-transition: color 0.4s, font-size 0.5s;
+  transition: color 0.4s, font-size 0.5s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .female {
+  color: #c762ba;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .male {
+  color: #3f66cf;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .activeGender {
+  color: #d5d838;
+  font-size: 40px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .genderIcons .unactiveGender {
+  font-size: 26px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcQuestion {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-column-align: start;
+      justify-self: start;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-size: 14px;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .kcalInput {
-  width: 80px;
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput {
+  width: 100px;
+  height: 30px;
   background: none;
   border: 1px solid grey;
   border-radius: 10px;
   padding: 3px 6px;
   color: white;
+  text-align: center;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .activityContainer .activity-form, .calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .genderContainer .activity-form {
-  border: none;
-  justify-self: end;
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .selectContainer {
+  width: 100px;
+  background-color: black;
+  border-radius: 10px;
+  -webkit-transition: border 0.3s;
+  transition: border 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .selectContainer .activity-form {
+  background-color: black;
+  border-radius: 10px;
+  -ms-grid-column-align: end;
+      justify-self: end;
   justify-items: end;
-  align-self: center;
-  text-align: right;
-  color: white;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+  color: whitesmoke;
   width: 100%;
   margin: auto;
   font-size: 14px;
-  background-color: black;
   outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  padding: 5px;
+  border: 1px solid grey;
+  -webkit-transition: border 0.3s;
+  transition: border 0.3s;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer .kcalInput:focus {
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .selectContainer .activity-form option {
+  background-color: black;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .selectContainer .activity-form:focus {
   outline: none;
   border: 1px solid #d5d838;
+  -webkit-transition: border 0.3s;
+  transition: border 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .activeInput {
+  border: 1px solid #d5d838 !important;
+  z-index: 100;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus {
+  outline: none;
+  border: 1px solid #d5d838;
+  -webkit-transition: border 0.3s;
   transition: border 0.3s;
   z-index: 1;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer input::-webkit-outer-spin-button,
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer input::-webkit-inner-spin-button {
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput::-webkit-input-placeholder {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:-ms-input-placeholder {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput::-ms-input-placeholder {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput::placeholder {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus::-webkit-input-placeholder {
+  color: #ffffff00;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus:-ms-input-placeholder {
+  color: #ffffff00;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus::-ms-input-placeholder {
+  color: #ffffff00;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer .calcInput:focus::placeholder {
+  color: #ffffff00;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer input::-webkit-outer-spin-button,
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalInputContainer input[type=number] {
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcInputContainer input[type=number] {
   -moz-appearance: textfield;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .kcalResultBtn {
+.calculatorSection .calculator .activeCalc .calc .calcInputs .calcResultBtn, .calculatorSection .calculator .activeCalc .calc .calcInputs .kcalResultBtn {
   outline: none !important;
   border: none !important;
-  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
   width: 150px;
-  margin: 20px;
+  margin: 30px 20px;
   padding: 8px 16px;
-  grid-template-columns: 8fr 2fr;
+  -ms-grid-columns: 8fr 2fr;
+      grid-template-columns: 8fr 2fr;
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   font-weight: bolder;
@@ -859,22 +1312,201 @@ section .artCard .textCard span {
   text-transform: uppercase;
   letter-spacing: 2px;
   background-color: #d5d838;
+  z-index: 10;
 }
 
-.calculatorSection .calculator .activeCalc .kcalCalc .kcalInputs .result {
-  margin: 20px;
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  position: absolute;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  z-index: -10;
+  padding: 20px 20px;
+  border-top: 1px solid #d5d838;
+  overflow: hidden;
+  height: 150px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .wrongInputs, .calculatorSection .calculator .activeCalc .calc .calcInputs .result .gapInputs, .calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText {
+  position: absolute;
+  opacity: 0;
+  z-index: -11;
+  -webkit-transition: opacity 2s;
+  transition: opacity 2s;
+  top: -200px;
+  left: 0;
+  width: 100%;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .wrongInputs, .calculatorSection .calculator .activeCalc .calc .calcInputs .result .gapInputs {
+  color: #d5d838;
+  font-weight: bolder;
   text-align: center;
 }
 
-.calculatorSection .calculator .allCalcs {
-  display: none;
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .activeResult {
+  position: relative;
+  opacity: 1;
+  top: 0;
+  z-index: 5;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText {
+  text-align: center;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText .resultKcal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 5px;
+  padding: 20px 0px 0px 0px;
+  font-size: 26px;
+  color: whitesmoke;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText .highlightedResult {
+  color: #d5d838;
+  font-weight: bolder;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .errorResult {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 20px 0 30px 0;
+  border-top: 1px solid #d5d838;
+  width: 100%;
+  z-index: -11;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputs .resultShow {
+  position: relative;
+  opacity: 1;
+  top: 0;
+  z-index: 5;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputHeightDefault {
+  max-height: 650px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcBmiInputHeightDefault {
+  max-height: 425px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcYmcaInputHeightDefault {
+  max-height: 425px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcInputHeightStretch {
+  max-height: 800px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcBmiInputHeightStretch {
+  max-height: 575px;
+}
+
+.calculatorSection .calculator .activeCalc .calc .calcYmcaInputHeightStretch {
+  max-height: 575px;
+}
+
+.calculatorSection .calculator .activeCalc .calcDisplay {
+  position: relative;
+  visibility: visible;
+  opacity: 1;
+  z-index: 10;
+  max-height: 1200px;
+  left: 0;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.calculatorSection .calculator .calcsFAQ {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 0px 0px 30px 0px;
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+}
+
+.socials p {
+  padding: 0 30px;
+}
+
+.socials .footerIcons {
+  padding: 10px;
+  text-align: center;
+}
+
+.socials .footerIcons .underline {
+  background-color: #252525;
+}
+
+.socials .footerIcons .icon {
+  text-align: center;
+  padding: 0px 20px;
+  font-size: 30px;
+  text-decoration: none;
+  color: #d5d838;
 }
 
 .footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 10px;
   border-top: 1px solid whitesmoke;
   background-color: black;
@@ -884,58 +1516,133 @@ section .artCard .textCard span {
   margin: 0 10px;
 }
 
-@keyframes refresher {
+@-webkit-keyframes refresher {
   0% {
-    transform: rotate(0);
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
   }
   100% {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes refresher {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotateBars {
+  0% {
+    -webkit-transform: rotateZ(0);
+            transform: rotateZ(0);
+    color: whitesmoke;
+  }
+  100% {
+    -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg);
+    color: #d5d838;
   }
 }
 
 @keyframes rotateBars {
   0% {
-    transform: rotateZ(0);
+    -webkit-transform: rotateZ(0);
+            transform: rotateZ(0);
     color: whitesmoke;
   }
   100% {
-    transform: rotateZ(180deg);
+    -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg);
     color: #d5d838;
+  }
+}
+
+@-webkit-keyframes reverseRotateBars {
+  0% {
+    -webkit-transform: rotateZ(0);
+            transform: rotateZ(0);
+    color: #d5d838;
+  }
+  100% {
+    -webkit-transform: rotateZ(-180deg);
+            transform: rotateZ(-180deg);
+    color: whitesmoke;
   }
 }
 
 @keyframes reverseRotateBars {
   0% {
-    transform: rotateZ(0);
+    -webkit-transform: rotateZ(0);
+            transform: rotateZ(0);
     color: #d5d838;
   }
   100% {
-    transform: rotateZ(-180deg);
+    -webkit-transform: rotateZ(-180deg);
+            transform: rotateZ(-180deg);
     color: whitesmoke;
+  }
+}
+
+@-webkit-keyframes transformIcon {
+  0% {
+    -webkit-transform: rotateZ(0);
+            transform: rotateZ(0);
+  }
+  30% {
+    color: #686868;
+  }
+  100% {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
   }
 }
 
 @keyframes transformIcon {
   0% {
-    transform: rotateZ(0);
+    -webkit-transform: rotateZ(0);
+            transform: rotateZ(0);
   }
   30% {
     color: #686868;
   }
   100% {
-    transform: rotateZ(360deg);
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+  }
+}
+
+@-webkit-keyframes nextTransformIcon {
+  0% {
+    -webkit-transform: rotateZ(0);
+            transform: rotateZ(0);
+  }
+  30% {
+    color: #686868;
+  }
+  100% {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
   }
 }
 
 @keyframes nextTransformIcon {
   0% {
-    transform: rotateZ(0);
+    -webkit-transform: rotateZ(0);
+            transform: rotateZ(0);
   }
   30% {
     color: #686868;
   }
   100% {
-    transform: rotateZ(360deg);
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
   }
 }
 /*# sourceMappingURL=small.css.map */
