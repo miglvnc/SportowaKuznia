@@ -32,6 +32,10 @@ body {
   scroll-behavior: smooth;
 }
 
+body h1, body h2, body h3, body p {
+  color: whitesmoke;
+}
+
 body .modalDietContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -108,8 +112,6 @@ body .showDisplayModal .btnModalExit .exitModalIcon {
 
 body .showDisplayModal h2, body .showDisplayModal p, body .showDisplayModal #dietInput {
   text-align: center;
-  padding: 20px 20px 20px 20px;
-  color: whitesmoke;
 }
 
 body .showDisplayModal h2 {
@@ -658,10 +660,6 @@ body .errorPopUpShow {
   opacity: 1;
   bottom: 20px;
   visibility: visible;
-}
-
-body h1, body h3, body p {
-  color: whitesmoke;
 }
 
 body .nav {
