@@ -547,18 +547,6 @@ body .showDisplayModal .generatePDFBtn {
           box-shadow: 0px 5px 3px #292929;
 }
 
-body .showDisplayModal .generatePDFBtn:active {
-  -webkit-box-shadow: 0px 2px 3px #292929;
-          box-shadow: 0px 2px 3px #292929;
-  -webkit-transform: translateY(2px);
-          transform: translateY(2px);
-}
-
-body .showDisplayModal .inactiveBtn {
-  border: 1px solid #797979;
-  color: #797979;
-}
-
 body .errorShadow {
   position: fixed;
   top: auto;
