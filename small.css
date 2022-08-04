@@ -1003,7 +1003,7 @@ section .highlighted {
   transition: box-shadow 0.05s, transform 0.05s, -webkit-box-shadow 0.05s, -webkit-transform 0.05s;
 }
 
-.motivationSection .quoteChangeBtn i {
+.motivationSection .quoteChangeBtn .iconRefresh {
   font-size: 20px;
   padding: 10px;
   color: black;

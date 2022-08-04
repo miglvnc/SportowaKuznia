@@ -1,18 +1,107 @@
-const activeQuote = document.querySelector('.activeQuote');
-const MJ = document.querySelector('.MJ');
-const KB = document.querySelector('.KB');
-let quotation = document.querySelector('.quoteContainer');
-const quoteChangeBtn = document.querySelector('.quoteChangeBtn');
-// let quote = document.querySelector('.quoteContainer');
-let quotesAll = document.querySelectorAll('.quoteContainer');
-let iconRefresh = document.querySelector('.fa-redo')
+const wrapperContainer = document.querySelector('.wrapper')
 
-let w; // for random number
+//nav functions
 
-let menuBars = document.querySelector('.menuBars');
-let menuIconBars = document.querySelector('.fa-bars');
-let collapseMenu = document.querySelector('.collapseMenu');
-let nav = document.querySelector('.nav');
+const menuBars = document.querySelector('.menuBars');
+const menuIconBars = document.querySelector('.fa-bars');
+const collapseMenu = document.querySelector('.collapseMenu');
+const nav = document.querySelector('.nav');
+
+function menuBarsAnimation() {
+    menuIconBars.classList.toggle('animationBars')
+}
+
+function collapse() {
+    if (collapseMenu.className.includes('activateCollapse')) {
+        collapseMenu.classList.remove('activateCollapse')
+    } else {
+        collapseMenu.classList.add('activateCollapse')
+    }
+    menuBarsAnimation();
+}
+
+menuBars.addEventListener('click', collapse)
+
+window.addEventListener('click', function (e) {
+    if (!document.querySelector('.collapseMenu').contains(e.target) && (!document.querySelector('.menuBars').contains(e.target))) {
+        collapseMenu.classList.remove('activateCollapse');
+        menuIconBars.classList.remove('animationBars');
+        menuIconBars.classList.add('reverseAnimationBars');
+    }
+});
+
+// motivation quotes
+
+const activeQuote = wrapperContainer.querySelector('.activeQuote');
+const quotation = wrapperContainer.querySelector('.quoteContainer');
+const quoteChangeBtn = wrapperContainer.querySelector('.quoteChangeBtn');
+const quotesAll = wrapperContainer.querySelectorAll('.quoteContainer');
+const iconRefresh = wrapperContainer.querySelector('.iconRefresh')
+
+
+function randomNumber(min, max) {
+    return (Math.random() * (max - min) + min).toFixed(0)
+};
+
+let randomQuotationNumber = randomNumber(0, (quotesAll.length - 1));
+
+function randomQuoteWebLoad() {
+    activeQuote.appendChild(quotesAll[randomQuotationNumber])
+}
+
+function quoteIconRefresh() {
+    if (iconRefresh.className.includes('transformIcons')) {
+        iconRefresh.classList.remove('transformIcons')
+        iconRefresh.classList.add('nextTransformIcons')
+    } else {
+        iconRefresh.classList.remove('nextTransformIcons')
+        iconRefresh.classList.add('transformIcons')
+    }
+}
+function removeAllChilds(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+//removing all childs
+
+function newQuotationAdd() {
+    
+    
+    let currentQuotationNumber = randomQuotationNumber;
+    let newRandomQuotationNumber;
+
+    do {
+        newRandomQuotationNumber = randomNumber(0, (quotesAll.length - 1));
+    } while (newRandomQuotationNumber == currentQuotationNumber)
+
+    activeQuote.appendChild(quotesAll[newRandomQuotationNumber])
+        .animate([{
+            opacity: '0'
+        }, {
+            opacity: '1'
+        }], {
+            duration: 1000,
+            itertions: 1
+        });
+
+    currentQuotationNumber = newRandomQuotationNumber;
+};
+
+function drawNewQuotation () {
+    removeAllChilds(activeQuote);
+    newQuotationAdd()
+    quoteIconRefresh();
+}
+
+randomQuoteWebLoad();
+quoteChangeBtn.addEventListener('click', drawNewQuotation);
+
+
+
+
+
+
 
 let dropdownArticles = document.querySelector('.dropdownArticles');
 
@@ -1609,192 +1698,10 @@ function extendArticles() {
 spanExtend.addEventListener('click', extendArticles);
 aRollUp.addEventListener('click', rollUpArticles);
 
-function menuBarsAnimation() {
-    menuIconBars.classList.toggle('animationBars')
-}
-
-function quoteIconRefresh() {
-    if (iconRefresh.className.includes('transformIcons')) {
-        iconRefresh.classList.remove('transformIcons')
-        iconRefresh.classList.add('nextTransformIcons')
-    } else {
-        iconRefresh.classList.remove('nextTransformIcons')
-        iconRefresh.classList.add('transformIcons')
-    }
-}
-
-function collapse() {
-    if (collapseMenu.className.includes('activateCollapse')) {
-        collapseMenu.classList.remove('activateCollapse')
-    } else {
-        collapseMenu.classList.add('activateCollapse')
-    }
-    menuBarsAnimation();
-}
-// function removeAnimation () {
-//     menuBars.classList.remove('animationBars')
-// }
-
-menuBars.addEventListener('click', collapse)
-// menuBars.addEventListener('click', removeAnimation)
-
-
-
-
-function rmath(min, max) {
-    return (Math.random() * (max - min) + min).toFixed(0)
-};
-
-// console.log(rmath(0, 2));
-
-let z = rmath(0, (quotesAll.length - 1));
-
-function randomQuoteRefresh() {
-    // let z = rmath(0, 6);
-    // activeQuote.removeChild(quotesAll[z]);
-    // for (i = 0; i < 7; i++) {
-    //     activeQuote.removeChild(quotesAll[i])
-    // }
-    // activeQuote.appendChild(quotesAll[rmath(0, quotesAll.length)])
-    // activeQuote.appendChild(quotesAll[rmath(0, 6)])
-    activeQuote.appendChild(quotesAll[z])
-    console.log(quotesAll[z])
-    // console.log(quotesAll[rmath(0, 6)]);
-    // activeQuote.appendChild(quoteChange)
-}
-
-function removeAllChilds(parent) {
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
-}
-//removing all childs
-console.log(z);
-w = z;
-console.log(w);
-
-function move() {
-    // console.log(y);
-    // activeQuote.removeChild(quotesAll[z])
-    removeAllChilds(activeQuote);
-    console.log(w);
-    let y;
-    do {
-        y = rmath(0, (quotesAll.length - 1));
-    } while (y == w)
-    activeQuote.appendChild(quotesAll[y])
-        .animate([{
-            opacity: '0'
-        }, {
-            opacity: '1'
-        }], {
-            duration: 1000,
-            itertions: 1
-        });
-
-
-    console.log(y);
-    w = y;
-    console.log(w);
-    quoteIconRefresh();
-};
-
-// console.log(y);
-
-console.log(w);
-
-console.log(quotesAll[rmath(0, (quotesAll.length))]);
-
-// move();
-randomQuoteRefresh();
-
-quoteChangeBtn.addEventListener('click', move);
-
-window.addEventListener('click', function (e) {
-    if (!document.querySelector('.collapseMenu').contains(e.target) && (!document.querySelector('.menuBars').contains(e.target))) {
-        //    alert("Clicked outside l2 and logo-menu");
-        //    document.getElementById('l2').style.height = "0px"; //the same code you've used to hide the menu
-        collapseMenu.classList.remove('activateCollapse');
-        menuIconBars.classList.remove('animationBars');
-        menuIconBars.classList.add('reverseAnimationBars');
-    }
-});
-
-// html to pdf converter -> 
-// import { jsPDF } from "jspdf";
-
-// Default export is a4 paper, portrait, using millimeters for units
-
-// Save the PDF
-
-// window.addEventListener('click', function(){
-//     if (!activityDropdown.classList.contains('')) {
-//         detailsContainerResize(activityDropdown, arrowKcalDetailsList[0], activityPlaceholder);
-
-//     }
-//     if(!targetDropdown.classList.contains('dropdownKcalCalcActive')){
-//         detailsContainerResize(targetDropdown, arrowKcalDetailsList[1], targetPlaceholder);
-//     }
-//     // detailsContainerResize()
-// });
-
-// document.addEventListener('mouseup', function(e) {
-//     if (!collapseMenu.contains(e.target)) {
-//         collapseMenu.classList.remove('activateCollapse');
-//         menuIconBars.classList.remove('animationBars');
-//         menuIconBars.classList.add('reverseAnimationBars')''
-//         // menuIconBars.classList.remove('animationBars');
-//     }
-// });
 
 
 
 
 
 
-// $(document).ready(function () {
-//     $(document).click(function (event) {
-//         var clickover = $(event.target);
-//         var _opened = $(".collapseMenu").hasClass("activateCollapse");
-//         if (_opened === true && !clickover.hasClass("menuBars")) {
-//             $(".menuBars").click();
-//         }
-//     });
-// });
 
-
-
-// window.addEventListener('mouseup', function(event){
-//     if ((event.target != collapseMenu || menuBars) && (event.target.parentNode != collapseMenu || menuBars)) {
-//         collapseMenu.classList.remove('activateCollapse')
-//         menuBarsAnimation();
-//     }
-// })
-
-
-
-// function lol() {
-//     for (let i = 0; i < 100; i++) {
-//         rmath(0, 6)
-//     }
-// };
-
-
-
-
-// document.addEventListener('DOMContentLoaded', function () {
-
-//     const nav = document.querySelector('.menuLabel')
-
-//     function addShadow() {
-//         if (window.scrollY >= 200) {
-//             nav.classList.add('shadow-navbar');
-//         } else {
-//             nav.classList.remove('shadow-navbar')
-//         }
-
-//     }
-
-//     window.addEventListener('scroll', addShadow)
-
-// });
