@@ -33,7 +33,7 @@ body {
 }
 
 body h1, body h2, body h3, body p {
-  color: whitesmoke;
+  color: #f5f5f5;
 }
 
 body .modalDietContainer {
@@ -57,7 +57,7 @@ body .modalDietContainer {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   background: rgba(19, 19, 19, 0.96);
-  background-image: url(/imgs/modal_backgroundDark.jpg);
+  background-image: url(imgs/modal_backgroundDark.jpg);
   background-position: 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -107,7 +107,7 @@ body .showDisplayModal .btnModalExit {
 }
 
 body .showDisplayModal .btnModalExit .exitModalIcon {
-  color: #d5d838e8;
+  color: #d5d838;
 }
 
 body .showDisplayModal h2, body .showDisplayModal p, body .showDisplayModal #dietInput {
@@ -135,7 +135,7 @@ body .showDisplayModal #dietInput {
   letter-spacing: 3px;
   border: 1px solid grey;
   border-radius: 25px;
-  color: whitesmoke;
+  color: #f5f5f5;
   font-size: 18px;
 }
 
@@ -247,7 +247,7 @@ body .showDisplayModal .tableContainer .tableShadowShow {
 
 body .showDisplayModal .tableContainer table, body .showDisplayModal .tableContainer th, body .showDisplayModal .tableContainer td {
   border-collapse: collapse;
-  color: whitesmoke;
+  color: #f5f5f5;
   background-color: #242424;
   font-size: 16px;
 }
@@ -555,7 +555,7 @@ body .errorPopUp {
   width: 90%;
   max-width: 400px;
   background: #1b1b1b;
-  background-color: #d5d838e8;
+  background-color: #d5d838;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-radius: 5px;
@@ -683,7 +683,7 @@ body .nav .menuLabel .menuBars {
 
 body .nav .menuLabel .menuBars i {
   font-size: 20px;
-  color: whitesmoke;
+  color: #f5f5f5;
   -webkit-transition: color 0.8s, -webkit-transform 0.8s;
   transition: color 0.8s, -webkit-transform 0.8s;
   transition: transform 0.8s, color 0.8s;
@@ -715,7 +715,7 @@ body .nav .menuLabel .logo a {
   text-decoration: none;
   font-size: 20px;
   letter-spacing: 3px;
-  color: whitesmoke;
+  color: #f5f5f5;
 }
 
 body .nav .menuLabel .logo img {
@@ -754,7 +754,7 @@ body .collapseMenu li {
 
 body .collapseMenu li a {
   text-decoration: none;
-  color: whitesmoke;
+  color: #f5f5f5;
   text-align: center;
 }
 
@@ -805,7 +805,7 @@ body .activateCollapse {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  background-image: url(/imgs/bg2_big.jpg);
+  background-image: url(imgs/bg2_big.jpg);
   background-position: 5%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1056,31 +1056,31 @@ section .highlighted {
 .articlesListSection .articlesPagesContainer .pageArticle a {
   text-decoration: none;
   border: none;
-  color: whitesmoke;
+  color: #f5f5f5;
 }
 
 .articlesListSection .articlesPagesContainer .pageArticle a .firstArticle {
-  background-image: url(/imgs/article_podstawy.jpg);
+  background-image: url(imgs/article_podstawy.jpg);
 }
 
 .articlesListSection .articlesPagesContainer .pageArticle a .secondArticle {
-  background-image: url(/imgs/article_zdrowiepsych.jpg);
+  background-image: url(imgs/article_zdrowiepsych.jpg);
 }
 
 .articlesListSection .articlesPagesContainer .pageArticle a .thirdArticle {
-  background-image: url(/imgs/article_zmeczenie.jpg);
+  background-image: url(imgs/article_zmeczenie.jpg);
 }
 
 .articlesListSection .articlesPagesContainer .pageArticle a .fourthArticle {
-  background-image: url(/imgs/article_sauna.jpg);
+  background-image: url(imgs/article_sauna.jpg);
 }
 
 .articlesListSection .articlesPagesContainer .pageArticle a .fifthArticle {
-  background-image: url(/imgs/bledySmall.jpg);
+  background-image: url(imgs/bledySmall.jpg);
 }
 
 .articlesListSection .articlesPagesContainer .pageArticle a .sixthArticle {
-  background-image: url(/imgs/burgerSmall.jpg);
+  background-image: url(imgs/burgerSmall.jpg);
 }
 
 .articlesListSection .articlesPagesContainer .pageArticle a .artCard {
@@ -1188,7 +1188,7 @@ section .highlighted {
   margin: 0 1.5px;
   padding: 10px 20px;
   background-color: #111111;
-  color: whitesmoke;
+  color: #f5f5f5;
   border: none;
   -webkit-transition: background-color 0.3s, padding 0.3s;
   transition: background-color 0.3s, padding 0.3s;
@@ -1391,7 +1391,7 @@ section .highlighted {
 
 .currentArticleSection .activeArticle .articleText .mainArticle .Section .source .sourceLink {
   text-decoration: none;
-  color: whitesmoke;
+  color: #f5f5f5;
 }
 
 .currentArticleSection .activeArticle .articleText .mainArticle .firstSection {
@@ -1436,7 +1436,7 @@ section .highlighted {
 }
 
 .currentArticleSection .dropdownArticles span {
-  color: whitesmoke;
+  color: #f5f5f5;
   font-size: 16px;
   letter-spacing: 1px;
   padding: 25px 10px;
@@ -1605,19 +1605,19 @@ section .highlighted {
 }
 
 .trainingsSection .trainingsCards .backgroundCardio, .calculatorSection .trainingsCards .backgroundCardio {
-  background-image: url(/imgs/training_cardio3.jpg);
+  background-image: url(imgs/training_cardio3.jpg);
 }
 
 .trainingsSection .trainingsCards .backgroundFitness, .calculatorSection .trainingsCards .backgroundFitness {
-  background-image: url(/imgs/trainign_fitness.jpg);
+  background-image: url(imgs/trainign_fitness.jpg);
 }
 
 .trainingsSection .trainingsCards .backgroundStrength, .calculatorSection .trainingsCards .backgroundStrength {
-  background-image: url(/imgs/training_StrengthSMALL.jpg);
+  background-image: url(imgs/training_StrengthSMALL.jpg);
 }
 
 .trainingsSection .trainingsCards .backgroundFunctional, .calculatorSection .trainingsCards .backgroundFunctional {
-  background-image: url(/imgs/training_functional.jpg);
+  background-image: url(imgs/training_functional.jpg);
 }
 
 .trainingsSection .trainingsCards .training:hover, .calculatorSection .trainingsCards .training:hover {
@@ -1663,17 +1663,17 @@ section .highlighted {
 .dietSection .dietContainer a {
   text-decoration: none;
   border: none;
-  color: whitesmoke;
+  color: #f5f5f5;
   width: 100%;
   z-index: 6;
 }
 
 .dietSection .dietContainer a .modalOwn {
-  background-image: url(/imgs/dietCardModal.jpg);
+  background-image: url(imgs/dietCardModal.jpg);
 }
 
 .dietSection .dietContainer a .redirect {
-  background-image: url(/imgs/dietCardRedirect.jpg);
+  background-image: url(imgs/dietCardRedirect.jpg);
 }
 
 .dietSection .dietContainer a .dietCard {
@@ -1848,7 +1848,7 @@ section .highlighted {
   border-radius: 25px;
   border: 1px solid #0c0c0c;
   background-color: rgba(0, 0, 0, 0.6);
-  color: whitesmoke;
+  color: #f5f5f5;
   -webkit-box-shadow: 0px 0px 20px #050505;
           box-shadow: 0px 0px 20px #050505;
 }
@@ -2069,7 +2069,7 @@ section .highlighted {
   border-radius: 20px;
   max-height: 45px;
   width: 180px;
-  color: whitesmoke;
+  color: #f5f5f5;
   text-align: center;
   -webkit-box-shadow: 0px 0px 20px #000;
           box-shadow: 0px 0px 20px #000;
@@ -2203,7 +2203,7 @@ section .highlighted {
   max-height: 0%;
   -webkit-transition: max-height 0.5s, opacity 0.5s;
   transition: max-height 0.5s, opacity 0.5s;
-  color: whitesmoke;
+  color: #f5f5f5;
 }
 
 .calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText {
@@ -2242,7 +2242,7 @@ section .highlighted {
   gap: 5px;
   padding: 10px 0px 0px 0px;
   font-size: 26px;
-  color: whitesmoke;
+  color: #f5f5f5;
 }
 
 .calculatorSection .calculator .activeCalc .calc .calcInputs .result .resultFullText .highlightedResult {
@@ -2375,7 +2375,7 @@ section .highlighted {
 .calculatorSection .calculator .accordion .card .card-body {
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
-  color: whitesmoke;
+  color: #f5f5f5;
 }
 
 .calculatorSection .calculator .accordion .show {
@@ -2408,7 +2408,7 @@ section .highlighted {
           align-items: center;
   padding: 10px;
   border-top: 1px solid #1f1d1d;
-  background-color: black;
+  background-color: #030303;
   margin: 0;
 }
 
@@ -2425,26 +2425,29 @@ section .highlighted {
 }
 
 .footer .footerIcons .icon {
-  border-radius: 100%;
-  background: #161616;
-  text-align: center;
-  padding: 10px 15px;
   margin: 0px 5px;
-  font-size: 26px;
   text-decoration: none;
-  color: whitesmoke;
-  -webkit-transition: color 0.2s, background 0.2s;
-  transition: color 0.2s, background 0.2s;
 }
 
-.footer .footerIcons .icon:hover {
-  color: black;
+.footer .footerIcons .icon i {
+  font-size: 26px;
+  color: #f5f5f5;
+  padding: 10px 15px;
+  background-color: #141414;
+  border-radius: 100%;
+  border: 1px solid black;
+  -webkit-transition: color 0.2s, background-color 0.2s;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.footer .footerIcons .icon i:hover {
+  color: #141414;
   background-color: #d5d838;
 }
 
 .footer .copyright {
-  color: whitesmoke;
-  margin: 20px 0px;
+  color: #f5f5f5;
+  margin: 15px 0px;
 }
 
 @-webkit-keyframes refresher {
@@ -2473,7 +2476,7 @@ section .highlighted {
   0% {
     -webkit-transform: rotateZ(0);
             transform: rotateZ(0);
-    color: whitesmoke;
+    color: #f5f5f5;
   }
   100% {
     -webkit-transform: rotateZ(180deg);
@@ -2486,7 +2489,7 @@ section .highlighted {
   0% {
     -webkit-transform: rotateZ(0);
             transform: rotateZ(0);
-    color: whitesmoke;
+    color: #f5f5f5;
   }
   100% {
     -webkit-transform: rotateZ(180deg);
@@ -2504,7 +2507,7 @@ section .highlighted {
   100% {
     -webkit-transform: rotateZ(-180deg);
             transform: rotateZ(-180deg);
-    color: whitesmoke;
+    color: #f5f5f5;
   }
 }
 
@@ -2517,7 +2520,7 @@ section .highlighted {
   100% {
     -webkit-transform: rotateZ(-180deg);
             transform: rotateZ(-180deg);
-    color: whitesmoke;
+    color: #f5f5f5;
   }
 }
 
