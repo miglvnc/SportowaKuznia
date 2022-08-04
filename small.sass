@@ -266,9 +266,9 @@ body
                         td
                             background-color: #4d4c2c
 
-            #dietTable
-                .weightValue
-                    display: none
+                #dietTable
+                    .weightValue
+                        display: none
 
             .ownTable
                 display: none
@@ -276,13 +276,9 @@ body
                 border-radius: 20px
                 box-shadow: 0px 0px 10px #202020
 
+                th
+                    background-color: #d5d838
                 td
-                    transition: width 1s
-
-                .originalTableTheadContainer
-                    text-align: left
-                    overflow: hidden
-                    padding: 10px 0
 
                 .ownTableProductNameHead
                     width: 34%
@@ -292,9 +288,6 @@ body
                 .productNameHide
                     width: 10%
                     border-right: 2px solid #ffee530a
-
-                th
-                    background-color: #d5d838
 
                 .ownTableWeight
                     width: 0%
@@ -313,8 +306,11 @@ body
                     .addProduct
                         td
                             background: none
+                            transition: width 1s
+
                             span
                                 background: none
+
                             .productValueInput
                                 border: 1px solid grey
                                 border-radius: 10px
@@ -323,8 +319,8 @@ body
                                 padding: 1px 3px
                                 color: white
                                 text-align: center
-                                // margin: 2px
                                 transition: border 0.2s
+
                             .productValueInput:focus
                                 outline: none
                                 border: 1px solid #d5d838
@@ -355,6 +351,10 @@ body
             border-radius: 15px
             color: grey
             box-shadow: 0px 0px 10px #202020
+            transition: left 1s
+
+        .hideOwnTableHeader
+            display: none
 
         .form-switch
             margin-bottom: 30px
@@ -367,28 +367,23 @@ body
             width: calc(3rem + 0.75rem)
             border-radius: 4rem
 
-        .hideOwnTableHeader
-            display: none
-
-        .generatePDFBtn
-            border: none
-            background: none
-            padding: 10px
-            margin: 20px
-            // height: 40px
-            // width: 100px
-            border-radius: 25px
-            font-size: 18px
-            background: none
-            border: none
-            border: 1px solid #d4d664
-            color: #d4d664
-            font-weight: bolder
-            text-transform: uppercase
-            letter-spacing: 2px
-            box-shadow: 0px 5px 3px #292929
-
         // to be added:
+
+        // .generatePDFBtn
+        //     border: none
+        //     background: none
+        //     padding: 10px
+        //     margin: 20px
+        //     border-radius: 25px
+        //     font-size: 18px
+        //     background: none
+        //     border: none
+        //     border: 1px solid #d4d664
+        //     color: #d4d664
+        //     font-weight: bolder
+        //     text-transform: uppercase
+        //     letter-spacing: 2px
+        //     box-shadow: 0px 5px 3px #292929
 
         // .generatePDFBtn:active
         //     box-shadow: 0px 2px 3px #292929
@@ -553,28 +548,34 @@ body
         text-align: left
         border-bottom-right-radius: 50px
         transition: left 1.2s
+
         ul
             padding: 0
             margin: 0
             list-style-type: none
             list-style-position: outside
+
         li
             padding: 15px 15px 15px 0
             letter-spacing: 2px
             text-transform: uppercase
+
             a
                 text-decoration: none
                 color: whitesmoke
                 text-align: center
+
             .menuIcon
                 width: 50px
                 padding: 0px 15px
                 font-size: 20px
                 color: grey
                 transition: color 0.5s
+
             .activeSection
                 color: #d5d838
                 font-weight: bolder
+
     .activateCollapse
         left: 0
 // hero-shadows for web
@@ -601,7 +602,7 @@ body
     background-repeat: no-repeat
     background-attachment: fixed
     transition: filter 1s
-    .scroll-fix::before // fajny sposob na scroll fix zeby nav nie zaslanial strony po przeniesieniu nizej
+    .scroll-fix::before // scroll-fix for nav
         content: ''
         display: block
         height: 100px
@@ -1061,44 +1062,10 @@ section
             top: 0
         .training:hover h3
             margin: 0
-            // padding: 35px 20px
-            // font-size: 22px
+
             letter-spacing: 4px
             text-shadow: 2px 2px 5px black
-        // .training:hover #headerTrainingFunc
-        //     padding: 35px 0
-        //     margin: 0
-// .dietSection
-//     display: flex
-//     flex-direction: column
-//     justify-content: center
-//     align-items: center
-//     .dietContainer
-//         // width: 100vw
-//         margin: 0px 30px 20px 30px
-//         max-width: 500px
-//         // margin: 20px auto
-//         // .dietCardLink
-//         .modalOwn
-//             background: url(/imgs/dietCardModal.jpg)
-//         .redirect
-//             background: url(/imgs/dietCardRedirect.jpg)
-//         .dietCard
-//             display: flex
-//             justify-content: center
-//             align-items: center
-//                 // justify-self: center
-//             margin: 15px auto
-//             text-align: center
-//             height: 250px
-//             width: 100%
-//             z-index: 1
-//             // max-width: 500px
-//             background-size: cover
-//             background-position: center
-//             h3
-//                 width: 100%
-//                 padding: 20px
+
 .dietSection
     overflow: hidden
     .dietContainer
@@ -1110,8 +1077,6 @@ section
         width: 100vw
         max-width: 560px
         padding: 10px 30px
-        // margin: 20px 30px
-        // margin: 0 100px
         overflow: hidden
         a
             text-decoration: none
@@ -1134,7 +1099,6 @@ section
                 background-position: center
                 overflow: hidden
                 .textDietHeader
-                    // position: absolute
                     display: flex
                     flex-direction: column
                     justify-content: center
@@ -1147,12 +1111,10 @@ section
                     background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 90%)
                     .dietText
                         text-align: center
-                        // display: inline
                         text-shadow: 2px 2px 5px black
                         margin: 0 auto
                         padding: 20px
                         overflow: hidden
-                        // white-space: nowrap
 .calculatorSection
     .calculator
         display: flex
@@ -1349,7 +1311,6 @@ section
                                         outline: none !important
                                         border: none !important
                                         box-shadow: none !important
-                                        // font-family: 'Montserrat', sans-serif
                                         text-transform: uppercase
                                         letter-spacing: 2px
                                         text-decoration: none
@@ -1435,7 +1396,6 @@ section
                         z-index: -10
                         overflow: hidden
                         max-height: 0%
-                        // background-color: #fff
                         transition: max-height 0.5s, opacity 0.5s
                         color: whitesmoke
 
@@ -1616,6 +1576,7 @@ section
     100%
         transform: rotateZ(180deg)
         color: #d5d838
+
 @keyframes reverseRotateBars
     0%
         transform: rotateZ(0)
@@ -1629,6 +1590,7 @@ section
         transform: rotateZ(0)
     100%
         transform: rotateZ(360deg)
+        
 @keyframes nextTransformIcon
     0%
         transform: rotateZ(0)
@@ -1720,10 +1682,6 @@ section
 
     .smallShortcuts
         display: none
-
-    // .mediumShortcuts
-    //     text-align: center
-    //     display: block
 
 @media ( max-width: 500px )
     .mediumShortcuts

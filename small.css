@@ -390,7 +390,7 @@ body .showDisplayModal .tableContainer table tbody .addProduct td {
   background-color: #4d4c2c;
 }
 
-body .showDisplayModal .tableContainer #dietTable .weightValue {
+body .showDisplayModal .tableContainer table #dietTable .weightValue {
   display: none;
 }
 
@@ -402,15 +402,8 @@ body .showDisplayModal .tableContainer .ownTable {
           box-shadow: 0px 0px 10px #202020;
 }
 
-body .showDisplayModal .tableContainer .ownTable td {
-  -webkit-transition: width 1s;
-  transition: width 1s;
-}
-
-body .showDisplayModal .tableContainer .ownTable .originalTableTheadContainer {
-  text-align: left;
-  overflow: hidden;
-  padding: 10px 0;
+body .showDisplayModal .tableContainer .ownTable th {
+  background-color: #d5d838;
 }
 
 body .showDisplayModal .tableContainer .ownTable .ownTableProductNameHead {
@@ -423,10 +416,6 @@ body .showDisplayModal .tableContainer .ownTable .ownTableProductNameHead {
 body .showDisplayModal .tableContainer .ownTable .productNameHide {
   width: 10%;
   border-right: 2px solid #ffee530a;
-}
-
-body .showDisplayModal .tableContainer .ownTable th {
-  background-color: #d5d838;
 }
 
 body .showDisplayModal .tableContainer .ownTable .ownTableWeight {
@@ -448,6 +437,8 @@ body .showDisplayModal .tableContainer .ownTable .sum th {
 
 body .showDisplayModal .tableContainer .ownTable #ownDietTable .addProduct td {
   background: none;
+  -webkit-transition: width 1s;
+  transition: width 1s;
 }
 
 body .showDisplayModal .tableContainer .ownTable #ownDietTable .addProduct td span {
@@ -511,6 +502,12 @@ body .showDisplayModal .ownTableHeader {
   color: grey;
   -webkit-box-shadow: 0px 0px 10px #202020;
           box-shadow: 0px 0px 10px #202020;
+  -webkit-transition: left 1s;
+  transition: left 1s;
+}
+
+body .showDisplayModal .hideOwnTableHeader {
+  display: none;
 }
 
 body .showDisplayModal .form-switch {
@@ -525,28 +522,6 @@ body .showDisplayModal .form-switch.form-switch-lg .form-check-input {
   height: 2rem;
   width: calc(3rem + 0.75rem);
   border-radius: 4rem;
-}
-
-body .showDisplayModal .hideOwnTableHeader {
-  display: none;
-}
-
-body .showDisplayModal .generatePDFBtn {
-  border: none;
-  background: none;
-  padding: 10px;
-  margin: 20px;
-  border-radius: 25px;
-  font-size: 18px;
-  background: none;
-  border: none;
-  border: 1px solid #d4d664;
-  color: #d4d664;
-  font-weight: bolder;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  -webkit-box-shadow: 0px 5px 3px #292929;
-          box-shadow: 0px 5px 3px #292929;
 }
 
 body .errorShadow {
