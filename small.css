@@ -1199,23 +1199,27 @@ section .highlighted {
   border-bottom-right-radius: 5px;
 }
 
+.articlesListSection .paginationArticles .pagination .page-item .pageNext .paginationLeft {
+  -webkit-animation: paginationLeft 0.5s;
+          animation: paginationLeft 0.5s;
+}
+
+.articlesListSection .paginationArticles .pagination .page-item .pageNext .repeatPaginationLeft {
+  -webkit-animation: repeatPaginationLeft 0.5s;
+          animation: repeatPaginationLeft 0.5s;
+}
+
+.articlesListSection .paginationArticles .pagination .page-item .pageNext .nextArrow {
+  position: relative;
+}
+
 .articlesListSection .paginationArticles .pagination .page-item .pagePrevious {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
-.articlesListSection .paginationArticles .pagination .page-item .pagePrevious .nextArrow, .articlesListSection .paginationArticles .pagination .page-item .pagePrevious .previousArrow {
+.articlesListSection .paginationArticles .pagination .page-item .pagePrevious .previousArrow {
   position: relative;
-}
-
-.articlesListSection .paginationArticles .pagination .page-item .pagePrevious .paginationLeft {
-  -webkit-animation: paginationLeft 0.5s;
-          animation: paginationLeft 0.5s;
-}
-
-.articlesListSection .paginationArticles .pagination .page-item .pagePrevious .repeatPaginationLeft {
-  -webkit-animation: repeatPaginationLeft 0.5s;
-          animation: repeatPaginationLeft 0.5s;
 }
 
 .articlesListSection .paginationArticles .pagination .page-item .pagePrevious .paginationRight {

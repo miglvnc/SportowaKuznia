@@ -827,22 +827,33 @@ section
                     color: $main-font-color
                     border: none
                     transition: background-color 0.3s, padding 0.3s
+
                 .pageNext
                     border-top-right-radius: 5px
                     border-bottom-right-radius: 5px
+
+                    .paginationLeft
+                        animation: paginationLeft 0.5s
+
+                    .repeatPaginationLeft
+                        animation: repeatPaginationLeft 0.5s
+
+                    .nextArrow
+                        position: relative
+
                 .pagePrevious
                     border-top-left-radius: 5px
                     border-bottom-left-radius: 5px
-                    .nextArrow, .previousArrow
+
+                    .previousArrow
                         position: relative
-                    .paginationLeft
-                        animation: paginationLeft 0.5s
-                    .repeatPaginationLeft
-                        animation: repeatPaginationLeft 0.5s
+
                     .paginationRight
                         animation: paginationRight 0.5s
+
                     .repeatPaginationRight
                         animation: repeatPaginationRight 0.5s
+
                 .active
                     background-color: #1a1a1a
                     padding: 14px 20px
@@ -1640,6 +1651,7 @@ section
         left: -6px
     100%
         left: 0
+
 @keyframes repeatPaginationLeft
     0%
         left: 0

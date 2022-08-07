@@ -1,4 +1,118 @@
-const wrapperContainer = document.querySelector('.wrapper')
+//global functions
+
+const wrapperContainer = document.querySelector('.wrapper');
+
+function addBlurBody() {
+    wrapperContainer.classList.remove('errorBlurClose')
+    wrapperContainer.classList.add('errorBlurShow')
+};
+function removeBlurBody() {
+    wrapperContainer.classList.remove('errorBlurShow')
+    wrapperContainer.classList.add('errorBlurClose')
+};
+
+// calc error
+
+let errorPopUp = document.querySelector('.errorPopUp')
+let errorShadow = document.querySelector('.errorShadow')
+let errorConfirm = document.querySelector('.errorConfirm')
+
+function addShadowBody () {
+    errorShadow.classList.add('errorShadowShow')
+    errorShadow.classList.remove('errorShadowClose')
+}
+
+function removeShadowBody () {
+    errorShadow.classList.remove('errorShadowShow')
+    errorShadow.classList.add('errorShadowClose')
+    
+}
+
+function errorClose() {
+    errorPopUp.classList.remove('errorPopUpShow')
+    errorPopUp.classList.add('errorPopUpClose')
+    removeBlurBody()
+    removeShadowBody()
+}
+
+function errorPopUpShow() {
+    errorPopUp.classList.remove('errorPopUpCLose')
+    errorPopUp.classList.add('errorPopUpShow')
+    addBlurBody()
+    addShadowBody()
+}
+
+errorConfirm.addEventListener('click', errorClose)
+
+
+// navigation marks
+
+const allFas = document.querySelectorAll('.menuIcon')
+
+function getOffset(el) {
+    const rect = el.getBoundingClientRect();
+    return {
+        top: rect.top + window.scrollY - 100
+    };
+};
+
+function allNodeRemove(nodeList){
+    nodeList.forEach(el => {
+        el.classList.remove('activeSection')
+        el.classList.remove('menuLinkActive')
+    });
+};
+
+function addActiveSection() {
+
+    if(window.scrollY >= -100 && window.scrollY < getOffset(motivationSection).top){
+
+            allNodeRemove(menuLink);
+            allNodeRemove(allFas);
+
+    } else if (window.scrollY > getOffset(motivationSection).top && window.scrollY < getOffset(articlesListSection).top) {
+
+            allNodeRemove(menuLink);
+            allNodeRemove(allFas);
+            menuLink[0].classList.add('menuLinkActive');
+            allFas[0].classList.add('activeSection');
+
+    } else if (window.scrollY >= getOffset(articlesListSection).top && window.scrollY < getOffset(trainingsSection).top) {
+
+            allNodeRemove(menuLink);
+            allNodeRemove(allFas);
+            menuLink[1].classList.add('menuLinkActive');
+            allFas[1].classList.add('activeSection');
+
+    } else if (window.scrollY >= getOffset(trainingsSection).top && window.scrollY < getOffset(dietSection).top) {
+
+            allNodeRemove(menuLink);
+            allNodeRemove(allFas);
+            menuLink[2].classList.add('menuLinkActive');
+            allFas[2].classList.add('activeSection');
+
+    } else if(window.scrollY >= getOffset(dietSection).top && window.scrollY < getOffset(calculatorSection).top) {
+
+            allNodeRemove(menuLink);
+            allNodeRemove(allFas);
+            menuLink[3].classList.add('menuLinkActive');
+            allFas[3].classList.add('activeSection');
+
+    } else if (window.scrollY >= getOffset(calculatorSection).top) {
+
+            allNodeRemove(menuLink);
+            allNodeRemove(allFas);
+            menuLink[4].classList.add('menuLinkActive');
+            allFas[4].classList.add('activeSection');
+            
+        }
+
+        console.log(menuLink);
+};
+
+document.addEventListener('DOMContentLoaded', function () { 
+    window.addEventListener('scroll', addActiveSection) 
+});
 
 //nav functions
 
@@ -8,19 +122,19 @@ const collapseMenu = document.querySelector('.collapseMenu');
 const nav = document.querySelector('.nav');
 
 function menuBarsAnimation() {
-    menuIconBars.classList.toggle('animationBars')
+    menuIconBars.classList.toggle('animationBars');
 }
 
 function collapse() {
     if (collapseMenu.className.includes('activateCollapse')) {
         collapseMenu.classList.remove('activateCollapse')
     } else {
-        collapseMenu.classList.add('activateCollapse')
+        collapseMenu.classList.add('activateCollapse');
     }
     menuBarsAnimation();
 }
 
-menuBars.addEventListener('click', collapse)
+menuBars.addEventListener('click', collapse);
 
 window.addEventListener('click', function (e) {
     if (!document.querySelector('.collapseMenu').contains(e.target) && (!document.querySelector('.menuBars').contains(e.target))) {
@@ -36,18 +150,17 @@ const activeQuote = wrapperContainer.querySelector('.activeQuote');
 const quotation = wrapperContainer.querySelector('.quoteContainer');
 const quoteChangeBtn = wrapperContainer.querySelector('.quoteChangeBtn');
 const quotesAll = wrapperContainer.querySelectorAll('.quoteContainer');
-const iconRefresh = wrapperContainer.querySelector('.iconRefresh')
+const iconRefresh = wrapperContainer.querySelector('.iconRefresh');
 
+let randomQuotationNumber = randomNumber(0, (quotesAll.length - 1));
 
 function randomNumber(min, max) {
     return (Math.random() * (max - min) + min).toFixed(0)
 };
 
-let randomQuotationNumber = randomNumber(0, (quotesAll.length - 1));
-
 function randomQuoteWebLoad() {
     activeQuote.appendChild(quotesAll[randomQuotationNumber])
-}
+};
 
 function quoteIconRefresh() {
     if (iconRefresh.className.includes('transformIcons')) {
@@ -57,16 +170,17 @@ function quoteIconRefresh() {
         iconRefresh.classList.remove('nextTransformIcons')
         iconRefresh.classList.add('transformIcons')
     }
-}
+};
+
 function removeAllChilds(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
-}
+};
+
 //removing all childs
 
 function newQuotationAdd() {
-    
     
     let currentQuotationNumber = randomQuotationNumber;
     let newRandomQuotationNumber;
@@ -97,167 +211,283 @@ function drawNewQuotation () {
 randomQuoteWebLoad();
 quoteChangeBtn.addEventListener('click', drawNewQuotation);
 
+//diet section
 
-
-
-
-
-
-let dropdownArticles = document.querySelector('.dropdownArticles');
-
-
-let spanExtend = document.querySelector('.clickToExtend');
-let spanRollUp = document.querySelector('.clickToRoll');
-let aRollUp = document.querySelector('.aRollUp');
-
-let artCards = document.querySelectorAll('.artCard')
-
-let activeArticle = document.querySelector('.activeArticle');
-let allArticles = document.querySelector('.allArticles');
-
-let cwiczeniaArticle = document.querySelector('.cwiczeniaArticle');
-let zmeczenieArticle = document.querySelector('.zmeczenieArticle');
-let saunaArticle = document.querySelector('.saunaArticle');
-let podstawyArticle = document.querySelector('.podstawyArticle');
-let bledyArticle = document.querySelector('.bledyArticle');
-let postanowieniaArticle = document.querySelector('.postanowieniaArticle');
-
-let pageOne = document.querySelector('.pageOne');
-let pageTwo = document.querySelector('.pageTwo');
-let pageNext = document.querySelector('.pageNext');
-let pagePrevious = document.querySelector('.pagePrevious');
-let pageNumber = document.querySelectorAll('.pageNumber');
-let articlesFirstPage = document.querySelector('.articlesFirstPage');
-let articlesSecondPage = document.querySelector('.articlesSecondPage');
-
-let pageArticle = document.querySelectorAll('.pageArticle');
-
-let activeCalc = document.querySelector('.activeCalc')
-let kcalCalcContainer = document.querySelector('.kcalCalc');
-let bmiCalcContainer = document.querySelector('.bmi');
-let ymcaCalcContainer = document.querySelector('.ymca');
-let calcInputs = document.querySelectorAll('.calcInput');
-let highlightedResult = document.querySelectorAll('.highlightedResult');
-let kcalResultBtn = document.querySelector('.kcalResultBtn');
-let kcalGenderSelect = document.querySelector('.kcalGenderSelect');
-let activitySelect = document.querySelector('.activitySelect');
-let targetSelect = document.querySelector('.targetSelect');
-
-let selectContainer = document.querySelectorAll('.selectContainer');
-
-let result = document.querySelectorAll('.result');
-
-let numbers = /^[0-9]+$/;
-
-let bmiResultBtn = document.querySelector('.bmiResultBtn');
-let bmiInputs = document.querySelectorAll('.bmiInput');
-let bmiGenderSelect = document.querySelector('.bmiGenderSelect');
-
-let kcalCalcWrapper = document.querySelectorAll('.calcInputs');
-
-let resultFullText = document.querySelectorAll('.resultFullText');
-
-let resultWeightTarget = document.querySelector('.resultWeightTarget');
-let resultWeightTargetBmi = document.querySelector('.resultWeightTargetBmi');
-
-let dropdownLink = document.querySelectorAll('.dropdownLink');
-
-let dropdownCalc = document.querySelector('.dropdownCalculator');
-let dropdownArrow = document.querySelector('.fa-chevron-down');
-let dropdownHeader = document.querySelector('.dropdownHeader');
-
-let underlineCalc = document.querySelectorAll('.underlineCalc')
-
-let ymcaInputs = document.querySelectorAll('.ymcaInput')
-let ymcaGenderSelect = document.querySelector('.ymcaGenderSelect');
-let ymcaResultBtn = document.querySelector('.ymcaResultBtn');
-
-let resultWeightTargetYmca = document.querySelector('.resultWeightTargetYmca')
-
-let calcs = document.querySelectorAll('.calc');
-
-let faqquestion = document.querySelectorAll('.FAQQuestion');
-let expand = document.querySelectorAll('.fa-plus');
-let rollUp = document.querySelectorAll('.fa-minus');
-
-let genderIconLink = document.querySelectorAll('.genderIconLink')
-
-let kcalCalcListElementActivity = document.querySelectorAll('.kcalCalcListElementActivity');
-let kcalCalcListElementTarget = document.querySelectorAll('.kcalCalcListElementTarget');
-let activityDropdown = document.querySelector('.activityDropdown');
-let targetDropdown = document.querySelector('.targetDropdown');
-let arrowKcalDetailsList = document.querySelectorAll('.arrowKcalDetailsList')
-
-let detailsListElement = document.querySelector('.detailsListElement')
-
-let choosenActivity = kcalCalcListElementActivity[0].querySelector('.choosenActivity');
-let choosenTarget = kcalCalcListElementTarget[0].querySelector('.choosenTarget');
-
-let choosenActivityElement = document.querySelector('.choosenActivityElement');
-
-activityPlaceholder = document.querySelector('.activityPlaceholder');
-targetPlaceholder = document.querySelector('.targetPlaceholder');
-
-let menuLink = document.querySelectorAll('.menuLink')
-
-let nextArrow = document.querySelector('.nextArrow')
-let previousArrow = document.querySelector('.previousArrow')
-
-
-
-// let dietCardLink = document.querySelectorAll('.dietCardLink');
-let redirectText = document.querySelector('.redirectText');
-let modalOwnText = document.querySelector('.modalOwnText');
-let modalOwnLink = document.querySelector('.modalOwnLink');
-let redirectLink = document.querySelector('.redirectLink');
+const redirectText = wrapperContainer.querySelector('.redirectText');
+const modalOwnText = wrapperContainer.querySelector('.modalOwnText');
+const modalOwnLink = wrapperContainer.querySelector('.modalOwnLink');
+const redirectLink = wrapperContainer.querySelector('.redirectLink');
 
 function modalTextTransform() {
         modalOwnText.classList.add('dietTextHide')
-}
+};
+
 function modalTextTransformLeave() {
         modalOwnText.classList.remove('dietTextHide')
-}
+};
+
 function redirectTextTransform() {
         redirectText.classList.add('dietTextHide')
-}
+};
+
 function redirectTextTransformLeave() {
         redirectText.classList.remove('dietTextHide')
-}
+};
 
 redirectLink.addEventListener('mouseover', modalTextTransform)
 modalOwnLink.addEventListener('mouseover', redirectTextTransform)
 redirectLink.addEventListener('mouseleave', modalTextTransformLeave)
 modalOwnLink.addEventListener('mouseleave', redirectTextTransformLeave)
 
+// articles section
 
-// function
+const artCards = wrapperContainer.querySelectorAll('.artCard')
+
+const activeArticle = wrapperContainer.querySelector('.activeArticle');
+const allArticles = wrapperContainer.querySelector('.allArticles');
+
+const dropdownArticles = wrapperContainer.querySelector('.dropdownArticles');
+const spanExtend = dropdownArticles.querySelector('.clickToExtend');
+const spanRollUp = dropdownArticles.querySelector('.clickToRoll');
+const aRollUp = dropdownArticles.querySelector('.aRollUp');
+
+const cwiczeniaArticle = document.querySelector('.cwiczeniaArticle');
+const zmeczenieArticle = document.querySelector('.zmeczenieArticle');
+const saunaArticle = document.querySelector('.saunaArticle');
+const podstawyArticle = document.querySelector('.podstawyArticle');
+const bledyArticle = document.querySelector('.bledyArticle');
+const postanowieniaArticle = document.querySelector('.postanowieniaArticle');
+
+const pageOne = document.querySelector('.pageOne');
+const pageTwo = document.querySelector('.pageTwo');
+const pageNext = document.querySelector('.pageNext');
+const pagePrevious = document.querySelector('.pagePrevious');
+const pageNumber = document.querySelectorAll('.pageNumber');
+const articlesFirstPage = document.querySelector('.articlesFirstPage');
+const articlesSecondPage = document.querySelector('.articlesSecondPage');
+
+const pageArticle = document.querySelectorAll('.pageArticle');
+const pageItem = document.querySelectorAll('.page-item')
+
+// page switch
+
+function articlesPageTwoActive () {
+    pageArticle[1].classList.add('activePage')
+    pageArticle[0].classList.remove('activePage')
+    pageTwo.classList.add('active')
+    pageOne.classList.remove('active')
+};
+
+function articlesPageOneActive () {
+    pageArticle[0].classList.add('activePage')
+    pageArticle[1].classList.remove('activePage')
+    pageOne.classList.add('active')
+    pageTwo.classList.remove('active')
+};
+
+function arrowAnimationNextPage () {
+        if(nextArrow.className.includes('paginationLeft')){
+        nextArrow.classList.remove('paginationLeft')
+        nextArrow.classList.add('repeatPaginationLeft')
+    } else  {
+        nextArrow.classList.remove('repeatPaginationLeft')
+        nextArrow.classList.add('paginationLeft')
+    }
+};
+
+function arrowAnimationPreviousPage () {
+    if(previousArrow.className.includes('paginationRight')){
+        previousArrow.classList.remove('paginationRight')
+        previousArrow.classList.add('repeatPaginationRight')
+    } else  {
+        previousArrow.classList.remove('repeatPaginationRight')
+        previousArrow.classList.add('paginationRight')
+    }
+};
+
+function switchNextPage () {
+        for (i = 0; i < (pageArticle.length - 1); i++){
+            if(pageArticle[i].className.includes('activePage') && i < (pageArticle.length - 1)){
+                pageArticle[i+1].classList.add('activePage');
+                pageArticle[i].classList.remove('activePage');
+                pageNumber[i+1].classList.add('active');
+                pageNumber[i].classList.remove('active');
+                break;
+            }
+        }
+};
+
+function switchPreviousPage () {
+    for (i = (pageArticle.length-1); i > 0; i--){
+        if(pageArticle[i].className.includes('activePage') && i > 0){
+            pageArticle[i-1].classList.add('activePage');
+            pageArticle[i].classList.remove('activePage');
+            pageNumber[i-1].classList.add('active');
+            pageNumber[i].classList.remove('active');
+            break;
+        }
+    }
+};
+
+function articlesPagesNext () {
+    arrowAnimationNextPage();
+    switchNextPage();
+};
+
+function articlesPagesPrevious () {
+    arrowAnimationPreviousPage();
+    switchPreviousPage();
+};
+
+pageNext.addEventListener('click', articlesPagesNext)
+pagePrevious.addEventListener('click', articlesPagesPrevious)
+
+pageTwo.addEventListener('click', articlesPageTwoActive)
+pageOne.addEventListener('click', articlesPageOneActive)
+
+// articles activate
+
+function removeAllChildsArticles () {
+    let removeAllChilds = activeArticle.querySelector("div");
+    activeArticle.removeChild(removeAllChilds);
+};
+
+function firstArticle(){
+    removeAllChildsArticles();
+    activeArticle.appendChild(podstawyArticle);
+    opacityAnimate(podstawyArticle);
+};
+
+function secondArticle(){
+    removeAllChildsArticles();
+    activeArticle.appendChild(cwiczeniaArticle);
+    opacityAnimate(cwiczeniaArticle);
+};
+
+function thirdArticle(){
+    removeAllChildsArticles();
+    activeArticle.appendChild(zmeczenieArticle);
+    opacityAnimate(zmeczenieArticle);
+};
+
+function fourthArticle(){
+    removeAllChildsArticles();
+    activeArticle.appendChild(saunaArticle);
+    opacityAnimate(saunaArticle);
+};
+
+function fifthArticle(){
+    removeAllChildsArticles();
+    activeArticle.appendChild(bledyArticle);
+    opacityAnimate(bledyArticle);
+};
+
+function sixthArticle(){
+    removeAllChildsArticles();
+    activeArticle.appendChild(postanowieniaArticle);
+    opacityAnimate(postanowieniaArticle);
+};
+
+artCards[0].addEventListener('click', sixthArticle);
+artCards[1].addEventListener('click', fifthArticle);
+artCards[2].addEventListener('click', fourthArticle);
+artCards[3].addEventListener('click', thirdArticle);
+artCards[4].addEventListener('click', secondArticle);
+artCards[5].addEventListener('click', firstArticle);
+
+//extend article
+
+function rollUpArticles() {
+    activeArticle.classList.remove('heightReset');
+    dropdownArticles.classList.remove('dropdownHeight');
+    spanExtend.classList.remove('dropdownSpanChange');
+    spanRollUp.classList.remove('clickToRollShow');
+    aRollUp.classList.remove('zIndex');
+};
+
+function extendArticles() {
+    activeArticle.classList.add('heightReset');
+    dropdownArticles.classList.add('dropdownHeight');
+    spanExtend.classList.add('dropdownSpanChange');
+    spanRollUp.classList.add('clickToRollShow');
+    aRollUp.classList.add('zIndex');
+};
+
+spanExtend.addEventListener('click', extendArticles);
+aRollUp.addEventListener('click', rollUpArticles);
+
+
+// function whatScrollY() {
+//     console.log(window.scrollY);
+// }
+
+// window.addEventListener('click', whatScrollY)
 
 // modal own diet
 
 
+//////////////////////// OWN DIET MODAL
 
-let table = document.querySelector('#dietTable')
-let products = table.querySelectorAll('tr')
+const modalDietContainer = document.querySelector('.modalDietContainer');
+const dietCardLink = document.querySelector('.dietCardLink');
+const btnModalExit = modalDietContainer.querySelector('.btnModalExit');
 
+function showModalDiet (){
+    modalDietContainer.classList.add('showDisplayModal');
+    modalDietContainer.classList.remove('hideDisplayModal');
+    addBlurBody();
+    addShadowBody();
+}
+
+function hideModalDiet () {
+    modalDietContainer.classList.add('hideDisplayModal');
+    modalDietContainer.classList.remove('showDisplayModal');
+    removeBlurBody();
+    removeShadowBody();
+}
+
+btnModalExit.addEventListener('click', hideModalDiet);
+dietCardLink.addEventListener('click', showModalDiet);
+
+
+const table = document.querySelector('#dietTable');
 let ownTable = document.querySelector('#ownDietTable')
 
-products.forEach(element => {
-    element.addEventListener('click', function(){ // każdy kliknięty element tabeli A wywoluje funkcje
-                    let ownProducts = ownTable.querySelectorAll('tr')
-                    if(!element.classList.contains('addProduct')){
-                        element.classList.add('addProduct') 
-                        let importElement = element.cloneNode(true);
-                        ownTable.appendChild(importElement) // w przypadku pustej tabeli tworzy element w tabeli B jw.
-                    }
-                    for(i=0; i < ownProducts.length; i++){
-                    if(element.className == ownProducts[i].className && element.classList.contains('addProduct')){
-                        element.classList.remove('addProduct')
-                        ownTable.removeChild(ownProducts[i])
-            }
-        } 
+let products = table.querySelectorAll('tr');
+
+function addProductToOwnTable(tableProduct){
+    if(!tableProduct.classList.contains('addProduct')){
+        tableProduct.classList.add('addProduct') 
+        let importElement = tableProduct.cloneNode(true);
+        ownTable.appendChild(importElement) // w przypadku pustej tabeli tworzy element w tabeli B jw.
+    }
+};
+
+function removeProductFromOwnTable(tableProduct, ownProducts){
+    for(i=0; i < ownProducts.length; i++){
+        if(tableProduct.className == ownProducts[i].className && tableProduct.classList.contains('addProduct')){
+            tableProduct.classList.remove('addProduct')
+            ownTable.removeChild(ownProducts[i])
+        }
+    } 
+};
+
+products.forEach(tableProduct => {
+    tableProduct.addEventListener('click', function(){ // each product from table activate function
+
+        let addedProducts = ownTable.querySelectorAll('tr');
+        
+        addProductToOwnTable(tableProduct);
+
+        console.log(tableProduct);
+
+        removeProductFromOwnTable(tableProduct, addedProducts);
+
         emptyOwnDietTable() // empty ownTable header add/remove depends if product is selected          
     })      
 });
+
+/////////////////
 
 let ownTableHeader = document.querySelector('.ownTableHeader')
 
@@ -274,7 +504,6 @@ function emptyOwnDietTable () {
 
 
 function inputValueChange(){
-    // console.log('hello');
     let ownTableProducts = ownTable.querySelectorAll('tr')
     ownTableProducts.forEach(element => {
         let dietTableInputs = element.querySelector('.productValueInput')
@@ -549,7 +778,6 @@ function sortOwnTableNumber(n){
     let y;
     switching = true;
     dir = 'asc';
-    // let spanValue = document.querySelectorAll('.productValueChange')
 
     while(switching){
         switching = false;
@@ -574,7 +802,6 @@ function sortOwnTableNumber(n){
                 }
             }
         }
-        // console.log(shouldSwitch);
         if (shouldSwitch) {
             rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
             switching = true;
@@ -701,39 +928,83 @@ ownTableHead.forEach(element => {
     })
 });
 
+///////////////////////
 
 
-let modalDietContainer = document.querySelector('.modalDietContainer')
 
-function showModalDiet (){
-    modalDietContainer.classList.add('showDisplayModal')
-    modalDietContainer.classList.remove('hideDisplayModal')
-    addBlurBody()
-    addShadowBody()
-}
+let activeCalc = document.querySelector('.activeCalc')
+let kcalCalcContainer = document.querySelector('.kcalCalc');
+let bmiCalcContainer = document.querySelector('.bmi');
+let ymcaCalcContainer = document.querySelector('.ymca');
+let calcInputs = document.querySelectorAll('.calcInput');
+let highlightedResult = document.querySelectorAll('.highlightedResult');
+let kcalResultBtn = document.querySelector('.kcalResultBtn');
+let kcalGenderSelect = document.querySelector('.kcalGenderSelect');
+let activitySelect = document.querySelector('.activitySelect');
+let targetSelect = document.querySelector('.targetSelect');
 
-let dietCardLink = document.querySelector('.dietCardLink')
+let selectContainer = document.querySelectorAll('.selectContainer');
 
-function hideModalDiet () {
-    modalDietContainer.classList.add('hideDisplayModal')
-    modalDietContainer.classList.remove('showDisplayModal')
-    removeBlurBody()
-    removeShadowBody()
-}
+let result = document.querySelectorAll('.result');
 
-let btnModalExit = modalDietContainer.querySelector('.btnModalExit')
+let numbers = /^[0-9]+$/;
 
-btnModalExit.addEventListener('click', hideModalDiet)
+let bmiResultBtn = document.querySelector('.bmiResultBtn');
+let bmiInputs = document.querySelectorAll('.bmiInput');
+let bmiGenderSelect = document.querySelector('.bmiGenderSelect');
+
+let kcalCalcWrapper = document.querySelectorAll('.calcInputs');
+
+let resultFullText = document.querySelectorAll('.resultFullText');
+
+let resultWeightTarget = document.querySelector('.resultWeightTarget');
+let resultWeightTargetBmi = document.querySelector('.resultWeightTargetBmi');
+
+let dropdownLink = document.querySelectorAll('.dropdownLink');
+
+let dropdownCalc = document.querySelector('.dropdownCalculator');
+let dropdownArrow = document.querySelector('.fa-chevron-down');
+let dropdownHeader = document.querySelector('.dropdownHeader');
+
+let underlineCalc = document.querySelectorAll('.underlineCalc')
+
+let ymcaInputs = document.querySelectorAll('.ymcaInput')
+let ymcaGenderSelect = document.querySelector('.ymcaGenderSelect');
+let ymcaResultBtn = document.querySelector('.ymcaResultBtn');
+
+let resultWeightTargetYmca = document.querySelector('.resultWeightTargetYmca')
+
+let calcs = document.querySelectorAll('.calc');
+
+let faqquestion = document.querySelectorAll('.FAQQuestion');
+let expand = document.querySelectorAll('.fa-plus');
+let rollUp = document.querySelectorAll('.fa-minus');
+
+let genderIconLink = document.querySelectorAll('.genderIconLink')
+
+let kcalCalcListElementActivity = document.querySelectorAll('.kcalCalcListElementActivity');
+let kcalCalcListElementTarget = document.querySelectorAll('.kcalCalcListElementTarget');
+let activityDropdown = document.querySelector('.activityDropdown');
+let targetDropdown = document.querySelector('.targetDropdown');
+let arrowKcalDetailsList = document.querySelectorAll('.arrowKcalDetailsList')
+
+let detailsListElement = document.querySelector('.detailsListElement')
+
+let choosenActivity = kcalCalcListElementActivity[0].querySelector('.choosenActivity');
+let choosenTarget = kcalCalcListElementTarget[0].querySelector('.choosenTarget');
+
+let choosenActivityElement = document.querySelector('.choosenActivityElement');
+
+activityPlaceholder = document.querySelector('.activityPlaceholder');
+targetPlaceholder = document.querySelector('.targetPlaceholder');
+
+let menuLink = document.querySelectorAll('.menuLink')
+
+let nextArrow = document.querySelector('.nextArrow')
+let previousArrow = document.querySelector('.previousArrow')
 
 
-// dietCardLink.addEventListener('click', showModalDiet)
-
-dietCardLink.addEventListener('click', showModalDiet)
-
-// tableHeads.forEach(n => {
-//     n.addEventListener('click', sortOriginalTable)
-    
-// });
+// function
 
 
 function webLoaded () {
@@ -838,18 +1109,12 @@ function animateOpacityPlusMinus () {
     opacityAnimate(rollUp);
 }
 
-// faqquestion.addEventListener('click', animateOpacityPlusMinus);
-
 function clearKcalDetailsInfo (el1, el2, el3, el4, el5, el6, el7) {
     el1.classList.remove('dropdownKcalCalcActive');  
     el1.classList.remove('borderActivity');  
     el2.classList.remove('arrowKcalDetailsListActive');
     el3.classList.remove('choosenOptionActive');
     el4.innerText = 'WYBIERZ';
-    // choosenActivity.innerText = 'WYBIERZ';
-    // choosenTarget.innerText = 'WYBIERZ';
-    // kcalCalcListElementActivity[0].classList.remove('choosenActivityElement')
-    // kcalCalcListElementTarget[0].classList.remove('choosenActivityElement')
 }
  
 function clearCalc () {
@@ -946,54 +1211,36 @@ function activeCalcHref() {
 }
 function activeCalcShow () {
     activeCalc.classList.add('activeCalcShow')
-    // kcalHeightChangeCalcInputs();
 }
 
 function displayKcalCalc () {
     bmiCalcContainer.classList.remove('calcDisplay');
     ymcaCalcContainer.classList.remove('calcDisplay');
     kcalCalcContainer.classList.add('calcDisplay');
-    // underlineCalc[0].classList.add('activeDropdownLink');
-    // underlineCalc[1].classList.remove('activeDropdownLink');
-    // underlineCalc[2].classList.remove('activeDropdownLink');
     dropdownLink[0].classList.add('activeDropdownLinkColor')
     dropdownLink[1].classList.remove('activeDropdownLinkColor')
     dropdownLink[2].classList.remove('activeDropdownLinkColor')
     activeCalcHref();
-    // kcalHeightChangeCalcInputs();
-    // activeCalcShow();
     clearCalc();
 }
 function displayBmiCalc () {
     kcalCalcContainer.classList.remove('calcDisplay')
     ymcaCalcContainer.classList.remove('calcDisplay')
     bmiCalcContainer.classList.add('calcDisplay')
-    // bmiHeightChangeCalcInputs();
-    // underlineCalc[0].classList.remove('activeDropdownLink');
-    // underlineCalc[1].classList.add('activeDropdownLink');
-    // underlineCalc[2].classList.remove('activeDropdownLink');
     dropdownLink[0].classList.remove('activeDropdownLinkColor')
     dropdownLink[1].classList.add('activeDropdownLinkColor')
     dropdownLink[2].classList.remove('activeDropdownLinkColor')
     clearCalc();
     activeCalcHref();
-    // bmiHeightChangeCalcInputs();
-    // activeCalcHref();
 }
 function displayYmcaCalc () {
     bmiCalcContainer.classList.remove('calcDisplay')
     kcalCalcContainer.classList.remove('calcDisplay')
     ymcaCalcContainer.classList.add('calcDisplay')
-    // ymcaHeightChangeCalcInputs();
-    // activeCalcShow();
-    // underlineCalc[0].classList.remove('activeDropdownLink');
-    // underlineCalc[1].classList.remove('activeDropdownLink');
-    // underlineCalc[2].classList.add('activeDropdownLink');
     dropdownLink[0].classList.remove('activeDropdownLinkColor')
     dropdownLink[1].classList.remove('activeDropdownLinkColor')
     dropdownLink[2].classList.add('activeDropdownLinkColor')
     clearCalc();
-    // ymcaHeightChangeCalcInputs();
     activeCalcHref();
 }
 
@@ -1001,7 +1248,6 @@ function displayYmcaCalc () {
 dropdownLink[0].addEventListener('click', displayKcalCalc)
 dropdownLink[1].addEventListener('click', displayBmiCalc)
 dropdownLink[2].addEventListener('click', displayYmcaCalc)
-// // dropdownLink[0].addEventListener('click', kcalHeightChangeCalcInputs)
 
 function bmiCalc () {
     let weight = bmiInputs[0].value;
@@ -1019,33 +1265,24 @@ function bmiCalc () {
                 resultWeightTargetBmi.textContent = "niedowagę"
             }else if(bmiResult > 25.9 && resultWeightTargetBmi.textContent != "nadwagę"){
                 resultWeightTargetBmi.textContent = "nadwagę"
-                // opacityAnimate(resultFullText[1])
             } else if (bmiResult >= 20.1 && bmiResult <= 25.9 && resultWeightTargetBmi.textContent != "wagę prawidłową") {
                 resultWeightTargetBmi.textContent = "wagę prawidłową"
-                // opacityAnimate(resultFullText[1])
             }
             
         } else if (genderIconLink[3].classList.contains('activeGender')) {
             if(bmiResult < 18.5 && resultWeightTargetBmi.textContent != "niedowagę"){
                 resultWeightTargetBmi.textContent = "niedowagę"
-                // opacityAnimate(resultFullText[1])
             }else if(bmiResult > 24.9 && resultWeightTargetBmi.textContent != "nadwagę"){
                 resultWeightTargetBmi.textContent = "nadwagę"
-                // opacityAnimate(resultFullText[1])
             } else if (bmiResult >= 18.5 && bmiResult <= 24.9 && resultWeightTargetBmi.textContent != "wagę prawidłową") {
                 resultWeightTargetBmi.textContent = "wagę prawidłową"
-                // opacityAnimate(resultFullText[1])
             }
         }
     } else {
         resultFullText[1].classList.remove('activeResult');
         errorPopUpShow();
     }
-
-
-    // resultWeightTarget.textContent = "nadwagę"
     console.log(bmiResult); 
-
 }
 
 bmiResultBtn.addEventListener('click', bmiCalc)
@@ -1071,52 +1308,6 @@ for (i = 0; i < selectContainer.length; i++){
     selectContainer[i].addEventListener('keyup', selectInputBorders)
 }
 
-let errorPopUp = document.querySelector('.errorPopUp')
-let errorShadow = document.querySelector('.errorShadow')
-
-let errorConfirm = document.querySelector('.errorConfirm')
-// let errorExit = document.querySelector('.errorExit')
-
-let wrapper = document.querySelector('.wrapper')
-
-function addBlurBody() {
-    wrapper.classList.remove('errorBlurClose')
-    wrapper.classList.add('errorBlurShow')
-}
-
-function removeBlurBody() {
-    wrapper.classList.remove('errorBlurShow')
-    wrapper.classList.add('errorBlurClose')
-}
-
-function addShadowBody () {
-    errorShadow.classList.add('errorShadowShow')
-    errorShadow.classList.remove('errorShadowClose')
-}
-
-function removeShadowBody () {
-    errorShadow.classList.remove('errorShadowShow')
-    errorShadow.classList.add('errorShadowClose')
-    
-}
-
-function errorClose() {
-    errorPopUp.classList.remove('errorPopUpShow')
-    errorPopUp.classList.add('errorPopUpClose')
-    removeBlurBody()
-    removeShadowBody()
-}
-
-function errorPopUpShow() {
-    errorPopUp.classList.remove('errorPopUpCLose')
-    errorPopUp.classList.add('errorPopUpShow')
-    addBlurBody()
-    addShadowBody()
-}
-errorConfirm.addEventListener('click', errorClose)
-// errorExit.addEventListener('click', errorClose)
-
-// kcalResultBtn.addEventListener('click', errorPopUpShow)
 
 
 function isNotANumber(){
@@ -1149,10 +1340,6 @@ for (let i = 0; i < calcInputs.length; i++){
     calcInputs[i].addEventListener('keyup', isNotANumber)
 }
 
-// calcInputs[0].addEventListener('keyup', ageInputsBorders)
-// calcInputs[1].addEventListener('keyup', weightInputsBorders)
-// calcInputs[2].addEventListener('keyup', heightInputsBorders)
-
 function opacityAnimate(el) {
     el.animate([
         {opacity: 0},
@@ -1162,43 +1349,6 @@ function opacityAnimate(el) {
         iterations: 1
     });
 }
-// function heightAnimate(el) {
-//     el.animate([
-//         {'max-height': '650px'},
-//         {'max-height': '1000px'}
-//     ], {
-//         duration: 1000,
-//         iterations: 1
-//     });
-// 
-
-// function kcalResultBtnHref (){
-    //     setTimeout(function(){location.href = "#kcalGender";}, 400)
-    // }
-    // function bmiResultBtnHref (){
-        //     setTimeout(function(){location.href = "#bmiResultBtn";}, 400)
-        // }
-        // function ymcaResultBtnHref (){
-            //     setTimeout(function(){location.href = "#ymcaResultBtn";}, 400)
-            // }
-
-// function kcalResultBtnHref () {
-//     const windowPos = window.scrollY
-//     const resultKcalScrollPosition = windowPos+result[0].getBoundingClientRect().top-(window.innerWidth/2)
-//     setTimeout(function(){window.scroll(0, resultKcalScrollPosition)}, 300)  
-// }
-// function bmiResultBtnHref () {
-//     const windowPos = window.scrollY
-//     const resultKcalScrollPosition = windowPos+result[1].getBoundingClientRect().top-(window.innerWidth/2)
-//     setTimeout(function(){window.scroll(0, resultKcalScrollPosition)}, 300)
-    
-// }
-// function ymcaResultBtnHref () {
-//     const windowPos = window.scrollY
-//     const resultKcalScrollPosition = windowPos+result[2].getBoundingClientRect().top-(window.innerWidth/2)
-//     setTimeout(function(){window.scroll(0, resultKcalScrollPosition)}, 300)
-  
-// }
 function resultBtnHref (el) {
     const windowPos = window.scrollY
     const resultKcalScrollPosition = windowPos+el.getBoundingClientRect().top-(window.innerHeight/2)
@@ -1206,26 +1356,10 @@ function resultBtnHref (el) {
   
 }
 
-// kcalResultBtn.onClick = function(){
-//     setTimeout(function(){location.href = "#kcalResultId";}, 1000)
-// }
-
-// result.forEach(element => {
-//     element.addEventListener('click', function(){
-//     const windowPos = window.scrollY
-//     const resultKcalScrollPosition = windowPos+result[2].getBoundingClientRect().top-(window.innerWidth/2)
-//     setTimeout(function(){window.scroll(0, resultKcalScrollPosition)}, 300)
-//     })
-    
-// });
-
-// kcalResultBtn.addEventListener('click', kcalResultBtnHref)
-// bmiResultBtn.addEventListener('click', bmiResultBtnHref)
-// ymcaResultBtn.addEventListener('click', ymcaResultBtnHref)
 
 let activityIndicator;
 let targetIndicator;
-// console.log(choosenActivityElement.value);
+
 
 function activityValue() {
     
@@ -1235,14 +1369,12 @@ function activityValue() {
     kcalCalcListElementActivity[3].value = 1.6;
     kcalCalcListElementActivity[4].value = 1.8;
     kcalCalcListElementActivity[5].value = 2.0;
-    // console.log(choosenActivityElement.value);
     console.log(kcalCalcListElementActivity[1].value);
 
     for(i=1; i < kcalCalcListElementActivity.length; i++) {
         if (kcalCalcListElementActivity[i].classList.contains('choosenActivityElement')){
             let activityIndicator = kcalCalcListElementActivity[i].value
             return activityIndicator;
-            // console.log(activityIndicator);
         }
     }
 }
@@ -1256,7 +1388,6 @@ function targetValue() {
         if (kcalCalcListElementTarget[i].classList.contains('choosenTargetElement')){
             let targetIndicator = kcalCalcListElementTarget[i].value
             return targetIndicator;
-            // console.log(activityIndicator);
         }
     }
 }
@@ -1380,328 +1511,3 @@ function kcalCalc () {
 };
 
 kcalResultBtn.addEventListener('click', kcalCalc);
-
-
-
-
-function articlesPageTwo () {
-    pageArticle[1].classList.add('activePage')
-    pageArticle[0].classList.remove('activePage')
-    pageTwo.classList.add('active')
-    pageOne.classList.remove('active')
-    // pageOne.classList.toggle('unactivePageOne')
-    // pageTwo.classList.toggle('activePageTwo')
-}
-function articlesPageOne () {
-    pageArticle[0].classList.add('activePage')
-    pageArticle[1].classList.remove('activePage')
-    pageOne.classList.add('active')
-    pageTwo.classList.remove('active')
-    // pageTwo.classList.toggle('activePageTwo')
-}
-
-// function articlesPagesNext () {
-//     for (i = 0; i < pageArticle.length; i++){
-//         if(pageArticle[i].className.includes('activePage')){
-//             pageArticle[i+1].classList.add('activePage');
-//             pageArticle[i].classList.remove('activePage');
-//         } 
-
-//     }
-// }
-
-// let i = 0;
-// let o = (pageArticle.length - 1)
-
-let pageItem = document.querySelectorAll('.page-item')
-
-function articlesPagesNext () {
-    if(nextArrow.className.includes('paginationLeft')){
-        nextArrow.classList.remove('paginationLeft')
-        nextArrow.classList.add('repeatPaginationLeft')
-    } else  {
-        nextArrow.classList.remove('repeatPaginationLeft')
-        nextArrow.classList.add('paginationLeft')
-    }
-    for (i = 0; i < (pageArticle.length - 1); i++){
-            if(pageArticle[i].className.includes('activePage') && i < (pageArticle.length - 1)){
-                pageArticle[i+1].classList.add('activePage');
-                pageArticle[i].classList.remove('activePage');
-                pageNumber[i+1].classList.add('active');
-                pageNumber[i].classList.remove('active');
-                break;
-            }
-
-        }
-    }
-function articlesPagesPrevious () {
-    if(previousArrow.className.includes('paginationRight')){
-        previousArrow.classList.remove('paginationRight')
-        previousArrow.classList.add('repeatPaginationRight')
-    } else  {
-        previousArrow.classList.remove('repeatPaginationRight')
-        previousArrow.classList.add('paginationRight')
-    }
-    for (i = (pageArticle.length-1); i > 0; i--){
-        if(pageArticle[i].className.includes('activePage') && i > 0){
-            pageArticle[i-1].classList.add('activePage');
-            pageArticle[i].classList.remove('activePage');
-            pageNumber[i-1].classList.add('active');
-            pageNumber[i].classList.remove('active');
-            break;
-        }
-    }
-}
-// function articlesPagesNext () {
-//         if(pageArticle.some(item => item.class === 'activePage')){
-//             pageArticle[i+1].classList.add('activePage');
-//             pageArticle[i].classList.remove('activePage');
-//             console.log(i);
-//             i++
-//         } else if (i < (pageArticle.length - 1)){
-//             i++;
-//         }
-// }
-// function articlesPagesPrevious () {
-//         if(pageArticle[o].className.includes('activePage') && o > 0){
-//             pageArticle[o-1].classList.add('activePage');
-//             pageArticle[o].classList.remove('activePage');
-//             console.log(o);
-//             o--;
-//         } else if (o > 0) {
-//             o--;
-//         }
-// }
-// console.log(o);
-
-
-// function articlesPagesNext() {
-//     let i = 0;
-//     do {
-//         pageArticle[i+1].classList.add('activePage');
-//         pageArticle[i].classList.remove('activePage');
-//         console.log(i);
-//         i++;
-//         if(pageArticle[i].className.includes('activePage')){
-//             break;
-//         }
-//     } while (i < (pageArticle.length - 1));
-// }
-
-pageNext.addEventListener('click', articlesPagesNext)
-pagePrevious.addEventListener('click', articlesPagesPrevious)
-
-pageTwo.addEventListener('click', articlesPageTwo)
-pageOne.addEventListener('click', articlesPageOne)
-
-// let x = 0;
-// ;
-// console.log(pageArticle[x].classList);
-// console.log(pageArticle[x].classList.remove('activePage'));
-// console.log(pageArticle[x].classList);
-// console.log(pageArticle[x+1].classList.add('activePage'));
-// console.log(pageArticle[x+1].classList);
-
-
-
-function removeAllChildsArticles () {
-    let removeAllChilds = activeArticle.querySelector("div");
-    activeArticle.removeChild(removeAllChilds);
-}
-
-function firstArticle(){
-    removeAllChildsArticles();
-    activeArticle.appendChild(podstawyArticle);
-    opacityAnimate(podstawyArticle);
-}
-function secondArticle(){
-    removeAllChildsArticles();
-    activeArticle.appendChild(cwiczeniaArticle);
-    opacityAnimate(cwiczeniaArticle);
-}
-function thirdArticle(){
-    removeAllChildsArticles();
-    activeArticle.appendChild(zmeczenieArticle);
-    opacityAnimate(zmeczenieArticle);
-}
-function fourthArticle(){
-    removeAllChildsArticles();
-    activeArticle.appendChild(saunaArticle);
-    opacityAnimate(saunaArticle);
-}
-function fifthArticle(){
-    removeAllChildsArticles();
-    activeArticle.appendChild(bledyArticle);
-    opacityAnimate(bledyArticle);
-}
-function sixthArticle(){
-    removeAllChildsArticles();
-    activeArticle.appendChild(postanowieniaArticle);
-    opacityAnimate(postanowieniaArticle);
-}
-
-
-
-artCards[0].addEventListener('click', sixthArticle);
-artCards[1].addEventListener('click', fifthArticle);
-artCards[2].addEventListener('click', fourthArticle);
-artCards[3].addEventListener('click', thirdArticle);
-artCards[4].addEventListener('click', secondArticle);
-artCards[5].addEventListener('click', firstArticle);
-
-
-
-
-
-// artCards.forEach(element => {
-//     element.addEventListener('click', function(element) {
-//         removeAllChildsArticles();
-//         activeArticle.appendChild(element);
-//         opacityAnimate(element)    
-//     })
-// });
-
-// artCards.forEach(element => {
-//     element.addEventListener('click', function() {
-//         console.log('cośtam coś tam' + element)
-//     }
-// )})
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    let allFas = document.querySelectorAll('.menuIcon')
-    
-    console.log(allFas[0]);
-    function getOffset(el) {
-        const rect = el.getBoundingClientRect();
-        return {
-            top: rect.top + window.scrollY - 100
-        };
-    }
-    // console.log(getOffset(about).top);
-    
-    function addActiveSection() {
-
-        if(window.scrollY >= -100 && window.scrollY < getOffset(motivationSection).top){
-            allFas[0].classList.remove('activeSection')
-            allFas[1].classList.remove('activeSection');
-            allFas[2].classList.remove('activeSection');
-            allFas[3].classList.remove('activeSection');
-            allFas[4].classList.remove('activeSection');
-        } else if (window.scrollY > getOffset(motivationSection).top && window.scrollY < getOffset(articlesListSection).top) {
-            allFas[0].classList.add('activeSection');
-            allFas[1].classList.remove('activeSection');
-            allFas[2].classList.remove('activeSection');
-            allFas[3].classList.remove('activeSection');
-        } else if (window.scrollY >= getOffset(articlesListSection).top && window.scrollY < getOffset(trainingsSection).top) {
-            allFas[1].classList.add('activeSection');
-            allFas[0].classList.remove('activeSection');
-            allFas[2].classList.remove('activeSection');
-            allFas[3].classList.remove('activeSection');
-            allFas[4].classList.remove('activeSection');
-        } else if (window.scrollY >= getOffset(trainingsSection).top && window.scrollY < getOffset(dietSection).top) {
-            allFas[2].classList.add('activeSection');
-            allFas[1].classList.remove('activeSection');
-            allFas[0].classList.remove('activeSection');
-            allFas[3].classList.remove('activeSection');
-            allFas[4].classList.remove('activeSection');
-        } else if (window.scrollY >= getOffset(dietSection).top && window.scrollY < getOffset(calculatorSection).top) {
-            allFas[3].classList.add('activeSection');
-            allFas[1].classList.remove('activeSection');
-            allFas[2].classList.remove('activeSection');
-            allFas[0].classList.remove('activeSection');
-            allFas[4].classList.remove('activeSection');
-        } else if (window.scrollY >= getOffset(calculatorSection).top) {
-            allFas[4].classList.add('activeSection');
-            allFas[3].classList.remove('activeSection');
-            allFas[1].classList.remove('activeSection');
-            allFas[2].classList.remove('activeSection');
-            allFas[0].classList.remove('activeSection');
-        }
-        if(window.scrollY >= -100 && window.scrollY < getOffset(motivationSection).top){
-            menuLink[0].classList.remove('menuLinkActive')
-            menuLink[1].classList.remove('menuLinkActive');
-            menuLink[2].classList.remove('menuLinkActive');
-            menuLink[3].classList.remove('menuLinkActive');
-            menuLink[4].classList.remove('menuLinkActive');
-        } else if (window.scrollY > getOffset(motivationSection).top && window.scrollY < getOffset(articlesListSection).top) {
-            menuLink[0].classList.add('menuLinkActive');
-            menuLink[1].classList.remove('menuLinkActive');
-            menuLink[2].classList.remove('menuLinkActive');
-            menuLink[3].classList.remove('menuLinkActive');
-            menuLink[4].classList.remove('menuLinkActive');
-        } else if (window.scrollY >= getOffset(articlesListSection).top && window.scrollY < getOffset(trainingsSection).top) {
-            menuLink[1].classList.add('menuLinkActive');
-            menuLink[0].classList.remove('menuLinkActive');
-            menuLink[2].classList.remove('menuLinkActive');
-            menuLink[3].classList.remove('menuLinkActive');
-            menuLink[4].classList.remove('menuLinkActive');
-        } else if (window.scrollY >= getOffset(trainingsSection).top && window.scrollY < getOffset(dietSection).top) {
-            menuLink[2].classList.add('menuLinkActive');
-            menuLink[1].classList.remove('menuLinkActive');
-            menuLink[0].classList.remove('menuLinkActive');
-            menuLink[3].classList.remove('menuLinkActive');
-            menuLink[4].classList.remove('menuLinkActive');
-        } else if(window.scrollY >= getOffset(dietSection).top && window.scrollY < getOffset(calculatorSection).top) {
-            menuLink[3].classList.add('menuLinkActive');
-            menuLink[2].classList.remove('menuLinkActive');
-            menuLink[1].classList.remove('menuLinkActive');
-            menuLink[0].classList.remove('menuLinkActive');
-            menuLink[4].classList.remove('menuLinkActive');
-        } else if (window.scrollY >= getOffset(calculatorSection).top) {
-            menuLink[4].classList.add('menuLinkActive');
-            menuLink[1].classList.remove('menuLinkActive');
-            menuLink[2].classList.remove('menuLinkActive');
-            menuLink[0].classList.remove('menuLinkActive');
-            menuLink[3].classList.remove('menuLinkActive');
-        }
-    }
-    window.addEventListener('scroll', addActiveSection)
-    
-});
-
-
-
-
-function whatScrollY() {
-    console.log(window.scrollY);
-}
-
-
-
-// whatScrollY();
-// addActiveSection();
-
-window.addEventListener('click', whatScrollY)
-
-function rollUpArticles() {
-    activeArticle.classList.remove('heightReset');
-    dropdownArticles.classList.remove('dropdownHeight');
-    spanExtend.classList.remove('dropdownSpanChange');
-    // spanExtend.classList.add('opacityChange');
-    spanRollUp.classList.remove('clickToRollShow');
-    aRollUp.classList.remove('zIndex');
-};
-
-function extendArticles() {
-    activeArticle.classList.add('heightReset');
-    dropdownArticles.classList.add('dropdownHeight');
-    spanExtend.classList.add('dropdownSpanChange');
-    spanRollUp.classList.add('clickToRollShow');
-    aRollUp.classList.add('zIndex');
-};
-
-
-
-spanExtend.addEventListener('click', extendArticles);
-aRollUp.addEventListener('click', rollUpArticles);
-
-
-
-
-
-
-
-
