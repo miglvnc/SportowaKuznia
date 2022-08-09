@@ -107,7 +107,6 @@ function addActiveSection() {
             
         }
 
-        console.log(menuLink);
 };
 
 document.addEventListener('DOMContentLoaded', function () { 
@@ -479,17 +478,15 @@ products.forEach(tableProduct => {
         
         addProductToOwnTable(tableProduct);
 
-        console.log(tableProduct);
-
         removeProductFromOwnTable(tableProduct, addedProducts);
 
         emptyOwnDietTable() // empty ownTable header add/remove depends if product is selected          
     })      
 });
 
-/////////////////
+///////////////// OWN Table actions
 
-let ownTableHeader = document.querySelector('.ownTableHeader')
+const ownTableHeader = document.querySelector('.ownTableHeader');
 
 function emptyOwnDietTable () {
     let ownTable = document.querySelector('.ownTable')
@@ -500,46 +497,11 @@ function emptyOwnDietTable () {
         ownTable.classList.remove('showOwnTable')
         ownTableHeader.classList.remove('hideOwnTableHeader')
     }
-}
+};
 
-
-function inputValueChange(){
-    let ownTableProducts = ownTable.querySelectorAll('tr')
-    ownTableProducts.forEach(element => {
-        let dietTableInputs = element.querySelector('.productValueInput')
-        let valueChange = element.querySelectorAll('span')
-        for(p=0; p < products.length; p++){
-            if(products[p].className == element.className)
-            {
-                element.classList.add('addProduct')
-                let productValues = products[p].querySelectorAll('span')
-                dietTableInputs.addEventListener('keyup', function(){
-                    for(i=0; i < valueChange.length; i++){
-                            dietTableInputs.addEventListener('keyup', sumAllValues)
-                            dietTableInputs.addEventListener('input', maxLengthInputs)
-                            dietTableInputs.addEventListener('input', ownTableError)
-                            let valueOfProduct = (productValues[i].innerText/100)*dietTableInputs.value;
-                            valueChange[i].innerText = Math.round((valueOfProduct + Number.EPSILON) * 10) / 10;
-                        }
-                    })
-            }
-        }
-        
-
-        });
-    }
-    
 let tableShadow = document.querySelector('.tableShadow')
 
-let switchOwnTableInput = document.querySelector('.form-check-input')
-    
-function toggleProductWeight () {
-    let ownTableWeight = document.querySelectorAll('.ownTableWeight')
-    let ownTableProductName = ownTable.querySelectorAll('.productName')
-    let ownTableProductNameHead = document.querySelectorAll('.ownTableProductNameHead')
-
-    // tableShadow.classList.toggle('tableShadowShow')
-
+function tableShadowToggle(){
     if(tableShadow.className.includes('tableShadowShow')){
         tableShadow.classList.remove('tableShadowShow')
         tableShadow.classList.add('tableShadowHide')
@@ -547,14 +509,12 @@ function toggleProductWeight () {
         tableShadow.classList.remove('tableShadowHide')
         tableShadow.classList.add('tableShadowShow')
     }
+};
 
-    ownTableWeight.forEach(element => {
-        if (element.className.includes('ownTableWeightShow')){
-            element.classList.remove('ownTableWeightShow')
-        } else {
-            element.classList.add('ownTableWeightShow')
-        }
-    });
+function hideColumnsOwnTable() {
+    let ownTableProductName = ownTable.querySelectorAll('.productName');
+    let ownTableProductNameHead = document.querySelectorAll('.ownTableProductNameHead');
+
     ownTableProductName.forEach(element => {
         if (element.className.includes('productNameHide')){
             element.classList.remove('productNameHide')
@@ -569,81 +529,119 @@ function toggleProductWeight () {
             element.classList.add('productNameHide')
         }
     });
-}
+};
+
+function showTableWeightColumn(ownTableWeight) {
+    ownTableWeight.forEach(element => {
+        if (element.className.includes('ownTableWeightShow')){
+            element.classList.remove('ownTableWeightShow')
+        } else {
+            element.classList.add('ownTableWeightShow')
+        }
+    });
+};
+    
+function toggleProductWeight () {
+    
+    let ownTableWeight = document.querySelectorAll('.ownTableWeight');
+    tableShadowToggle();
+    hideColumnsOwnTable();
+    showTableWeightColumn(ownTableWeight);
+
+};
+
+const switchBtnOwnTableInput = document.querySelector('.form-check-input');
+switchBtnOwnTableInput.addEventListener('click', toggleProductWeight);
+
+function inputValueChange(){
+    let ownTableProducts = ownTable.querySelectorAll('tr')
+    ownTableProducts.forEach(element => {
+        let dietTableInputs = element.querySelector('.productValueInput')
+        let valueChange = element.querySelectorAll('span')
+        for(p=0; p < products.length; p++){
+            if(products[p].className == element.className){
+                let productValues = products[p].querySelectorAll('span')
+
+                dietTableInputs.addEventListener('keyup', function(){
+                    for(i=0; i < valueChange.length; i++){
+
+                        dietTableInputs.addEventListener('keyup', sumAllValues)
+                        dietTableInputs.addEventListener('input', ownTableInputsProperties)
+
+                        valueChange[i].innerText = Math.round(((productValues[i].innerText/100)*dietTableInputs.value + Number.EPSILON) * 10) / 10;
+                    };
+                });
+            };
+        };
+    });
+};
+
+table.addEventListener('click', inputValueChange);
 
 
-switchOwnTableInput.addEventListener('click', toggleProductWeight)
-
-
-// podpięcie pod switcha, logika dzialania (nie dziala gdy powyzej 500px, nie mozna dodawac nowyc eelemetow gdy jest klikniety itd.)
-
-
-
-table.addEventListener('click', inputValueChange)
-// table.addEventListener('click', loopForTableSpan)
-
-let sumThead = document.querySelector('.sum')
+let sumThead = document.querySelector('.sum');
 
 function sumAllValues () {
-    let ownTable = document.querySelector('#ownDietTable')
-    let ownProducts = ownTable.querySelectorAll('tr')
-    let kcalValues = ownTable.querySelectorAll('.kcalValue')
-    let proteinValues = ownTable.querySelectorAll('.proteinValue')
-    let carbsValues = ownTable.querySelectorAll('.carbsValue')
-    let fatValues = ownTable.querySelectorAll('.fatValue')
-    let gramValues = ownTable.querySelectorAll('.productValueInput')
-    let sumsSpan = sumThead.querySelectorAll('span')
-    let totalKcal = 0; 
-    let totalProtein = 0; 
-    let totalCarbs = 0; 
-    let totalFat = 0; 
-    let totalGram = 0; 
-    console.log(kcalValues);
-    for(i=0; i < ownProducts.length; i++){
-        totalKcal += Number(kcalValues[i].innerText);
-        totalProtein += Number(proteinValues[i].innerText);
-        totalCarbs += Number(carbsValues[i].innerText);
-        totalFat += Number(fatValues[i].innerText);
-        totalGram += Number(gramValues[i].value);
-    }
-    sumsSpan[1].innerText = Math.round((totalKcal + Number.EPSILON)*100)/100;
-    sumsSpan[2].innerText = Math.round((totalProtein + Number.EPSILON)*100)/100;
-    sumsSpan[3].innerText = Math.round((totalCarbs + Number.EPSILON)*100)/100;
-    sumsSpan[4].innerText = Math.round((totalFat + Number.EPSILON)*100)/100;
-    sumsSpan[5].innerText = Math.round((totalGram + Number.EPSILON)*100)/100;
-}
+    
+    let ownTable = document.querySelector('#ownDietTable');
+    let ownProducts = ownTable.querySelectorAll('tr');
+    let kcalValues = ownTable.querySelectorAll('.kcalValue');
+    let proteinValues = ownTable.querySelectorAll('.proteinValue');
+    let carbsValues = ownTable.querySelectorAll('.carbsValue');
+    let fatValues = ownTable.querySelectorAll('.fatValue');
+    let gramValues = ownTable.querySelectorAll('.productValueInput');
+    let sumsSpan = sumThead.querySelectorAll('span');
 
-table.addEventListener('click', sumAllValues)
+    let elementalValuesArr = [0, 0, 0, 0, 0];
+
+    for(i=0; i < ownProducts.length; i++){
+        elementalValuesArr[0] += Number(kcalValues[i].innerText);
+        elementalValuesArr[1] += Number(proteinValues[i].innerText);
+        elementalValuesArr[2] += Number(carbsValues[i].innerText);
+        elementalValuesArr[3] += Number(fatValues[i].innerText);
+        elementalValuesArr[4] += Number(gramValues[i].value);
+    };
+
+    for(i = 0; i < elementalValuesArr.length; i++){
+        sumsSpan[i+1].innerText = Math.round((elementalValuesArr[i] + Number.EPSILON)*100)/100
+    };
+};
+
+table.addEventListener('click', sumAllValues);
 
 function maxLengthInputs(){
     let dietTableInputs = ownTable.querySelectorAll('.productValueInput')
     dietTableInputs.forEach(element => {
-        console.log(element.maxLength);
-        console.log(element.value);
         element.maxLength = 4;
         if(element.value.length > element.maxLength) {
         element.value = element.value.slice(0, element.maxLength)
-        }
-        if (element.value.includes('+')){
-            console.log('jest -');
-        }
+        };
 });
-}
+
+};
 
 function ownTableError () {
     let dietTableInputs = ownTable.querySelectorAll('.productValueInput')
     dietTableInputs.forEach(element => {
-        console.log(element.value);
         element.maxLength = 4;
         if(element.value.charAt(0) == 0 && !element.value =="" || element.value < 0) {
             element.value="";
     }
-})}
+})};
+
+function ownTableInputsProperties(){
+    maxLengthInputs();
+    ownTableError();
+};
+
+///////
 
 let searchInput = document.querySelector('#dietInput');
+const searchResultNotFound = document.querySelector('.resultSearchNotFound')
 
 
 function searchInTable() {
+
     let filter = searchInput.value.toUpperCase();
 
     for (i=0; i < products.length; i++){
@@ -652,15 +650,24 @@ function searchInTable() {
             textValue = productName.textContent || productName.innerText;
             if(textValue.toUpperCase().indexOf(filter) > - 1){
                 products[i].style.display = "table";
+                // products[i].classList.remove(".hideProducts")
             } else {
                 products[i].style.display = "none";
+                // products[i].classList.add(".hideProducts")
             }
         }
+    };
+
+    products = Array.from(products)
+    let checkDisplay = products.every(el => el.style.display === "none")
+    if (checkDisplay) {
+        searchResultNotFound.classList.add("resultSearchNotFoundShow")
+    } else {
+        searchResultNotFound.classList.remove("resultSearchNotFoundShow")
     }
 }
 
 searchInput.addEventListener('keyup', searchInTable)
-
 
 
 function sortOriginalTableNumber(n){

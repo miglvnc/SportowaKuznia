@@ -166,6 +166,19 @@ body
                 opacity: 1
                 transition: opacity 0.5s, height 0.0s 0.0s
 
+            .resultSearchNotFound
+                display: none
+                // height: 200px
+                width: 100%
+                padding: 10px 5px
+                background-color: #1b1b1bb6
+                border-bottom-left-radius: 20px
+                border-bottom-right-radius: 20px
+
+            .resultSearchNotFoundShow
+                display: inline-block
+                animation: opacityFadeIn
+
             table, th, td
                 border-collapse: collapse
                 color: $main-font-color
@@ -253,6 +266,7 @@ body
                         table-layout: fixed
                         text-align: center
                         overflow: hidden
+                        transition: 0.5s
 
                         td
                             text-align: left
@@ -268,6 +282,9 @@ body
                     .addProduct
                         td
                             background-color: #4d4c2c
+
+                    .hideProducts
+                        display: none
 
                 #dietTable
                     .weightValue

@@ -245,6 +245,21 @@ body .showDisplayModal .tableContainer .tableShadowShow {
   transition: opacity 0.5s, height 0.0s 0.0s;
 }
 
+body .showDisplayModal .tableContainer .resultSearchNotFound {
+  display: none;
+  width: 100%;
+  padding: 10px 5px;
+  background-color: #1b1b1bb6;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+body .showDisplayModal .tableContainer .resultSearchNotFoundShow {
+  display: inline-block;
+  -webkit-animation: opacityFadeIn;
+          animation: opacityFadeIn;
+}
+
 body .showDisplayModal .tableContainer table, body .showDisplayModal .tableContainer th, body .showDisplayModal .tableContainer td {
   border-collapse: collapse;
   color: #f5f5f5;
@@ -370,6 +385,8 @@ body .showDisplayModal .tableContainer table tbody tr {
   table-layout: fixed;
   text-align: center;
   overflow: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 body .showDisplayModal .tableContainer table tbody tr td {
@@ -388,6 +405,10 @@ body .showDisplayModal .tableContainer table tbody tr .productName {
 
 body .showDisplayModal .tableContainer table tbody .addProduct td {
   background-color: #4d4c2c;
+}
+
+body .showDisplayModal .tableContainer table tbody .hideProducts {
+  display: none;
 }
 
 body .showDisplayModal .tableContainer table #dietTable .weightValue {
