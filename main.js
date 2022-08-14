@@ -650,10 +650,8 @@ function searchInTable() {
             textValue = productName.textContent || productName.innerText;
             if(textValue.toUpperCase().indexOf(filter) > - 1){
                 products[i].style.display = "table";
-                // products[i].classList.remove(".hideProducts")
             } else {
                 products[i].style.display = "none";
-                // products[i].classList.add(".hideProducts")
             }
         }
     };

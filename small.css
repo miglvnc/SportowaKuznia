@@ -246,18 +246,24 @@ body .showDisplayModal .tableContainer .tableShadowShow {
 }
 
 body .showDisplayModal .tableContainer .resultSearchNotFound {
-  display: none;
+  position: absolute;
+  left: -150%;
   width: 100%;
   padding: 10px 5px;
   background-color: #1b1b1bb6;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.7s;
+  transition: opacity 0.7s;
 }
 
 body .showDisplayModal .tableContainer .resultSearchNotFoundShow {
-  display: inline-block;
-  -webkit-animation: opacityFadeIn;
-          animation: opacityFadeIn;
+  position: relative;
+  left: 0;
+  opacity: 1;
+  visibility: visible;
 }
 
 body .showDisplayModal .tableContainer table, body .showDisplayModal .tableContainer th, body .showDisplayModal .tableContainer td {
@@ -513,7 +519,6 @@ body .showDisplayModal .tableContainer .showOwnTable {
 }
 
 body .showDisplayModal .ownTableHeader {
-  display: block;
   padding: 20px 50px 20px 50px;
   font-size: 20px;
   background-color: #242424;
@@ -523,12 +528,19 @@ body .showDisplayModal .ownTableHeader {
   color: grey;
   -webkit-box-shadow: 0px 0px 10px #202020;
           box-shadow: 0px 0px 10px #202020;
-  -webkit-transition: left 1s;
-  transition: left 1s;
+  opacity: 1;
+  visibility: visible;
+  left: 0;
+  position: relative;
+  -webkit-transition: opacity 0.7s;
+  transition: opacity 0.7s;
 }
 
 body .showDisplayModal .hideOwnTableHeader {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: -150%;
 }
 
 body .showDisplayModal .form-switch {

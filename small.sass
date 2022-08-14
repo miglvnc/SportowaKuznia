@@ -167,17 +167,24 @@ body
                 transition: opacity 0.5s, height 0.0s 0.0s
 
             .resultSearchNotFound
-                display: none
-                // height: 200px
+                // display: none
+                position: absolute
+                left: -150%
                 width: 100%
                 padding: 10px 5px
                 background-color: #1b1b1bb6
                 border-bottom-left-radius: 20px
                 border-bottom-right-radius: 20px
+                opacity: 0
+                visibility: hidden
+                transition: opacity 0.7s
 
             .resultSearchNotFoundShow
-                display: inline-block
-                animation: opacityFadeIn
+                position: relative
+                left: 0
+                opacity: 1
+                visibility: visible
+                // display: inline-block
 
             table, th, td
                 border-collapse: collapse
@@ -361,7 +368,7 @@ body
                 overflow: hidden
 
         .ownTableHeader
-            display: block
+            // display: block
             padding: 20px 50px 20px 50px
             font-size: 20px
             background-color: #242424
@@ -370,10 +377,18 @@ body
             border-radius: 15px
             color: grey
             box-shadow: 0px 0px 10px #202020
-            transition: left 1s
+            opacity: 1
+            visibility: visible
+            left: 0
+            position: relative
+            transition: opacity 0.7s
 
         .hideOwnTableHeader
-            display: none
+            // display: none
+            opacity: 0
+            visibility: hidden
+            position: absolute
+            left: -150%
 
         .form-switch
             margin-bottom: 30px
