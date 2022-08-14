@@ -667,83 +667,86 @@ function searchInTable() {
 
 searchInput.addEventListener('keyup', searchInTable)
 
+////// sort tables - to rewrite
 
 function sortOriginalTableNumber(n){
-    let table;
-    table = document.querySelector('#dietTable')
+    let table = document.querySelector('#dietTable');
+
     let switching;
-    let dir;
+    let direction;
     let rows;
     let switchcount = 0;
     let shouldSwitch;
-    let x;
-    let y;
+    let currentNumber;
+    let nextNumber;
+
     switching = true;
-    dir = 'asc';
-    // let spanValue = document.querySelectorAll('.productValueChange')
+
+    direction = 'asc';
 
     while(switching){
         switching = false;
         rows = table.rows;
         for (i=0; i<(rows.length - 1); i++){
             shouldSwitch = false;
-            x = rows[i].querySelectorAll('td')[n];
-            y = rows[i+1].querySelectorAll('td')[n];
-            spanValueX = x.querySelector('.productValueChange')
-            spanValueY = y.querySelector('.productValueChange')
-            if(dir == 'asc'){
-                if(Number(spanValueX.innerHTML) > Number(spanValueY.innerHTML)){
+            currentNumber = rows[i].querySelectorAll('td')[n];
+            nextNumber = rows[i+1].querySelectorAll('td')[n];
+            currentNumberValue = currentNumber.querySelector('.productValueChange')
+            nextNumberValue = nextNumber.querySelector('.productValueChange')
+            if(direction == 'asc'){
+                if(Number(currentNumberValue.innerHTML) > Number(nextNumberValue.innerHTML)){
                     shouldSwitch = true;
                     break;
                 }
-            } else if (dir == 'desc'){
-                if(Number(spanValueX.innerHTML) < Number(spanValueY.innerHTML)){
+            } else if (direction == 'desc'){
+                if(Number(currentNumberValue.innerHTML) < Number(nextNumberValue.innerHTML)){
                     shouldSwitch = true;
                     break;
                 }
             }
         }
-        // console.log(shouldSwitch);
+
         if (shouldSwitch) {
             rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
             switching = true;
             switchcount ++;
         } else {
-            if (switchcount == 0 && dir =='asc'){
-                dir = 'desc';
+            if (switchcount == 0 && direction =='asc'){
+                direction = 'desc';
                 switching = true;
             }
         }
     }
-}
+};
 
 function sortOriginalTableProductName(n){
-    let table;
-    table = document.querySelector('#dietTable')
+    let table = document.querySelector('#dietTable');
     let switching;
-    let dir;
+    let direction;
     let rows;
     let switchcount = 0;
     let shouldSwitch;
-    let x;
-    let y;
+    let currentNumber;
+    let nextNumber;
+
     switching = true;
-    dir = 'asc';
+
+    direction = 'asc';
 
     while(switching){
         switching = false;
         rows = table.rows;
         for (i=0; i<(rows.length - 1); i++){
             shouldSwitch = false;
-            x = rows[i].querySelectorAll('td')[n];
-            y = rows[i+1].querySelectorAll('td')[n];
-            if(dir == 'asc'){
-                if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+            currentNumber = rows[i].querySelectorAll('td')[n];
+            nextNumber = rows[i+1].querySelectorAll('td')[n];
+            if(direction == 'asc'){
+                if(currentNumber.innerHTML.toLowerCase() > nextNumber.innerHTML.toLowerCase()){
                     shouldSwitch = true;
                     break;
                 }
-            } else if (dir == 'desc'){
-                if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()){
+            } else if (direction == 'desc'){
+                if(currentNumber.innerHTML.toLowerCase() < nextNumber.innerHTML.toLowerCase()){
                     shouldSwitch = true;
                     break;
                 }
@@ -755,13 +758,13 @@ function sortOriginalTableProductName(n){
             switching = true;
             switchcount ++;
         } else {
-            if (switchcount == 0 && dir =='asc'){
-                dir = 'desc';
+            if (switchcount == 0 && direction =='asc'){
+                direction = 'desc';
                 switching = true;
             }
         }
     }
-}
+};
 
 function sortTable (n) {
     if (n > 0){
@@ -769,39 +772,40 @@ function sortTable (n) {
     } else {
         sortOriginalTableProductName(n)
     }
-}
+};
 
 function sortOwnTableNumber(n){
-    let table;
-    table = document.querySelector('#ownDietTable')
+    let table = document.querySelector('#ownDietTable');
     let switching;
-    let dir;
+    let direction;
     let rows;
     let switchcount = 0;
     let shouldSwitch;
-    let x;
-    let y;
+    let currentNumber;
+    let nextNumber;
     switching = true;
-    dir = 'asc';
+    direction = 'asc';
 
     while(switching){
         switching = false;
         rows = table.rows;
         for (i=0; i<(rows.length - 1); i++){
+
             shouldSwitch = false;
-            x = rows[i].querySelectorAll('td')[n];
-            y = rows[i+1].querySelectorAll('td')[n];
-            spanValueX = x.querySelector('.productValueChange')
-            spanValueY = y.querySelector('.productValueChange')
-            weightValueX = x.querySelector('.productValueInput')
-            weightValueY = y.querySelector('.productValueInput')
-            if(dir == 'asc'){
-                if(Number(spanValueX.innerHTML) > Number(spanValueY.innerHTML)){
+            currentNumber = rows[i].querySelectorAll('td')[n];
+            nextNumber = rows[i+1].querySelectorAll('td')[n];
+            currentNumberValue = currentNumber.querySelector('.productValueChange')
+            nextNumberValue = nextNumber.querySelector('.productValueChange')
+            currentNumberWeight = currentNumber.querySelector('.productValueInput')
+            nextNumberWeight = nextNumber.querySelector('.productValueInput')
+
+            if(direction == 'asc'){
+                if(Number(currentNumberValue.innerHTML) > Number(nextNumberValue.innerHTML)){
                     shouldSwitch = true;
                     break;
                 }
-            } else if (dir == 'desc'){
-                if(Number(spanValueX.innerHTML) < Number(spanValueY.innerHTML)){
+            } else if (direction == 'desc'){
+                if(Number(currentNumberValue.innerHTML) < Number(nextNumberValue.innerHTML)){
                     shouldSwitch = true;
                     break;
                 }
@@ -812,41 +816,40 @@ function sortOwnTableNumber(n){
             switching = true;
             switchcount ++;
         } else {
-            if (switchcount == 0 && dir =='asc'){
-                dir = 'desc';
+            if (switchcount == 0 && direction =='asc'){
+                direction = 'desc';
                 switching = true;
             }
         }
     }
-}
+};
 
 function sortOwnTableProductName(n){
-    let table;
-    table = document.querySelector('#ownDietTable')
+    let table = document.querySelector('#ownDietTable');
     let switching;
-    let dir;
+    let direction;
     let rows;
     let switchcount = 0;
     let shouldSwitch;
-    let x;
-    let y;
+    let currentNumber;
+    let nextNumber;
     switching = true;
-    dir = 'asc';
+    direction = 'asc';
 
     while(switching){
         switching = false;
         rows = table.rows;
         for (i=0; i<(rows.length - 1); i++){
             shouldSwitch = false;
-            x = rows[i].querySelectorAll('td')[n];
-            y = rows[i+1].querySelectorAll('td')[n];
-            if(dir == 'asc'){
-                if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+            currentNumber = rows[i].querySelectorAll('td')[n];
+            nextNumber = rows[i+1].querySelectorAll('td')[n];
+            if(direction == 'asc'){
+                if(currentNumber.innerHTML.toLowerCase() > nextNumber.innerHTML.toLowerCase()){
                     shouldSwitch = true;
                     break;
                 }
-            } else if (dir == 'desc'){
-                if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()){
+            } else if (direction == 'desc'){
+                if(currentNumber.innerHTML.toLowerCase() < nextNumber.innerHTML.toLowerCase()){
                     shouldSwitch = true;
                     break;
                 }
@@ -858,13 +861,13 @@ function sortOwnTableProductName(n){
             switching = true;
             switchcount ++;
         } else {
-            if (switchcount == 0 && dir =='asc'){
-                dir = 'desc';
+            if (switchcount == 0 && direction =='asc'){
+                direction = 'desc';
                 switching = true;
             }
         }
     }
-}
+};
 
 function sortOwnTable (n) {
     if (n > 0){
@@ -872,12 +875,14 @@ function sortOwnTable (n) {
     } else {
         sortOwnTableProductName(n)
     }
-}
+};
 
-let originalTableHead = document.querySelectorAll('.originalTableHead');
-let ownTableHead = document.querySelectorAll('.ownTableHead');
 
-let sortArrowNodeList = document.querySelectorAll('.fa-sort-down');
+
+const originalTableHead = document.querySelectorAll('.originalTableHead');
+const ownTableHead = document.querySelectorAll('.ownTableHead');
+
+const sortArrowNodeList = document.querySelectorAll('.fa-sort-down');
 
 function highlightTableHead (element) {
     if(element.classList.contains('highlightTheadSwitch')) {
@@ -887,7 +892,8 @@ function highlightTableHead (element) {
         element.classList.remove('highlightThead')
         element.classList.add('highlightTheadSwitch')
     }
-}
+};
+
 function resetArrows () {
     for(i = 0; i < sortArrowNodeList.length; i++){
         if(sortArrowNodeList[i].classList.contains('arrowSortHide')){
@@ -897,12 +903,11 @@ function resetArrows () {
         }
         sortArrowNodeList[i].classList.add('arrowSortHide')
     }
-}
+};
 
 function sortArrowToggle (sortArrow) {
     sortArrow.classList.remove('arrowSortHide')
     sortArrow.classList.add('arrowSortShow')
-        // sortArrow.classList.add('arrowSortAsc')
 
     if(sortArrow.classList.contains('arrowSortShow')){
         if(sortArrow.classList.contains('arrowSortDesc')){
@@ -913,19 +918,19 @@ function sortArrowToggle (sortArrow) {
             sortArrow.classList.remove('arrowSortAsc')
         }
     }
-}
+};
 
 originalTableHead.forEach(element => {
-    let sortArrow = element.querySelector('.fa-sort-down')
-    element.addEventListener('click', function(){
-        highlightTableHead(element);
-        resetArrows();
-        sortArrowToggle(sortArrow);
-    })
+    const sortArrow = element.querySelector('.fa-sort-down')
+        element.addEventListener('click', function(){
+            highlightTableHead(element);
+            resetArrows();
+            sortArrowToggle(sortArrow);
+        })
 });
 
 ownTableHead.forEach(element => {
-    let sortArrow = element.querySelector('.fa-sort-down')
+    const sortArrow = element.querySelector('.fa-sort-down')
     element.addEventListener('click', function(){
         highlightTableHead(element);
         resetArrows();
@@ -936,23 +941,22 @@ ownTableHead.forEach(element => {
 ///////////////////////
 
 
+const activeCalc = wrapperContainer.querySelector('.activeCalc')
+const kcalCalcContainer = wrapperContainer.querySelector('.kcalCalc');
+const bmiCalcContainer = wrapperContainer.querySelector('.bmi');
+const ymcaCalcContainer = wrapperContainer.querySelector('.ymca');
+const calcInputs = wrapperContainer.querySelectorAll('.calcInput');
+const highlightedResult = wrapperContainer.querySelectorAll('.highlightedResult');
+const kcalResultBtn = wrapperContainer.querySelector('.kcalResultBtn');
+const kcalGenderSelect = wrapperContainer.querySelector('.kcalGenderSelect');
+const activitySelect = wrapperContainer.querySelector('.activitySelect');
+const targetSelect = wrapperContainer.querySelector('.targetSelect');
 
-let activeCalc = document.querySelector('.activeCalc')
-let kcalCalcContainer = document.querySelector('.kcalCalc');
-let bmiCalcContainer = document.querySelector('.bmi');
-let ymcaCalcContainer = document.querySelector('.ymca');
-let calcInputs = document.querySelectorAll('.calcInput');
-let highlightedResult = document.querySelectorAll('.highlightedResult');
-let kcalResultBtn = document.querySelector('.kcalResultBtn');
-let kcalGenderSelect = document.querySelector('.kcalGenderSelect');
-let activitySelect = document.querySelector('.activitySelect');
-let targetSelect = document.querySelector('.targetSelect');
+const selectContainer = document.querySelectorAll('.selectContainer');
 
-let selectContainer = document.querySelectorAll('.selectContainer');
+const result = document.querySelectorAll('.result');
 
-let result = document.querySelectorAll('.result');
-
-let numbers = /^[0-9]+$/;
+const numbers = /^[0-9]+$/;
 
 let bmiResultBtn = document.querySelector('.bmiResultBtn');
 let bmiInputs = document.querySelectorAll('.bmiInput');
@@ -1016,7 +1020,7 @@ function webLoaded () {
     setTimeout(function(){window.scroll({left: 0, top: 700, behavior: 'smooth'})}, 3000)
 }
 
-// webLoaded()
+webLoaded()
 
 function menuLinkActive () {
 
