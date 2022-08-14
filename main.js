@@ -1,3 +1,9 @@
+function webLoaded () {
+    setTimeout(function(){window.scroll({left: 0, top: 700, behavior: 'smooth'})}, 3000)
+};
+
+webLoaded()
+
 //global functions
 
 const wrapperContainer = document.querySelector('.wrapper');
@@ -10,40 +16,47 @@ function removeBlurBody() {
     wrapperContainer.classList.remove('errorBlurShow')
     wrapperContainer.classList.add('errorBlurClose')
 };
+function opacityAnimate(el) {
+    el.animate([
+        {opacity: 0},
+        {opacity: 1}
+    ], {
+        duration: 1000,
+        iterations: 1
+    });
+};
 
 // calc error
 
-let errorPopUp = document.querySelector('.errorPopUp')
-let errorShadow = document.querySelector('.errorShadow')
-let errorConfirm = document.querySelector('.errorConfirm')
+const errorPopUp = document.querySelector('.errorPopUp')
+const errorShadow = document.querySelector('.errorShadow')
+const errorConfirm = document.querySelector('.errorConfirm')
 
 function addShadowBody () {
     errorShadow.classList.add('errorShadowShow')
     errorShadow.classList.remove('errorShadowClose')
-}
+};
 
 function removeShadowBody () {
     errorShadow.classList.remove('errorShadowShow')
-    errorShadow.classList.add('errorShadowClose')
-    
-}
+    errorShadow.classList.add('errorShadowClose')  
+};
 
 function errorClose() {
     errorPopUp.classList.remove('errorPopUpShow')
     errorPopUp.classList.add('errorPopUpClose')
     removeBlurBody()
     removeShadowBody()
-}
+};
 
 function errorPopUpShow() {
     errorPopUp.classList.remove('errorPopUpCLose')
     errorPopUp.classList.add('errorPopUpShow')
     addBlurBody()
     addShadowBody()
-}
+};
 
 errorConfirm.addEventListener('click', errorClose)
-
 
 // navigation marks
 
@@ -609,10 +622,9 @@ function sumAllValues () {
 
 table.addEventListener('click', sumAllValues);
 
-function maxLengthInputs(){
-    let dietTableInputs = ownTable.querySelectorAll('.productValueInput')
-    dietTableInputs.forEach(element => {
-        element.maxLength = 4;
+function maxLengthInputs(node, maxLength){
+    node.forEach(element => {
+        element.maxLength = maxLength;
         if(element.value.length > element.maxLength) {
         element.value = element.value.slice(0, element.maxLength)
         };
@@ -620,18 +632,20 @@ function maxLengthInputs(){
 
 };
 
-function ownTableError () {
-    let dietTableInputs = ownTable.querySelectorAll('.productValueInput')
-    dietTableInputs.forEach(element => {
-        element.maxLength = 4;
+function ownTableError (node, maxLength) {
+    node.forEach(element => {
+        element.maxLength = maxLength;
         if(element.value.charAt(0) == 0 && !element.value =="" || element.value < 0) {
             element.value="";
-    }
-})};
-
+        }
+    })};
+    
 function ownTableInputsProperties(){
-    maxLengthInputs();
-    ownTableError();
+
+    let dietTableInputs = ownTable.querySelectorAll('.productValueInput')
+
+    maxLengthInputs(dietTableInputs, 4);
+    ownTableError(dietTableInputs, 4);
 };
 
 ///////
@@ -752,7 +766,6 @@ function sortOriginalTableProductName(n){
                 }
             }
         }
-        // console.log(shouldSwitch);
         if (shouldSwitch) {
             rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
             switching = true;
@@ -855,7 +868,6 @@ function sortOwnTableProductName(n){
                 }
             }
         }
-        // console.log(shouldSwitch);
         if (shouldSwitch) {
             rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
             switching = true;
@@ -940,6 +952,11 @@ ownTableHead.forEach(element => {
 
 ///////////////////////
 
+let dropdownLink = document.querySelectorAll('.dropdownLink');
+
+let dropdownCalc = document.querySelector('.dropdownCalculator');
+let dropdownArrow = document.querySelector('.fa-chevron-down');
+let dropdownHeader = document.querySelector('.dropdownHeader');
 
 const activeCalc = wrapperContainer.querySelector('.activeCalc')
 const kcalCalcContainer = wrapperContainer.querySelector('.kcalCalc');
@@ -969,11 +986,6 @@ let resultFullText = document.querySelectorAll('.resultFullText');
 let resultWeightTarget = document.querySelector('.resultWeightTarget');
 let resultWeightTargetBmi = document.querySelector('.resultWeightTargetBmi');
 
-let dropdownLink = document.querySelectorAll('.dropdownLink');
-
-let dropdownCalc = document.querySelector('.dropdownCalculator');
-let dropdownArrow = document.querySelector('.fa-chevron-down');
-let dropdownHeader = document.querySelector('.dropdownHeader');
 
 let underlineCalc = document.querySelectorAll('.underlineCalc')
 
@@ -989,7 +1001,7 @@ let faqquestion = document.querySelectorAll('.FAQQuestion');
 let expand = document.querySelectorAll('.fa-plus');
 let rollUp = document.querySelectorAll('.fa-minus');
 
-let genderIconLink = document.querySelectorAll('.genderIconLink')
+const genderIconLink = document.querySelectorAll('.genderIconLink')
 
 let kcalCalcListElementActivity = document.querySelectorAll('.kcalCalcListElementActivity');
 let kcalCalcListElementTarget = document.querySelectorAll('.kcalCalcListElementTarget');
@@ -1012,74 +1024,74 @@ let menuLink = document.querySelectorAll('.menuLink')
 let nextArrow = document.querySelector('.nextArrow')
 let previousArrow = document.querySelector('.previousArrow')
 
+function calcDropdownHeightChange () {
+    dropdownCalc.classList.toggle('dropdownHeightChange')
+    dropdownArrow.classList.toggle('dropdownArrowChange')
+};
 
-// function
+dropdownHeader.addEventListener('click',calcDropdownHeightChange);
 
+function dropdownCleaner () {
+    kcalCalcContainer.classList.remove('calcDisplay')
+    bmiCalcContainer.classList.remove('calcDisplay');
+    ymcaCalcContainer.classList.remove('calcDisplay');
+    dropdownLink[0].classList.remove('activeDropdownLinkColor')
+    dropdownLink[1].classList.remove('activeDropdownLinkColor')
+    dropdownLink[2].classList.remove('activeDropdownLinkColor')
+};
+function displayKcalCalc () {
+    dropdownCleaner();
+    kcalCalcContainer.classList.add('calcDisplay');
+    dropdownLink[0].classList.add('activeDropdownLinkColor');
+    activeCalcHref();
+    clearCalc();
+};
+function displayBmiCalc () {
+    dropdownCleaner();
+    bmiCalcContainer.classList.add('calcDisplay')
+    dropdownLink[1].classList.add('activeDropdownLinkColor')
+    clearCalc();
+    activeCalcHref();
+};
+function displayYmcaCalc () {
+    dropdownCleaner();
+    ymcaCalcContainer.classList.add('calcDisplay')
+    dropdownLink[2].classList.add('activeDropdownLinkColor')
+    clearCalc();
+    activeCalcHref();
+};
 
-function webLoaded () {
-    setTimeout(function(){window.scroll({left: 0, top: 700, behavior: 'smooth'})}, 3000)
-}
+dropdownLink[0].addEventListener('click', displayKcalCalc);
+dropdownLink[1].addEventListener('click', displayBmiCalc);
+dropdownLink[2].addEventListener('click', displayYmcaCalc);
 
-webLoaded()
-
-function menuLinkActive () {
-
-}
-
-function choosenActivityElementClear() {
-    for(i=0; i<kcalCalcListElementActivity.length; i++){
-        kcalCalcListElementActivity[i].classList.remove('choosenActivityElement')
+function activeCalcHref() {
+    setTimeout(function(){location.href = "#activeCalc";}, 500)
+};
+function activeCalcShow() {
+    activeCalc.classList.add('activeCalcShow')
+};
+function clearCalc() {
+    for (i = 0; i < calcs.length; i++) {
+        result[i].classList.remove('resultShow');
+        resultFullText[i].classList.remove('activeResult');
     }
-}
+    calcInputs.forEach(element => {
+        element.value ="";
+        element.classList.remove('activeInput');
+    });
+    selectActivityForm.forEach(element => {
+        element.classList.remove('activeInput');
+        element.options.selectedIndex = 0;
+    })
+    genderIconLink.forEach(element=> {
+        element.classList.remove('activeGender');
+        element.classList.remove('unactiveGender');
+    })
 
-for (i=1; i<kcalCalcListElementActivity.length; i++) {
-    kcalCalcListElementActivity[i].addEventListener('click', choosenActivityElementClear)
-}
-function choosenTargetElementClear() {
-    for(i=0; i<kcalCalcListElementTarget.length; i++){
-        kcalCalcListElementTarget[i].classList.remove('choosenTargetElement')
-    }
-}
-
-for (i=1; i<kcalCalcListElementTarget.length; i++) {
-    kcalCalcListElementTarget[i].addEventListener('click', choosenTargetElementClear)
-}
-
-
-function detailsContainerResize (el1, el2, el3, el4, el5) {
-    el1.classList.toggle('dropdownKcalCalcActive');  
-    el1.classList.toggle('borderActivity');  
-    el2.classList.toggle('arrowKcalDetailsListActive');
-    el3.classList.toggle('choosenOptionActive');
-    el4.classList.remove('choosenActivityElement');
-    el5.classList.toggle('detailsListElementBgc')
-}
-
-kcalCalcListElementActivity.forEach(element =>
-    element.addEventListener('click', function(){
-        detailsContainerResize(activityDropdown, arrowKcalDetailsList[0], activityPlaceholder, element, detailsListElement);
-        choosenActivity.innerText = element.innerText;
-        element.classList.add('choosenActivityElement')
-        if (choosenActivity.innerText != "WYBIERZ") {
-            activityPlaceholder.classList.add('choosenOptionActive');
-            activityDropdown.classList.add('borderActivity');  
-        }
-        console.log(element);
-    }))
-    
-    kcalCalcListElementTarget.forEach(element =>
-        element.addEventListener('click', function(){
-        detailsContainerResize(targetDropdown, arrowKcalDetailsList[1], targetPlaceholder, element, detailsListElement);
-        choosenTarget.innerText = element.innerText; 
-        element.classList.add('choosenTargetElement')
-    if (choosenTarget.innerText != "WYBIERZ") {
-        targetPlaceholder.classList.add('choosenOptionActive');
-        targetDropdown.classList.add('borderActivity');  
-    }
-    console.log(element);
-    }))
-
-
+    clearKcalDetailsInfo(activityDropdown, arrowKcalDetailsList[0], activityPlaceholder, choosenActivity);
+    clearKcalDetailsInfo(targetDropdown, arrowKcalDetailsList[1], targetPlaceholder, choosenTarget);
+};
 function genderSelectFemale () {
     for(i=0; i < genderIconLink.length; i=i+2) {
         genderIconLink[i].classList.add('activeGender')
@@ -1090,7 +1102,7 @@ function genderSelectFemale () {
         genderIconLink[i].classList.add('unactiveGender')
     }
 
-}
+};
 function genderSelectMale () {
     for(i=0; i < genderIconLink.length; i=i+2) {
         genderIconLink[i].classList.remove('activeGender')
@@ -1101,162 +1113,216 @@ function genderSelectMale () {
         genderIconLink[i].classList.remove('unactiveGender')
     }
 
-}
+};
 
-for (i=0; i < genderIconLink.length; i=i+2) {
-    genderIconLink[i].addEventListener('click', genderSelectFemale)
-}
-for (i=1; i < genderIconLink.length; i=i+2) {
-    genderIconLink[i].addEventListener('click', genderSelectMale)
-}
-
-
-
-
-function animateOpacityPlusMinus () {
-    opacityAnimate(expand);
-    opacityAnimate(rollUp);
-}
-
-function clearKcalDetailsInfo (el1, el2, el3, el4, el5, el6, el7) {
+function clearKcalDetailsInfo (el1, el2, el3, el4) {
     el1.classList.remove('dropdownKcalCalcActive');  
     el1.classList.remove('borderActivity');  
     el2.classList.remove('arrowKcalDetailsListActive');
     el3.classList.remove('choosenOptionActive');
     el4.innerText = 'WYBIERZ';
-}
- 
-function clearCalc () {
-    for (i = 0; i < calcs.length; i++) {
-        result[i].classList.remove('resultShow');
-        resultFullText[i].classList.remove('activeResult');
-    }
-    calcInputs.forEach(element => {
-        element.value ="";
-        element.classList.remove('activeInput')
-        console.log(element);
-    });
-    selectActivityForm.forEach(element => {
-        element.classList.remove('activeInput');
-        element.options.selectedIndex = 0;
-        console.log(element);
-    })
-    genderIconLink.forEach(element=> {
-        element.classList.remove('activeGender')
-        element.classList.remove('unactiveGender')
-        console.log(element);
-    })
-
-    clearKcalDetailsInfo(activityDropdown, arrowKcalDetailsList[0], activityPlaceholder, choosenActivity);
-    clearKcalDetailsInfo(targetDropdown, arrowKcalDetailsList[1], targetPlaceholder, choosenTarget);
-}
-
-
-function ymcaCalc () {
-    let weight = ymcaInputs[0].value;
-    let waist = ymcaInputs[1].value;
-    let ymcaResult;
-    result[2].classList.add('resultShow');
-    let a = 4.15 * waist
-    let b = a/2.54
-    let c = 0.082 * weight * 2.2
-    let e = weight * 2.2
-    if((genderIconLink[4].classList.contains('activeGender') || genderIconLink[5].classList.contains('activeGender')) && ymcaInputs[0].value != "" && ymcaInputs[1].value != "" && ymcaInputs[0].value.match(numbers)){
-        resultFullText[2].classList.add('activeResult');
-        if(genderIconLink[5].classList.contains('activeGender')){
-            let d = b - c - 98.42
-            ymcaResult = d/e * 100
-            if(ymcaResult < 7 && resultWeightTargetYmca.textContent != "niedowagę"){
-                opacityAnimate(resultFullText[2]);
-                resultWeightTargetYmca.textContent = "niedowagę"
-            }else if(ymcaResult > 20 && resultWeightTargetYmca.textContent != "nadwagę"){
-                resultWeightTargetYmca.textContent = "nadwagę"
-                opacityAnimate(resultFullText[2]);
-            } else if (ymcaResult >= 7 && ymcaResult <= 20 && resultWeightTargetYmca.textContent != "wagę prawidłową"){
-                resultWeightTargetYmca.textContent = "wagę prawidłową"
-                opacityAnimate(resultFullText[2]);
-            }
-            highlightedResult[2].textContent = ymcaResult.toFixed(2);
-            resultBtnHref(result[2]);
-            
-        } else if (genderIconLink[4].classList.contains('activeGender')) {
-            let d = b - c - 76.76
-            ymcaResult = d/e * 100
-            // activeCalcShow();
-            if(ymcaResult < 21 && resultWeightTargetYmca.textContent != "niedowagę"){
-                resultWeightTargetYmca.textContent = "niedowagę"
-                opacityAnimate(resultFullText[2]);
-            }else if(ymcaResult > 33 && resultWeightTargetYmca.textContent != "nadwagę"){
-                resultWeightTargetYmca.textContent = "nadwagę"
-                opacityAnimate(resultFullText[2]);
-            } else if (ymcaResult >= 21 && ymcaResult <= 33 && resultWeightTargetYmca.textContent != "wagę prawidłową") {
-                resultWeightTargetYmca.textContent = "wagę prawidłową"
-                opacityAnimate(resultFullText[2]);
-            }
-            highlightedResult[2].textContent = ymcaResult.toFixed(2);
-            resultBtnHref(result[2]);
-            
-        }                  
-        } else {
-            resultFullText[2].classList.remove('activeResult');
-        }
-        console.log(ymcaResult);
 };
 
-ymcaResultBtn.addEventListener('click', ymcaCalc)
+for (i=0; i < genderIconLink.length; i=i+2) {
+    genderIconLink[i].addEventListener('click', genderSelectFemale)
+};
+for (i=1; i < genderIconLink.length; i=i+2) {
+    genderIconLink[i].addEventListener('click', genderSelectMale)
+};
 
-function calcDropdownHeightChange () {
-    dropdownCalc.classList.toggle('dropdownHeightChange')
-    dropdownArrow.classList.toggle('dropdownArrowChange')
+// function
+
+function activityValue() {
+
+    let kcalActivityValue = 1.2
+    kcalCalcListElementActivity[0].value = kcalActivityValue;
+
+    for(i=1; i < kcalCalcListElementActivity.length; i++) {
+
+        kcalCalcListElementActivity[i].value = kcalActivityValue;
+        kcalActivityValue = kcalActivityValue + 0.2
+
+        if (kcalCalcListElementActivity[i].classList.contains('choosenActivityElement')){
+            return kcalCalcListElementActivity[i].value
+        }
+    }
+};
+function targetValue() {
+
+    let targetValue = 0.9
+
+    for(i=1; i < kcalCalcListElementTarget.length; i++) {
+
+        kcalCalcListElementTarget[i].value = targetValue;
+        targetValue = targetValue + 0.1
+
+        if (kcalCalcListElementTarget[i].classList.contains('choosenTargetElement')){
+            return kcalCalcListElementTarget[i].value
+        }
+    }
+};
+
+function choosenActivityElementClear() {
+    for(i=0; i<kcalCalcListElementActivity.length; i++){
+        kcalCalcListElementActivity[i].classList.remove('choosenActivityElement')
+    }
+};
+
+for (i=1; i<kcalCalcListElementActivity.length; i++) {
+    kcalCalcListElementActivity[i].addEventListener('click', choosenActivityElementClear)
+};
+
+function choosenTargetElementClear() {
+    for(i=0; i<kcalCalcListElementTarget.length; i++){
+        kcalCalcListElementTarget[i].classList.remove('choosenTargetElement')
+    }
+};
+
+for (i=1; i<kcalCalcListElementTarget.length; i++) {
+    kcalCalcListElementTarget[i].addEventListener('click', choosenTargetElementClear)
+};
+
+function detailsContainerResize (el1, el2, el3, el4, el5) {
+    el1.classList.toggle('dropdownKcalCalcActive');  
+    el1.classList.toggle('borderActivity');  
+    el2.classList.toggle('arrowKcalDetailsListActive');
+    el3.classList.toggle('choosenOptionActive');
+    el4.classList.remove('choosenActivityElement');
+    el5.classList.toggle('detailsListElementBgc')
+};
+
+kcalCalcListElementActivity.forEach(element =>
+    element.addEventListener('click', function(){
+        detailsContainerResize(activityDropdown, arrowKcalDetailsList[0], activityPlaceholder, element, detailsListElement);
+        choosenActivity.innerText = element.innerText;
+        element.classList.add('choosenActivityElement')
+        if (choosenActivity.innerText != "WYBIERZ") {
+            activityPlaceholder.classList.add('choosenOptionActive');
+            activityDropdown.classList.add('borderActivity');  
+        }
+}));
+    
+kcalCalcListElementTarget.forEach(element =>
+        element.addEventListener('click', function(){
+        detailsContainerResize(targetDropdown, arrowKcalDetailsList[1], targetPlaceholder, element, detailsListElement);
+        choosenTarget.innerText = element.innerText; 
+        element.classList.add('choosenTargetElement')
+    if (choosenTarget.innerText != "WYBIERZ") {
+        targetPlaceholder.classList.add('choosenOptionActive');
+        targetDropdown.classList.add('borderActivity');  
+    }
+}));
+
+const selectActivityForm = document.querySelectorAll('.activity-form');
+
+function selectInputBorders(){
+    selectActivityForm.forEach(element => {
+        if(element.value != 'chooseOption'){
+            element.classList.add('activeInput')
+        } else {
+            element.classList.remove('activeInput')
+        }
+        
+    });
+};
+
+for (i = 0; i < selectContainer.length; i++){
+    selectContainer[i].addEventListener('click', selectInputBorders)
+    selectContainer[i].addEventListener('keyup', selectInputBorders)
+};
+
+function isNotANumber(){
+    maxLengthInputs(calcInputs, 3);
+    ownTableError(calcInputs, 3);
+};
+
+function calcBorders () {
+    calcInputs.forEach(element => {
+        if(element.value !== ""){
+            element.classList.add('activeInput');
+            // isNotANumber(element)
+        } else {
+            element.classList.remove('activeInput')
+        }
+        
+    });
+};
+
+for (let i = 0; i < calcInputs.length; i++){
+    calcInputs[i].addEventListener('focus', calcBorders)
+    calcInputs[i].addEventListener('focusout', calcBorders)
+    calcInputs[i].addEventListener('input', isNotANumber)
 }
 
-dropdownHeader.addEventListener('click',calcDropdownHeightChange)
+function kcalCalc () {
 
+    activityIndicator = activityValue();
+    targetIndicator = targetValue();
 
+    result[0].classList.add('resultShow');
 
+    if(
+        (genderIconLink[0].classList.contains('activeGender') || genderIconLink[1].classList.contains('activeGender')) && choosenActivity.innerText != 'WYBIERZ' && choosenActivity.innerText != 'WYBIERZ' && calcInputs[0].value != "" && calcInputs[1].value != "" && calcInputs[2].value != "" && calcInputs[0].value.match(numbers) && calcInputs[1].value.match(numbers) && calcInputs[2].value.match(numbers)
+        && calcInputs[0].value.charAt(0) != 0 && calcInputs[1].value.charAt(0) != 0 && calcInputs[2].value.charAt(0) != 0
+        ){
+            if(genderIconLink[0].classList.contains('activeGender')){
+                let bmr = (((((9.99 * calcInputs[1].value) + (6.25 * calcInputs[2].value) - (4.92 * calcInputs[0].value) - 161)) * activityIndicator * targetIndicator));
+                if(bmr > 500) {
+                    resultFullText[0].classList.add('activeResult');
+                    if(highlightedResult[0].textContent != bmr.toFixed(0)){
+                        opacityAnimate(highlightedResult[0]);
+                    }
+                    highlightedResult[0].textContent = bmr.toFixed(0); 
+                    if (targetIndicator == 0.9 && resultWeightTarget.textContent != 'stracić na wadze'){
+                        resultWeightTarget.textContent = 'stracić na wadze';
+                        opacityAnimate(resultFullText[0]);             
+                    } else if (targetIndicator == 1.1 && resultWeightTarget.textContent != 'przytyć'){
+                        resultWeightTarget.textContent = 'przytyć';
+                        opacityAnimate(resultFullText[0]);
+                    } else if (targetIndicator == 1.0 && resultWeightTarget.textContent != 'utrzymać wagę'){
+                        resultWeightTarget.textContent = 'utrzymać wagę';
+                        opacityAnimate(resultFullText[0]);
+                    }
+                    resultBtnHref(result[0]);
+                } else {
+                    resultFullText[0].classList.remove('activeResult');
+                    result[0].classList.remove('resultShow');            
+                }
+            } else if (genderIconLink[1].classList.contains('activeGender')) {
+                let bmr = (((((9.99 * calcInputs[1].value) + (6.25 * calcInputs[2].value) - (4.92 * calcInputs[0].value) + 5)) * activityIndicator) * targetIndicator);
+                if(bmr > 500) {
+                    resultFullText[0].classList.add('activeResult');
+                    if(highlightedResult[0].textContent != bmr.toFixed(0)){
+                        opacityAnimate(highlightedResult[0]);
+                    }
+                    highlightedResult[0].textContent = bmr.toFixed(0); 
+                    if (targetIndicator == 0.9 && resultWeightTarget.textContent != 'stracić na wadze'){  
+                        opacityAnimate(resultFullText[0]);
+                        resultWeightTarget.textContent = 'stracić na wadze';
+                        
+                        
+                    } else if (targetIndicator == 1.1 && resultWeightTarget.textContent != 'przytyć'){
+                        resultWeightTarget.textContent = 'przytyć';
+                        opacityAnimate(resultFullText[0]);
+                    } else if (targetIndicator == 1.0 && resultWeightTarget.textContent != 'utrzymać wagę'){
+                        resultWeightTarget.textContent = 'utrzymać wagę';
+                        opacityAnimate(resultFullText[0]);
+                    }
+                    resultBtnHref(result[0]);
+                } else {
+                    errorPopUpShow();
+                    result[0].classList.remove('resultShow');
+                }
+            }
+        } else {
+            errorPopUpShow();
+            result[0].classList.remove('resultShow');
+            resultFullText[0].classList.remove('activeResult');
+    }
 
-function activeCalcHref() {
-    setTimeout(function(){location.href = "#activeCalc";}, 500)
-}
-function activeCalcShow () {
-    activeCalc.classList.add('activeCalcShow')
-}
+};
 
-function displayKcalCalc () {
-    bmiCalcContainer.classList.remove('calcDisplay');
-    ymcaCalcContainer.classList.remove('calcDisplay');
-    kcalCalcContainer.classList.add('calcDisplay');
-    dropdownLink[0].classList.add('activeDropdownLinkColor')
-    dropdownLink[1].classList.remove('activeDropdownLinkColor')
-    dropdownLink[2].classList.remove('activeDropdownLinkColor')
-    activeCalcHref();
-    clearCalc();
-}
-function displayBmiCalc () {
-    kcalCalcContainer.classList.remove('calcDisplay')
-    ymcaCalcContainer.classList.remove('calcDisplay')
-    bmiCalcContainer.classList.add('calcDisplay')
-    dropdownLink[0].classList.remove('activeDropdownLinkColor')
-    dropdownLink[1].classList.add('activeDropdownLinkColor')
-    dropdownLink[2].classList.remove('activeDropdownLinkColor')
-    clearCalc();
-    activeCalcHref();
-}
-function displayYmcaCalc () {
-    bmiCalcContainer.classList.remove('calcDisplay')
-    kcalCalcContainer.classList.remove('calcDisplay')
-    ymcaCalcContainer.classList.add('calcDisplay')
-    dropdownLink[0].classList.remove('activeDropdownLinkColor')
-    dropdownLink[1].classList.remove('activeDropdownLinkColor')
-    dropdownLink[2].classList.add('activeDropdownLinkColor')
-    clearCalc();
-    activeCalcHref();
-}
-
-
-dropdownLink[0].addEventListener('click', displayKcalCalc)
-dropdownLink[1].addEventListener('click', displayBmiCalc)
-dropdownLink[2].addEventListener('click', displayYmcaCalc)
+kcalResultBtn.addEventListener('click', kcalCalc);
 
 function bmiCalc () {
     let weight = bmiInputs[0].value;
@@ -1291,232 +1357,73 @@ function bmiCalc () {
         resultFullText[1].classList.remove('activeResult');
         errorPopUpShow();
     }
-    console.log(bmiResult); 
-}
+};
 
 bmiResultBtn.addEventListener('click', bmiCalc)
 
+function ymcaCalc () {
+    let ymcaResult;
 
-let selectActivityForm = document.querySelectorAll('.activity-form');
+    // faktors for YMCA calc results
+    let a = 4.15 * ymcaInputs[1].value;
+    let b = a/2.54
+    let c = 0.082 * ymcaInputs[0].value * 2.2
+    let e = ymcaInputs[0].value * 2.2
+    
+    result[2].classList.add('resultShow');
 
-function selectInputBorders(){
-    selectActivityForm.forEach(element => {
-        if(element.value != 'chooseOption'){
-            element.classList.add('activeInput')
-            console.log(element);
+    if((genderIconLink[4].classList.contains('activeGender') || genderIconLink[5].classList.contains('activeGender')) && ymcaInputs[0].value != "" && ymcaInputs[1].value != "" && ymcaInputs[0].value.match(numbers)){
+        resultFullText[2].classList.add('activeResult');
+        if(genderIconLink[5].classList.contains('activeGender')){
+
+            let d = b - c - 98.42
+
+            ymcaResult = d/e * 100
+
+            if(ymcaResult < 7 && resultWeightTargetYmca.textContent != "niedowagę"){
+                opacityAnimate(resultFullText[2]);
+                resultWeightTargetYmca.textContent = "niedowagę"
+            }else if(ymcaResult > 20 && resultWeightTargetYmca.textContent != "nadwagę"){
+                resultWeightTargetYmca.textContent = "nadwagę"
+                opacityAnimate(resultFullText[2]);
+            } else if (ymcaResult >= 7 && ymcaResult <= 20 && resultWeightTargetYmca.textContent != "wagę prawidłową"){
+                resultWeightTargetYmca.textContent = "wagę prawidłową"
+                opacityAnimate(resultFullText[2]);
+            }
+            highlightedResult[2].textContent = ymcaResult.toFixed(2);
+            resultBtnHref(result[2]);
+            
+        } else if (genderIconLink[4].classList.contains('activeGender')) {
+
+            let d = b - c - 76.76
+
+            ymcaResult = d/e * 100
+
+            if(ymcaResult < 21 && resultWeightTargetYmca.textContent != "niedowagę"){
+                resultWeightTargetYmca.textContent = "niedowagę"
+                opacityAnimate(resultFullText[2]);
+            }else if(ymcaResult > 33 && resultWeightTargetYmca.textContent != "nadwagę"){
+                resultWeightTargetYmca.textContent = "nadwagę"
+                opacityAnimate(resultFullText[2]);
+            } else if (ymcaResult >= 21 && ymcaResult <= 33 && resultWeightTargetYmca.textContent != "wagę prawidłową") {
+                resultWeightTargetYmca.textContent = "wagę prawidłową"
+                opacityAnimate(resultFullText[2]);
+            }
+            highlightedResult[2].textContent = ymcaResult.toFixed(2);
+            resultBtnHref(result[2]);
+            
+        }                  
         } else {
-            element.classList.remove('activeInput')
-            console.log(element);
+            resultFullText[2].classList.remove('activeResult');
         }
-        
-    });
-}
+};
 
-for (i = 0; i < selectContainer.length; i++){
-    selectContainer[i].addEventListener('click', selectInputBorders)
-    selectContainer[i].addEventListener('keyup', selectInputBorders)
-}
+ymcaResultBtn.addEventListener('click', ymcaCalc)
 
-
-
-function isNotANumber(){
-    calcInputs.forEach(element => {
-        if(isNaN(element.value)){
-            console.log('to nie liczba!');
-            element.value = ""
-        } else {
-            console.log('jest gituwa');
-        }
-
-    })
-}
-
-function calcBorders () {
-    calcInputs.forEach(element => {
-        if(element.value !== ""){
-            element.classList.add('activeInput');
-            // isNotANumber(element)
-        } else {
-            element.classList.remove('activeInput')
-        }
-        
-    });
-}
-
-for (let i = 0; i < calcInputs.length; i++){
-    calcInputs[i].addEventListener('focus', calcBorders)
-    calcInputs[i].addEventListener('focusout', calcBorders)
-    calcInputs[i].addEventListener('keyup', isNotANumber)
-}
-
-function opacityAnimate(el) {
-    el.animate([
-        {opacity: 0},
-        {opacity: 1}
-    ], {
-        duration: 1000,
-        iterations: 1
-    });
-}
 function resultBtnHref (el) {
     const windowPos = window.scrollY
     const resultKcalScrollPosition = windowPos+el.getBoundingClientRect().top-(window.innerHeight/2)
     setTimeout(function(){window.scroll(0, resultKcalScrollPosition)}, 300)
   
-}
-
-
-let activityIndicator;
-let targetIndicator;
-
-
-function activityValue() {
-    
-    kcalCalcListElementActivity[0].value = 1.2;
-    kcalCalcListElementActivity[1].value = 1.2;
-    kcalCalcListElementActivity[2].value = 1.4;
-    kcalCalcListElementActivity[3].value = 1.6;
-    kcalCalcListElementActivity[4].value = 1.8;
-    kcalCalcListElementActivity[5].value = 2.0;
-    console.log(kcalCalcListElementActivity[1].value);
-
-    for(i=1; i < kcalCalcListElementActivity.length; i++) {
-        if (kcalCalcListElementActivity[i].classList.contains('choosenActivityElement')){
-            let activityIndicator = kcalCalcListElementActivity[i].value
-            return activityIndicator;
-        }
-    }
-}
-function targetValue() {
-    
-    kcalCalcListElementTarget[1].value = 0.9;
-    kcalCalcListElementTarget[2].value = 1.1;
-    kcalCalcListElementTarget[3].value = 1;
-
-    for(i=1; i < kcalCalcListElementTarget.length; i++) {
-        if (kcalCalcListElementTarget[i].classList.contains('choosenTargetElement')){
-            let targetIndicator = kcalCalcListElementTarget[i].value
-            return targetIndicator;
-        }
-    }
-}
-
-
-function kcalCalc () {
-    activityIndicator = activityValue();
-    targetIndicator = targetValue();
-    result[0].classList.add('resultShow');
-    if(
-        (genderIconLink[0].classList.contains('activeGender') || genderIconLink[1].classList.contains('activeGender')) && choosenActivity.innerText != 'WYBIERZ' && choosenActivity.innerText != 'WYBIERZ' && calcInputs[0].value != "" && calcInputs[1].value != "" && calcInputs[2].value != "" && calcInputs[0].value.match(numbers) && calcInputs[1].value.match(numbers) && calcInputs[2].value.match(numbers)
-        && calcInputs[0].value.charAt(0) != 0 && calcInputs[1].value.charAt(0) != 0 && calcInputs[2].value.charAt(0) != 0
-        ){
-            console.log(activityIndicator);
-            if(genderIconLink[0].classList.contains('activeGender')){
-                let bmr = (((((9.99 * calcInputs[1].value) + (6.25 * calcInputs[2].value) - (4.92 * calcInputs[0].value) - 161)) * activityIndicator * targetIndicator));
-                if(bmr > 500) {
-                    console.log(bmr);
-                    // kcalCalcWrapper.classList.add('calcInputHeight');
-                    // gapInputs[0].classList.remove('activeResult');
-                    resultFullText[0].classList.add('activeResult');
-                    if(highlightedResult[0].textContent != bmr.toFixed(0)){
-                        opacityAnimate(highlightedResult[0]);
-                    }
-                    highlightedResult[0].textContent = bmr.toFixed(0); 
-                    console.log('PRZED stracic na wadze');
-                    if (targetIndicator == 0.9 && resultWeightTarget.textContent != 'stracić na wadze'){
-                        // resultWeightTarget.classList.add('highlightedOpacityShow')
-                        console.log('stracic na wadze');
-                        
-                        resultWeightTarget.textContent = 'stracić na wadze';
-                        opacityAnimate(resultFullText[0]);
-                        
-                        
-                    } else if (targetIndicator == 1.1 && resultWeightTarget.textContent != 'przytyć'){
-                        // resultWeightTarget.classList.add('highlightedOpacityShow')
-                        resultWeightTarget.textContent = 'przytyć';
-                        opacityAnimate(resultFullText[0]);
-                    } else if (targetIndicator == 1.0 && resultWeightTarget.textContent != 'utrzymać wagę'){
-                        // resultWeightTarget.classList.add('highlightedOpacityShow')
-                        // opacityAnimate(resultWeightTarget);
-                        resultWeightTarget.textContent = 'utrzymać wagę';
-                        opacityAnimate(resultFullText[0]);
-                    }
-                    resultBtnHref(result[0]);
-                    // result[0].classList.add('resultShow');
-                    // result[1].classList.remove('resultShow');
-                } else {
-                    // kcalCalcWrapper.classList.remove('calcInputHeight');
-                    // kcalCalcWrapper.classList.add('calcInputHeightError');
-                    resultFullText[0].classList.remove('activeResult');
-                    // gapInputs[0].textContent = `Nie sądzę, że masz ${calcInputs[0].value}lat(a), ${calcInputs[1].value}kg wagi i ${calcInputs[2].value}cm wzrostu?`
-                    // gapInputs[0].classList.add('activeResult');
-                    // result[0].classList.add('errorResult');
-                    result[0].classList.remove('resultShow');
-                    // result[1].classList.add('resultShow');
-                    
-                }
-            } else if (genderIconLink[1].classList.contains('activeGender')) {
-                let bmr = (((((9.99 * calcInputs[1].value) + (6.25 * calcInputs[2].value) - (4.92 * calcInputs[0].value) + 5)) * activityIndicator) * targetIndicator);
-                if(bmr > 500) {
-                    console.log(bmr);
-                    // kcalCalcWrapper.cassList.add('calcInputHeight');
-                    // gapInputs[0].classList.remove('activeResult');
-                    resultFullText[0].classList.add('activeResult');
-                    // kcalCalcWrapper.classList.add('calcInputHeight');
-                    // highlightedResult[0].textContent = bmr.toFixed(0); 
-                    // result[1].classList.remove('resultShow');
-                    // result[0].classList.add('resultShow');
-                    if(highlightedResult[0].textContent != bmr.toFixed(0)){
-                        opacityAnimate(highlightedResult[0]);
-                    }
-                    highlightedResult[0].textContent = bmr.toFixed(0); 
-                    if (targetIndicator == 0.9 && resultWeightTarget.textContent != 'stracić na wadze'){
-                        // resultWeightTarget.classList.add('highlightedOpacityShow')
-                        
-                        opacityAnimate(resultFullText[0]);
-                        resultWeightTarget.textContent = 'stracić na wadze';
-                        
-                        
-                    } else if (targetIndicator == 1.1 && resultWeightTarget.textContent != 'przytyć'){
-                        // resultWeightTarget.classList.add('highlightedOpacityShow')
-                        resultWeightTarget.textContent = 'przytyć';
-                        opacityAnimate(resultFullText[0]);
-                    } else if (targetIndicator == 1.0 && resultWeightTarget.textContent != 'utrzymać wagę'){
-                        // resultWeightTarget.classList.add('highlightedOpacityShow')
-                        // opacityAnimate(resultWeightTarget);
-                        resultWeightTarget.textContent = 'utrzymać wagę';
-                        opacityAnimate(resultFullText[0]);
-                    }
-                    resultBtnHref(result[0]);
-                } else {
-                    errorPopUpShow();
-                    // kcalCalcWrapper.classList.remove('calcInputHeight');
-                    // kcalCalcWrapper.classList.add('calcInputHeightError');
-                    // wrongInputs[0].classList.remove('activeResult')
-                    // gapInputs[0].textContent = `Na pewno masz ${calcInputs[0].value}lat(a), ${calcInputs[1].value}kg wagi i ${calcInputs[2].value}cm wzrostu?`
-                    // gapInputs[0].classList.add('activeResult');
-                    // console.log(bmr);
-                    result[0].classList.remove('resultShow');
-                    // result[1].textContent = `Jesteś pewien, że masz ${calcInputs[0].value} lat(a), ${calcInputs[1].value} kg i ${calcInputs[2].value} cm wzrostu? Nie sondze`
-                    // result[1].classList.add('resultShow');
-                    
-                }
-            }
-        } else {
-            errorPopUpShow();
-            // alert('wprowadz poprawne dane')
-            // result[1].textContent = `Uzupełnił wszystkie pola lub wpisz poprawne
-            // wartości!`
-            result[0].classList.remove('resultShow');
-            // result[1].classList.add('resultShow');
-            // kcalCalcWrapper.classList.add('calcInputHeightError');
-            resultFullText[0].classList.remove('activeResult');
-            // gapInputs[0].classList.remove('activeResult');
-            // // kcalCalcWrapper.classList.remove('calcInputHeight');
-            // wrongInputs[0].classList.add('activeResult')
-        
-    }
-    // console.log(activitySelect.options[2].value);
 };
 
-kcalResultBtn.addEventListener('click', kcalCalc);
