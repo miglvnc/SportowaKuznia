@@ -7,7 +7,7 @@ The website's visitors can find a several sections:
 ## Diets
 Users are able to compose their own diet or choose prepared meals ideas. If they choose the first option, a new window will appear. There visitors can compose their own diets by clicking products from the table. Users can use search option to find intresting product, sort data through values and add product to separate table. More details are placed in website.
 
-![DietScreen](screens/ScreenDiet.png)
+![DietScreen](../screens/ScreenDiet.png)
 
 Table with choosen products dynamicaly sums all values depends on provided 'weight of product' by the user. At the bottom of table, there is an area with total values. To remove product from table, user have to just click the selected product.
 
@@ -18,11 +18,11 @@ In the future I'll be working on exporting composed diet into PDF or XLS file. I
 ## Calculators
 In this section user is able to choose one of the three calculators from the dropdown. Calculators are projected in accordance with algorithms available in the WWW.
 
-![CalcScreen](screens/ScreenCalc01.png)
+![CalcScreen](../screens/ScreenCalc01.png)
 
 Result of the calculator depends of choosen one - calc of caloric demand, BMI and YMCA indicators calcs. The application is very simple to use - just select the calculator you are interested in, then fill in the form and click the CALCULATE button. The calculator will make the necessary calculations and provide information about the result.
 
-![CalcSecondScreen](screens/ScreenCalc02.png)
+![CalcSecondScreen](../screens/ScreenCalc02.png)
 
 ## Other sections
 
@@ -46,7 +46,7 @@ There are also some additional features implemented on the website.
 
 In case of not completing or incorrectly supplementing the data for the calculators, a pop-up error will be displayed.
 
-![ErrorScreen](screens/ScreenError.png)
+![ErrorScreen](../screens/ScreenError.png)
 
 The FAQ was added thanks to the bootstrap library and adapted to the aesthetics of the site. In addition, animations for unfolding questions have been added.
 
